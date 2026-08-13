@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestige Dome - Steward Module 1 Induction, Safety & Assessment</title>
+    <title>Prestige Dome - Steward Module 1 Induction & Certificate Engine</title>
     <style>
         :root {
             --gold-primary: #d4af37;
@@ -30,11 +30,9 @@
         .card { background: var(--panel-bg); border: 1px solid var(--border-gold); border-radius: 8px; padding: 24px; margin-bottom: 25px; }
         .card-title { font-size: 16px; font-weight: bold; color: #fff; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
         
-        .cmd-block { background: #000; border: 1px solid var(--border-gold); border-radius: 6px; padding: 12px 16px; font-family: "Courier New", monospace; font-size: 13px; color: #3fb950; margin: 10px 0; }
         ul { margin: 0; padding-left: 20px; color: var(--text-sub); font-size: 13px; line-height: 1.6; }
         li strong { color: var(--text-gold); }
 
-        /* Safety Protocol Lists */
         .dos-list li { color: #a3e635; margin-bottom: 6px; }
         .donts-list li { color: #f87171; margin-bottom: 6px; }
 
@@ -44,12 +42,22 @@
         .q-option { display: block; margin: 8px 0; font-size: 13px; color: var(--text-gold); cursor: pointer; }
         .q-option input { margin-right: 10px; accent-color: var(--gold-primary); }
 
+        input[type="text"] { width: 100%; padding: 12px; border-radius: 6px; border: 1px solid var(--border-gold); background: #0d0b07; color: var(--text-gold); font-size: 14px; box-sizing: border-box; margin-bottom: 20px; }
+
         button { padding: 12px 28px; border-radius: 6px; border: 1px solid var(--gold-primary); background: linear-gradient(135deg, #d4af37 0%, #997a15 100%); color: #000; font-weight: bold; font-size: 15px; cursor: pointer; transition: all 0.3s ease; }
         button:hover { background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 100%); box-shadow: 0 0 12px rgba(212, 175, 55, 0.5); }
 
         #result-banner { display: none; padding: 16px; border-radius: 6px; font-weight: bold; text-align: center; margin-top: 15px; font-size: 15px; }
         .pass { background: rgba(63, 185, 80, 0.15); border: 1px solid var(--green); color: var(--green); }
         .fail { background: rgba(218, 54, 51, 0.15); border: 1px solid var(--red); color: var(--red); }
+
+        /* Certificate Display Box */
+        #certificate-box { display: none; background: radial-gradient(circle, #1a150b 0%, #0d0b07 100%); border: 2px solid var(--gold-primary); border-radius: 12px; padding: 40px; text-align: center; margin-top: 25px; box-shadow: 0 0 25px rgba(212, 175, 55, 0.2); }
+        .cert-title { font-size: 24px; color: var(--gold-primary); text-transform: uppercase; letter-spacing: 3px; font-weight: bold; margin-bottom: 10px; }
+        .cert-sub { font-size: 13px; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+        .cert-name { font-size: 28px; color: #fff; font-family: "Georgia", serif; border-bottom: 1px solid var(--border-gold); display: inline-block; padding: 0 30px 8px 30px; margin: 15px 0; }
+        .cert-meta { font-size: 12px; color: var(--text-gold); margin-top: 15px; line-height: 1.8; }
+        .cert-seal { margin-top: 25px; font-size: 12px; color: var(--gold-primary); letter-spacing: 2px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -57,7 +65,7 @@
     <div class="header-bar">
         <div class="header-title">
             <h1>?? Prestige Digital Dome | Module 1</h1>
-            <p>Steward Induction, Zero-Mortality Safety Protocol & Assessment</p>
+            <p>Steward Induction, Zero-Mortality Safety Protocol & Instant Certification</p>
         </div>
         <div class="protocol-badge">? PASS MARK: 100% REQUIRED</div>
     </div>
@@ -95,25 +103,22 @@
             </div>
         </div>
 
-        <!-- Core Directives Card -->
-        <div class="card">
-            <div class="card-title">?? Core Operational Directives</div>
-            <ul>
-                <li><strong>Network:</strong> Exclusive deployment over 5GHz/6GHz shielded Wi-Fi or S/FTP line.</li>
-                <li><strong>Audio DSP:</strong> Automated bandpass filter ($80\text{Hz}-12\text{kHz}$) with **-24 LUFS** loudness target.</li>
-                <li><strong>Vault Security:</strong> Zero-knowledge AES-256-GCM encryption for assets at rest via <code>vault_encryptor.py</code>.</li>
-            </ul>
-        </div>
-
         <!-- Assessment Form -->
         <div class="card">
             <div class="card-title">
-                <span>?? Steward Deployment Assessment</span>
+                <span>?? Steward Deployment Assessment & Certificate Issuing</span>
                 <span style="font-size: 12px; color: var(--text-sub);">Zero-Mortality Requirement</span>
             </div>
 
             <form id="assessment-form">
                 
+                <div style="margin-bottom: 15px;">
+                    <label style="font-size: 13px; color: var(--gold-primary); font-weight: bold; display: block; margin-bottom: 6px;">
+                        STEWARD IDENTIFICATION (Full Name):
+                    </label>
+                    <input type="text" id="steward-name" value="Sipho Wiseman Khuzwayo" placeholder="Enter Full Name for Certificate Generation..." />
+                </div>
+
                 <div class="q-box">
                     <div class="q-title">Q1: Which Wi-Fi frequency band is strictly required for steward deployment to prevent sound system EMI interference?</div>
                     <label class="q-option"><input type="radio" name="q1" value="a"> 2.4 GHz Legacy Spectrum</label>
@@ -143,12 +148,34 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 20px;">
-                    <button type="button" onclick="evaluateAssessment()">Submit Assessment for Clearance</button>
+                    <button type="button" onclick="evaluateAssessment()">Submit Assessment for Immediate Certificate</button>
                 </div>
 
             </form>
 
             <div id="result-banner"></div>
+
+            <!-- Instant Certificate Renderer -->
+            <div id="certificate-box">
+                <div class="cert-title">?? Certificate of Sovereign Clearance ??</div>
+                <div class="cert-sub">Prestige Digital Dome • Zero-Mortality Induction Protocol</div>
+                <div>This is to officially certify that</div>
+                <div class="cert-name" id="cert-display-name">Sipho Wiseman Khuzwayo</div>
+                <div>has achieved <strong>100% Mastery</strong> on Module 1 Operations & Safety Protocols.</div>
+                
+                <div class="cert-meta">
+                    <strong>Status:</strong> ACTIVE & SOVEREIGN STEWARD<br/>
+                    <strong>Verification ID:</strong> <span id="cert-id"></span><br/>
+                    <strong>Issued Timestamp:</strong> <span id="cert-date"></span>
+                </div>
+
+                <div class="cert-seal">? ZERO-MORTALITY VERIFIED & SEALED ?</div>
+                
+                <div style="margin-top: 25px;">
+                    <button onclick="window.print()">??? Print / Save PDF Certificate</button>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -168,14 +195,25 @@
 
             const percentage = (score / total) * 100;
             const banner = document.getElementById('result-banner');
+            const certBox = document.getElementById('certificate-box');
+            const stewardName = document.getElementById('steward-name').value.trim() || 'Sipho Wiseman Khuzwayo';
+
             banner.style.display = 'block';
 
             if (percentage === 100) {
                 banner.className = 'pass';
-                banner.innerHTML = '? SCORE: 100% — CLEARANCE GRANTED. Steward Status: ACTIVE & SOVEREIGN.';
+                banner.innerHTML = '? SCORE: 100% — CLEARANCE GRANTED. Certificate Issued Successfully.';
+
+                // Populate Certificate
+                document.getElementById('cert-display-name').innerText = stewardName;
+                document.getElementById('cert-id').innerText = 'PDD-M1-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+                document.getElementById('cert-date').innerText = new Date().toUTCString();
+                certBox.style.display = 'block';
+
             } else {
                 banner.className = 'fail';
-                banner.innerHTML = `? SCORE: ${percentage}% — CLEARANCE DENIED. 100% Pass Mark required under Zero-Mortality Protocol. Review Module 1 & Retry.`;
+                banner.innerHTML = `? SCORE: ${percentage}% — CLEARANCE DENIED. 100% Pass Mark required under Zero-Mortality Protocol. Certificate Withheld.`;
+                certBox.style.display = 'none';
             }
         }
     </script>
