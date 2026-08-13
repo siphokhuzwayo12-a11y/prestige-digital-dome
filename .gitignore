@@ -1,18 +1,23 @@
+# ==========================================
+# PRESTIGE DIGITAL DOME - ZERO-LEAK SECURITY
+# ==========================================
 
-# Vault Security
-keys/*.pem
-keys/*.key
-.env
+# Secret Keys & Decrypted Payloads
+*.pem
+*.priv
+*.key
+*.dec
+*.env
 
+# Python Cache & Workspace Artifacts
+__pycache__/
+*.pyc
+.vscode/
+.idea/
 
-# Vault Security
-keys/*.pem
-keys/*.key
-.env
+# Raw Inbound Transmissions (Ignore raw intake data, keep structure)
+intake/raw/*
+!intake/raw/.gitkeep
 
-
-# Email Vault Exclusions
-transmission/inbox/*.eml
-transmission/outbox/*
-keys/steward_pubkeys/*.priv
-
+# Temporary Recording Cache
+transmission/inbox/*.tmp
