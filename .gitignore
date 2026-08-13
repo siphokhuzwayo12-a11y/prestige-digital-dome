@@ -1,0 +1,12 @@
+
+# Vault Security
+keys/*.pem
+keys/*.key
+.env
+
+
+# Vault Security
+keys/*.pem
+keys/*.key
+.env
+
