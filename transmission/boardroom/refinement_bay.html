@@ -3,37 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestige Dome - Refinement Bay Boardroom</title>
+    <title>Prestige Dome - Refinement Bay Communications</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0d1117; font-family: sans-serif; color: #c9d1d9; }
-        #key-guard { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-        input { padding: 12px 18px; border-radius: 6px; border: 1px solid #30363d; background: #161b22; color: #fff; font-size: 16px; margin-bottom: 12px; text-align: center; width: 280px; }
-        button { padding: 10px 24px; border-radius: 6px; border: none; background: #238636; color: #fff; font-size: 16px; cursor: pointer; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0d1117; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #c9d1d9; }
+        #key-guard { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        input { padding: 12px 18px; border-radius: 6px; border: 1px solid #30363d; background: #161b22; color: #fff; font-size: 16px; margin-bottom: 12px; text-align: center; width: 300px; }
+        button { padding: 10px 24px; border-radius: 6px; border: none; background: #238636; color: #fff; font-size: 15px; cursor: pointer; margin: 4px; }
         button:hover { background: #2ea043; }
-        iframe { width: 100%; height: 100%; border: none; display: none; }
+        button.btn-danger { background: #da3633; }
+        button.btn-danger:hover { background: #f85149; }
+        #app-container { display: none; width: 100%; height: 100vh; flex-direction: column; }
+        #control-bar { height: 50px; background: #161b22; border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+        #mirotalk-frame { flex: 1; border: none; width: 100%; }
+        #voice-status { font-size: 13px; color: #8b949e; }
     </style>
 </head>
 <body>
+
     <div id="key-guard">
         <h2>Refinement Bay Boardroom</h2>
-        <p>Enter Steward Access Key to unlock MiroTalk conference:</p>
-        <input type="password" id="access-key" placeholder="Steward Key..." />
-        <button onclick="unlockBoardroom()">Authorize Access</button>
+        <p>Enter Steward Access Key to initialize P2P Video/Voice & Audio Messaging:</p>
+        <input type="password" id="access-key" placeholder="Steward Access Key..." />
+        <br />
+        <button onclick="unlockBoardroom()">Authorize Steward Access</button>
     </div>
 
-    <iframe id="mirotalk-frame" allow="camera; microphone; display-capture; autoplay; clipboard-write"></iframe>
+    <div id="app-container">
+        <div id="control-bar">
+            <div>
+                <strong>Dome Refinement Bay</strong> | <span id="voice-status">Voice Message Module Standby</span>
+            </div>
+            <div>
+                <button id="record-btn" onclick="toggleVoiceRecording()">??? Record Voice Message</button>
+            </div>
+        </div>
+        <iframe id="mirotalk-frame" allow="camera; microphone; display-capture; autoplay; clipboard-write"></iframe>
+    </div>
 
     <script>
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+
         function unlockBoardroom() {
-            const key = document.getElementById('access-key').value;
-            if (key.trim() !== "") {
+            const key = document.getElementById('access-key').value.trim();
+            if (key !== "") {
                 document.getElementById('key-guard').style.display = 'none';
+                document.getElementById('app-container').style.display = 'flex';
+                
                 const iframe = document.getElementById('mirotalk-frame');
-                // Embedded MiroTalk P2P Room locked under room key
+                // Lock room join link to the domain hash key
                 iframe.src = "https://p2p.mirotalk.com/join/PrestigeRefinementBay_" + encodeURIComponent(key);
-                iframe.style.display = 'block';
             } else {
-                alert("Steward access key required.");
+                alert("Steward Access Key is required.");
+            }
+        }
+
+        async function toggleVoiceRecording() {
+            const btn = document.getElementById('record-btn');
+            const status = document.getElementById('voice-status');
+
+            if (!isRecording) {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = [];
+
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        const url = URL.createObjectURL(audioBlob);
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = url;
+                        a.download = `voice_note_${Date.now()}.webm`;
+                        document.body.appendChild(a);
+                        a.click();
+                        setTimeout(() => URL.revokeObjectURL(url), 100);
+                        status.textContent = "Voice message saved locally. Drop file in /transmission/inbox/ to vault.";
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    btn.textContent = "?? Stop & Save Voice Message";
+                    btn.className = "btn-danger";
+                    status.textContent = "Recording encrypted audio message...";
+                } catch (err) {
+                    alert("Microphone access required for voice notes: " + err);
+                }
+            } else {
+                mediaRecorder.stop();
+                isRecording = false;
+                btn.textContent = "??? Record Voice Message";
+                btn.className = "";
             }
         }
     </script>
