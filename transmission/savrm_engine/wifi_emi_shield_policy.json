@@ -1,16 +1,20 @@
 {
-  "wifi_shield_specification": {
+  "prestige_wifi_facility": {
+    "entry_guard": {
+      "auto_suppression": true,
+      "toxic_surrounding_attenuation_db": -30,
+      "steward_spike_limiter": true
+    },
     "band_isolation": {
       "target_frequencies": ["5GHz", "6GHz"],
       "banned_frequencies": ["2.4GHz"],
       "channel_width": "80MHz",
-      "reason": "Eliminate RF harmonic overlap with wireless microphones and inductive sound gear"
+      "qos_priority": "DSCP 46 (EF - Expedited Real-Time Voice/Data)"
     },
-    "emi_sound_system_isolation": {
+    "emi_sound_shielding": {
       "cable_standard": "S/FTP Cat6A / Cat7 Shielded",
-      "grounding": "Unified Drain Grounding (Eliminate Ground Loops)",
-      "minimum_speaker_separation_meters": 3.0,
-      "qos_priority": "DSCP 46 (EF - Expedited Forwarding for Real-Time Audio)"
+      "grounding": "Unified Drain Grounding",
+      "minimum_transducer_separation_meters": 3.0
     }
   }
 }
