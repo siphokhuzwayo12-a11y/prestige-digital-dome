@@ -112,11 +112,19 @@
 
             <form id="assessment-form">
                 
-                <div style="margin-bottom: 15px;">
-                    <label style="font-size: 13px; color: var(--gold-primary); font-weight: bold; display: block; margin-bottom: 6px;">
-                        STEWARD IDENTIFICATION (Full Name):
-                    </label>
-                    <input type="text" id="steward-name" value="Sipho Wiseman Khuzwayo" placeholder="Enter Full Name for Certificate Generation..." />
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div>
+                        <label style="font-size: 13px; color: var(--gold-primary); font-weight: bold; display: block; margin-bottom: 6px;">
+                            STEWARD IDENTIFICATION (Full Name):
+                        </label>
+                        <input type="text" id="steward-name" value="Sipho Wiseman Khuzwayo" placeholder="Full Name..." />
+                    </div>
+                    <div>
+                        <label style="font-size: 13px; color: var(--gold-primary); font-weight: bold; display: block; margin-bottom: 6px;">
+                            DESIGNATED MAILING CHANNEL (Email):
+                        </label>
+                        <input type="text" id="steward-email" value="sipho.khuzwayo@prestigedome.com" placeholder="Email for Dome Key Dispatch..." />
+                    </div>
                 </div>
 
                 <div class="q-box">
@@ -220,3 +228,4 @@
 
 </body>
 </html>
+
