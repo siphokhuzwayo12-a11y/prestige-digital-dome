@@ -1,0 +1,11 @@
+{
+  "room_name": "Prestige-Refinement-Bay",
+  "engine": "MiroTalk-P2P",
+  "security": "Dome-Access-Key-Locked",
+  "features": {
+    "video_audio": true,
+    "whiteboard": true,
+    "screen_share": true,
+    "chat": true
+  }
+}
