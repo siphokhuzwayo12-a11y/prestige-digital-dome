@@ -1,0 +1,16 @@
+{
+  "wifi_shield_specification": {
+    "band_isolation": {
+      "target_frequencies": ["5GHz", "6GHz"],
+      "banned_frequencies": ["2.4GHz"],
+      "channel_width": "80MHz",
+      "reason": "Eliminate RF harmonic overlap with wireless microphones and inductive sound gear"
+    },
+    "emi_sound_system_isolation": {
+      "cable_standard": "S/FTP Cat6A / Cat7 Shielded",
+      "grounding": "Unified Drain Grounding (Eliminate Ground Loops)",
+      "minimum_speaker_separation_meters": 3.0,
+      "qos_priority": "DSCP 46 (EF - Expedited Forwarding for Real-Time Audio)"
+    }
+  }
+}

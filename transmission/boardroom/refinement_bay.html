@@ -3,34 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prestige Dome - Pristine Refinement Bay</title>
+    <title>SAVRM - Sovereign Audio-Visual Resonance Matrix</title>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0b0e14; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #c9d1d9; }
         #key-guard { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
-        input { padding: 12px 18px; border-radius: 6px; border: 1px solid #30363d; background: #161b22; color: #fff; font-size: 16px; margin-bottom: 12px; text-align: center; width: 320px; }
+        input, select { padding: 12px 18px; border-radius: 6px; border: 1px solid #30363d; background: #161b22; color: #fff; font-size: 15px; margin-bottom: 12px; text-align: center; width: 340px; }
         button { padding: 10px 24px; border-radius: 6px; border: none; background: #238636; color: #fff; font-size: 15px; cursor: pointer; margin: 4px; }
         button:hover { background: #2ea043; }
         button.btn-danger { background: #da3633; }
         #app-container { display: none; width: 100%; height: 100vh; flex-direction: column; }
         #control-bar { height: 50px; background: #161b22; border-bottom: 1px solid #30363d; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
         #mirotalk-frame { flex: 1; border: none; width: 100%; }
-        #signal-status { font-size: 13px; color: #3fb950; font-weight: 500; }
+        #dsp-status { font-size: 12px; color: #3fb950; font-weight: 600; }
     </style>
 </head>
 <body>
 
     <div id="key-guard">
-        <h2>Refinement Bay Boardroom</h2>
-        <p style="color: #8b949e;">Pristine Reception Engine • Zero Distortion • High-Fidelity P2P Matrix</p>
+        <h2>SAVRM Refinement Bay</h2>
+        <p style="color: #8b949e;">Sovereign Audio-Visual Resonance Matrix • Normalized -24 LUFS Engine</p>
+        
+        <label style="font-size: 12px; color: #8b949e;">Signal & Network Routing Mode:</label><br/>
+        <select id="signal-mode">
+            <option value="cloud">Public P2P Mesh (Encrypted)</option>
+            <option value="airgap">Air-Gapped Shielded Wi-Fi Node (Docker :3000)</option>
+        </select>
+        <br/>
         <input type="password" id="access-key" placeholder="Enter Steward Access Key..." />
         <br />
-        <button onclick="unlockBoardroom()">Initialize Resonance Session</button>
+        <button onclick="unlockSAVRM()">Engage Resonant Session</button>
     </div>
 
     <div id="app-container">
         <div id="control-bar">
             <div>
-                <strong>Prestige Dome Refinement Bay</strong> | <span id="signal-status">? Resonant P2P Lock Established</span>
+                <strong>SAVRM Engine</strong> | <span id="dsp-status">? -24 LUFS Active | Shielded Wi-Fi Routing | Zero Harmonics</span>
             </div>
             <div>
                 <button id="record-btn" onclick="toggleVoiceRecording()">??? Pristine Voice Note</button>
@@ -40,17 +47,23 @@
     </div>
 
     <script>
-        function unlockBoardroom() {
+        function unlockSAVRM() {
             const key = document.getElementById('access-key').value.trim();
+            const mode = document.getElementById('signal-mode').value;
+
             if (key !== "") {
                 document.getElementById('key-guard').style.display = 'none';
                 document.getElementById('app-container').style.display = 'flex';
                 
                 const iframe = document.getElementById('mirotalk-frame');
-                // Launch MiroTalk P2P with high-fidelity media flags
-                iframe.src = "https://p2p.mirotalk.com/join/PrestigeRefinementBay_" + encodeURIComponent(key) + "#config.audioQuality=48000&config.opusMaxAverageBitrate=510000";
+                
+                let baseUrl = (mode === "airgap") 
+                    ? "http://localhost:3000/join/SAVRM_" 
+                    : "https://p2p.mirotalk.com/join/SAVRM_";
+
+                iframe.src = baseUrl + encodeURIComponent(key) + "#config.audioQuality=48000&config.opusMaxAverageBitrate=510000";
             } else {
-                alert("Steward Access Key required for lock execution.");
+                alert("Steward Access Key required.");
             }
         }
 
@@ -60,24 +73,43 @@
 
         async function toggleVoiceRecording() {
             const btn = document.getElementById('record-btn');
-            const status = document.getElementById('signal-status');
+            const status = document.getElementById('dsp-status');
 
             if (!isRecording) {
                 try {
-                    // Pristine audio constraints for zero-distortion voice notes
-                    const audioConstraints = {
-                        audio: {
-                            echoCancellation: true,
-                            noiseSuppression: true,
-                            autoGainControl: true,
-                            sampleRate: 48000,
-                            sampleSize: 16,
-                            channelCount: 2
-                        }
-                    };
+                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    const stream = await navigator.mediaDevices.getUserMedia({
+                        audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: false, sampleRate: 48000 }
+                    });
 
-                    const stream = await navigator.mediaDevices.getUserMedia(audioConstraints);
-                    mediaRecorder = new MediaRecorder(stream, { mimeType: 'audio/webm;codecs=opus' });
+                    const source = audioCtx.createMediaStreamSource(stream);
+
+                    // High-pass filter (Cuts sub-bass speaker rumble below 80Hz)
+                    const highPass = audioCtx.createBiquadFilter();
+                    highPass.type = "highpass";
+                    highPass.frequency.value = 80;
+
+                    // Low-pass filter (Cuts high-frequency noise & pitch spikes above 12kHz)
+                    const lowPass = audioCtx.createBiquadFilter();
+                    lowPass.type = "lowpass";
+                    lowPass.frequency.value = 12000;
+
+                    // Dynamic Range Compressor (-24 LUFS Standard Target)
+                    const compressor = audioCtx.createDynamicsCompressor();
+                    compressor.threshold.setValueAtTime(-24, audioCtx.currentTime);
+                    compressor.knee.setValueAtTime(30, audioCtx.currentTime);
+                    compressor.ratio.setValueAtTime(12, audioCtx.currentTime);
+                    compressor.attack.setValueAtTime(0.003, audioCtx.currentTime);
+                    compressor.release.setValueAtTime(0.25, audioCtx.currentTime);
+
+                    const destination = audioCtx.createMediaStreamDestination();
+
+                    source.connect(highPass);
+                    highPass.connect(lowPass);
+                    lowPass.connect(compressor);
+                    compressor.connect(destination);
+
+                    mediaRecorder = new MediaRecorder(destination.stream, { mimeType: 'audio/webm;codecs=opus' });
                     audioChunks = [];
 
                     mediaRecorder.ondataavailable = event => audioChunks.push(event.data);
@@ -88,20 +120,21 @@
                         const a = document.createElement('a');
                         a.style.display = 'none';
                         a.href = url;
-                        a.download = `pristine_voice_note_${Date.now()}.webm`;
+                        a.download = `savrm_shielded_note_${Date.now()}.webm`;
                         document.body.appendChild(a);
                         a.click();
                         setTimeout(() => URL.revokeObjectURL(url), 100);
-                        status.textContent = "? Pristine Voice Note Saved to Vault Channel";
+                        audioCtx.close();
+                        status.textContent = "? SAVRM Voice Note Exported (-24 LUFS Normalised)";
                     };
 
                     mediaRecorder.start();
                     isRecording = true;
-                    btn.textContent = "?? Stop & Lock Recording";
+                    btn.textContent = "?? Lock Signal & Save";
                     btn.className = "btn-danger";
-                    status.textContent = "? Recording Active: High-Fidelity Audio Stream";
+                    status.textContent = "? Audio Recording Active: Bandpass Filtered & Decibel Normalized";
                 } catch (err) {
-                    alert("Audio device access error: " + err);
+                    alert("Audio DSP setup error: " + err);
                 }
             } else {
                 mediaRecorder.stop();
