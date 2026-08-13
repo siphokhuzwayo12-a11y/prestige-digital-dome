@@ -1,0 +1,11 @@
+{
+  "policy_name": "Zero-Leak-Zero-IP-Trust-Email-Vault",
+  "inbound_mode": "Strict-PGP-Encrypted",
+  "strip_tracking_pixels": true,
+  "strip_html_payloads": true,
+  "auto_vault_attachments": true,
+  "authorized_steward_roles": [
+    "lead_steward",
+    "vault_keeper"
+  ]
+}

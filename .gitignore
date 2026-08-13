@@ -10,3 +10,9 @@ keys/*.pem
 keys/*.key
 .env
 
+
+# Email Vault Exclusions
+transmission/inbox/*.eml
+transmission/outbox/*
+keys/steward_pubkeys/*.priv
+
