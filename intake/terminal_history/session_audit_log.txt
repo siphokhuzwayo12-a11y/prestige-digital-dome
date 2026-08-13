@@ -1,0 +1,689 @@
+cd /d "%USERPROFILE%\Desktop"
+mkdir PRESTIGE-SOVEREIGN-BIO-SOLAR-ENGINE
+cd PRESTIGE-SOVEREIGN-BIO-SOLAR-ENGINE
+git init
+git branch -M main
+(`
+echo ^<!DOCTYPE html^>`
+echo ^<html lang="en"^>
+echo ^<head^>
+echo     ^<meta charset="UTF-8"^>
+echo     ^<title^>PRESTIGE SOVEREIGN BIO-SOLAR ENGINE^</title^>
+echo ^</head^>
+echo ^<body style="background:#020710;color:#ffcc00;font-family:sans-serif;text-align:center;padding:50px;"^>
+echo     ^<h1^>PRESTIGE SOVEREIGN BIO-SOLAR ENGINE^</h1^>
+echo     ^<p style="color:#fff;"^>Scapush Precision Execution Fully Activated^</p^>
+echo ^</body^>
+echo ^</html^>
+) > index.html
+git add index.html
+git commit -m "Scapush Precision: Launch standalone artifact"
+git remote add origin https://github.com/siphokhuzwayo12-a11y/PRESTIGE-SOVEREIGN-BIO-SOLAR-ENGINE.git
+cd "$env:USERPROFILE\Desktop\PRESTIGE-SOVEREIGN-BIO-SOLAR-ENGINE"
+git init
+git add index.html
+git commit -m "Scapush Precision: Deploy standalone artifact"
+git remote add origin https://github.com/siphokhuzwayo12-a11y/PRESTIGE-SOVEREIGN-BIO-SOLAR-ENGINE.git
+git push -u origin main
+# 1. Navigate into the desktop folder
+cd "$env:USERPROFILE\Desktop\PRESTIGE-SOVEREIGN-BIO-SOLAR-ENGINE"
+# 2. Ensure git is initialized and local branch is named main
+git init
+git branch -M main
+# 3. Create index.html file directly in case it doesn't exist yet
+@'`
+<!DOCTYPE html>`
+<html lang="en">`
+<head>`
+    <meta charset="UTF-8">`
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">`
+    <title>PRESTIGE SOVEREIGN BIO-SOLAR ENGINE</title>`
+</head>`
+<body style="background:#020710;color:#ffcc00;font-family:sans-serif;text-align:center;padding:50px;">`
+    <h1>PRESTIGE SOVEREIGN BIO-SOLAR ENGINE</h1>`
+    <p style="color:#fff;">Scapush Precision Execution Fully Activated</p>`
+</body>`
+</html>`
+'@ | Out-File -Encoding utf8 index.html
+# 4. Stage, commit, and push
+git add index.html
+git commit -m "Scapush Precision: Deploy initial commit"
+git remote remove origin 2>$null
+git remote add origin https://github.com/siphokhuzwayo12-a11y/PRESTIGE-SOVEREIGN-BIO-SOLAR-ENGINE.git
+cd /d "%USERPROFILE%\Desktop"
+mkdir agritech-seta-empowerment-hub
+cd agritech-seta-empowerment-hub
+git init
+git branch -M main
+(`
+echo ^<!DOCTYPE html^>`
+echo ^<html lang="en"^>
+echo ^<head^>
+echo     ^<meta charset="UTF-8"^>
+echo     ^<meta name="viewport" content="width=device-width, initial-scale=1.0"^>
+echo     ^<title^>SETA Agri-Tech Initiative ^| Interactive Presentation Deck^</title^>
+echo     ^<style^>
+echo         :root {`
+echo             --bg-color: #020710;`
+echo             --panel-bg: #07152b;`
+echo             --sub-panel-bg: #0a1c38;`
+echo             --border-cyan: #00d8ff;`
+echo             --border-gold: #ffcc00;`
+echo             --text-gold: #ffcc00;`
+echo             --text-cyan: #00d8ff;`
+echo             --text-white: #ffffff;`
+echo             --text-red: #ff3366;`
+echo             --text-amber: #ff9900;`
+echo             --text-muted: #9aa8c7;`
+echo             --text-green: #50fa7b;`
+echo         }
+echo         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; }
+echo         body { background-color: var(--bg-color); color: var(--text-white); display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 24px; }
+echo         .deck-container { width: 100%%; max-width: 1250px; background-color: var(--panel-bg); border: 2px solid var(--border-gold); padding: 36px; box-shadow: 0 0 45px rgba(255, 204, 0, 0.25); display: flex; flex-direction: column; gap: 28px; min-height: 780px; position: relative; }
+echo         .deck-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--border-gold); padding-bottom: 16px; }
+echo         .deck-title h1 { color: var(--text-gold); font-size: 1.45rem; letter-spacing: 1.5px; font-weight: bold; margin-bottom: 4px; }
+echo         .deck-title p { color: var(--text-cyan); font-size: 1.05rem; font-weight: bold; }
+echo         .slide-counter { background: var(--sub-panel-bg); border: 1px solid var(--border-cyan); padding: 8px 16px; font-size: 1.05rem; color: var(--text-gold); font-weight: bold; }
+echo         .slide-viewport { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+echo         .slide { display: none; flex-direction: column; gap: 20px; animation: fadeIn 0.3s ease-in-out; }
+echo         .slide.active { display: flex; }
+echo         .slide-tag { color: var(--text-cyan); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1.2px; font-weight: bold; }
+echo         .slide-heading { color: var(--text-gold); font-size: 1.7rem; border-bottom: 1px dashed var(--border-cyan); padding-bottom: 8px; }
+echo         .slide-content { font-size: 1.1rem; line-height: 1.75; color: #e2e9f5; display: flex; flex-direction: column; gap: 16px; }`
+echo         .diagram-block { background: var(--bg-color); border: 1px solid #102a45; padding: 18px; color: var(--text-green); font-size: 1.02rem; border-left: 4px solid var(--border-cyan); white-space: pre-wrap; line-height: 1.5; }
+echo         .matrix-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+echo         .summary-box { background: var(--sub-panel-bg); border: 1px solid #102a45; padding: 18px; border-radius: 2px; text-align: center; }
+echo         .summary-box h4 { color: var(--text-cyan); font-size: 0.98rem; margin-bottom: 6px; letter-spacing: 0.5px; }
+echo         .summary-box .stat { color: var(--text-gold); font-size: 1.45rem; font-weight: bold; }
+echo         table { width: 100%%; border-collapse: collapse; font-size: 1.02rem; margin-top: 8px; }
+echo         th, td { border: 1px solid #102a45; padding: 12px 14px; text-align: left; }`
+echo         th { background: var(--sub-panel-bg); color: var(--text-gold); font-size: 1.05rem; }
+echo         .controls-bar { display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--border-gold); padding-top: 18px; margin-top: auto; }
+echo         .btn-nav { background: var(--sub-panel-bg); border: 1px solid var(--border-cyan); color: var(--text-cyan); padding: 12px 26px; font-size: 1.02rem; font-weight: bold; cursor: pointer; transition: all 0.2s ease; }
+echo         .btn-nav:hover:not(:disabled) { background: var(--border-cyan); color: #000; box-shadow: 0 0 12px var(--border-cyan); }
+echo         .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; border-color: var(--text-muted); }
+echo         .legal-notice { text-align: center; font-size: 0.85rem; color: var(--text-gold); letter-spacing: 0.8px; line-height: 1.4; }
+echo         @media (max-width: 900px) { .matrix-summary { grid-template-columns: 1fr; } .deck-container { padding: 20px; min-height: auto; } .slide-heading { font-size: 1.35rem; } .slide-content { font-size: 0.95rem; } .diagram-block { font-size: 0.85rem; } }
+echo     ^</style^>
+echo ^</head^>
+echo ^<body^>
+echo ^<div class="deck-container"^>
+echo     ^<header class="deck-header"^>
+echo         ^<div class="deck-title"^>
+echo             ^<h1^>INCLUSIVE AGRI-TECH INITIATIVE ^| SETA PRESENTATION^</h1^>
+echo             ^<p^>Leth'Khanya Trading ^& Lwandile Engineering Projects^</p^>`
+echo         ^</div^>`
+echo         ^<div class="slide-counter" id="slide-num"^>SLIDE 01 / 07^</div^>`
+echo     ^</header^>`
+echo     ^<div class="slide-viewport"^>`
+echo         ^<div class="slide active" id="slide-1"^>`
+echo             ^<span class="slide-tag"^>MODULE 01 // EXECUTIVE SUMMARY^</span^>`
+echo             ^<h2 class="slide-heading"^>Inclusive Agri-Tech Skills ^& Empowerment Initiative^</h2^>`
+echo             ^<div class="slide-content"^>`
+echo                 ^<p^>A SETA-aligned, highly automated vocational training framework designed to bridge rural agriculture, disability inclusion, renewable energy, and digital SCADA interlocks.^</p^>`
+echo                 ^<div class="matrix-summary"^>`
+echo                     ^<div class="summary-box"^>^<h4^>YOUTH TARGET^</h4^>^<div class="stat"^>50%% Intake^</div^>^</div^>`
+echo                     ^<div class="summary-box"^>^<h4^>WOMEN TARGET^</h4^>^<div class="stat"^>50%%+ Cross-Cut^</div^>^</div^>`
+echo                     ^<div class="summary-box"^>^<h4^>DISABILITY ACCESS^</h4^>^<div class="stat"^>15%% Minimum^</div^>^</div^>`
+echo                 ^</div^>`
+echo                 ^<div class="diagram-block"^>`
+echo LEAD ENTERPRISE    : Leth'Khanya Trading (Pty) Ltd (Mduduzi Wiseman Nkosi - Disability Desk)
+echo PARTNER ENTERPRISE : Lwandile Engineering Projects (Sipho Wiseman Khuzwayo ^| Lead Inclusive Architect)
+echo EXECUTION STANDARD : Scapush Precision Delivery Matrix ^| August 2026
+echo                 ^</div^>
+echo             ^</div^>
+echo         ^</div^>
+echo         ^<div class="slide" id="slide-2"^>
+echo             ^<span class="slide-tag"^>MODULE 02 // TECHNICAL SCOPE^</span^>
+echo             ^<h2 class="slide-heading"^>The Four Core Program Pillars^</h2^>
+echo             ^<div class="slide-content"^>
+echo                 ^<div class="diagram-block"^>
+echo PILLAR A: HIGH-VALUE SMART CROPS
+echo  ├── Crops: Lettuce, Peppers, Tomatoes, Culinary Herbs
+echo  └── Systems: Waist-Level Deep-Water Culture (DWC) ^& NFT Hydroponics
+echo.
+echo PILLAR B: PRECISION LIVESTOCK ^& ZERO-MORTALITY NURSERIES
+echo  ├── Swine Auto-Microclimate Creep Boxes ^& Anti-Crush Farrowing
+echo  └── Chick Brooding Modules with HEPA Filtration ^& Ammonia Scrubbing
+echo.
+echo PILLAR C: AGRI-TECH, SCADA LOGIC ^& SOLAR EV HUB
+echo  ├── Off-Grid Solar PV Array Driving Environmental Interlocks
+echo  └── Low-Reach EV Fast Charger (800-1000mm) for Adaptive Wheelchair UTVs
+echo.
+echo PILLAR D: AGRIBUSINESS ^& COOPERATIVE INCUBATOR
+echo  └── Financial Literacy, Digital Bookkeeping, ^& SETA Enterprise Creation
+echo                 ^</div^>
+echo             ^</div^>
+echo         ^</div^>
+echo         ^<div class="slide" id="slide-3"^>
+echo             ^<span class="slide-tag"^>MODULE 03 // ZERO-MORTALITY ENGINEERING^</span^>
+echo             ^<h2 class="slide-heading"^>Swine ^& Poultry Microclimate Enclosures^</h2^>
+echo             ^<div class="slide-content"^>
+echo                 ^<p^>Eliminating neonate livestock losses during the critical 1–21 day window through automated climate engineering:^</p^>
+echo                 ^<div class="diagram-block"^>
+echo +-----------------------------------------------------------------------+
+echo ^|             NURSERY MICROCLIMATE CONTROL SPECIFICATIONS               ^|`
+echo +-----------------------------------------------------------------------+
+echo  1. Radiant Thermal Zoning: Floor heating pads auto-regulated at 32°C-35°C.
+echo  2. Air Quality Scrubbing: VFD fan cycling preventing NH3 ^& CO2 buildup.
+echo  3. Physical Protection: Anti-crush farrowing crates safeguarding piglets.
+echo  4. SCADA Auto-Interlocks: Battery/Solar takeover if ambient drops ^>1.5°C.
+echo +-----------------------------------------------------------------------+
+echo                 ^</div^>
+echo             ^</div^>
+echo         ^</div^>
+echo         ^<div class="slide" id="slide-4"^>
+echo             ^<span class="slide-tag"^>MODULE 04 // CIRCULAR ECONOMY ^& CO-GEN ENGINE^</span^>
+echo             ^<h2 class="slide-heading"^>Anaerobic Bio-Digester ^& Multi-Output Tri-Generation^</h2^>
+echo             ^<div class="slide-content"^>
+echo                 ^<p^>All animal waste streams drive closed-loop resource production via combined heat and power (CHP) co-generation:^</p^>
+echo                 ^<div class="diagram-block"^>
+echo [Swine ^& Poultry Waste] ---^> (Anaerobic Bio-Digester)
+echo                                     ^|`
+echo            +-------------------------+-------------------------+
+echo            ^|                         ^|                         ^|`
+echo            v                         v                         v
+echo    [Thermal Output]           [Biogas Energy]         [Nutrient Digestate]
+echo    Radiant heat loops for     Methane Co-Gen Engine   ├── Liquid: Hydroponics
+echo    nursery creep zones ^&     Converts CH4 directly   └── Solid: Organic soil
+echo    chick brooders (32-35°C)   to On-Site Electricity     conditioner ^& beds
+echo                 ^</div^>
+echo             ^</div^>
+echo         ^</div^>
+echo         ^<div class="slide" id="slide-5"^>
+echo             ^<span class="slide-tag"^>MODULE 05 // ACCREDITATION ^& NQF^</span^>
+echo             ^<h2 class="slide-heading"^>SETA Unit Standard Alignment^</h2^>
+echo             ^<div class="slide-content"^>
+echo                 ^<table^>
+echo                     ^<thead^>
+echo                         ^<tr^>
+echo                             ^<th^>Module^</th^>
+echo                             ^<th^>SETA Unit Standard^</th^>
+echo                             ^<th^>NQF^</th^>
+echo                             ^<th^>Accessibility / Tech Feature^</th^>
+echo                         ^</tr^>
+echo                     ^</thead^>
+echo                     ^<tbody^>
+echo                         ^<tr^>^<td^>^<strong^>Smart Crops^</strong^>^</td^>^<td^>Crop production principles^</td^>^<td^>L 1-2^</td^>^<td^>Waist-level hydroponics ^& bio-dosing^</td^>^</tr^>
+echo                         ^<tr^>^<td^>^<strong^>Nursery Care^</strong^>^</td^>^<td^>Swine ^& poultry nursery care^</td^>^<td^>L 2^</td^>^<td^>Microclimate creep boxes ^& brooding pads^</td^>^</tr^>
+echo                         ^<tr^>^<td^>^<strong^>Agri-Tech/EV^</strong^>^</td^>^<td^>Renewable energy systems^</td^>^<td^>L 2-3^</td^>^<td^>Low-reach solar EV charging docks^</td^>^</tr^>
+echo                         ^<tr^>^<td^>^<strong^>Agribusiness^</strong^>^</td^>^<td^>Agricultural finance management^</td^>^<td^>L 3-4^</td^>^<td^>Digital accounting ^& cooperative incubation^</td^>^</tr^>
+echo                     ^</tbody^>
+echo                 ^</table^>
+echo             ^</div^>
+echo         ^</div^>
+echo         ^<div class="slide" id="slide-6"^>
+echo             ^<span class="slide-tag"^>MODULE 06 // FINANCIAL FRAMEWORK^</span^>
+echo             ^<h2 class="slide-heading"^>12-Month Pilot Budget Breakdown^</h2^>
+echo             ^<div class="slide-content"^>
+echo                 ^<table^>
+echo                     ^<thead^>
+echo                         ^<tr^>
+echo                             ^<th^>Category^</th^>
+echo                             ^<th^>Scope / Deliverables^</th^>
+echo                             ^<th^>Amount (USD)^</th^>
+echo                         ^</tr^>
+echo                     ^</thead^>
+echo                     ^<tbody^>
+echo                         ^<tr^>^<td^>^<strong^>CapEx^</strong^>^</td^>^<td^>Paving, hydroponics, nursery enclosures, solar PV, EV hub ^& LoRaWAN Telemetry Infrastructure^</td^>^<td^>$89,000^</td^>^</tr^>
+echo                         ^<tr^>^<td^>^<strong^>OpEx^</strong^>^</td^>^<td^>Stipends (100 learners), SETA facilitators, sign language, PPE^</td^>^<td^>$77,500^</td^>^</tr^>
+echo                         ^<tr^>^<td^>^<strong^>Contingency^</strong^>^</td^>^<td^>10%% Operational buffer pool^</td^>^<td^>$16,650^</td^>^</tr^>
+echo                         ^<tr style="font-weight: bold; background: rgba(255, 204, 0, 0.15);"^>^<td style="color: var(--text-gold);"^>TOTAL^</td^>^<td^>Full 12-Month Pilot Investment^</td^>^<td style="color: var(--text-gold);"^>$183,150^</td^>^</tr^>
+echo                     ^</tbody^>
+echo                 ^</table^>
+echo             ^</div^>
+echo         ^</div^>
+echo         ^<div class="slide" id="slide-7"^>
+echo             ^<span class="slide-tag"^>MODULE 07 // IMPACT ^& NEXT STEPS^</span^>
+echo             ^<h2 class="slide-heading"^>Target Metrics ^& Execution^</h2^>
+echo             ^<div class="slide-content"^>
+echo                 ^<div class="matrix-summary"^>
+echo                     ^<div class="summary-box"^>^<h4^>GRADUATES^</h4^>^<div class="stat"^>100 / Cycle^</div^>^</div^>
+echo                     ^<div class="summary-box"^>^<h4^>COOPERATIVES^</h4^>^<div class="stat"^>10 / Year^</div^>^</div^>
+echo                     ^<div class="summary-box"^>^<h4^>SUSTAINABILITY^</h4^>^<div class="stat"^>60%% Self-Funded^</div^>^</div^>
+echo                 ^</div^>
+echo                 ^<div class="diagram-block"^>
+echo DEPLOYMENT ROADMAP:
+echo Phase 1 (M1-3) : Site prep, paving, microclimate nursery ^& solar EV setup.
+echo Phase 2 (M4)   : Intake onboarding via Disability Desk (100 beneficiaries).
+echo Phase 3 (M5-10): SETA accredited practical training ^& PoE compilation.
+echo Phase 4 (M11-12): Moderation, certification, micro-grants, ^& cooperative launch.
+echo                 ^</div^>
+echo             ^</div^>
+echo         ^</div^>
+echo     ^</div^>
+echo     ^<footer class="controls-bar"^>
+echo         ^<button class="btn-nav" id="btn-prev" onclick="changeSlide(-1)" disabled^>◄ PREVIOUS^</button^>
+echo         ^<div class="legal-notice"^>
+echo             ^<strong^>PROPRIETARY INTELLECTUAL PROPERTY — ALL RIGHTS RESERVED^</strong^>^<br^>
+echo             ^<span^>SCAPUSH PRECISION EXECUTION MATRIX © 2026^</span^>
+echo         ^</div^>
+echo         ^<button class="btn-nav" id="btn-next" onclick="changeSlide(1)"^>NEXT ►^</button^>
+echo     ^</footer^>
+echo ^</div^>
+echo ^<script^>
+echo     let currentSlide = 1;
+echo     const totalSlides = 7;
+echo     function updateSlideDisplay() {`
+echo         for (let i = 1; i ^<= totalSlides; i++) {`
+echo             document.getElementById(`slide-${i}`).classList.remove('active');`
+echo         }
+echo         document.getElementById(`slide-${currentSlide}`).classList.add('active');
+echo         const formattedNum = String(currentSlide).padStart(2, '0');
+echo         const formattedTotal = String(totalSlides).padStart(2, '0');
+echo         document.getElementById('slide-num').innerText = `SLIDE ${formattedNum} / ${formattedTotal}`;
+echo         document.getElementById('btn-prev').disabled = (currentSlide === 1);
+echo         document.getElementById('btn-next').disabled = (currentSlide === totalSlides);
+echo     }
+echo     function changeSlide(direction) {`
+echo         currentSlide += direction;`
+echo         if (currentSlide ^< 1) currentSlide = 1;`
+echo         if (currentSlide ^> totalSlides) currentSlide = totalSlides;`
+echo         updateSlideDisplay();`
+echo     }
+echo ^</script^>
+echo ^</body^>
+echo ^</html^>
+) > index.html
+git add index.html
+git commit -m "Scapush Precision: Lock-in presentation artifact"
+git remote add origin https://github.com/siphokhuzwayo-y11/agritech-seta-empowerment-hub.git
+git init
+git add .
+git commit -m "Initial commit: inclusive legacy architecture"
+git remote add origin <https://github.com/siphokhuzwayo12-a11y/scapush-core>
+git branch -M main
+git push -u origin main
+git remote add origin https://github.com/siphokhuzwayo12-a11y/scapush-core.git
+git push -u origin main
+git push origin main
+git push -u origin main
+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
+git remote set-url origin https://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@github.com/siphokhuzwayo12-a11y/scapush-core.git
+git push -u origin main
+<div style="background-color: var(--bg-navy); padding: 10px;">
+    <img src="path/to/lwandile-logo.png" class="lwandile-logo" alt="Lwandile Engineering">
+git add .
+git commit -m "feat: add new vault asset"
+git add .
+git commit -m "fix: corrected README filename"
+git push -u origin main
+git push -u origin main
+git add .
+  mkdir -p ~/prestige-digital-dome
+cd ~/prestige-digital-dome
+git init
+it branch -M main
+echo "# Prestige Digital Dome - Artifact Vaulting & Intake Management" > README.md
+mkdir -p ~/prestige-digital-dome
+cd ~/prestige-digital-dome
+cd ~\prestige-digital-dome
+code -r .
+git init; echo "# Prestige Digital Dome - Artifact Vaulting" > README.md; git add .; git commit -m "feat: initialize dome"
+# 4. Commit structure to the Git Dome
+New-Item -Path "vault\vault_manifest.json" -ItemType File -Value '{"status": "vault_initialized", "version": "1.0.0"}' -Force
+New-Item -Path "intake\screening_rules.json" -ItemType File -Value '{"intake_policy": "strict_screening"}' -Force
+add .
+git add .
+$mailPolicy = @'`
+{`
+  "policy_name": "Zero-Leak-Zero-IP-Trust-Email-Vault",`
+  "inbound_mode": "Strict-PGP-Encrypted",`
+  "strip_tracking_pixels": true,`
+  "strip_html_payloads": true,`
+  "auto_vault_attachments": true,`
+  "authorized_steward_roles": [`
+    "lead_steward",`
+    "vault_keeper"`
+  ]`
+}`
+'@
+Set-Content -Path "intake\mail_pipeline\mail_policy.json" -Value $mailPolicy
+$mailParser = @'`
+import os`
+import json`
+import re`
+`
+def sanitize_and_vault(raw_email_path):`
+    """`
+    Parses incoming raw email files, strips tracker pixels/HTML,`
+    and drops pure encrypted/sanitized payloads into transmission/inbox.`
+    """`
+    if not os.path.exists(raw_email_path):`
+        print(f"[X] File not found: {raw_email_path}")`
+        return`
+`
+    with open(raw_email_path, 'r', encoding='utf-8') as f:`
+        content = f.read()`
+`
+    # Strip HTML tags and tracker URLs`
+    clean_text = re.sub(r'<[^>]+>', '', content)`
+    `
+    vault_entry = {`
+        "status": "VAULTED_UNREAD",`
+        "security_level": "ZERO_LEAK_CONFIDENTIAL",`
+        "payload": clean_text.strip()`
+    }`
+`
+    out_path = os.path.join("transmission", "inbox", "vaulted_message.json")`
+    with open(out_path, 'w', encoding='utf-8') as f:`
+        json.dump(vault_entry, f, indent=2)`
+`
+    print(f"[✓] Email successfully sanitized and locked inside: {out_path}")`
+`
+if __name__ == "__main__":`
+    print("[+] Zero-Leak Mail Engine Active.")`
+'@
+Set-Content -Path "intake\mail_pipeline\email_parser.py" -Value $mailParser
+git remote -v
+git status
+git log --oneline -n 5
+git remote -v
+git add .
+git commit -m "feat: embed zero-leak email intake parser and mail security policy"
+git push origin main
+git remote add origin https://github.com/siphokhuzwayo12-a11y/prestige-digital-dome.git
+git push -u origin main
+mkdir transmission\boardroom -ErrorAction SilentlyContinue
+Set-Content -Path "transmission\boardroom\boardroom_config.json" -Value $boardroomConfig
+# 3. Deploy Embedded MiroTalk Boardroom Interface (Refinement Bay)
+Set-Content -Path "transmission\boardroom\refinement_bay.html" -Value $boardroomHtml
+git add .
+git push origin main
+Set-Content -Path "transmission\boardroom\refinement_bay.html" -Value $upgradedBoardroom
+git add .
+git commit -m "feat: upgrade Refinement Bay with P2P calling and encrypted voice message recording"
+git push origin main
+Set-Content -Path "transmission\boardroom\refinement_bay.html" -Value $pristineBoardroom
+git add .
+git commit -m "refactor: optimize Refinement Bay signal for high-fidelity zero-distortion audio/video reception"
+git push origin main
+mkdir transmission\savrm_engine -ErrorAction SilentlyContinue
+$dockerConfig = @'`
+version: '3.8'`
+`
+services:`
+  savrm-signal-node:`
+    image: mirotalk/p2p:latest`
+    container_name: savrm_resonance_node`
+    restart: always`
+    ports:`
+      - "3000:3000"`
+    environment:`
+      - PORT=3000`
+      - HTTPS=false`
+      - PROTECT_ROOM=true`
+'@
+Set-Content -Path "transmission\savrm_engine\docker-compose.yml" -Value $dockerConfig
+# 3. Deploy Wi-Fi & Acoustic EMI Shielding Specification
+$wifiShieldPolicy = @'`
+{`
+  "wifi_shield_specification": {`
+    "band_isolation": {`
+      "target_frequencies": ["5GHz", "6GHz"],`
+      "banned_frequencies": ["2.4GHz"],`
+      "channel_width": "80MHz",`
+      "reason": "Eliminate RF harmonic overlap with wireless microphones and inductive sound gear"`
+    },`
+    "emi_sound_system_isolation": {`
+      "cable_standard": "S/FTP Cat6A / Cat7 Shielded",`
+      "grounding": "Unified Drain Grounding (Eliminate Ground Loops)",`
+      "minimum_speaker_separation_meters": 3.0,`
+      "qos_priority": "DSCP 46 (EF - Expedited Forwarding for Real-Time Audio)"`
+    }`
+  }`
+}`
+'@
+Set-Content -Path "transmission\savrm_engine\wifi_emi_shield_policy.json" -Value $wifiShieldPolicy
+# 4. Deploy Refinement Bay Interface with Web Audio API DSP Engine & Dynamic Compression
+Set-Content -Path "transmission\boardroom\refinement_bay.html" -Value $savrmBoardroom
+git add .
+git commit -m "feat: complete SAVRM engine with Docker air-gap, Wi-Fi EMI sound shielding, and -24 LUFS audio DSP"
+git push origin main
+mkdir vault -ErrorAction SilentlyContinue
+mkdir transmission\savrm_engine -ErrorAction SilentlyContinue
+# 1. Ensure internal directories exist
+mkdir vault -ErrorAction SilentlyContinue
+mkdir transmission\savrm_engine -ErrorAction SilentlyContinue
+# 2. Deploy Advanced Wi-Fi & Disturbance Suppression Policy
+$disturbancePolicy = @'`
+{`
+  "prestige_wifi_facility": {`
+    "entry_guard": {`
+      "auto_suppression": true,`
+      "toxic_surrounding_attenuation_db": -30,`
+      "steward_spike_limiter": true`
+    },`
+    "band_isolation": {`
+      "target_frequencies": ["5GHz", "6GHz"],`
+      "banned_frequencies": ["2.4GHz"],`
+      "channel_width": "80MHz",`
+      "qos_priority": "DSCP 46 (EF - Expedited Real-Time Voice/Data)"`
+    },`
+    "emi_sound_shielding": {`
+      "cable_standard": "S/FTP Cat6A / Cat7 Shielded",`
+      "grounding": "Unified Drain Grounding",`
+      "minimum_transducer_separation_meters": 3.0`
+    }`
+  }`
+}`
+'@
+Set-Content -Path "transmission\savrm_engine\wifi_emi_shield_policy.json" -Value $disturbancePolicy
+# 3. Deploy Zero-Knowledge AES-256 Vault Encryptor Script
+Set-Content -Path "vault\vault_encryptor.py" -Value $vaultEncryptor
+# 4. Deploy GPG Commit Signing Enforcer Script
+git add .
+git commit -m "feat: integrate Prestige Wi-Fi disturbance suppressor, AES-256 vault encryptor, and GPG signing enforcer"
+git push origin main
+# Deploy Golden Aesthetic Boardroom with Embedded Artifact Drawer
+Set-Content -Path "transmission\boardroom\refinement_bay.html" -Value $artifactBoardroom
+git add .
+git commit -m "feat: infuse Refinement Bay with gold aesthetic theme and embedded artifact presentation drawer"
+git push origin main
+# Deploy Module 1 Interactive HTML Visual Dashboard
+Set-Content -Path "transmission\boardroom\module_1_induction.html" -Value $inductionModuleHtml
+git add .
+git commit -m "docs: deploy Module 1 interactive HTML dashboard for boardroom shelving and display"
+git push origin main
+git commit -m "docs: deploy Module 1 interactive HTML dashboard for boardroom shelving and display"
+# Upgrade Module 1 with Interactive Assessment Engine & Explicit Safety Protocols (DOs & DON'Ts)
+Set-Content -Path "transmission\boardroom\module_1_induction.html" -Value $inductionModuleCompleteHtml
+git add .
+git commit -m "feat: embed Safety Protocols (DOs & DON'Ts) and 100% pass mark assessment into Module 1 induction dashboard"
+git push origin main
+Set-Content -Path ".gitignore" -Value $gitignoreContent
+git add .gitignore
+git push origin main
+python -m http.server 8080
+py -m http.server 8080
+Start-Process "transmission\boardroom\module_1_induction.html"
+Start-Process "transmission\boardroom\module_1_induction.html"Start-Process "transmission\boardroom\module_1_induction.html"
+Invoke-Item "transmission\boardroom\module_1_induction.html"
+Start-Process (Join-Path (Get-Location) "transmission\boardroom\module_1_induction.html")
+# Upgrade Module 1 with Auto-Name Detection & Instant Clearance Certificate Issuing
+Set-Content -Path "transmission\boardroom\module_1_induction.html" -Value $module1CertHtml
+git add .
+git commit -m "feat: integrate name detection & instant zero-mortality certificate generation upon 100% submission score"
+git push origin main
+Start-Process (Join-Path (Get-Location) "transmission\boardroom\module_1_induction.html")
+# Create Mail Dispatcher script in intake/
+Set-Content -Path "intake\mail_dispatcher.py" -Value $dispatcherScript
+# Inject Email Input & Direct Portal Link trigger into Module 1
+$htmlContent = Get-Content -Path "transmission\boardroom\module_1_induction.html" -Raw
+# Replace name block with Name + Email fields
+# Save enhanced transmission dashboard
+$htmlContent = $htmlContent -replace '<div style="margin-bottom: 15px;">\s*<label style="font-size: 13px; color: var\(--gold-primary\); font-weight: bold; display: block; margin-bottom: 6px;">\s*STEWARD IDENTIFICATION \(Full Name\):\s*</label>\s*<input type="text" id="steward-name" value="Sipho Wiseman Khuzwayo" placeholder="Enter Full Name for Certificate Generation..." />\s*</div>', $updatedFields
+Set-Content -Path "transmission\boardroom\module_1_induction.html" -Value $htmlContent
+python intake/mail_dispatcher.py
+git add .
+git push origin main
+python intake/mail_dispatcher.py
+$stewardName = "Sipho Wiseman Khuzwayo"
+$stewardEmail = "sipho.khuzwayo@prestigedome.com"
+$certId = "PDD-M1-PQD4SSCGH"
+$rawBytes = New-Object byte[] 16
+(New-Object Security.Cryptography.RNGCryptoServiceProvider).GetBytes($rawBytes)
+# Build Email Dispatch Payload
+Write-Host "=========================================================" -ForegroundColor Gold
+Write-Host "⚜️ PRESTIGE MAIL DISPATCHER (DISPATCH TRANSMISSION LOG)" -ForegroundColor Yellow
+Write-Host "TO        : $stewardEmail ($stewardName)" -ForegroundColor Cyan
+Write-Host "SUBJECT   : $subject" -ForegroundColor Green
+Write-Host "---------------------------------------------------------"
+Write-Host $body
+Write-Host "=========================================================" -ForegroundColor Gold
+# Save record to intake vault
+# =========================================================
+# PRESTIGE DIGITAL DOME - ZERO-MORTALITY DISPATCHER
+# =========================================================
+$stewardName = "Sipho Wiseman Khuzwayo"
+$stewardEmail = "sipho.khuzwayo@prestigedome.com"
+$certId = "PDD-M1-PQD4SSCGH"
+# 1. Automatic Python Executable Path Resolver
+$pythonExe = (Get-Command python.exe -ErrorAction SilentlyContinue | Where-Object { $_.Source -notlike "*WindowsApps*" }).Source
+if (-not $pythonExe) {`
+    # Search standard installation paths if PATH alias interferes`
+    $possiblePaths = @(`
+        "$env:LocalAppData\Programs\Python\Python*\python.exe",`
+        "C:\Python*\python.exe",`
+        "C:\Program Files\Python*\python.exe"`
+    )`
+    $pythonExe = (Get-Item $possiblePaths -ErrorAction SilentlyContinue | Select-Object -First 1).FullName`
+}
+$rawBytes = New-Object byte[] 16
+(New-Object Security.Cryptography.RNGCryptoServiceProvider).GetBytes($rawBytes)
+# 3. Sealed Transmission Output
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+Write-Host "⚜️ PRESTIGE MAIL DISPATCHER (DISPATCH TRANSMISSION LOG)" -ForegroundColor Yellow
+Write-Host "TO        : $stewardEmail ($stewardName)" -ForegroundColor Cyan
+if ($pythonExe) {`
+    Write-Host "PYTHON EXE: $pythonExe" -ForegroundColor Gray`
+} else {`
+    Write-Host "PYTHON EXE: Native PS Engine (Bypassed Store Alias)" -ForegroundColor Gray`
+}
+Write-Host "---------------------------------------------------------"
+# 4. Save Record to Vault Intake
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+git add .
+git commit -m "sec: deploy bulletproof python path resolver and zero-mortality dispatch pipeline"
+git push origin main
+# Construct Email Subject & Body
+$encodedBody = [Uri]::EscapeDataString($bodyText)
+$mailtoUrl = "mailto:$recipientEmail?subject=$subject&body=$encodedBody"
+# Launch default email client instantly
+Start-Process $mailtoUrl
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+Write-Host "⚜️ MAILTO DISPATCH TRIGGERED FOR STEWARD: $stewardName" -ForegroundColor Green
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+Set-Content -Path "intake\validator.py" -Value $validatorScript
+git add .
+git commit -m "sec: deploy zero-mortality payload validator and strict error lockout guards"
+git push origin main
+# =========================================================
+# PRESTIGE DIGITAL DOME — MASTER LAUNCH SEQUENCE
+# =========================================================
+# 1. Launch Module 1 Induction & Certificate Dashboard
+$dashboardPath = Join-Path (Get-Location) "transmission\boardroom\module_1_induction.html"
+Start-Process $dashboardPath
+# 2. Extract Validated Vault Record
+# 3. Construct Email Transmission Payload
+$encodedBody = [Uri]::EscapeDataString($bodyText)
+$mailtoUrl = "mailto:$recipientEmail?subject=$subject&body=$encodedBody"
+# 4. Launch Email Client Draft
+Start-Process $mailtoUrl
+# 5. Display On-Screen Vault Ledger Summary
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+Write-Host "⚜️ ALL ARTIFACTS LAUNCHED & VERIFIED" -ForegroundColor Green
+Write-Host "STEWARD       : $stewardName" -ForegroundColor Yellow
+Write-Host "VERIFICATION  : $certId" -ForegroundColor Cyan
+Write-Host "MAILING TO    : $recipientEmail" -ForegroundColor Yellow
+Write-Host "DASHBOARD     : OPENED IN BROWSER" -ForegroundColor Cyan
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+# =========================================================
+# PRESTIGE DIGITAL DOME - LIVE EMAIL SMTP TRANSMITTER
+# =========================================================
+$stewardName  = "Sipho Wiseman Khuzwayo"
+# Set your actual inbox address where you want to receive the email
+$stewardEmail = "siphokhuzwayo12@gmail.com"
+$certId       = "PDD-M1-PQD4SSCGH"
+# Construct Email Transmission
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+Write-Host "⚜️ DISPATCHING LIVE EMAIL PACKET TO INBOX..." -ForegroundColor Yellow
+Write-Host "TARGET INBOX : $stewardEmail" -ForegroundColor Cyan
+Write-Host "---------------------------------------------------------"
+# Save active dispatch log to intake
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+git add .
+git commit -m "feat: route live email dispatch to target Gmail inbox"
+git push origin main
+Start-Process (Join-Path (Get-Location) "transmission\boardroom\module_1_induction.html")
+# Create media assets directory
+New-Item -ItemType Directory -Force -Path "transmission\assets" | Out-Null
+$htmlPath = "transmission\boardroom\module_1_induction.html"
+$htmlContent = Get-Content -Path $htmlPath -Raw
+# 1. Add Lwandile Logo to Dashboard Top Header
+$headerLogoBlock = @'`
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--gold-primary); padding-bottom: 15px; margin-bottom: 25px;">`
+        <div style="display: flex; align-items: center; gap: 15px;">`
+            <img src="../assets/lwandile_logo.png" alt="Lwandile Engineering" style="height: 45px; filter: drop-shadow(0 0 5px rgba(212,175,55,0.4));" onerror="this.style.display='none'" />`
+            <span style="font-size: 20px; font-weight: 800; color: #ffffff; letter-spacing: 2px;">LWANDILE ENGINEERING</span>`
+        </div>`
+        <div style="text-align: right; color: var(--gold-primary); font-family: monospace; font-size: 12px; font-weight: bold;">`
+            PRESTIGE DIGITAL DOME<br/>SOVEREIGN CLEARANCE PORTAL`
+        </div>`
+    </div>`
+'@
+# 2. Add Lwandile Logo Seal inside the Certificate Component
+$certLogoBlock = @'`
+        <div style="text-align: center; margin-bottom: 20px;">`
+            <img src="../assets/lwandile_logo.png" alt="Lwandile Engineering Emblem" style="height: 60px; margin-bottom: 10px;" />`
+            <h2 style="color: var(--gold-primary); font-family: 'Cinzel', serif; margin: 0; letter-spacing: 3px; text-transform: uppercase;">Lwandile Engineering</h2>`
+            <div style="font-size: 11px; color: #a0a0a0; letter-spacing: 2px;">SOVEREIGN INDUSTRIAL TECHNOLOGY DIVISION</div>`
+        </div>`
+'@
+# Update Header & Certificate Seal
+$htmlContent = $htmlContent -replace '(?s)<header>.*?</header>', "<header>`n$headerLogoBlock`n</header>"
+$htmlContent = $htmlContent -replace '(?s)<div id="cert-emblem">.*?</div>', $certLogoBlock
+Set-Content -Path $htmlPath -Value $htmlContent
+Write-Host "✓ Module 1 Induction & Certificate successfully rebranded with Lwandile Engineering logo." -ForegroundColor Green
+$svgContent = @'`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" width="100%" height="100%">`
+  <rect width="400" height="100" fill="#031527"/>`
+  <g transform="translate(15, 10)">`
+    <circle cx="40" cy="40" r="32" fill="none" stroke="#D4AF37" stroke-width="6"/>`
+    <path d="M 25,20 L 25,60 L 55,60 L 55,50 L 35,50 L 35,20 Z" fill="#00A896"/>`
+    <path d="M 35,30 L 35,68 L 65,68 L 65,58 L 45,58 L 45,30 Z" fill="#028090" opacity="0.8"/>`
+  </g>`
+  <text x="100" y="48" fill="#FFFFFF" font-family="'Montserrat', 'Arial', sans-serif" font-weight="900" font-size="26" letter-spacing="2">LWANDILE</text>`
+  <text x="100" y="72" fill="#00A896" font-family="'Montserrat', 'Arial', sans-serif" font-weight="700" font-size="16" letter-spacing="5">ENGINEERING</text>`
+</svg>`
+'@
+Set-Content -Path "transmission\assets\lwandile_emblem.svg" -Value $svgContent
+git add .
+git commit -m "style: embed Lwandile Engineering insignia across all vault artifacts and certificates"
+git push origin main
+# Execute Prestige Email Dispatcher
+$stewardName  = "Sipho Wiseman Khuzwayo"
+$stewardEmail = "siphokhuzwayo12@gmail.com"
+$certId       = "PDD-M1-PQD4SSCGH"
+# Load or generate clearance record
+# Display Dispatcher Output
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+Write-Host "⚜️ PRESTIGE EMAIL DISPATCHER — LIVE TRANSMISSION LOG" -ForegroundColor Yellow
+Write-Host "TO        : $stewardEmail ($stewardName)" -ForegroundColor Cyan
+Write-Host "CERT ID   : $certId" -ForegroundColor White
+Write-Host "STATUS    : 100% PERFECT MASTERY — VERIFIED" -ForegroundColor Green
+Write-Host "---------------------------------------------------------"
+Write-Host "---------------------------------------------------------"
+Write-Host "SUBMISSION PORTAL LINK:" -ForegroundColor DarkYellow
+Write-Host "=========================================================" -ForegroundColor DarkYellow
+# Log live transmission artifact
+New-Item -ItemType Directory -Force -Path "intake\email_transmissions" | Out-Null
+$emailLog | ConvertTo-Json | Set-Content -Path "intake\email_transmissions\$($certId)_email_dispatch.json"
+Get-Content -Path "intake\email_transmissions\PDD-M1-PQD4SSCGH_email_dispatch.json"Get-Content -Path "intake\email_transmissions\PDD-M1-PQD4SSCGH_email_dispatch.json"
+Get-Content -Path "intake\email_transmissions\PDD-M1-PQD4SSCGH_email_dispatch.json"
+git add .
+git push origin main
+Get-Content (Get-PSReadLineOption).HistorySavePath -Tail 50
+Get-Content (Get-PSReadLineOption).HistorySavePath -Tail 50
+New-Item -ItemType Directory -Force -Path "intake\terminal_history" | Out-Null
+Get-Content (Get-PSReadLineOption).HistorySavePath | Set-Content -Path "intake\terminal_history\session_audit_log.txt"
