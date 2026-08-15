@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JET Transformation Blueprint - Advanced Lifelines</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* 1. CORE SETUP */
+        * { box-sizing: border-box; }
+        p { margin: 0; margin-bottom: 15px; }
+        body { 
+            background-color: #020617; 
+            margin: 0; 
+            display: grid; 
+            gap: 40px; 
+            place-items: center; 
+            padding: 40px 0;
+            overflow-x: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #020617;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 60px;
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            border: 2px solid #1e293b;
+        }
+
+        /* DECORATIVE BACKGROUND */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(13, 148, 136, 0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .content-area { position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+
+        /* 2. SPECIFIED TYPOGRAPHY BY USER */
+        h1 { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 68px; 
+            color: #0D9488; /* Bluish Green-Bold */
+            font-weight: bold; 
+            margin: 0 0 20px 0;
+            line-height: 1.1;
+            z-index: 2;
+        }
+
+        h2.slide-title { 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px; 
+            color: #B8860B; /* Dull Gold */
+            margin: 0 0 30px 0;
+            font-weight: 700;
+            text-align: left;
+            width: 100%;
+        }
+
+        h3 {
+            font-size: 48px;
+            color: #B8860B; /* Dull Gold */
+            margin-bottom: 15px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        p, li, td, th, div.label { 
+            font-size: 24px; /* User requested 24 */
+            color: #FFFFFF; /* White */
+            font-weight: 400; /* Not bold */
+            line-height: 1.5;
+        }
+
+        strong {
+            font-weight: 700;
+            color: #B8860B; /* Accent links to dull gold */
+        }
+
+        ul { list-style: none; padding: 0; margin: 0; }
+        li { margin-bottom: 15px; position: relative; padding-left: 45px; }
+        li::before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #0D9488;
+        }
+
+        /* 3. LAYOUT TOOLS */
+        .title-layout { text-align: center; justify-content: center; align-items: center; display: flex; flex-direction: column; height: 100%; }
+        .title-layout h1 { text-align: center; margin-bottom: 40px; }
+        .title-layout .sub-text { font-size: 48px; color: #B8860B; font-weight: 700; font-family: 'Montserrat', sans-serif; }
+
+        .two-column { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; width: 100%; align-items: start; }
+        
+        .tiled-content { display: flex; gap: 30px; width: 100%; }
+        .tile { 
+            flex: 1; 
+            background: #0f172a; 
+            padding: 35px; 
+            border-radius: 12px; 
+            border-top: 5px solid #0D9488;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .tile i { font-size: 45px; color: #B8860B; margin-bottom: 15px; }
+        .tile h3 { font-size: 36px; margin-bottom: 10px; }
+
+        .table-layout table { width: 100%; border-collapse: collapse; }
+        .table-layout th { border-bottom: 3px solid #0D9488; color: #B8860B; text-align: left; padding: 15px; font-size: 32px; font-family: 'Montserrat', sans-serif; }
+        .table-layout td { padding: 15px; border-bottom: 1px solid #1e293b; }
+    </style>
+</head>
+<body>
+
+<!-- SLIDE 1 -->
+<div class="slide-container" id="slide1">
+    <div class="content-area title-layout">
+        <h1>JET TRANSFORMATION BLUEPRINT</h1>
+        <div class="sub-text">Phase II: Advanced Operational Lifelines</div>
+        <p style="margin-top: 40px; font-size: 28px; color: #FFFFFF;">Integrating Hydrology, Biosecurity, Gravity Logistics & IoT Dashboard Systems</p>
+    </div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide-container" id="slide2">
+    <h2 class="slide-title">The Complete Industrial Ecosystem</h2>
+    <div class="content-area">
+        <p>A truly optimized bio-thermal engine cannot rely solely on structural walls. It requires a flawless supply chain of critical inputs and waste extraction mechanics to protect core livestock capitals.</p>
+        <div class="tiled-content" style="margin-top: 20px;">
+            <div class="tile">
+                <i class="fa-solid fa-faucet-drip"></i>
+                <h3>Hydrological Engine</h3>
+                <p>Ensuring infinite water availability, sanitation dosing, and processing slurry volumes completely off-grid.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-arrow-down-short-wide"></i>
+                <h3>Gravity Logistics</h3>
+                <p>Utilizing structural elevations and passive gradients to evacuate waste streams directly into biogas digestors.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">The Hydrological Engine: Sizing</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Water Security Mandate</h3>
+                <p>Livestock assets collapse within hours of hydration failure. Our system designs a multi-day buffer framework to absorb extreme grid or equipment disruptions.</p>
+                <ul>
+                    <li><strong>Daily Demand Peak:</strong> Cross-calculated for 5,760 broilers and 160 active hogs simultaneously.</li>
+                    <li><strong>Storage Threshold:</strong> 5-Day autonomous water reserve buffer held in an elevated tower network.</li>
+                    <li><strong>Digester Integration:</strong> Consistent flow controls supply moisture for the active organic anaerobic slurry.</li>
+                </ul>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-tower-cell"></i>
+                <h3>Pumping Matrix</h3>
+                <p>Dedicated low-inductive solar-borehole pumps run exclusively on daytime solar direct currents, completely bypassing battery reserves during nighttime operational cycles.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Water Purification & Sanitization</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Purification Stage</th>
+                        <th>Technology Deployed</th>
+                        <th>Target Vector Eliminate</th>
+                        <th>BESS Power Profile</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Primary Phase</td>
+                        <td>50-Micron Sediment Disk Filter</td>
+                        <td>Silt, Sand, and Particulate Matter</td>
+                        <td>Zero-Watt Mechanical Flow</td>
+                    </tr>
+                    <tr>
+                        <td>Biological Shield</td>
+                        <td>Inline Ultraviolet (UV) Sterilizer</td>
+                        <td>Bacterial Pathogens & Waterborne Viruses</td>
+                        <td>Low-Voltage DC Current</td>
+                    </tr>
+                    <tr>
+                        <td>Residual Defense</td>
+                        <td>Proportional Auto-Chlorination</td>
+                        <td>Biofilm Accumulation in Drinker Lines</td>
+                        <td>Zero-Watt Kinetic Dosing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Gravity Slurry Topography</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Eliminating Mechanical Pumps</h3>
+                <p>Pumping raw hog manure draws heavy electrical currents and invites constant mechanical blockages. We use earth physics to bypass this bottleneck entirely.</p>
+                <ul>
+                    <li><strong>The 1-in-50 Gradient Rule:</strong> All sub-slat concrete flush channels are poured with a strict 2% drop toward the primary collection sump.</li>
+                    <li><strong>Scrape-Free Separation:</strong> Moisture and solid organic fractions move continuously via hydrostatic gravity displacement.</li>
+                </ul>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-mound"></i>
+                <h3>Digester Intake Coupling</h3>
+                <p>The collection sump sits at the lowest topographical point on site, allowing automated hydraulic head pressure to push slurry directly into the digester intake valve.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 6 -->
+<div class="slide-container" id="slide6">
+    <h2 class="slide-title">Biosecurity Access Barriers</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <i class="fa-solid fa-car-wash"></i>
+                <h3>Vehicle Perimeter Gate</h3>
+                <p>Forced spray-dip boot architecture at the main perimeter line. Neutralizes pathogenic spores tracked on truck tires before offloading feed components.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-shower"></i>
+                <h3>Shower-In, Shower-Out</h3>
+                <p>Dedicated change-house locker system. Workers change from external garments into sanitized, farm-allocated uniforms before approaching animal units.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-shoe-prints"></i>
+                <h3>Localized Pod Baths</h3>
+                <p>Deep chemical walk-through footbaths placed at the entry thresholds of every single nursery pod to stop boot-borne cross-contamination.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 7 -->
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">The IoT Sensor Nervous System</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Data-Driven Stewardship</h3>
+                <p>Precision management requires real-time insight. Low-power IoT sensors form a continuous monitoring grid, sending critical alerts directly to the digital dashboard.</p>
+                <ul>
+                    <li><strong>Sub-Second Resolution:</strong> Tracks room environments constantly without needing manual clipboard checks.</li>
+                    <li><strong>Predictive Analytics:</strong> Catches structural deviations before they manifest as biological stress or clinical disease.</li>
+                </ul>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3>LoRaWAN Protocol</h3>
+                <p>Sensors communicate over long-range, ultra-low-power radio frequencies, ensuring zero interference with farm operations and minimal electrical draw on the BESS.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 8 -->
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Nursery Pod Microclimate Tracking</h2>
+    <div class="content-area">
+        <div class="table-layout">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sensor Matrix Type</th>
+                        <th>Target Threshold Limit</th>
+                        <th>Automated Logic Action Triggered</th>
+                        <th>Critical Asset Protected</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ambient Temperature</td>
+                        <td>Drops below 30°C in Nursery</td>
+                        <td>Modulates Biogas Steam Valves Open</td>
+                        <td>Piglet Digestion & Vitality</td>
+                    </tr>
+                    <tr>
+                        <td>Ammonia (NH3) Gas</td>
+                        <td>Exceeds 20 Parts Per Million (PPM)</td>
+                        <td>Triggers Linear Curtain Winch Opening</td>
+                        <td>Respiratory Mucosal Linings</td>
+                    </tr>
+                    <tr>
+                        <td>Relative Humidity</td>
+                        <td>Exceeds 75% Moisture Saturation</td>
+                        <td>Activates Roof Siphon Damper Adjustments</td>
+                        <td>Pathogen Spore Supression</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 9 -->
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Inline Hydrological Monitoring</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>The Consumption Early-Warning System</h3>
+                <p>Animals display a drop in water intake up to 48 hours before visible clinical symptoms of illness appear. Digital flow meters exploit this biological trait.</p>
+                <ul>
+                    <li><strong>Pulse-Output Flow Meters:</strong> Installed on the main supply lines of each independent nursery pod and poultry section.</li>
+                    <li><strong>Algorithmic Deviation Alerts:</strong> Flags a 10% drop against historical baseline consumption patterns immediately on the dashboard.</li>
+                </ul>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-droplet"></i>
+                <h3>Surgical Isolation</h3>
+                <p>Enables immediate veterinary intervention on a specific pod, preventing blanket medication costs across healthy batches.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 10 -->
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Automated Feed Logistics</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <i class="fa-solid fa-database"></i>
+                <h3>Bulk Silo Load-Cells</h3>
+                <p>Digital strain-gauge load-cells mounted to silo legs weigh feed stocks continuously, flagging automatic reorder points directly to suppliers.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-worm"></i>
+                <h3>Enclosed Augering</h3>
+                <p>Flex-auger lines move feed from outside storage straight into internal house hoppers, eliminating bag handling and rodent contamination vectors.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-calculator"></i>
+                <h3>Real-Time FCR Tracking</h3>
+                <p>Correlating daily weight metrics against automated feed dispense rates to calculate the Feed Conversion Ratio instantly on the dashboard.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 11 -->
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">The Co-Generation Integration Matrix</h2>
+    <div class="content-area">
+        <p>Synthesizing our primary lifelines into a cohesive waste-to-energy infrastructure. Every animal byproduct serves as a fuel input for environmental defense.</p>
+        <div class="table-layout" style="margin-top: 15px;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Input Source</th>
+                        <th>Processing Unit</th>
+                        <th>Co-Generated Derivative</th>
+                        <th>Operational Destination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Gravity-Fed Pig Slurry</td>
+                        <td>Anaerobic Digestor</td>
+                        <td>Methane Rich Biogas</td>
+                        <td>Internal Fuel Storage Tanks</td>
+                    </tr>
+                    <tr>
+                        <td>Combused Methane Fuel</td>
+                        <td>Generator Set (GenSet)</td>
+                        <td>Electrical Volts (AC/DC)</td>
+                        <td>30kW/30kWh BESS Storage Bank</td>
+                    </tr>
+                    <tr>
+                        <td>Engine Thermal Exhaust</td>
+                        <td>Heat Exchanger Jacket</td>
+                        <td>High-Temperature Steam Heat</td>
+                        <td>Sub-Floor Radiant Slat Lines</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 12 -->
+<div class="slide-container" id="slide12">
+    <h2 class="slide-title">The Thermal Balancing Logic</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Prioritizing Energy Allocation</h3>
+                <p>Our automation system applies strict hierarchical logic to handle environmental loads without over-stressing structural energy boundaries.</p>
+                <ul>
+                    <li><strong>Primary Heat Load:</strong> Handled entirely by the biogas-driven sub-surface radiant steam lines during cold nights.</li>
+                    <li><strong>Secondary Heat Load:</strong> Backup electric carbon-fiber mats activate only if steam temperatures drop below set parameters.</li>
+                </ul>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-scale-balanced"></i>
+                <h3>BESS Preservation</h3>
+                <p>By using direct thermal steam for base heating, battery banks stay reserved for critical electronics, lighting, and ventilation controls.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 13 -->
+<div class="slide-container" id="slide13">
+    <h2 class="slide-title">Climatic Resilience Parameters</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <i class="fa-solid fa-snowflake"></i>
+                <h3>Winter Frost Armor</h3>
+                <p>Insulated cavity walls and floor-level steam heat combine to withstand deep South African highveld winter sub-zero drops effortlessly.</p>
+            </div>
+            <div class="tile">
+                <i class="fa-solid fa-sun"></i>
+                <h3>Summer Heat Shedding</h3>
+                <p>Passive ridge chimneys and wide roof overhangs vent extreme radiant loads naturally without requiring high-amp mechanical cooling.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 14 -->
+<div class="slide-container" id="slide14">
+    <h2 class="slide-title">Funder Compliance Verification</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>JET Alignment Matrix</h3>
+                <p>This design satisfies the complex green economy asset criteria mandated by international investment consortiums.</p>
+                <ul>
+                    <li><strong>Carbon Reductions:</strong> Direct methane capture via digestion avoids standard manure greenhouse venting.</li>
+                    <li><strong>Resource Efficiency:</strong> Zero grid reliance and a closed-loop water sanitization infrastructure.</li>
+                </ul>
+            </div>
+            <div class="tile" style="border-top: 5px solid #B8860B;">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <h3>Bankable Asset Model</h3>
+                <p>By engineering out climate, energy, and biological risks, the plan transforms volatile farming into a predictable industrial pipeline.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SLIDE 15 -->
+<div class="slide-container" id="slide15">
+    <div class="content-area title-layout">
+        <h1>OPERATIONAL ECOSYSTEM COMPLETE</h1>
+        <div class="sub-text">Infrastructure. Automation. Absolute Precision.</div>
+        <p style="margin-top: 50px; font-size: 24px; color: #FFFFFF;">Lwandile Engineering Projects (Pty) Ltd</p>
+        <div style="margin-top: 20px; border-top: 2px solid #0D9488; padding-top: 20px; font-size: 24px; color: #0D9488; font-family: 'Montserrat', sans-serif; font-weight: 700;">
+            Precision Alliance Architecture | Mpumalanga
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
