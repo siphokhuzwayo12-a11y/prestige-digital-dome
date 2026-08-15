@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/ASUS/Downloads/gemini-code-1785456416866.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BESS Operational Presentation Deck | LEP-IMP-ENG-2026</title>
+    <style>
+        :root {
+            --bg-color: #0b1019;
+            --card-bg: #141c2b;
+            --accent-gold: #d4af37;
+            --teal: #14b8a6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --success: #34d399;
+            --pv-yellow: #f59e0b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: monospace; }
+        body { background-color: var(--bg-color); color: var(--text-main); height: 100vh; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
+
+        header {
+            padding: 1rem 2rem;
+            background: rgba(11, 16, 25, 0.95);
+            border-bottom: 2px solid var(--accent-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-block h1 { color: var(--accent-gold); font-size: 1.1rem; text-transform: uppercase; }
+        .title-block p { color: var(--text-muted); font-size: 0.75rem; margin-top: 0.2rem; }
+
+        .deck-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            max-width: 900px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            min-height: 420px;
+        }
+
+        .slide.active { display: block; }
+
+        .slide-tag { color: var(--teal); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .slide h2 { color: var(--accent-gold); font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+        
+        ul.slide-list { list-style: none; margin-top: 1rem; }
+        ul.slide-list li { margin-bottom: 1rem; color: var(--text-main); font-size: 0.95rem; line-height: 1.5; padding-left: 1.5rem; position: relative; }
+        ul.slide-list li::before { content: "►"; position: absolute; left: 0; color: var(--teal); font-size: 0.8rem; }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.5rem 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .btn:hover { background: var(--accent-gold); color: var(--bg-color); }
+
+        footer {
+            padding: 0.75rem 2rem;
+            background: rgba(11, 16, 25, 0.95);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="title-block">
+            <h1>30kW PV / BESS Integration Teaching Deck</h1>
+            <p>Project: LEP-IMP-ENG-2026 | Operational &amp; Architecture Overview (-TEACH)</p>
+        </div>
+        <div style="text-align: right;">
+            <div style="color: var(--accent-gold); font-weight: bold; font-size: 0.9rem;">Sipho Wiseman Khuzwayo</div>
+            <div style="color: var(--teal); font-size: 0.7rem;">MANAGING DIRECTOR | LWANDILE ENGINEERING PROJECTS</div>
+        </div>
+    </header>
+
+    <div class="deck-container">
+        <!-- SLIDE 1 -->
+        <div class="slide">
+            <div class="slide-tag">Module 01 // Executive Summary</div>
+            <h2>System Architecture &amp; Overview</h2>
+            <ul class="slide-list">
+                <li><strong>Core Mandate:</strong> Delivers resilient, uninterruptible power to critical Bio-Solar microgrid operations, including digester heating telemetry and corridor loads.</li>
+                <li><strong>PV Capacity:</strong> 30kW DC monocrystalline string array providing high-efficiency solar harvesting.</li>
+                <li><strong>BESS Capacity:</strong> 60kWh Lithium Iron Phosphate (LiFePO4) storage operating at 48V nominal DC link.</li>
+                <li><strong>Grid Interfacing:</strong> 30kW Hybrid PCS with Automatic Transfer Switch (ATS) enabling seamless islanding within &lt;20ms during grid loss.</li>
+            </ul>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide">
+            <div class="slide-tag">Module 02 // Dispatch &amp; Strategy</div>
+            <h2>Operational Energy Flow &amp; Dispatch Logic</h2>
+            <ul class="slide-list">
+                <li><strong>Mode A (Solar Priority):</strong> Direct PV consumption powers site loads while remaining power tops up the 60kWh BESS bank.</li>
+                <li><strong>Mode B (Peak Shaving &amp; Backup):</strong> During solar deficits, BESS discharges smoothly to maintain zero dropouts on critical SCADA and heating circuits.</li>
+                <li><strong>Mode C (CHP Co-Generation Interlock):</strong> Excess biogas thermal output from the 70m³ digester loop is dynamically balanced alongside electrical state-of-charge (SoC).</li>
+                <li><strong>Target DoD:</strong> System is programmatically locked to an 80% Depth of Discharge to maximize LFP cell lifecycles.</li>
+            </ul>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="slide active">
+            <div class="slide-tag">Module 03 // SCADA &amp; Protection</div>
+            <h2>Instrumentation, Control &amp; Telemetry Protocols</h2>
+            <ul class="slide-list">
+                <li><strong>BMS-1 Master Controller:</strong> Real-time cell balancing, thermal monitoring, and individual module State-of-Charge tracking.</li>
+                <li><strong>EM-201 &amp; PM-201 Meters:</strong> Continuous SCADA sampling of power factor, harmonic distortion, and net power export/import vectors.</li>
+                <li><strong>Safety Interlocks:</strong> Multi-stage DC over-current break switch, temperature-actuated isolators, and automated ATS trip protocols.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div><span>FILE:</span> LEP-IMP-ENG-2026-BESS_TEACH_ops-overview_v1.0_20260731.html</div>
+        <div class="controls">
+            <button class="btn" onclick="prevSlide()">◄ Prev</button>
+            <span id="slideIndicator" style="color: var(--teal); font-weight: bold;">Slide 3 of 3</span>
+            <button class="btn" onclick="nextSlide()">Next ►</button>
+        </div>
+        <div>Scapush Precision Active</div>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicator = document.getElementById('slideIndicator');
+
+        function updateSlide() {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === currentSlide);
+            });
+            indicator.innerText = `Slide ${currentSlide + 1} of ${slides.length}`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Keyboard Arrow Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+
+</body></html>

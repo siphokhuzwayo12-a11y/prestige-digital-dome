@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dome Precision Navigation Execution Protocol - Teachability Slide Deck</title>
+    <style>
+        :root {
+            --bg-primary: #0b1320;
+            --bg-card: #111c2d;
+            --bg-card-inner: #16243b;
+            --gold-primary: #eab308;
+            --gold-subtle: #ca8a04;
+            --teal-accent: #06b6d4;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-gold: rgba(234, 179, 8, 0.4);
+            --border-teal: rgba(6, 182, 212, 0.4);
+            --border-muted: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #050911;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: var(--bg-primary);
+            border: 3px solid var(--gold-primary);
+            box-shadow: 0 0 35px rgba(234, 179, 8, 0.15), inset 0 0 15px rgba(0,0,0,0.8);
+            position: relative;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px 50px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .slide-container.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.99); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Gold frame accent lines matching exact aesthetic */
+        .frame-accent-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold-primary), transparent, var(--gold-primary));
+            opacity: 0.5;
+        }
+
+        .frame-accent-right {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            bottom: 20px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold-primary), transparent, var(--gold-primary));
+            opacity: 0.5;
+        }
+
+        /* Header Layout */
+        .slide-header {
+            border-bottom: 2px solid var(--gold-primary);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .header-top {
+            font-size: 28pt;
+            font-weight: 900;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .header-sub {
+            font-size: 15pt;
+            font-weight: 600;
+            color: var(--teal-accent);
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Content Layouts */
+        .slide-body {
+            flex: 1;
+            display: flex;
+            gap: 25px;
+            align-items: stretch;
+        }
+
+        /* Cards and Containers */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 6px;
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .card-inner {
+            background-color: var(--bg-card-inner);
+            border: 1px solid var(--border-muted);
+            border-radius: 4px;
+            padding: 16px;
+            margin-top: 12px;
+        }
+
+        .section-title {
+            font-size: 16pt;
+            font-weight: 700;
+            color: var(--teal-accent);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title-bar {
+            width: 4px;
+            height: 20px;
+            background-color: var(--gold-primary);
+            display: inline-block;
+        }
+
+        .badge-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-primary);
+            background: var(--bg-card-inner);
+            color: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16pt;
+            margin-bottom: 15px;
+            box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
+        }
+
+        .profile-row {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 14px;
+            background: var(--bg-card-inner);
+            border: 1px solid var(--border-gold);
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .profile-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-primary);
+            background: rgba(234, 179, 8, 0.1);
+            color: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13pt;
+            flex-shrink: 0;
+        }
+
+        .profile-info h4 {
+            color: var(--text-main);
+            font-size: 14pt;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .profile-info p {
+            color: var(--teal-accent);
+            font-size: 10.5pt;
+            margin-bottom: 4px;
+        }
+
+        .profile-info .meta {
+            color: var(--gold-primary);
+            font-size: 9pt;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        ul.spec-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        ul.spec-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            font-size: 11pt;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        ul.spec-list li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: var(--gold-primary);
+            font-size: 9pt;
+            top: 2px;
+        }
+
+        ul.spec-list li strong {
+            color: var(--text-main);
+        }
+
+        .highlight-box {
+            border: 1px solid var(--gold-primary);
+            background: rgba(234, 179, 8, 0.08);
+            padding: 15px;
+            border-radius: 4px;
+            color: var(--gold-primary);
+            font-weight: 700;
+            font-size: 11pt;
+            margin-top: 15px;
+        }
+
+        .status-pill {
+            display: inline-block;
+            background-color: rgba(6, 182, 212, 0.15);
+            border: 1px solid var(--teal-accent);
+            color: var(--teal-accent);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 9pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer Layout */
+        .slide-footer {
+            border-top: 1px solid var(--border-muted);
+            padding-top: 15px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 9.5pt;
+            color: var(--text-muted);
+        }
+
+        .footer-brand {
+            color: var(--gold-primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Control Navigation Bar */
+        .nav-controls {
+            position: fixed;
+            bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: var(--bg-card);
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid var(--border-gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: var(--bg-card-inner);
+            border: 1px solid var(--border-gold);
+            color: var(--gold-primary);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 10pt;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--gold-primary);
+            color: var(--bg-primary);
+            box-shadow: 0 0 10px var(--gold-primary);
+        }
+
+        .slide-counter {
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 11pt;
+            min-width: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Frame Accents -->
+    <div class="frame-accent-left"></div>
+    <div class="frame-accent-right"></div>
+
+    <!-- SLIDE 1: Title & Activation -->
+    <div class="slide-container active" id="slide-1">
+        <div class="slide-header">
+            <div class="header-top">ENGINEERING DOME ACTIVATION</div>
+            <div class="header-sub">Precision Dome Navigation & Complete Teachability Protocol</div>
+        </div>
+        <div class="slide-body">
+            <div class="card" style="flex: 1.3;">
+                <div class="section-title"><span class="section-title-bar"></span>OPERATIONAL COMMAND & BLUEPRINT</div>
+                <div class="highlight-box">
+                    PROTOCOL: SCAPUSH PRECISION EXECUTION
+                </div>
+                <ul class="spec-list" style="margin-top: 20px;">
+                    <li><strong>Target Environment:</strong> MiroTalk P2P Encrypted Dome Architecture</li>
+                    <li><strong>Core Objective:</strong> Complete End-to-End Operational Mastery (Opening, Streaming, Sharing, Recording, & Sealing)</li>
+                    <li><strong>System Artifact:</strong> swine_microclimate_controller.html (Live Injection)</li>
+                    <li><strong>Security Clearance:</strong> Lock-Room First Security Perimeter</li>
+                </ul>
+            </div>
+            <div class="card" style="flex: 1;">
+                <div class="section-title"><span class="section-title-bar"></span>PRECISION EXECUTION LEADERSHIP</div>
+                <div class="profile-row">
+                    <div class="profile-avatar">SWK</div>
+                    <div class="profile-info">
+                        <h4>Sipho Wiseman Khuzwayo</h4>
+                        <p>Inclusive Legacy Architect | Electrical Technician</p>
+                        <div class="meta">ZA SOUTH AFRICA</div>
+                    </div>
+                </div>
+                <div class="profile-row">
+                    <div class="profile-avatar">BK</div>
+                    <div class="profile-info">
+                        <h4>Bongeka Khuzwayo</h4>
+                        <p>Civil, Structural & Architectural Engineer</p>
+                        <div class="meta">ZA SOUTH AFRICA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-brand">SCAPUSH PRECISION EXECUTION</span>
+            <span>STAGE 1: DOME ACTIVATION & STAGING</span>
+            <span>PAGE 01 / 07</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: Session Governance & Recording -->
+    <div class="slide-container" id="slide-2">
+        <div class="slide-header">
+            <div class="header-top">1. GOVERNANCE & RECORDING PROTOCOL</div>
+            <div class="header-sub">Establishing Security Perimeter & Archival Capture</div>
+        </div>
+        <div class="slide-body">
+            <div class="card">
+                <div class="section-title"><span class="section-title-bar"></span>PERIMETER LOCK & AUTHENTICATION</div>
+                <div class="status-pill">STEP 01: PERIMETER LOCK</div>
+                <ul class="spec-list" style="margin-top: 15px;">
+                    <li><strong>Lock-Room First:</strong> Execute immediate room lock via header bar prior to injecting active payload.</li>
+                    <li><strong>A/V Channel Calibration:</strong> Verify high-fidelity mic input and full HD video feed staging.</li>
+                    <li><strong>P2P Mesh Integrity:</strong> Ensure low-latency Peer-to-Peer data link across all active nodes.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="section-title"><span class="section-title-bar"></span>LIVE ARCHIVAL RECORDING</div>
+                <div class="status-pill" style="border-color: var(--gold-primary); color: var(--gold-primary);">STEP 02: RECORDING INITIATION</div>
+                <ul class="spec-list" style="margin-top: 15px;">
+                    <li><strong>Stream Capture:</strong> Engage local webm/mp4 recording stream via dome toolbar menu.</li>
+                    <li><strong>Participant Authorization:</strong> Broadcast explicit audio/visual notification of session recording.</li>
+                    <li><strong>Zero-Loss Redundancy:</strong> Local caching ensures communication fidelity under network stress.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-brand">SCAPUSH PRECISION EXECUTION</span>
+            <span>STAGE 2: SECURITY & RECORDING</span>
+            <span>PAGE 02 / 07</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: Teachability & Execution Blueprint -->
+    <div class="slide-container" id="slide-3">
+        <div class="slide-header">
+            <div class="header-top">2. TEACHABILITY & NAVIGATION BLUEPRINT</div>
+            <div class="header-sub">Three-Phase Modular Sequence for Presentation Mastery</div>
+        </div>
+        <div class="slide-body">
+            <div class="card">
+                <div class="badge-circle">01</div>
+                <div class="section-title" style="font-size: 13pt;">FOUNDATIONAL PERIMETER</div>
+                <ul class="spec-list">
+                    <li>Room Locking Protocol</li>
+                    <li>Hardware Verification</li>
+                    <li>Side-Panel Dock Activation</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="badge-circle">02</div>
+                <div class="section-title" style="font-size: 13pt;">PAYLOAD INJECTION</div>
+                <ul class="spec-list">
+                    <li>Screen Sharing Activation</li>
+                    <li>Focus & Pinning Stream</li>
+                    <li>Direct P2P File Upload</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="badge-circle">03</div>
+                <div class="section-title" style="font-size: 13pt;">SEALING & ARCHIVAL</div>
+                <ul class="spec-list">
+                    <li>Stream Clean Teardown</li>
+                    <li>Recording Buffer Flush</li>
+                    <li>Formal Dome Shutdown</li>
+                </ul>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-brand">SCAPUSH PRECISION EXECUTION</span>
+            <span>STAGE 3: EXECUTION BLUEPRINT</span>
+            <span>PAGE 03 / 07</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: Core Module Execution & Screen Sharing -->
+    <div class="slide-container" id="slide-4">
+        <div class="slide-header">
+            <div class="header-top">3. SCREEN SHARING & ARTIFACT INJECTION</div>
+            <div class="header-sub">Integrating swine_microclimate_controller.html directly into Viewport</div>
+        </div>
+        <div class="slide-body">
+            <div class="card" style="flex: 1.2;">
+                <div class="section-title"><span class="section-title-bar"></span>SCREEN STREAMING PROTOCOL</div>
+                <ul class="spec-list">
+                    <li><strong>Target Tab Selection:</strong> Select browser tab hosting active HTML rendering engine.</li>
+                    <li><strong>Viewport Focus Pinning:</strong> Click Pushpin/Focus icon on stream thumbnail to center output inside dome.</li>
+                    <li><strong>Auto-Hiding Interface:</strong> Move cursor off control bar for 3 seconds to unmask lower display boundaries.</li>
+                    <li><strong>Logic Rendering:</strong> Real-time visualization of Boolean mathematical formulas and timing diagrams.</li>
+                </ul>
+            </div>
+            <div class="card" style="flex: 0.8;">
+                <div class="section-title"><span class="section-title-bar"></span>PAYLOAD METRICS</div>
+                <div class="card-inner">
+                    <p style="color: var(--gold-primary); font-weight:700; font-size:11pt;">ARTIFACT SIZE: 59.26 KB</p>
+                    <p style="color: var(--text-muted); font-size:10pt; margin-top:5px;">Pure client-side HTML5/CSS3/JS microclimate logic engine.</p>
+                </div>
+                <div class="highlight-box" style="margin-top: 20px;">
+                    FORMULA EXECUTION:<br>
+                    Y_FAN = (A ∨ B) ∧ C<br>
+                    Y_DRIP = A ∧ Y_FAN
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-brand">SCAPUSH PRECISION EXECUTION</span>
+            <span>STAGE 4: ARTIFACT STREAMING</span>
+            <span>PAGE 04 / 07</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: P2P Payload Transfer & Chat Integration -->
+    <div class="slide-container" id="slide-5">
+        <div class="slide-header">
+            <div class="header-top">4. DIRECT P2P PAYLOAD TRANSMISSION</div>
+            <div class="header-sub">Side-Panel Command Dock File Distribution</div>
+        </div>
+        <div class="slide-body">
+            <div class="card">
+                <div class="section-title"><span class="section-title-bar"></span>DATA CHANNEL INJECTION</div>
+                <ul class="spec-list">
+                    <li><strong>Dock Engagement:</strong> Open Side Chat Panel (💬) from dome right menu bar.</li>
+                    <li><strong>Payload Attachment:</strong> Click Paperclip icon (📎) to select local HTML artifact file.</li>
+                    <li><strong>Peer Distribution:</strong> File is chunked and streamed directly over WebRTC data channels to all connected nodes.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="section-title"><span class="section-title-bar"></span>SANDBOX SECURITY ISOLATION</div>
+                <ul class="spec-list">
+                    <li><strong>Zero Cloud Intermediary:</strong> File remains local until direct WebRTC peer acceptance.</li>
+                    <li><strong>Client Isolation:</strong> Browser tab isolates execution engine from primary WebRTC video thread.</li>
+                    <li><strong>Instant Download:</strong> Participants download raw executable code instantly in-session.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-brand">SCAPUSH PRECISION EXECUTION</span>
+            <span>STAGE 5: P2P TRANSMISSION</span>
+            <span>PAGE 05 / 07</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: Synthesis & Execution Roadmap -->
+    <div class="slide-container" id="slide-6">
+        <div class="slide-header">
+            <div class="header-top">5. SESSION SYNTHESIS & REVIEW</div>
+            <div class="header-sub">Verification & Quality Control Metrics</div>
+        </div>
+        <div class="slide-body">
+            <div class="card">
+                <div class="section-title"><span class="section-title-bar"></span>VERIFICATION CHECKPOINTS</div>
+                <div class="card-inner" style="margin-bottom: 10px;">
+                    <strong style="color: var(--teal-accent);">✓ Room Security Locked:</strong> Unauthorized access prevented during live stream.
+                </div>
+                <div class="card-inner" style="margin-bottom: 10px;">
+                    <strong style="color: var(--teal-accent);">✓ Artifact Rendered:</strong> Logic analyzer stream displayed with zero frame drops.
+                </div>
+                <div class="card-inner">
+                    <strong style="color: var(--teal-accent);">✓ Data Pipe Cleared:</strong> P2P payload sent and verified by room participants.
+                </div>
+            </div>
+            <div class="card">
+                <div class="section-title"><span class="section-title-bar"></span>ACTIONABLE ROADMAP</div>
+                <ul class="spec-list">
+                    <li><strong>Step A:</strong> Finalize participant interactive feedback.</li>
+                    <li><strong>Step B:</strong> Initiate stream detachment protocol.</li>
+                    <li><strong>Step C:</strong> Stop archival recording and verify local save.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-brand">SCAPUSH PRECISION EXECUTION</span>
+            <span>STAGE 6: SYNTHESIS & VERIFICATION</span>
+            <span>PAGE 06 / 07</span>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: Session Closing & Dome Seal -->
+    <div class="slide-container" id="slide-7">
+        <div class="slide-header">
+            <div class="header-top">FORMAL CLOSING & DOME SEAL</div>
+            <div class="header-sub">Recording Completed & Session Terminated with Precision</div>
+        </div>
+        <div class="slide-body" style="justify-content: center; align-items: center;">
+            <div class="card" style="max-width: 800px; text-align: center; align-items: center; justify-content: center; padding: 40px;">
+                <div class="status-pill" style="margin-bottom: 20px; font-size: 11pt; padding: 6px 20px;">STATUS: SESSION SEALED & ARCHIVED</div>
+                <h2 style="color: var(--gold-primary); font-size: 24pt; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">HONORABLE EXECUTION COMPLETE</h2>
+                <p style="color: var(--text-muted); font-size: 13pt; max-width: 600px; line-height: 1.6; margin-bottom: 25px;">
+                    The presentation stream has concluded. Recording buffer has been written to secure storage. Session room perimeter unlocked for clean exit.
+                </p>
+                <div class="card-inner" style="width: 100%; border-color: var(--gold-primary);">
+                    <p style="color: var(--teal-accent); font-size: 11pt; font-weight: 700;">
+                        Sipho Wiseman Khuzwayo & Bongeka Khuzwayo
+                    </p>
+                    <p style="color: var(--gold-primary); font-size: 9.5pt; font-weight: 800; letter-spacing: 1px; margin-top: 4px;">
+                        SCAPUSH PRECISION EXECUTION PROTOCOL
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-brand">SCAPUSH PRECISION EXECUTION</span>
+            <span>STAGE 7: DOME SEALED</span>
+            <span>PAGE 07 / 07</span>
+        </div>
+    </div>
+
+    <!-- NAVIGATION CONTROLS -->
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="prevSlide()">❮ PREV</button>
+        <span class="slide-counter" id="slide-counter">01 / 07</span>
+        <button class="nav-btn" onclick="nextSlide()">NEXT ❯</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 7;
+
+        function updateSlide() {
+            for (let i = 1; i <= totalSlides; i++) {
+                const slide = document.getElementById(`slide-${i}`);
+                if (i === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            }
+            document.getElementById('slide-counter').innerText = 
+                `${String(currentSlide).padStart(2, '0')} / ${String(totalSlides).padStart(2, '0')}`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prestige Cosmic Venture | Biogas Digestion Ratios Deck</title>
+  <style>
+    :root {
+      /* Prestige Cosmic Venture Palette */
+      --navy-dark: #070B19;
+      --navy-main: #0B132B;
+      --navy-card: #111B38;
+      --navy-border: #1C2B54;
+      --gold-main: #E0A96D;
+      --gold-glow: rgba(224, 169, 109, 0.2);
+      --teal-accent: #00A896;
+      --teal-glow: rgba(0, 168, 150, 0.15);
+      --text-light: #F4F6F8;
+      --text-muted: #A0AABF;
+      --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--navy-dark);
+      color: var(--text-light);
+      font-family: var(--font-sans);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Top Status & Header Bar */
+    header {
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--navy-border);
+      background: rgba(11, 19, 43, 0.9);
+      backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--gold-main), #B88244);
+      color: var(--navy-dark);
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .brand-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+
+    .prestige-tag {
+      font-size: 0.8rem;
+      color: var(--teal-accent);
+      background: var(--teal-glow);
+      border: 1px solid var(--teal-accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* Deck Viewport */
+    .deck-container {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      position: absolute;
+      width: calc(100% - 60px);
+      height: calc(100% - 60px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* Slide Typography */
+    .slide-tag {
+      color: var(--gold-main);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      color: var(--text-light);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 18px;
+      color: var(--text-light);
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 900px;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    /* Card Grids & Panels */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+    .card {
+      background: var(--navy-card);
+      border: 1px solid var(--navy-border);
+      border-radius: 10px;
+      padding: 22px;
+      position: relative;
+    }
+
+    .card.gold-border {
+      border-top: 4px solid var(--gold-main);
+    }
+
+    .card.teal-border {
+      border-top: 4px solid var(--teal-accent);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--gold-main);
+    }
+
+    .card p, .card ul {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .card ul {
+      list-style-type: none;
+    }
+
+    .card ul li {
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .card ul li::before {
+      content: "■";
+      color: var(--teal-accent);
+      font-size: 8px;
+      position: absolute;
+      left: 0;
+      top: 3px;
+    }
+
+    /* Metric Boxes */
+    .metric-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--gold-main);
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--teal-accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    /* Visual Ratio Illustration Cards */
+    .ratio-visual {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 16px;
+      height: 120px;
+      margin: 15px 0;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--navy-border);
+    }
+
+    .flask {
+      width: 60px;
+      border-radius: 6px 6px 4px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--navy-dark);
+      text-align: center;
+    }
+
+    .flask-feedstock {
+      background: linear-gradient(180deg, var(--gold-main), #B88244);
+    }
+
+    .flask-water {
+      background: linear-gradient(180deg, #4CC9F0, var(--teal-accent));
+    }
+
+    /* Footer & Navigation */
+    footer {
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--navy-border);
+      background: rgba(11, 19, 43, 0.9);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+
+    button {
+      background: var(--navy-card);
+      border: 1px solid var(--teal-accent);
+      color: var(--text-light);
+      padding: 8px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background: var(--teal-accent);
+      color: var(--navy-dark);
+    }
+
+    .slide-counter {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .progress-bar-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-main), var(--teal-accent));
+      width: 25%;
+      transition: width 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <header>
+    <div class="brand-container">
+      <span class="brand-badge">SCAPUSH</span>
+      <span class="brand-title">Lwandile Engineering Projects (Pty) Ltd</span>
+    </div>
+    <div class="prestige-tag">PRESTIGE COSMIC VENTURE | BIO-THERMAL ENGINEERING</div>
+  </header>
+
+  <main class="deck-container">
+
+    <!-- SLIDE 1: The Wisdom of Ratios (Master Overview) -->
+    <section class="slide active">
+      <div class="slide-tag">Module 01 — Anaerobic Optimization</div>
+      <h1>The Wisdom of Ratios in Biogas Digestion</h1>
+      <p class="subtitle">Balance First, Then Flourish: Engineering optimal slurry viscosity and total solids concentration for continuous 70m³ bio-thermal generation.</p>
+      
+      <div class="grid-3" style="margin-top: 10px;">
+        <div class="card gold-border">
+          <div class="metric-label">Baseline Stability</div>
+          <div class="metric-value">1 : 1</div>
+          <p><strong style="color: var(--text-light);">Equal Parts Dilution:</strong> Prevents piping blockages, ensures smooth hydraulic transport through XV-101 valves.</p>
+        </div>
+        <div class="card teal-border">
+          <div class="metric-label">Safest Optimal Ratio</div>
+          <div class="metric-value" style="color: var(--teal-accent);">1.2 : 1</div>
+          <p><strong style="color: var(--text-light);">The Gold Standard:</strong> Perfect harmony of biological safety, continuous gas production, and minimal risk.</p>
+        </div>
+        <div class="card gold-border">
+          <div class="metric-label">High Yield Threshold</div>
+          <div class="metric-value">1.5 : 1</div>
+          <p><strong style="color: var(--text-light);">Max Methane Output:</strong> Dense organic substrate requiring high-precision telemetry monitoring.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top: 20px;">
+        <h3 style="color: var(--gold-main);">Scapush Precision Core Principle</h3>
+        <p><strong style="color: var(--text-light);">Lead Architect:</strong> Sipho Wiseman Khuzwayo | <strong style="color: var(--text-light);">System Insight:</strong> <em>"In anaerobic digestion, biological harmony precedes volumetric performance. Stabilize the ratio, protect the microbes, and power the microgrid."</em></p>
+      </div>
+    </section>
+
+    <!-- SLIDE 2: Baseline Stability: The 1:1 Ratio -->
+    <section class="slide">
+      <div class="slide-tag">Ratio Breakdown — Phase A</div>
+      <h2>Starting with Safety: The 1:1 Baseline Ratio</h2>
+      <p class="subtitle">Equal proportion of organic manure substrate to clean dilution water for initial digester commissioning.</p>
+
+      <div class="grid-2">
+        <div class="card teal-border">
+          <h3>Hydraulic & Fluid Dynamics</h3>
+          <div class="ratio-visual">
+            <div class="flask flask-feedstock" style="height: 90px;">1 Part<br/>Feedstock</div>
+            <div class="flask flask-water" style="height: 90px;">1 Part<br/>Water</div>
+          </div>
+          <ul>
+            <li><strong>Low Slurry Viscosity:</strong> Eliminates pump cavitation and pipe friction losses.</li>
+            <li><strong>Zero Clogging Hazard:</strong> High fluidity easily washes through 2% sloped swine channels.</li>
+            <li><strong>Rapid Microbe Dispersal:</strong> Facilitates swift acclimatization during digester startup.</li>
+          </ul>
+        </div>
+
+        <div class="card gold-border">
+          <h3>Operational Performance Trade-offs</h3>
+          <ul>
+            <li><strong>Methane Concentration:</strong> Lower organic density yields moderate volumetric gas output.</li>
+            <li><strong>Water Demand:</strong> Higher daily water requirement per kg of volatile solids (VS).</li>
+            <li><strong>Primary Use Case:</strong> Ideal for system commissioning, winter restarts, and automated emergency flush cycles via SCADA Node_01.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3: The Safest Sweet Spot: The 1.2:1 Ratio -->
+    <section class="slide">
+      <div class="slide-tag">Ratio Breakdown — Phase B (Optimal)</div>
+      <h2>The Safest Sweet Spot: The 1.2:1 Standard</h2>
+      <p class="subtitle">Engineered for long-term operational resilience, maximum safety, and uninterrupted microgrid CHP heating.</p>
+
+      <div class="grid-2">
+        <div class="card teal-border" style="border-top: 4px solid var(--teal-accent);">
+          <h3>Substrate Composition Geometry</h3>
+          <div class="ratio-visual">
+            <div class="flask flask-feedstock" style="height: 100px;">1.2 Parts<br/>Feedstock</div>
+            <div class="flask flask-water" style="height: 83px;">1.0 Part<br/>Water</div>
+          </div>
+          <ul>
+            <li><strong>1.2 Parts Substrate to 1 Part Water:</strong> Unlocks ~8% to 10% Total Solids (TS) concentration.</li>
+            <li><strong>Optimal Buffering Capacity:</strong> Prevents volatile fatty acid (VFA) accumulation and pH drops.</li>
+            <li><strong>Water Conservation:</strong> Reduces daily borehole water strain by 16.6% compared to 1:1 ratio.</li>
+          </ul>
+        </div>
+
+        <div class="card gold-border" style="background: rgba(0, 168, 150, 0.08); border: 1px solid var(--teal-accent);">
+          <h3 style="color: var(--teal-accent);">Why 1.2:1 is the Safest Choice</h3>
+          <ul>
+            <li><strong style="color: var(--text-light);">Continuous Thermal Stability:</strong> Maintains smooth, un-interrupted methane production to drive sub-floor poultry/swine heating loops.</li>
+            <li><strong style="color: var(--text-light);">Unmatched Reliability:</strong> Protects anaerobic methanogens from ammonia toxicity while avoiding solid crust formation.</li>
+            <li><strong style="color: var(--text-light);">Low-Maintenance Automation:</strong> Ideal for autonomous SCADA PLC valve scheduling without manual slurry intervention.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 4: High Yield Optimization: The 1.5:1 Ratio -->
+    <section class="slide">
+      <div class="slide-tag">Ratio Breakdown — Phase C (Advanced)</div>
+      <h2>Aiming for Efficiency: The 1.5:1 High-Yield Ratio</h2>
+      <p class="subtitle">High-density organic loading designed for maximum peak methane gas production during high-demand energy cycles.</p>
+
+      <div class="grid-2">
+        <div class="card gold-border">
+          <h3>High Density Organic Substrate</h3>
+          <div class="ratio-visual">
+            <div class="flask flask-feedstock" style="height: 115px;">1.5 Parts<br/>Feedstock</div>
+            <div class="flask flask-water" style="height: 75px;">1.0 Part<br/>Water</div>
+          </div>
+          <ul>
+            <li><strong>Maximum Methane Volumetric Rate:</strong> Rich organic loading produces peak biogas per cubic meter.</li>
+            <li><strong>High Volatile Solids (VS):</strong> Maximizes biogas generator kilowatt-hour output.</li>
+            <li><strong>Digestate Quality:</strong> Yields dense, nutrient-rich organic bio-fertilizer for commercial off-take.</li>
+          </ul>
+        </div>
+
+        <div class="card teal-border">
+          <h3>Telemetry & Safeguard Requirements</h3>
+          <ul>
+            <li><strong>Viscosity Management:</strong> Requires continuous automated mechanical agitation inside the 70m³ digester.</li>
+            <li><strong>VFA & pH Tracking:</strong> Demands automated monitoring via SCADA TI-101 sensors to prevent souring.</li>
+            <li><strong>Scapush Execution Standard:</strong> Operates safely only when telemetry automation is 100% active.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="slide-counter" id="slideCounter">SLIDE 1 OF 4</div>
+    <div class="nav-buttons">
+      <button onclick="prevSlide()">&larr; Previous</button>
+      <button onclick="nextSlide()" style="background: var(--gold-main); color: var(--navy-dark); border: none;">Next &rarr;</button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const progressBar = document.getElementById('progressBar');
+    const slideCounter = document.getElementById('slideCounter');
+
+    function updateDeck() {
+      slides.forEach((slide, idx) => {
+        slide.classList.toggle('active', idx === currentSlide);
+      });
+      progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+      slideCounter.textContent = `SLIDE ${currentSlide + 1} OF ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateDeck();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateDeck();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>
