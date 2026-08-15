@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<!-- saved from url=(0131)file:///C:/Users/ASUS/AppData/Local/Temp/MicrosoftEdgeDownloads/ba49644f-7d57-4ef0-9305-e65f1bd0e116/gemini-code-1786306302649.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETA Agri-Tech Initiative | Interactive Slide Deck</title>
+    <style>
+        :root {
+            --bg-color: #020710;
+            --panel-bg: #07152b;
+            --sub-panel-bg: #0a1c38;
+            --border-cyan: #00d8ff;
+            --border-gold: #ffcc00;
+            --text-gold: #ffcc00;
+            --text-cyan: #00d8ff;
+            --text-white: #ffffff;
+            --text-red: #ff3366;
+            --text-amber: #ff9900;
+            --text-muted: #8892b0;
+            --text-green: #50fa7b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .deck-container {
+            width: 100%;
+            max-width: 1100px;
+            background-color: var(--panel-bg);
+            border: 2px solid var(--border-gold);
+            padding: 24px;
+            box-shadow: 0 0 35px rgba(255, 204, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 650px;
+            position: relative;
+        }
+
+        /* Deck Header */
+        .deck-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-gold);
+            padding-bottom: 12px;
+        }
+
+        .deck-title h1 {
+            color: var(--text-gold);
+            font-size: 1.15rem;
+            letter-spacing: 1.5px;
+            font-weight: bold;
+        }
+
+        .deck-title p {
+            color: var(--text-cyan);
+            font-size: 0.8rem;
+            margin-top: 2px;
+        }
+
+        .slide-counter {
+            background: var(--sub-panel-bg);
+            border: 1px solid var(--border-cyan);
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            color: var(--text-gold);
+            font-weight: bold;
+        }
+
+        /* Slide Viewport */
+        .slide-viewport {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide {
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-tag {
+            color: var(--text-cyan);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .slide-heading {
+            color: var(--text-gold);
+            font-size: 1.35rem;
+            border-bottom: 1px dashed var(--border-cyan);
+            padding-bottom: 6px;
+        }
+
+        .slide-content {
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: #d6deeb;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Code/Diagram Blocks */
+        .diagram-block {
+            background: var(--bg-color);
+            border: 1px solid #102a45;
+            padding: 12px;
+            color: var(--text-green);
+            font-size: 0.8rem;
+            border-left: 3px solid var(--border-cyan);
+            white-space: pre-wrap;
+            line-height: 1.4;
+        }
+
+        .matrix-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 6px;
+        }
+
+        .summary-box {
+            background: var(--sub-panel-bg);
+            border: 1px solid #102a45;
+            padding: 12px;
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .summary-box h4 {
+            color: var(--text-cyan);
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+        }
+
+        .summary-box .stat {
+            color: var(--text-gold);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .highlight-text {
+            color: var(--text-gold);
+            font-weight: bold;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            margin-top: 6px;
+        }
+
+        th, td {
+            border: 1px solid #102a45;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--sub-panel-bg);
+            color: var(--text-gold);
+        }
+
+        /* Controls Navigation Footer */
+        .controls-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid var(--border-gold);
+            padding-top: 14px;
+            margin-top: auto;
+        }
+
+        .btn-nav {
+            background: var(--sub-panel-bg);
+            border: 1px solid var(--border-cyan);
+            color: var(--text-cyan);
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background: var(--border-cyan);
+            color: #000;
+            box-shadow: 0 0 10px var(--border-cyan);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            border-color: var(--text-muted);
+        }
+
+        .honorable-footer {
+            font-size: 0.7rem;
+            color: var(--text-gold);
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .matrix-summary { grid-template-columns: 1fr; }
+            .deck-container { padding: 16px; min-height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="deck-container">
+    <!-- Header -->
+    <header class="deck-header">
+        <div class="deck-title">
+            <h1>INCLUSIVE AGRI-TECH INITIATIVE | SETA PRESENTATION</h1>
+            <p>Leth'Khanya Trading &amp; Lwandile Engineering Projects</p>
+        </div>
+        <div class="slide-counter" id="slide-num">SLIDE 07 /07</div>
+    </header>
+
+    <!-- Slide Viewport -->
+    <div class="slide-viewport">
+        
+        <!-- SLIDE 1: OVERVIEW -->
+        <div class="slide" id="slide-1">
+            <span class="slide-tag">MODULE 01 // EXECUTIVE SUMMARY</span>
+            <h2 class="slide-heading">Inclusive Agri-Tech Skills &amp; Empowerment Initiative</h2>
+            <div class="slide-content">
+                <p>A SETA-aligned, highly automated vocational training framework designed to bridge rural agriculture, disability inclusion, renewable energy, and digital SCADA interlocks.</p>
+                
+                <div class="matrix-summary">
+                    <div class="summary-box">
+                        <h4>YOUTH TARGET</h4>
+                        <div class="stat">50% Intake</div>
+                    </div>
+                    <div class="summary-box">
+                        <h4>WOMEN TARGET</h4>
+                        <div class="stat">50%+ Cross-Cut</div>
+                    </div>
+                    <div class="summary-box">
+                        <h4>DISABILITY ACCESS</h4>
+                        <div class="stat">15% Minimum</div>
+                    </div>
+                </div>
+
+                <div class="diagram-block">
+LEAD ENTERPRISE    : Leth'Khanya Trading (Pty) Ltd (Mduduzi Wiseman Nkosi - Disability Desk)
+PARTNER ENTERPRISE : Lwandile Engineering Projects (Sipho Wiseman Khuzwayo)
+EXECUTION STANDARD : Scapush Precision Delivery Matrix | August 2026
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: PROGRAM PILLARS -->
+        <div class="slide" id="slide-2">
+            <span class="slide-tag">MODULE 02 // TECHNICAL SCOPE</span>
+            <h2 class="slide-heading">The Four Core Program Pillars</h2>
+            <div class="slide-content">
+                <div class="diagram-block">
+PILLAR A: HIGH-VALUE SMART CROPS
+ ├── Crops: Lettuce, Peppers, Tomatoes, Culinary Herbs
+ └── Systems: Waist-Level Deep-Water Culture (DWC) &amp; NFT Hydroponics
+
+PILLAR B: PRECISION LIVESTOCK &amp; ZERO-MORTALITY NURSERIES
+ ├── Swine Auto-Microclimate Creep Boxes &amp; Anti-Crush Farrowing
+ └── Chick Brooding Modules with HEPA Filtration &amp; Ammonia Scrubbing
+
+PILLAR C: AGRI-TECH, SCADA LOGIC &amp; SOLAR EV HUB
+ ├── Off-Grid Solar PV Array Driving Environmental Interlocks
+ └── Low-Reach EV Fast Charger (800-1000mm) for Adaptive Wheelchair UTVs
+
+PILLAR D: AGRIBUSINESS &amp; COOPERATIVE INCUBATOR
+ └── Financial Literacy, Digital Bookkeeping, &amp; SETA Enterprise Creation
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: ZERO MORTALITY ENCLOSURES -->
+        <div class="slide" id="slide-3">
+            <span class="slide-tag">MODULE 03 // ZERO-MORTALITY ENGINEERING</span>
+            <h2 class="slide-heading">Swine &amp; Poultry Microclimate Enclosures</h2>
+            <div class="slide-content">
+                <p>Eliminating neonate livestock losses during the critical 1–21 day window through automated climate engineering:</p>
+                
+                <div class="diagram-block">
++-----------------------------------------------------------------------+
+|             NURSERY MICROCLIMATE CONTROL SPECIFICATIONS               |
++-----------------------------------------------------------------------+
+ 1. Radiant Thermal Zoning: Floor heating pads auto-regulated at 32°C-35°C.
+ 2. Air Quality Scrubbing: VFD fan cycling preventing NH3 &amp; CO2 buildup.
+ 3. Physical Protection: Anti-crush farrowing crates safeguarding piglets.
+ 4. SCADA Auto-Interlocks: Battery/Solar takeover if ambient drops &gt;1.5°C.
++-----------------------------------------------------------------------+
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: CLOSED LOOP BIO-ECONOMY -->
+        <div class="slide" id="slide-4">
+            <span class="slide-tag">MODULE 04 // CIRCULAR ECONOMY</span>
+            <h2 class="slide-heading">Zero-Mortality Closed-Loop Integration</h2>
+            <div class="slide-content">
+                <p>All biological waste is converted into energy and nutrients on-site:</p>
+
+                <div class="diagram-block">
+[Swine &amp; Poultry Waste] ---&gt; (Anaerobic Biogas Digester) ---&gt; [Biogas Generator / Heat]
+                                        |                                    |
+                                        v                                    v
+                             [Organic Bio-Fertilizer]              [Radiant Nursery Heat]
+                                        |                                    |
+                                        v                                    v
+                             [Waist-Level Hydroponics]           [Zero-Mortality Nurseries]
+                             (Lettuce, Peppers, Herbs)           (Piglets &amp; Chick Brooders)
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: SETA MATRIX -->
+        <div class="slide" id="slide-5">
+            <span class="slide-tag">MODULE 05 // ACCREDITATION &amp; NQF</span>
+            <h2 class="slide-heading">SETA Unit Standard Alignment</h2>
+            <div class="slide-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Module</th>
+                            <th>SETA Unit Standard</th>
+                            <th>NQF</th>
+                            <th>Accessibility / Tech Feature</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Smart Crops</strong></td>
+                            <td>Crop production principles</td>
+                            <td>L 1-2</td>
+                            <td>Waist-level hydroponics &amp; bio-dosing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nursery Care</strong></td>
+                            <td>Swine &amp; poultry nursery care</td>
+                            <td>L 2</td>
+                            <td>Microclimate creep boxes &amp; brooding pads</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Agri-Tech/EV</strong></td>
+                            <td>Renewable energy systems</td>
+                            <td>L 2-3</td>
+                            <td>Low-reach solar EV charging docks</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Agribusiness</strong></td>
+                            <td>Agricultural finance management</td>
+                            <td>L 3-4</td>
+                            <td>Digital accounting &amp; cooperative incubation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: BUDGET ALLOCATION -->
+        <div class="slide" id="slide-6">
+            <span class="slide-tag">MODULE 06 // FINANCIAL FRAMEWORK</span>
+            <h2 class="slide-heading">12-Month Pilot Budget Breakdown</h2>
+            <div class="slide-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Scope / Deliverables</th>
+                            <th>Amount (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>CapEx</strong></td>
+                            <td>Paving, hydroponics, nursery enclosures, solar PV, EV hub</td>
+                            <td>$89,000</td>
+                        </tr>
+                        <tr>
+                            <td><strong>OpEx</strong></td>
+                            <td>Stipends (100 learners), SETA facilitators, sign language, PPE</td>
+                            <td>$77,500</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contingency</strong></td>
+                            <td>10% Operational buffer pool</td>
+                            <td>$16,650</td>
+                        </tr>
+                        <tr style="font-weight: bold; background: rgba(255, 204, 0, 0.15);">
+                            <td style="color: var(--text-gold);">TOTAL</td>
+                            <td>Full 12-Month Pilot Investment</td>
+                            <td style="color: var(--text-gold);">$183,150</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: IMPACT & ROADMAP -->
+        <div class="slide active" id="slide-7">
+            <span class="slide-tag">MODULE 07 // IMPACT &amp; NEXT STEPS</span>
+            <h2 class="slide-heading">Target Metrics &amp; Execution</h2>
+            <div class="slide-content">
+                <div class="matrix-summary">
+                    <div class="summary-box">
+                        <h4>GRADUATES</h4>
+                        <div class="stat">100 / Cycle</div>
+                    </div>
+                    <div class="summary-box">
+                        <h4>COOPERATIVES</h4>
+                        <div class="stat">10 / Year</div>
+                    </div>
+                    <div class="summary-box">
+                        <h4>SUSTAINABILITY</h4>
+                        <div class="stat">60% Self-Funded</div>
+                    </div>
+                </div>
+
+                <div class="diagram-block">
+DEPLOYMENT ROADMAP:
+Phase 1 (M1-3) : Site prep, paving, microclimate nursery &amp; solar EV setup.
+Phase 2 (M4)   : Intake onboarding via Disability Desk (100 beneficiaries).
+Phase 3 (M5-10): SETA accredited practical training &amp; PoE compilation.
+Phase 4 (M11-12): Moderation, certification, micro-grants, &amp; cooperative launch.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation Footer -->
+    <footer class="controls-bar">
+        <button class="btn-nav" id="btn-prev" onclick="changeSlide(-1)">◄ PREVIOUS</button>
+        <div class="honorable-footer">SCAPUSH PRECISION // GITHUB PAGES PRESENTATION</div>
+        <button class="btn-nav" id="btn-next" onclick="changeSlide(1)" disabled="">NEXT ►</button>
+    </footer>
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = 7;
+
+    function updateSlideDisplay() {
+        for (let i = 1; i <= totalSlides; i++) {
+            document.getElementById(`slide-${i}`).classList.remove('active');
+        }
+        document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+        const formattedNum = String(currentSlide).padStart(2, '0');
+        const formattedTotal = String(totalSlides).padStart(2, '0');
+        document.getElementById('slide-num').innerText = `SLIDE ${formattedNum} /${formattedTotal}`;
+
+        document.getElementById('btn-prev').disabled = (currentSlide === 1);
+        document.getElementById('btn-next').disabled = (currentSlide === totalSlides);
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide < 1) currentSlide = 1;
+        if (currentSlide > totalSlides) currentSlide = totalSlides;
+        updateSlideDisplay();
+    }
+
+    // Keyboard Arrow Navigation
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowRight' && currentSlide < totalSlides) {
+            changeSlide(1);
+        } else if (event.key === 'ArrowLeft' && currentSlide > 1) {
+            changeSlide(-1);
+        }
+    });
+</script>
+
+
+</body></html>
