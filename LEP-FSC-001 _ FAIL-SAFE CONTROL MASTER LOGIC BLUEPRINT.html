@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/ASUS/Downloads/gemini-code-1786035148472.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEP-FSC-001 | FAIL-SAFE CONTROL MASTER LOGIC BLUEPRINT</title>
+    <style>
+        :root {
+            --bg-color: #030a16;
+            --panel-bg: #07152b;
+            --sub-panel-bg: #0a1c38;
+            --border-cyan: #00d8ff;
+            --border-gold: #ffcc00;
+            --text-gold: #ffcc00;
+            --text-cyan: #00d8ff;
+            --text-white: #ffffff;
+            --text-red: #ff3366;
+            --text-muted: #6272a4;
+            --text-green: #50fa7b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1350px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--border-cyan);
+            padding: 24px;
+            box-shadow: 0 0 20px rgba(0, 216, 255, 0.15);
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-cyan);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .header-title h1 {
+            color: var(--text-gold);
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .header-title p {
+            color: var(--text-cyan);
+            font-size: 0.85rem;
+        }
+
+        .badge {
+            background: rgba(0, 216, 255, 0.1);
+            border: 1px solid var(--border-cyan);
+            color: var(--text-cyan);
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            margin-left: 8px;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.75rem;
+            text-align: right;
+        }
+
+        .meta-box {
+            border: 1px solid #102a45;
+            padding: 6px 10px;
+            background: var(--panel-bg);
+        }
+
+        .meta-box span {
+            display: block;
+            color: var(--text-muted);
+        }
+
+        .meta-box strong {
+            color: var(--text-gold);
+        }
+
+        /* Teachable Scenarios Section */
+        .walkthrough-panel {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-gold);
+            padding: 16px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .walkthrough-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .walkthrough-title {
+            color: var(--text-gold);
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .engine-badge {
+            background: var(--text-gold);
+            color: #000;
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 0.7rem;
+        }
+
+        .walkthrough-desc {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .scenario-card {
+            background: var(--sub-panel-bg);
+            border: 1px solid #102a45;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .scenario-card:hover, .scenario-card.active {
+            border-color: var(--border-cyan);
+            box-shadow: 0 0 10px rgba(0, 216, 255, 0.2);
+            background: #0f274d;
+        }
+
+        .scenario-card.active {
+            border-color: var(--border-gold);
+        }
+
+        .scenario-time {
+            color: var(--text-gold);
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .scenario-name {
+            color: var(--text-white);
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .scenario-text {
+            color: var(--text-muted);
+            font-size: 0.72rem;
+            line-height: 1.3;
+        }
+
+        .active-explanation {
+            background: #040e1f;
+            border: 1px dashed var(--border-cyan);
+            padding: 12px 16px;
+            font-size: 0.8rem;
+            color: var(--text-cyan);
+        }
+
+        /* Workspace Grid */
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-cyan);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #102a45;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+        }
+
+        .panel-title {
+            color: var(--text-gold);
+            font-size: 0.95rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Controls / Inputs */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .input-row {
+            background: var(--sub-panel-bg);
+            border: 1px solid #102a45;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .input-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-label {
+            color: var(--text-white);
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .input-sub {
+            color: var(--text-muted);
+            font-size: 0.7rem;
+        }
+
+        .toggle-btn {
+            background: #030a16;
+            border: 1px solid var(--border-cyan);
+            color: var(--text-cyan);
+            padding: 4px 12px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .toggle-btn.active {
+            background: var(--text-red);
+            color: #fff;
+            border-color: var(--text-red);
+        }
+
+        /* Circuit Canvas / Logic Gate Display */
+        .circuit-canvas {
+            background: #020710;
+            border: 1px solid #102a45;
+            height: 280px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .gate-box {
+            border: 1px solid var(--border-cyan);
+            background: var(--sub-panel-bg);
+            padding: 12px;
+            text-align: center;
+            width: 110px;
+            font-size: 0.8rem;
+            position: relative;
+        }
+
+        .gate-title {
+            color: var(--text-gold);
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .gate-status {
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .signal-line {
+            height: 2px;
+            background: var(--text-muted);
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .signal-line.active {
+            background: var(--text-red);
+            box-shadow: 0 0 8px var(--text-red);
+        }
+
+        .signal-line.ok {
+            background: var(--text-green);
+            box-shadow: 0 0 8px var(--text-green);
+        }
+
+        .output-box {
+            border: 2px solid var(--border-gold);
+            background: var(--panel-bg);
+            padding: 16px;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .output-title {
+            color: var(--text-gold);
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .output-state {
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 6px;
+        }
+
+        .state-safe {
+            color: var(--text-green);
+            border: 1px solid var(--text-green);
+            background: rgba(80, 250, 123, 0.1);
+        }
+
+        .state-triggered {
+            color: var(--text-red);
+            border: 1px solid var(--text-red);
+            background: rgba(255, 51, 102, 0.15);
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { box-shadow: 0 0 4px var(--text-red); }
+            to { box-shadow: 0 0 16px var(--text-red); }
+        }
+
+        /* Waveform & Truth Table Section */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* Truth Table */
+        .truth-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.72rem;
+            text-align: center;
+        }
+
+        .truth-table th {
+            background: var(--sub-panel-bg);
+            color: var(--text-gold);
+            border: 1px solid #102a45;
+            padding: 6px 4px;
+        }
+
+        .truth-table td {
+            border: 1px solid #102a45;
+            padding: 6px 4px;
+            color: var(--text-white);
+        }
+
+        .truth-table tr.highlight {
+            background: rgba(255, 204, 0, 0.15);
+            border: 1px solid var(--border-gold);
+        }
+
+        .truth-table td.val-alert {
+            color: var(--text-red);
+            font-weight: bold;
+        }
+
+        .truth-table td.val-ok {
+            color: var(--text-green);
+        }
+
+        /* Waveform Monitor */
+        .waveform-display {
+            background: #020710;
+            border: 1px solid #102a45;
+            height: 180px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .wave-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+        }
+
+        .wave-label {
+            width: 90px;
+            color: var(--text-muted);
+        }
+
+        .wave-svg {
+            flex-grow: 1;
+            height: 30px;
+        }
+
+        .wave-path {
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* Footer Controls */
+        .footer {
+            border: 1px solid var(--border-cyan);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--panel-bg);
+            font-size: 0.75rem;
+            margin-top: 24px;
+        }
+
+        .footer-line-1 { color: var(--text-gold); }
+        .footer-line-2 { color: var(--text-muted); }
+        .footer-status {
+            color: var(--text-gold);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-green);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .btn-action {
+            background: transparent;
+            border: 1px solid var(--border-cyan);
+            color: var(--text-cyan);
+            padding: 6px 14px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .btn-action:hover {
+            background-color: rgba(0, 216, 255, 0.1);
+            box-shadow: 0 0 8px rgba(0, 216, 255, 0.4);
+        }
+
+        @media (max-width: 1024px) {
+            .scenario-grid { grid-template-columns: repeat(2, 1fr); }
+            .workspace-grid { grid-template-columns: 1fr; }
+            .bottom-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .scenario-grid { grid-template-columns: 1fr; }
+            .header { flex-direction: column; gap: 10px; }
+            .header-meta { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header Blueprint -->
+    <header class="header">
+        <div class="header-title">
+            <h1>FAIL-SAFE CONTROL MASTER LOGIC BLUEPRINT <span class="badge">SCADA / PLC</span></h1>
+            <p>Hardware Schematic for Fail-Safe Interlocks &amp; Zero-Mortality Overrides</p>
+        </div>
+        <div class="header-meta">
+            <div class="meta-box">
+                <span>DOC ID</span>
+                <strong>LEP-FSC-001</strong>
+            </div>
+            <div class="meta-box">
+                <span>VERSION</span>
+                <strong>v3.0-PRESTIGE</strong>
+            </div>
+            <div class="meta-box">
+                <span>AUTHORIZATION</span>
+                <strong>S.W. KHUZWAYO</strong>
+            </div>
+        </div>
+    </header>
+
+    <!-- Teachable Scenarios Engine -->
+    <section class="walkthrough-panel">
+        <div class="walkthrough-header">
+            <div class="walkthrough-title">
+                ⚡ Interactive Operational Scenarios <span class="engine-badge">TEACHABILITY ENGINE V1.0</span>
+            </div>
+        </div>
+        <p class="walkthrough-desc">
+            Select an operational condition below to simulate how SCADA logic gates, truth table indices, and physical fail-safe triggers automatically execute to guarantee Zero Mortality.
+        </p>
+        <div class="scenario-grid">
+            <div class="scenario-card active" onclick="selectScenario(0)">
+                <div class="scenario-time">MODE 01 — NOMINAL</div>
+                <div class="scenario-name">Normal Operations</div>
+                <div class="scenario-text">All environmental sensors normal, grid power active, backup standby online.</div>
+            </div>
+            <div class="scenario-card" onclick="selectScenario(1)">
+                <div class="scenario-time">MODE 02 — HEAT SPIKE</div>
+                <div class="scenario-name">Thermal Threshold</div>
+                <div class="scenario-text">House temperature exceeds 30°C limit. Triggers emergency air exhaust purge.</div>
+            </div>
+            <div class="scenario-card" onclick="selectScenario(2)">
+                <div class="scenario-time">MODE 03 — GAS SPIKE</div>
+                <div class="scenario-name">Ammonia Hazard</div>
+                <div class="scenario-text">Ammonia exceeds 20 ppm limit. Triggers purge mode to protect flock.</div>
+            </div>
+            <div class="scenario-card" onclick="selectScenario(3)">
+                <div class="scenario-time">MODE 04 — BLACKOUT</div>
+                <div class="scenario-name">Total Power Loss</div>
+                <div class="scenario-text">Mains grid down &amp; generator fails. De-energizes curtain solenoids safely.</div>
+            </div>
+        </div>
+        <div class="active-explanation" id="scenario-explanation"><strong>NOMINAL MODE:</strong> System running in standard closed-loop feedback mode. Grid power online, environmental thresholds optimal. Zero mortality risk.</div>
+    </section>
+
+    <!-- Main Workspace Grid -->
+    <div class="workspace-grid">
+        <!-- Digital Inputs / Controls -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">🎛️ Digital Inputs</div>
+                <span style="font-size: 0.7rem; color: var(--text-muted);">LIVE CALIBRATION</span>
+            </div>
+            <div class="input-group">
+                <div class="input-row">
+                    <div class="input-info">
+                        <span class="input-label">A: Temp &gt; 30°C</span>
+                        <span class="input-sub">Thermal Over-Limit Sensor</span>
+                    </div>
+                    <button class="toggle-btn" id="btn-in-a" onclick="toggleInput(&#39;A&#39;)">0 (NORMAL)</button>
+                </div>
+                <div class="input-row">
+                    <div class="input-info">
+                        <span class="input-label">B: NH3 &gt; 20 ppm</span>
+                        <span class="input-sub">Ammonia Gas Sensor</span>
+                    </div>
+                    <button class="toggle-btn" id="btn-in-b" onclick="toggleInput(&#39;B&#39;)">0 (NORMAL)</button>
+                </div>
+                <div class="input-row">
+                    <div class="input-info">
+                        <span class="input-label">C: Mains Power Loss</span>
+                        <span class="input-sub">Grid Voltage Relay Interrupt</span>
+                    </div>
+                    <button class="toggle-btn" id="btn-in-c" onclick="toggleInput(&#39;C&#39;)">0 (NORMAL)</button>
+                </div>
+                <div class="input-row">
+                    <div class="input-info">
+                        <span class="input-label">D: Generator Fail</span>
+                        <span class="input-sub">Backup Generator Lockout</span>
+                    </div>
+                    <button class="toggle-btn" id="btn-in-d" onclick="toggleInput(&#39;D&#39;)">0 (NORMAL)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logic Gates Circuit Visualizer -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">🔌 SCADA / CMOS Logic Circuit Topology</div>
+                <button class="btn-action" onclick="resetInputs()">Reset Circuit</button>
+            </div>
+            <div class="circuit-canvas">
+                <!-- Gate 1: Environmental OR -->
+                <div class="gate-box">
+                    <div class="gate-title">OR GATE 1</div>
+                    <div style="font-size: 0.65rem; color: var(--text-muted);">Environmental</div>
+                    <div class="gate-status" id="gate-or1-status" style="color: var(--text-muted);">0 (LOW)</div>
+                </div>
+
+                <div class="signal-line ok" id="line-1"></div>
+
+                <!-- Gate 2: Power AND -->
+                <div class="gate-box">
+                    <div class="gate-title">AND GATE</div>
+                    <div style="font-size: 0.65rem; color: var(--text-muted);">Power Interlock</div>
+                    <div class="gate-status" id="gate-and-status" style="color: var(--text-muted);">0 (LOW)</div>
+                </div>
+
+                <div class="signal-line ok" id="line-2"></div>
+
+                <!-- Gate 3: Master OR -->
+                <div class="gate-box">
+                    <div class="gate-title">OR GATE 2</div>
+                    <div style="font-size: 0.65rem; color: var(--text-muted);">Master Trigger</div>
+                    <div class="gate-status" id="gate-or2-status" style="color: var(--text-muted);">0 (LOW)</div>
+                </div>
+
+                <div class="signal-line ok" id="line-out"></div>
+
+                <!-- Output Stage -->
+                <div class="output-box">
+                    <div class="output-title">FAIL-SAFE OVERRIDE</div>
+                    <div class="output-state state-safe" id="output-display">STANDBY (0)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Data Grid -->
+    <div class="bottom-grid">
+        <!-- Truth Table -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">📊 Truth Table Evaluation</div>
+            </div>
+            <table class="truth-table">
+                <thead>
+                    <tr>
+                        <th>Temp (A)</th>
+                        <th>Gas (B)</th>
+                        <th>Mains (C)</th>
+                        <th>Gen (D)</th>
+                        <th>FAIL_SAFE_ACTIVE</th>
+                        <th>Operational State</th>
+                    </tr>
+                </thead>
+                <tbody id="truth-table-body"><tr class="highlight">
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="val-ok">0</td>
+                <td style="text-align: left; padding-left: 8px;">Normal Tunnel Ventilation Active</td>
+            </tr><tr>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="val-alert">1</td>
+                <td style="text-align: left; padding-left: 8px;">Curtain Drop &amp; 100% Exhaust Override</td>
+            </tr><tr>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="val-alert">1</td>
+                <td style="text-align: left; padding-left: 8px;">Purge Exhaust Fans Active</td>
+            </tr><tr>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>0</td>
+                <td class="val-ok">0</td>
+                <td style="text-align: left; padding-left: 8px;">Generator Auto Take-Over (&lt; 6s)</td>
+            </tr><tr>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>1</td>
+                <td class="val-alert">1</td>
+                <td style="text-align: left; padding-left: 8px;">Blackout Mode — Passive Curtain Drop</td>
+            </tr><tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td class="val-alert">1</td>
+                <td style="text-align: left; padding-left: 8px;">Total Emergency Fail-Safe Triggered</td>
+            </tr></tbody>
+            </table>
+        </div>
+
+        <!-- Waveform Monitor -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-title">📈 Signal Waveform Timing Monitor</div>
+            </div>
+            <div class="waveform-display">
+                <div class="wave-row">
+                    <span class="wave-label">Mains Power (C)</span>
+                    <svg class="wave-svg"><path id="wave-c" class="wave-path" stroke="#00d8ff" d="M0,25 L80,25 L80,25 L160,25 L160,25 L240,25 L240,25 L320,25"></path></svg>
+                </div>
+                <div class="wave-row">
+                    <span class="wave-label">Gen Backup (D)</span>
+                    <svg class="wave-svg"><path id="wave-d" class="wave-path" stroke="#ffcc00" d="M0,25 L80,25 L80,25 L160,25 L160,25 L240,25 L240,25 L320,25"></path></svg>
+                </div>
+                <div class="wave-row">
+                    <span class="wave-label">Env Hazard (A/B)</span>
+                    <svg class="wave-svg"><path id="wave-env" class="wave-path" stroke="#50fa7b" d="M0,25 L80,25 L80,25 L160,25 L240,25 L320,25"></path></svg>
+                </div>
+                <div class="wave-row">
+                    <span class="wave-label">Fail-Safe Trigger</span>
+                    <svg class="wave-svg"><path id="wave-out" class="wave-path" stroke="#ff3366" d="M0,25 L80,25 L80,25 L160,25 L240,25 L320,25"></path></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Blueprint Controls -->
+    <footer class="footer">
+        <div class="footer-info">
+            <div class="footer-line-1">PROJECT: LEP-IMP-ENG-2026 | MODULE: BROILER FAIL-SAFE SCADA CONTROLLER</div>
+            <div class="footer-line-2">PROPRIETARY INTELLECTUAL PROPERTY: LWANDILE ENGINEERING PROJECTS (PTY) LTD</div>
+            <div class="footer-status"><span class="status-dot"></span> SYSTEM LOGIC ACTIVE — NO FAILURES DETECTED</div>
+        </div>
+        <div>
+            <button class="btn-action" onclick="alert(&#39;Logic Formula: FAIL_SAFE_ACTIVE = (A OR B) OR (C AND D)&#39;)">View Formula</button>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Input Logic State
+    let inputs = { A: 0, B: 0, C: 0, D: 0 };
+
+    const truthTableData = [
+        { a: 0, b: 0, c: 0, d: 0, out: 0, desc: "Normal Tunnel Ventilation Active" },
+        { a: 1, b: 0, c: 0, d: 0, out: 1, desc: "Curtain Drop & 100% Exhaust Override" },
+        { a: 0, b: 1, c: 0, d: 0, out: 1, desc: "Purge Exhaust Fans Active" },
+        { a: 0, b: 0, c: 1, d: 0, out: 0, desc: "Generator Auto Take-Over (< 6s)" },
+        { a: 0, b: 0, c: 1, d: 1, out: 1, desc: "Blackout Mode — Passive Curtain Drop" },
+        { a: 1, b: 1, c: 1, d: 1, out: 1, desc: "Total Emergency Fail-Safe Triggered" }
+    ];
+
+    const scenarioExplanations = [
+        "<strong>NOMINAL MODE:</strong> System running in standard closed-loop feedback mode. Grid power online, environmental thresholds optimal. Zero mortality risk.",
+        "<strong>THERMAL OVERRIDE:</strong> High house temperature detected (T > 30°C). OR Gate 1 activates, forcing master trigger to engage 100% emergency ventilation purge.",
+        "<strong>AMMONIA OVERRIDE:</strong> Gas sensor threshold breached (NH3 > 20 ppm). OR Gate 1 engages exhaust override to rapidly replace air volume.",
+        "<strong>BLACKOUT FAIL-SAFE:</strong> Mains grid power lost AND generator fails to start. AND Gate engages, forcing passive curtain solenoids to de-energize and drop by gravity."
+    ];
+
+    function updateLogic() {
+        // Calculate Logic Gates
+        const or1 = inputs.A || inputs.B;
+        const and1 = inputs.C && inputs.D;
+        const masterOut = or1 || and1;
+
+        // Update Gate Display Status
+        const elem = id => document.getElementById(id);
+
+        elem('gate-or1-status').innerText = or1 ? "1 (HIGH)" : "0 (LOW)";
+        elem('gate-or1-status').style.color = or1 ? "var(--text-red)" : "var(--text-muted)";
+
+        elem('gate-and-status').innerText = and1 ? "1 (HIGH)" : "0 (LOW)";
+        elem('gate-and-status').style.color = and1 ? "var(--text-red)" : "var(--text-muted)";
+
+        elem('gate-or2-status').innerText = masterOut ? "1 (HIGH)" : "0 (LOW)";
+        elem('gate-or2-status').style.color = masterOut ? "var(--text-red)" : "var(--text-muted)";
+
+        // Update Lines
+        elem('line-1').className = "signal-line " + (or1 ? "active" : "ok");
+        elem('line-2').className = "signal-line " + (and1 ? "active" : "ok");
+        elem('line-out').className = "signal-line " + (masterOut ? "active" : "ok");
+
+        // Update Output Display
+        const outBox = elem('output-display');
+        if (masterOut) {
+            outBox.innerText = "TRIGGERED (1)";
+            outBox.className = "output-state state-triggered";
+        } else {
+            outBox.innerText = "STANDBY (0)";
+            outBox.className = "output-state state-safe";
+        }
+
+        // Update Button UI
+        ['A', 'B', 'C', 'D'].forEach(key => {
+            const btn = elem(`btn-in-${key.toLowerCase()}`);
+            btn.innerText = inputs[key] ? "1 (FAULT)" : "0 (NORMAL)";
+            if (inputs[key]) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+
+        renderTruthTable(masterOut);
+        updateWaveforms();
+    }
+
+    function toggleInput(key) {
+        inputs[key] = inputs[key] ? 0 : 1;
+        updateLogic();
+    }
+
+    function selectScenario(index) {
+        const cards = document.querySelectorAll('.scenario-card');
+        cards.forEach((c, i) => {
+            if (i === index) c.classList.add('active');
+            else c.classList.remove('active');
+        });
+
+        document.getElementById('scenario-explanation').innerHTML = scenarioExplanations[index];
+
+        // Set inputs based on scenario
+        if (index === 0) { inputs = { A: 0, B: 0, C: 0, D: 0 }; }
+        else if (index === 1) { inputs = { A: 1, B: 0, C: 0, D: 0 }; }
+        else if (index === 2) { inputs = { A: 0, B: 1, C: 0, D: 0 }; }
+        else if (index === 3) { inputs = { A: 0, B: 0, C: 1, D: 1 }; }
+
+        updateLogic();
+    }
+
+    function resetInputs() {
+        selectScenario(0);
+    }
+
+    function renderTruthTable(activeOut) {
+        const tbody = document.getElementById('truth-table-body');
+        tbody.innerHTML = '';
+
+        truthTableData.forEach(row => {
+            const isCurrent = (row.a === inputs.A && row.b === inputs.B && row.c === inputs.C && row.d === inputs.D);
+            const tr = document.createElement('tr');
+            if (isCurrent) tr.className = 'highlight';
+
+            tr.innerHTML = `
+                <td>${row.a}</td>
+                <td>${row.b}</td>
+                <td>${row.c}</td>
+                <td>${row.d}</td>
+                <td class="${row.out ? 'val-alert' : 'val-ok'}">${row.out}</td>
+                <td style="text-align: left; padding-left: 8px;">${row.desc}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function updateWaveforms() {
+        const pathC = inputs.C ? "M0,5 L80,5 L80,25 L160,25 L160,25 L240,25 L240,25 L320,25" : "M0,25 L80,25 L80,25 L160,25 L160,25 L240,25 L240,25 L320,25";
+        const pathD = inputs.D ? "M0,25 L80,25 L80,5 L160,5 L160,5 L240,5 L240,5 L320,5" : "M0,25 L80,25 L80,25 L160,25 L160,25 L240,25 L240,25 L320,25";
+        const envVal = (inputs.A || inputs.B);
+        const pathEnv = envVal ? "M0,25 L80,25 L80,25 L160,5 L240,5 L320,5" : "M0,25 L80,25 L80,25 L160,25 L240,25 L320,25";
+        const masterOut = (inputs.A || inputs.B) || (inputs.C && inputs.D);
+        const pathOut = masterOut ? "M0,25 L80,25 L80,25 L160,25 L200,5 L320,5" : "M0,25 L80,25 L80,25 L160,25 L240,25 L320,25";
+
+        document.getElementById('wave-c').setAttribute('d', pathC);
+        document.getElementById('wave-d').setAttribute('d', pathD);
+        document.getElementById('wave-env').setAttribute('d', pathEnv);
+        document.getElementById('wave-out').setAttribute('d', pathOut);
+    }
+
+    // Initialize Logic Engine
+    updateLogic();
+</script>
+
+
+</body></html>

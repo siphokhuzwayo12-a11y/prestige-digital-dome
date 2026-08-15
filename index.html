@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precision Alliance Pack | Standalone Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #050811;
+            color: #e2e8f0;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(15, 23, 42, 0.8) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .mono-font { font-family: 'JetBrains Mono', monospace; }
+        .card-glow {
+            background: rgba(10, 15, 29, 0.85);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+        .card-glow:hover {
+            border-color: rgba(59, 130, 246, 0.8);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+
+    <div class="max-w-6xl mx-auto space-y-8">
+
+        <!-- HEADER PORTAL -->
+        <header class="card-glow p-8 rounded-2xl border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+                <div class="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-widest mono-font mb-2">
+                    <i class="fa-solid fa-folder-closed"></i> Standalone Access Vault
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-white">PRECISION ALLIANCE PACK</h1>
+                <p class="text-sm text-slate-400 mt-1">Autonomous Portal & Archived Investment Deliverables</p>
+            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 mono-font text-xs space-y-1">
+                <div class="text-slate-500">SYSTEM AUTHORIZATION</div>
+                <div class="text-emerald-400 font-bold">SIPHO WISEMAN KHUZWAYO</div>
+                <div class="text-slate-400 text-[10px]">SCAPUSH PRECISION MODE</div>
+            </div>
+        </header>
+
+        <!-- MODULE ARCHIVE GRID -->
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- 1. SCADA TELEMETRY -->
+            <div class="card-glow p-6 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-blue-950/80 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-4">
+                        <i class="fa-solid fa-microchip text-lg"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-white mb-2">SCADA Telemetry Logic</h2>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                        74HC series hardware gate logic, sensor input integration, and automated actuator mapping.
+                    </p>
+                </div>
+                <a href="./SCADA_TELEMETRY_LOGIC_MODULES/" class="mono-font text-xs font-bold text-blue-400 hover:text-blue-300 flex items-center gap-2">
+                    OPEN MODULE <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- 2. ZERO-MORTALITY SYSTEM DESIGN -->
+            <div class="card-glow p-6 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-emerald-950/80 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-4">
+                        <i class="fa-solid fa-shield-virus text-lg"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-white mb-2">Zero-Mortality System</h2>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                        Dwarf wall curtain dynamics, negative-pressure swine systems, and biosecurity containment layers.
+                    </p>
+                </div>
+                <a href="./ZERO-MORTALITY_SYSTEM_DESIGN_MODULES/" class="mono-font text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-2">
+                    OPEN MODULE <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- 3. TEACHABILITY MODULES -->
+            <div class="card-glow p-6 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-purple-950/80 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-white mb-2">Teachability Simulations</h2>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                        Interactive educational blueprints, operator training modules, and real-time truth tables.
+                    </p>
+                </div>
+                <a href="./TEACHABILITY_MODULES/" class="mono-font text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center gap-2">
+                    OPEN MODULE <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- 4. FUNDER READY MODULES -->
+            <div class="card-glow p-6 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-amber-950/80 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4">
+                        <i class="fa-solid fa-briefcase text-lg"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-white mb-2">Funder-Ready Package</h2>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                        Executive presentations, investor proposal architecture, and commercial scalability matrices.
+                    </p>
+                </div>
+                <a href="./FUNDER_READY_MODULES/" class="mono-font text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center gap-2">
+                    OPEN MODULE <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <!-- 5. FINANCIALS MODULES -->
+            <div class="card-glow p-6 rounded-xl flex flex-col justify-between">
+                <div>
+                    <div class="w-10 h-10 rounded-lg bg-cyan-950/80 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-4">
+                        <i class="fa-solid fa-chart-line text-lg"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-white mb-2">Financial Models</h2>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                        CAPEX/OPEX breakdowns, yield forecast metrics, and modular profitability modeling.
+                    </p>
+                </div>
+                <a href="./FINANCIALS_MODULES/" class="mono-font text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-2">
+                    OPEN MODULE <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+
+        </main>
+
+        <footer class="text-center text-xs text-slate-600 mono-font pt-6">
+            PRECISION ALLIANCE PACK &bull; SCAPUSH ARCHIVAL PROTOCOL
+        </footer>
+
+    </div>
+
+</body>
+</html>

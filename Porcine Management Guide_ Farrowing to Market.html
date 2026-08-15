@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/ASUS/Downloads/gemini-code-1786025078982.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porcine Management Guide: Farrowing to Market</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #10b981;
+            --accent-hover: #059669;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .presentation-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            min-height: 550px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            display: none;
+            padding: 40px;
+            flex-grow: 1;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .slide-title {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .slide-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .info-card {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .info-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .info-card ul {
+            list-style-type: none;
+        }
+
+        .info-card ul li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .info-card ul li strong {
+            color: var(--text-main);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn:disabled {
+            background-color: var(--border-color);
+            color: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        .slide-indicator {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .price-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation-container">
+    
+    <!-- Slide 1 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Stage 1: Suckling / Creep Phase</h2>
+            <p class="slide-subtitle">Age: 0 to 3–4 Weeks | Target Weight: Up to 7–8 kg</p>
+        </div>
+        <div class="grid-layout">
+            <div class="info-card">
+                <h4>Nutrition &amp; Feed</h4>
+                <ul>
+                    <li><strong>Feed Type:</strong> Sow Milk + Highly digestible Creep Feed (Pellets/Crumble).</li>
+                    <li><strong>Daily Quantity:</strong> Starts at 10–50 g/pig/day, scaling up to 150–200 g/day.</li>
+                    <li><strong>Estimated Cost:</strong> ~$1.20 – $1.80 / kg of feed.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Health &amp; Vaccination</h4>
+                <ul>
+                    <li><strong>Day 1–3:</strong> Iron injection (100–200 mg) &amp; tail docking/castration (if applicable).</li>
+                    <li><strong>Day 7–14:</strong> Mycoplasma hyopneumoniae (1st dose) &amp; PCV2 (Porcine Circovirus).</li>
+                    <li><strong>Water:</strong> Ensure fresh water is available next to creep feed.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Welfare &amp; Environment</h4>
+                <ul>
+                    <li><strong>Temperature:</strong> Heat lamp zone at 30°C–32°C for piglets; sow zone at 18°C–20°C.</li>
+                    <li><strong>Bedding/Flooring:</strong> Dry, non-slip mats under heat lamp to prevent crushing.</li>
+                    <li><strong>Care:</strong> Check for colostrum uptake within first 6 hours.</li>
+                </ul>
+            </div>
+        </div>
+        <p class="price-note">*Note: Feed costs vary by local market conditions; values shown represent average commercial estimates.</p>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Stage 2: Weaner / Nursery Phase</h2>
+            <p class="slide-subtitle">Age: 4 to 10 Weeks | Target Weight: 8 kg to 25–30 kg</p>
+        </div>
+        <div class="grid-layout">
+            <div class="info-card">
+                <h4>Nutrition &amp; Feed</h4>
+                <ul>
+                    <li><strong>Feed Type:</strong> Starter I &amp; II Rations (High protein, enriched amino acids).</li>
+                    <li><strong>Daily Quantity:</strong> 0.4 kg to 1.2 kg / pig / day.</li>
+                    <li><strong>Estimated Cost:</strong> ~$0.55 – $0.75 / kg of feed.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Health &amp; Vaccination</h4>
+                <ul>
+                    <li><strong>Week 4–5:</strong> Booster for Mycoplasma &amp; PCV2 (if 2-dose protocol).</li>
+                    <li><strong>Week 6:</strong> Erysipelas &amp; PRRS (Porcine Reproductive and Respiratory Syndrome) if endemic.</li>
+                    <li><strong>Monitoring:</strong> Watch closely for Post-Weaning Diarrhea (PWD) and Strep. suis.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Welfare &amp; Environment</h4>
+                <ul>
+                    <li><strong>Temperature:</strong> Weaning start at 26°C–28°C, gradually lower to 22°C by Week 10.</li>
+                    <li><strong>Group Dynamics:</strong> Group by uniform weight; maintain low stocking density (0.3 m²/pig).</li>
+                    <li><strong>Enrichment:</strong> Provide chewable toys (chains, wood blocks, suspended ropes).</li>
+                </ul>
+            </div>
+        </div>
+        <p class="price-note">*Note: Transition feeds smoothly over 3–5 days to prevent digestive stress.</p>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Stage 3: Grower Phase</h2>
+            <p class="slide-subtitle">Age: 10 to 16 Weeks | Target Weight: 30 kg to 60–65 kg</p>
+        </div>
+        <div class="grid-layout">
+            <div class="info-card">
+                <h4>Nutrition &amp; Feed</h4>
+                <ul>
+                    <li><strong>Feed Type:</strong> Grower Ration (Standard grain/soybean meal mash or pellets).</li>
+                    <li><strong>Daily Quantity:</strong> 1.5 kg to 2.2 kg / pig / day.</li>
+                    <li><strong>Estimated Cost:</strong> ~$0.38 – $0.48 / kg of feed.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Health &amp; Vaccination</h4>
+                <ul>
+                    <li><strong>Internal Parasites:</strong> Deworming via feed/water around Week 10–12.</li>
+                    <li><strong>Boosters:</strong> Actinobacillus pleuropneumoniae (APP) or Lawsonia if indicated by vet.</li>
+                    <li><strong>Biosecurity:</strong> Maintain strict footbaths and vermin control.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Welfare &amp; Environment</h4>
+                <ul>
+                    <li><strong>Temperature:</strong> Target ambient range: 18°C–20°C.</li>
+                    <li><strong>Space:</strong> Minimum space requirement increases to 0.55–0.65 m²/pig.</li>
+                    <li><strong>Ventilation:</strong> High airflow needed to manage humidity and ammonia (&lt;10 ppm).</li>
+                </ul>
+            </div>
+        </div>
+        <p class="price-note">*Note: Rapid muscular growth occurs in this phase; maintain balanced lysine-to-energy ratios.</p>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+        <div class="slide-header">
+            <h2 class="slide-title">Stage 4: Finisher Phase</h2>
+            <p class="slide-subtitle">Age: 16 to 22–24 Weeks | Target Weight: 65 kg to 100–115 kg</p>
+        </div>
+        <div class="grid-layout">
+            <div class="info-card">
+                <h4>Nutrition &amp; Feed</h4>
+                <ul>
+                    <li><strong>Feed Type:</strong> Finisher Ration (Lower protein, higher energy ratio).</li>
+                    <li><strong>Daily Quantity:</strong> 2.5 kg to 3.5 kg / pig / day.</li>
+                    <li><strong>Estimated Cost:</strong> ~$0.32 – $0.42 / kg of feed.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Health &amp; Withdrawal</h4>
+                <ul>
+                    <li><strong>Withdrawal Periods:</strong> Mandatory clearance for ALL medications/feed additives before slaughter (usually 14–28 days).</li>
+                    <li><strong>Health Monitoring:</strong> Daily checks for respiratory issues or lameness.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Welfare &amp; Environment</h4>
+                <ul>
+                    <li><strong>Temperature:</strong> Ideal range: 15°C–18°C (Watch for heat stress above 24°C).</li>
+                    <li><strong>Space:</strong> Minimum space allocation: 0.75–0.90 m²/pig.</li>
+                    <li><strong>Cooling:</strong> Utilize sprinklers/drip systems in warm climates.</li>
+                </ul>
+            </div>
+        </div>
+        <p class="price-note">*Note: Finisher feed accounts for approximately 60–65% of total lifetime feed costs.</p>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide active">
+        <div class="slide-header">
+            <h2 class="slide-title">Stage 5: Market Dispatch &amp; Transport</h2>
+            <p class="slide-subtitle">Target Weight: 110–125 kg | Final Preparation</p>
+        </div>
+        <div class="grid-layout">
+            <div class="info-card">
+                <h4>Pre-Sale Preparation</h4>
+                <ul>
+                    <li><strong>Feed Withdrawal:</strong> Fast pigs for 12–18 hours prior to slaughter (improves meat safety &amp; cuts waste). Continuous water access required.</li>
+                    <li><strong>Documentation:</strong> Verify chain-of-custody, medication withdrawal logs, and health certificates.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Loading &amp; Handling</h4>
+                <ul>
+                    <li><strong>Handling:</strong> Use soundboard/paddles only. Never use electric prods. Move in small groups (3–5 pigs).</li>
+                    <li><strong>Ramp Design:</strong> Non-slip flooring with an incline angle under 20 degrees.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h4>Transport Welfare</h4>
+                <ul>
+                    <li><strong>Density:</strong> Provide approx 0.4–0.5 m² per 100 kg pig during transit.</li>
+                    <li><strong>Climate Control:</strong> Schedule transport for early morning/night during hot weather. Bedding (straw/sawdust) based on season.</li>
+                </ul>
+            </div>
+        </div>
+        <p class="price-note">*Note: Minimizing pre-slaughter stress directly prevents Pale, Soft, and Exudative (PSE) meat defects.</p>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="controls">
+        <button class="btn" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+        <span class="slide-indicator" id="slideIndicator">Slide 5 of 5</span>
+        <button class="btn" id="nextBtn" onclick="changeSlide(1)" disabled="">Next</button>
+    </div>
+
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const slideIndicator = document.getElementById('slideIndicator');
+
+    function updateSlide() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === currentSlide) {
+                slide.classList.add('active');
+            }
+        });
+
+        slideIndicator.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+        
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === slides.length - 1;
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide < 0) currentSlide = 0;
+        if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+        updateSlide();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) {
+            changeSlide(1);
+        } else if (e.key === 'ArrowLeft' && currentSlide > 0) {
+            changeSlide(-1);
+        }
+    });
+</script>
+
+
+</body></html>
