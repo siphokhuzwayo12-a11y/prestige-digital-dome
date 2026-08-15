@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/ASUS/Downloads/gemini-code-1786024437303.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4-Pod Broiler Management Schema</title>
+    <style>
+        :root {
+            --bg-color: #030a16;
+            --panel-bg: #071325;
+            --card-bg: #0c1b33;
+            --border-gold: #d4af37;
+            --cyan-accent: #00f0ff;
+            --red-accent: #ff3344;
+            --text-gold: #ffd700;
+            --text-dim: #7a8b9e;
+            --text-bright: #e0f2fe;
+            --font-mono: 'Courier New', Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-bright);
+            font-family: var(--font-mono);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .cad-frame {
+            width: 100%;
+            max-width: 1250px;
+            background-color: var(--panel-bg);
+            border: 2px solid var(--cyan-accent);
+            border-radius: 4px;
+            padding: 24px;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+            position: relative;
+        }
+
+        .header {
+            border-bottom: 2px solid var(--border-gold);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .title-main {
+            color: var(--text-gold);
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .title-sub {
+            color: var(--cyan-accent);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .meta-right {
+            text-align: right;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .meta-right strong {
+            color: var(--text-gold);
+        }
+
+        .cad-layers {
+            display: flex;
+            gap: 15px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 12px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .layer-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+        }
+
+        .slide-container {
+            display: none;
+            min-height: 380px;
+        }
+
+        .slide-container.active {
+            display: block;
+        }
+
+        /* Pod Grid Layout */
+        .pod-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .pod-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-gold);
+            border-radius: 4px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+        }
+
+        .pod-header {
+            color: var(--text-gold);
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 6px;
+        }
+
+        .pod-badge {
+            background-color: rgba(0, 240, 255, 0.1);
+            border: 1px dashed var(--cyan-accent);
+            padding: 6px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--cyan-accent);
+        }
+
+        .metric-group {
+            font-size: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+            padding-bottom: 3px;
+        }
+
+        .metric-label {
+            color: var(--text-dim);
+        }
+
+        .metric-value {
+            color: var(--text-bright);
+            font-weight: bold;
+        }
+
+        .highlight-red { color: var(--red-accent); }
+        .highlight-cyan { color: var(--cyan-accent); }
+        .highlight-gold { color: var(--text-gold); }
+
+        /* Footer & Blueprint Info Block */
+        .blueprint-footer {
+            margin-top: 24px;
+            border: 1px solid var(--border-gold);
+            padding: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .blueprint-info {
+            font-size: 0.7rem;
+            line-height: 1.4;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--cyan-accent);
+            color: var(--cyan-accent);
+            padding: 6px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn:hover:not(:disabled) {
+            background-color: var(--cyan-accent);
+            color: var(--bg-color);
+            box-shadow: 0 0 10px var(--cyan-accent);
+        }
+
+        .btn:disabled {
+            border-color: var(--text-dim);
+            color: var(--text-dim);
+            cursor: not-allowed;
+            opacity: 0.4;
+        }
+
+        .slide-indicator {
+            font-size: 0.85rem;
+            color: var(--text-gold);
+            letter-spacing: 1px;
+        }
+
+        .schema-status {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--text-gold);
+        }
+
+        @media (max-width: 900px) {
+            .pod-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 550px) {
+            .pod-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cad-frame">
+    <!-- Header Block -->
+    <div class="header">
+        <div>
+            <div class="title-main" id="slide-title">BROILER WELFARE &amp; MARKET DISPATCH SCHEMATIC</div>
+            <div class="title-sub" id="slide-subtitle">Project: LEP-IMP-ENG-2026 | Environmental Welfare, Feed Withdrawal &amp; Transport Logistics</div>
+        </div>
+        <div class="meta-right">
+            DESIGN ARCHITECT: <strong>Sipho Wiseman Khuzwayo</strong><br>
+            MANAGING DIRECTOR | LWANDILE ENGINEERING PROJECTS
+        </div>
+    </div>
+
+    <!-- Dynamic Layer Bar -->
+    <div class="cad-layers" id="layer-bar"><span style="color:var(--text-gold); font-weight:bold; margin-right:8px;">SCHEMA LAYERS:</span>
+                <div class="layer-item">
+                    <div class="indicator" style="background-color: #ffd700;"></div>
+                    <span>Welfare Controls</span>
+                </div>
+            
+                <div class="layer-item">
+                    <div class="indicator" style="background-color: #00f0ff;"></div>
+                    <span>Feed Withdrawal</span>
+                </div>
+            
+                <div class="layer-item">
+                    <div class="indicator" style="background-color: #ff3344;"></div>
+                    <span>Humane Harvest</span>
+                </div>
+            
+                <div class="layer-item">
+                    <div class="indicator" style="background-color: #7a8b9e;"></div>
+                    <span>Market Dispatch</span>
+                </div>
+            </div>
+
+    <!-- SLIDE 1: FEEDING REQUIREMENTS & COSTS -->
+    <div class="slide-container" id="slide-1">
+        <div class="pod-grid">
+            <!-- Pod 1 -->
+            <div class="pod-card">
+                <div class="pod-header">POD 01</div>
+                <div class="pod-badge">Week 1 (Chicks: Day 0–7)</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Feed Type:</span><span class="metric-value highlight-gold">Starter Crumbles</span></div>
+                    <div class="metric-row"><span class="metric-label">CP / ME Content:</span><span class="metric-value">22% CP | 3,000 kcal</span></div>
+                    <div class="metric-row"><span class="metric-label">Daily / Bird:</span><span class="metric-value">22g - 30g</span></div>
+                    <div class="metric-row"><span class="metric-label">Pod/Day Total:</span><span class="metric-value highlight-cyan">43.2 kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Est. Feed Price:</span><span class="metric-value">R 9.50 / kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Pod Cost / Day:</span><span class="metric-value highlight-red">R 410.40</span></div>
+                    <div class="metric-row"><span class="metric-label">Target Weight:</span><span class="metric-value">180g - 200g</span></div>
+                </div>
+            </div>
+            <!-- Pod 2 -->
+            <div class="pod-card">
+                <div class="pod-header">POD 02</div>
+                <div class="pod-badge">Week 2–3 (Growth)</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Feed Type:</span><span class="metric-value highlight-gold">Grower Pellets</span></div>
+                    <div class="metric-row"><span class="metric-label">CP / ME Content:</span><span class="metric-value">20% CP | 3,100 kcal</span></div>
+                    <div class="metric-row"><span class="metric-label">Daily / Bird:</span><span class="metric-value">55g - 85g</span></div>
+                    <div class="metric-row"><span class="metric-label">Pod/Day Total:</span><span class="metric-value highlight-cyan">108.0 kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Est. Feed Price:</span><span class="metric-value">R 8.90 / kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Pod Cost / Day:</span><span class="metric-value highlight-red">R 961.20</span></div>
+                    <div class="metric-row"><span class="metric-label">Target Weight:</span><span class="metric-value">450g - 900g</span></div>
+                </div>
+            </div>
+            <!-- Pod 3 -->
+            <div class="pod-card">
+                <div class="pod-header">POD 03</div>
+                <div class="pod-badge">Week 4–5 (Finishing)</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Feed Type:</span><span class="metric-value highlight-gold">Finisher Pellets</span></div>
+                    <div class="metric-row"><span class="metric-label">CP / ME Content:</span><span class="metric-value">18% CP | 3,200 kcal</span></div>
+                    <div class="metric-row"><span class="metric-label">Daily / Bird:</span><span class="metric-value">120g - 150g</span></div>
+                    <div class="metric-row"><span class="metric-label">Pod/Day Total:</span><span class="metric-value highlight-cyan">194.4 kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Est. Feed Price:</span><span class="metric-value">R 8.40 / kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Pod Cost / Day:</span><span class="metric-value highlight-red">R 1,632.96</span></div>
+                    <div class="metric-row"><span class="metric-label">Target Weight:</span><span class="metric-value">1.4kg - 2.0kg</span></div>
+                </div>
+            </div>
+            <!-- Pod 4 -->
+            <div class="pod-card">
+                <div class="pod-header">POD 04</div>
+                <div class="pod-badge">Week 6 (Final / Market)</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Feed Type:</span><span class="metric-value highlight-gold">Post-Finisher (No Med)</span></div>
+                    <div class="metric-row"><span class="metric-label">CP / ME Content:</span><span class="metric-value">17% CP | 3,220 kcal</span></div>
+                    <div class="metric-row"><span class="metric-label">Daily / Bird:</span><span class="metric-value">160g - 175g</span></div>
+                    <div class="metric-row"><span class="metric-label">Pod/Day Total:</span><span class="metric-value highlight-cyan">244.8 kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Est. Feed Price:</span><span class="metric-value">R 8.10 / kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Pod Cost / Day:</span><span class="metric-value highlight-red">R 1,982.88</span></div>
+                    <div class="metric-row"><span class="metric-label">Target Weight:</span><span class="metric-value">2.2kg - 2.5kg+</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2: VACCINATION & HEALTH SCHEDULE -->
+    <div class="slide-container" id="slide-2">
+        <div class="pod-grid">
+            <!-- Pod 1 -->
+            <div class="pod-card">
+                <div class="pod-header">POD 01 (Day 1 - 7)</div>
+                <div class="pod-badge">Hatchery &amp; Early Prep</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Day 1 (Hatchery):</span><span class="metric-value highlight-gold">Newcastle (ND) + IB</span></div>
+                    <div class="metric-row"><span class="metric-label">Admin Method:</span><span class="metric-value">Coarse Spray / Sub-Q</span></div>
+                    <div class="metric-row"><span class="metric-label">Day 7 (Pod):</span><span class="metric-value highlight-gold">Gumboro (IBD) Primary</span></div>
+                    <div class="metric-row"><span class="metric-label">Admin Method:</span><span class="metric-value">Drinking Water</span></div>
+                    <div class="metric-row"><span class="metric-label">Supplements:</span><span class="metric-value">Electrolytes + Stress Pack</span></div>
+                    <div class="metric-row"><span class="metric-label">Biosecurity:</span><span class="metric-value highlight-cyan">Strict Footbath / Restricted</span></div>
+                </div>
+            </div>
+            <!-- Pod 2 -->
+            <div class="pod-card">
+                <div class="pod-header">POD 02 (Day 8 - 21)</div>
+                <div class="pod-badge">Booster Phase</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Day 14 (Pod):</span><span class="metric-value highlight-gold">Gumboro (IBD) Booster</span></div>
+                    <div class="metric-row"><span class="metric-label">Admin Method:</span><span class="metric-value">Drinking Water (Skimmed Milk)</span></div>
+                    <div class="metric-row"><span class="metric-label">Day 18-21:</span><span class="metric-value highlight-gold">Newcastle (LaSota) Booster</span></div>
+                    <div class="metric-row"><span class="metric-label">Admin Method:</span><span class="metric-value">Drinking Water / Eye Drop</span></div>
+                    <div class="metric-row"><span class="metric-label">Coccidiosis Control:</span><span class="metric-value">In-feed Coccidiostat Check</span></div>
+                    <div class="metric-row"><span class="metric-label">Water Sanitation:</span><span class="metric-value highlight-cyan">Chlorination (2-3 ppm)</span></div>
+                </div>
+            </div>
+            <!-- Pod 3 -->
+            <div class="pod-card">
+                <div class="pod-header">POD 03 (Day 22 - 35)</div>
+                <div class="pod-badge">Immunity Monitoring</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Vaccination:</span><span class="metric-value highlight-gold">Withdrawal Phase Starts</span></div>
+                    <div class="metric-row"><span class="metric-label">Gut Health:</span><span class="metric-value">Organic Acidifiers in Water</span></div>
+                    <div class="metric-row"><span class="metric-label">Litter Mgmt:</span><span class="metric-value">Top-up Dry Shavings</span></div>
+                    <div class="metric-row"><span class="metric-label">Monitoring:</span><span class="metric-value">Daily Mortality Check (&lt;0.1%)</span></div>
+                    <div class="metric-row"><span class="metric-label">Ventilation:</span><span class="metric-value highlight-cyan">Increase Air Exchange (CFM)</span></div>
+                    <div class="metric-row"><span class="metric-label">Water Flush:</span><span class="metric-value">Regular Line Flushing</span></div>
+                </div>
+            </div>
+            <!-- Pod 4 -->
+            <div class="pod-card">
+                <div class="pod-header">POD 04 (Day 36 - 42+)</div>
+                <div class="pod-badge">Pre-Market Clearing</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Vaccination:</span><span class="metric-value highlight-red">NONE (Strict Clearance)</span></div>
+                    <div class="metric-row"><span class="metric-label">Medication:</span><span class="metric-value highlight-red">Zero Chemical Residue</span></div>
+                    <div class="metric-row"><span class="metric-label">Water Supply:</span><span class="metric-value">Clean, Pure Fresh Water</span></div>
+                    <div class="metric-row"><span class="metric-label">Health Audit:</span><span class="metric-value">Visual Inspection &amp; Legs Check</span></div>
+                    <div class="metric-row"><span class="metric-label">Pre-Harvest Check:</span><span class="metric-value highlight-cyan">Clearance Certificate Passed</span></div>
+                    <div class="metric-row"><span class="metric-label">Dead-on-Arrival Target:</span><span class="metric-value">&lt; 0.2% Transit Limit</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: BROILER WELFARE & MARKET DISPATCH PROTOCOL -->
+    <div class="slide-container active" id="slide-3">
+        <div class="pod-grid">
+            <!-- Pod 1 -->
+            <div class="pod-card">
+                <div class="pod-header">WELFARE STANDARDS</div>
+                <div class="pod-badge">Environmental Care</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Stocking Density:</span><span class="metric-value highlight-gold">Max 33-38 kg/m²</span></div>
+                    <div class="metric-row"><span class="metric-label">Lighting Program:</span><span class="metric-value">18 hrs Light / 6 hrs Dark</span></div>
+                    <div class="metric-row"><span class="metric-label">Air Quality:</span><span class="metric-value">NH3 &lt; 15 ppm | CO2 &lt; 3000 ppm</span></div>
+                    <div class="metric-row"><span class="metric-label">Litter Quality:</span><span class="metric-value">Moisture 20-25% (Friable)</span></div>
+                    <div class="metric-row"><span class="metric-label">Drinker Ratio:</span><span class="metric-value highlight-cyan">12 Nipple Drinkers / 100 birds</span></div>
+                    <div class="metric-row"><span class="metric-label">Feeder Space:</span><span class="metric-value">2.5 cm / bird (Pan Feeders)</span></div>
+                </div>
+            </div>
+            <!-- Pod 2 -->
+            <div class="pod-card">
+                <div class="pod-header">HARVEST PREP</div>
+                <div class="pod-badge">Feed Withdrawal (T-8 hrs)</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Feed Withdrawal:</span><span class="metric-value highlight-gold">8–10 Hours Pre-Catch</span></div>
+                    <div class="metric-row"><span class="metric-label">Water Access:</span><span class="metric-value highlight-cyan">Available until Catching</span></div>
+                    <div class="metric-row"><span class="metric-label">Crop Clearing:</span><span class="metric-value">Prevents Abattoir Contamination</span></div>
+                    <div class="metric-row"><span class="metric-label">House Dimming:</span><span class="metric-value">Blue / Low Lux Light</span></div>
+                    <div class="metric-row"><span class="metric-label">Equipment:</span><span class="metric-value">Raise Feeders &amp; Drinkers</span></div>
+                    <div class="metric-row"><span class="metric-label">Team Briefing:</span><span class="metric-value">Low-Stress Handling Protocol</span></div>
+                </div>
+            </div>
+            <!-- Pod 3 -->
+            <div class="pod-card">
+                <div class="pod-header">CATCHING &amp; LOADING</div>
+                <div class="pod-badge">Humane Handling</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Catching Method:</span><span class="metric-value highlight-gold">Upright / Two Feet Support</span></div>
+                    <div class="metric-row"><span class="metric-label">Crate Density:</span><span class="metric-value">10–12 Birds / Crate (by weight)</span></div>
+                    <div class="metric-row"><span class="metric-label">Max Container Ht:</span><span class="metric-value">Ensure Head Room</span></div>
+                    <div class="metric-row"><span class="metric-label">Handling Care:</span><span class="metric-value highlight-red">Zero Leg/Wing Bruising</span></div>
+                    <div class="metric-row"><span class="metric-label">Loading Time:</span><span class="metric-value">Cool Hours (Night/Early AM)</span></div>
+                    <div class="metric-row"><span class="metric-label">Ventilation:</span><span class="metric-value highlight-cyan">Keep Fans Running During Catch</span></div>
+                </div>
+            </div>
+            <!-- Pod 4 -->
+            <div class="pod-card">
+                <div class="pod-header">MARKET DISPATCH</div>
+                <div class="pod-badge">Logistics &amp; Processing</div>
+                <div class="metric-group">
+                    <div class="metric-row"><span class="metric-label">Target Live Weight:</span><span class="metric-value highlight-gold">2.2 kg - 2.5 kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Batch Size / Pod:</span><span class="metric-value">1,440 Birds</span></div>
+                    <div class="metric-row"><span class="metric-label">Total Dispatch:</span><span class="metric-value highlight-cyan">~3,200 kg - 3,600 kg</span></div>
+                    <div class="metric-row"><span class="metric-label">Transport Time:</span><span class="metric-value">&lt; 2 Hours Recommended</span></div>
+                    <div class="metric-row"><span class="metric-label">Documentation:</span><span class="metric-value">Vet Waybill &amp; Chain of Custody</span></div>
+                    <div class="metric-row"><span class="metric-label">Turnaround:</span><span class="metric-value highlight-red">Clean &amp; Disinfect Pod (7 Days)</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blueprint Footer & Controls -->
+    <div class="blueprint-footer">
+        <div>
+            <div class="blueprint-info">
+                <strong>PROJECT:</strong> LEP-IMP-ENG-2026 | <strong>MODULE:</strong> LIVESTOCK OPERATIONS MATRIX<br>
+                <strong>PROPRIETARY INTELLECTUAL PROPERTY:</strong> LWANDILE ENGINEERING PROJECTS (PTY) LTD
+            </div>
+            <div class="schema-status" style="margin-top: 4px;">
+                <div class="status-dot"></div>
+                <span>FILE SCHEMA: Scapush Precision Active</span>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="btn" id="prev-btn" onclick="changeSlide(-1)">← PREV</button>
+            <span class="slide-indicator" id="slide-num">03 / 03</span>
+            <button class="btn" id="next-btn" onclick="changeSlide(1)" disabled="">NEXT →</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = 3;
+
+    const slideData = [
+        {
+            title: "4-POD BROILER NUTRITION & FEEDING MATRIX",
+            subtitle: "Project: LEP-IMP-ENG-2026 | Feed Types, Quantities & Dynamic Pricing Structure",
+            layers: [
+                { color: "#ffd700", label: "Starter Crumbles" },
+                { color: "#00f0ff", label: "Grower Pellets" },
+                { color: "#ff3344", label: "Finisher Pellets" },
+                { color: "#7a8b9e", label: "Post-Finisher" }
+            ]
+        },
+        {
+            title: "4-POD BROILER VACCINATION & HEALTH PROTOCOL",
+            subtitle: "Project: LEP-IMP-ENG-2026 | Disease Prevention, Dosage & Biosecurity Controls",
+            layers: [
+                { color: "#ffd700", label: "Hatchery (ND/IB)" },
+                { color: "#00f0ff", label: "Gumboro (IBD)" },
+                { color: "#ff3344", label: "ND Booster" },
+                { color: "#7a8b9e", label: "Withdrawal Phase" }
+            ]
+        },
+        {
+            title: "BROILER WELFARE & MARKET DISPATCH SCHEMATIC",
+            subtitle: "Project: LEP-IMP-ENG-2026 | Environmental Welfare, Feed Withdrawal & Transport Logistics",
+            layers: [
+                { color: "#ffd700", label: "Welfare Controls" },
+                { color: "#00f0ff", label: "Feed Withdrawal" },
+                { color: "#ff3344", label: "Humane Harvest" },
+                { color: "#7a8b9e", label: "Market Dispatch" }
+            ]
+        }
+    ];
+
+    function updateSlideUI() {
+        // Hide all slides
+        for (let i = 1; i <= totalSlides; i++) {
+            document.getElementById(`slide-${i}`).classList.remove('active');
+        }
+        // Show active slide
+        document.getElementById(`slide-${currentSlide}`).classList.add('active');
+
+        // Update headers & meta
+        const data = slideData[currentSlide - 1];
+        document.getElementById('slide-title').innerText = data.title;
+        document.getElementById('slide-subtitle').innerText = data.subtitle;
+
+        // Update layers
+        const layerBar = document.getElementById('layer-bar');
+        layerBar.innerHTML = '<span style="color:var(--text-gold); font-weight:bold; margin-right:8px;">SCHEMA LAYERS:</span>';
+        data.layers.forEach(layer => {
+            layerBar.innerHTML += `
+                <div class="layer-item">
+                    <div class="indicator" style="background-color: ${layer.color};"></div>
+                    <span>${layer.label}</span>
+                </div>
+            `;
+        });
+
+        // Update pagination UI
+        document.getElementById('slide-num').innerText = `0${currentSlide} / 0${totalSlides}`;
+        document.getElementById('prev-btn').disabled = (currentSlide === 1);
+        document.getElementById('next-btn').disabled = (currentSlide === totalSlides);
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide < 1) currentSlide = 1;
+        if (currentSlide > totalSlides) currentSlide = totalSlides;
+        updateSlideUI();
+    }
+
+    // Initialize layout on load
+    updateSlideUI();
+</script>
+
+
+</body></html>

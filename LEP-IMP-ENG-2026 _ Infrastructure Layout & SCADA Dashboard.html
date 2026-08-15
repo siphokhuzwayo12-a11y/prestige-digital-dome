@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/ASUS/Downloads/gemini-code-1785427622105.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEP-IMP-ENG-2026 | Infrastructure Layout &amp; SCADA Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #0d131f;
+            --card-bg: #1a2332;
+            --accent-gold: #d4af37;
+            --teal: #14b8a6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --success: #34d399;
+            --code-bg: #0b0f19;
+            --alert-red: #f43f5e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Header Section */
+        header {
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-id {
+            color: var(--teal);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .authority-badge {
+            background-color: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--accent-gold);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            text-align: right;
+        }
+
+        .authority-badge .name {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .authority-badge .role {
+            color: var(--teal);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Layout Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        h2.section-title {
+            color: var(--accent-gold);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3.sub-title {
+            color: var(--teal);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* Engineering Visual Boxes */
+        .canvas-box {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        /* Site Layout Schematic Styling */
+        .site-map {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            min-width: 700px;
+        }
+
+        .site-zone {
+            border: 1px dashed var(--teal);
+            border-radius: 6px;
+            padding: 1rem;
+            background: rgba(20, 184, 166, 0.03);
+        }
+
+        .site-zone.gold-zone {
+            border-color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        .site-zone h4 {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .site-zone p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+
+        .pipe-line {
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: var(--teal);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Calculation Formula Box */
+        .calc-box {
+            background: var(--code-bg);
+            border-left: 3px solid var(--teal);
+            padding: 1rem;
+            border-radius: 0 6px 6px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .calc-box strong {
+            color: var(--accent-gold);
+        }
+
+        /* Metric Dashboard Cards */
+        .dash-card {
+            background: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .dash-card.active-alert {
+            border-color: var(--accent-gold);
+        }
+
+        .dash-card .val {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            font-family: monospace;
+            margin: 0.3rem 0;
+        }
+
+        .dash-card .unit {
+            font-size: 0.75rem;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .dash-card .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .status-light {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--success);
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .data-table th, .data-table td {
+            padding: 0.75rem 0.9rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            color: var(--teal);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .data-table td.highlight {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-family: monospace;
+        }
+
+        /* Spec Lists */
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-main);
+        }
+
+        .spec-list li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-size: 0.6rem;
+            top: 0.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .execution-stamp {
+            color: var(--accent-gold);
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER -->
+        <header>
+            <div>
+                <div class="project-id">Project Identifier: LEP-IMP-ENG-2026-LAYOUT</div>
+                <h1>Site Infrastructure &amp; Thermal Engineering Architecture</h1>
+                <div class="subtitle">Complete Hydraulic, Electrical, Thermal Manifold &amp; SCADA Instrumentation Layout</div>
+            </div>
+            <div class="authority-badge">
+                <div class="name">Sipho Wiseman Khuzwayo</div>
+                <div class="role">Managing Director | Lwandile Engineering Projects</div>
+                <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 2px;">Secunda-Kinross Corridor, Mpumalanga</div>
+            </div>
+        </header>
+
+        <!-- SECTION 1: SITE INFRASTRUCTURE LAYOUT MAP -->
+        <section>
+            <h2 class="section-title">01. Master Infrastructure Site Layout (Borehole-to-Fertilizer)</h2>
+            <div class="canvas-box">
+                <div class="site-map">
+                    
+                    <!-- ZONE A: POWER & HYDRAULICS -->
+                    <div class="site-zone">
+                        <h4>Zone A: Energy &amp; Water <span>[LWP-PWR-HYD]</span></h4>
+                        <p><strong>• Deep Borehole (BH-01):</strong> Solar Submersible (3.5 m³/h @ 85m head)</p>
+                        <p><strong>• Elevated Tower:</strong> 10,000L Storage (10m Head Pressure Baseline)</p>
+                        <p><strong>• PV Array:</strong> 30kW Monocrystalline Roof-Mounted Bank</p>
+                        <p><strong>• Power Core:</strong> 30kW Hybrid Inverter + 30kWh LFP BESS Bank</p>
+                        <div class="pipe-line">💧 DN32 HDPE Water Line ➔ Barn Distribution</div>
+                        <div class="pipe-line">⚡ 400V 3-Phase Bus ➔ Main Distribution Board</div>
+                    </div>
+
+                    <!-- ZONE B: LIVESTOCK PRODUCTION -->
+                    <div class="site-zone gold-zone">
+                        <h4>Zone B: Production Barns <span>[LWP-STR-PODS]</span></h4>
+                        <p><strong>• Poultry Sprint Barn (384 m²):</strong> 5,760 Broilers/wave</p>
+                        <p><strong>• Swine Finisher Barn (384 m²):</strong> 16 Containment Pens</p>
+                        <p><strong>• Decoupled Nursery Block (48 m²):</strong> 4 Masonry Pods</p>
+                        <p><strong>• Slurry Drainage:</strong> 2% Slope Concrete Sub-Gutters</p>
+                        <div class="pipe-line">💩 Slurry Gravity Drain ➔ Digester Equalization Tank</div>
+                        <div class="pipe-line">🔥 Hydronic Heat Supply ➔ Sub-floor PEX Loop</div>
+                    </div>
+
+                    <!-- ZONE C: BIO-REFINERY & FERTILIZER -->
+                    <div class="site-zone">
+                        <h4>Zone C: Bio-Thermal Hub <span>[LWP-BIO-ENGINE]</span></h4>
+                        <p><strong>• Reactor:</strong> 70 m³ Fixed-Dome Anaerobic Digester</p>
+                        <p><strong>• Co-Gen CHP:</strong> 12kVA Biogas GenSet + Heat Exchanger</p>
+                        <p><strong>• Separator:</strong> Screw Press Slurry Separator (1.5 kW)</p>
+                        <p><strong>• Fertilizer Yard:</strong> Solid Bio-Fertilizer Drying &amp; Bagging Shed</p>
+                        <div class="pipe-line">🔥 Exhaust &amp; Coolant Thermal Loop ➔ Heat Manifold</div>
+                        <div class="pipe-line">🌱 Solid Digestate (25% TS) ➔ Soil Amendment Off-Take</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THERMAL MANIFOLD CALCULATION & SYSTEM DESIGN -->
+        <section>
+            <h2 class="section-title">02. Thermal Manifold Sizing &amp; Heat Transfer Engineering</h2>
+            
+            <div class="calc-box">
+                <strong>[THERMAL ENERGY BALANCING FORMULAS]</strong><br>
+                • Heat Requirement: Q_required = m_dot * C_p * ΔT<br>
+                • CHP Heat Extraction Rate: Q_recovered = Q_exhaust (55%) + Q_coolant (35%) = ~18.5 kW_thermal<br>
+                • Manifold Flow Rate: V_dot = Q_recovered / (ρ * C_p * (T_supply - T_return))<br>
+                • Parameter Values: ρ = 1000 kg/m³, C_p = 4.184 kJ/kg·K, ΔT_manifold = 10°C (60°C Supply / 50°C Return)
+            </div>
+
+            <div class="grid-2">
+                <div class="spec-card">
+                    <h3 class="sub-title">Hydronic Manifold Calculations</h3>
+                    <ul class="spec-list">
+                        <li><strong>Recovered Thermal Output:</strong> 18.5 kW thermal continuous during CHP runtime cycle.</li>
+                        <li><strong>Primary Loop Flow Rate:</strong> V_dot = 18.5 kW / (4.184 × 10) = 0.442 L/s (1.59 m³/h).</li>
+                        <li><strong>Header Pipe Sizing:</strong> DN32 Stainless Steel Header (Velocity = 0.52 m/s, maintaining laminar flow).</li>
+                        <li><strong>Nursery Sub-Floor Loop:</strong> 16mm PEX-a piping @ 150mm spacing embedded in 75mm concrete slab.</li>
+                        <li><strong>Secondary Mixing Valve (TV-101):</strong> Modulates 60°C primary water down to 35°C floor supply.</li>
+                    </ul>
+                </div>
+
+                <div class="spec-card">
+                    <h3 class="sub-title">Solid Fertilizer Production Engine</h3>
+                    <ul class="spec-list">
+                        <li><strong>Daily Digestate Discharge:</strong> 1.75 m³/day wet digestate (8% Total Solids).</li>
+                        <li><strong>Mechanical Dewatering:</strong> Screw press separator compresses digestate to 25% Total Solids (TS).</li>
+                        <li><strong>Solid Output Yield:</strong> ~560 kg/day moist bio-fertilizer cake.</li>
+                        <li><strong>Solar Thermal Curing Shed:</strong> Passive drying to 85% dry matter (165 kg/day bagged product).</li>
+                        <li><strong>Nutrient Analysis:</strong> N-P-K ratio of 3.2% - 2.1% - 2.4% + rich humic bio-active organic carbon.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: SENSOR INSTRUMENTATION & FIELD DEVICE MAP -->
+        <section>
+            <h2 class="section-title">03. Sensor Instrumentation &amp; Field Device Schedule</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Tag ID</th>
+                        <th>Device Type</th>
+                        <th>Process Location</th>
+                        <th>Measurement Range</th>
+                        <th>SCADA Signal Protocol</th>
+                        <th>Control Function / Threshold</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="highlight">LT-101</td>
+                        <td>Ultrasonic Level Transmitter</td>
+                        <td>Borehole Water Tower</td>
+                        <td>0 – 5.0 m</td>
+                        <td>4-20mA / LoRaWAN</td>
+                        <td>Triggers Borehole Pump ON (&lt;2.0m) / OFF (&gt;4.5m)</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">TI-101</td>
+                        <td>PT100 Temperature Sensor</td>
+                        <td>Nursery Sub-Floor Slab</td>
+                        <td>-10°C to +80°C</td>
+                        <td>Modbus RTU</td>
+                        <td>Maintains Floor Target: 28.0°C – 30.0°C</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">TI-102</td>
+                        <td>Dual Thermocouple</td>
+                        <td>CHP Heat Exchanger Inlet/Outlet</td>
+                        <td>0°C to +200°C</td>
+                        <td>Modbus RTU</td>
+                        <td>Actuates Hydronic Diverter Valve (TV-101)</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">PI-201</td>
+                        <td>Piezoelectric Pressure Sensor</td>
+                        <td>70m³ Digester Dome</td>
+                        <td>0 – 50 mbar</td>
+                        <td>4-20mA / LoRaWAN</td>
+                        <td>Gas Flare Release (&gt;35 mbar) / GenSet Feed (&gt;15 mbar)</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">AI-301</td>
+                        <td>NDIR Gas Analyzer</td>
+                        <td>Biogas Scrubbing Line</td>
+                        <td>0 – 100% CH₄ / H₂S</td>
+                        <td>Modbus RTU</td>
+                        <td>Trips GenSet Isolation Valve if CH₄ &lt; 55%</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">AI-401</td>
+                        <td>Electrochemical Air Quality</td>
+                        <td>Poultry / Swine Pods</td>
+                        <td>NH₃ (0-50 ppm), CO₂ (0-5000)</td>
+                        <td>LoRaWAN Node</td>
+                        <td>Actuates PIR Vent Siphon if NH₃ &gt; 15 ppm</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">FM-101</td>
+                        <td>Electromagnetic Flow Meter</td>
+                        <td>Thermal Manifold Main Header</td>
+                        <td>0 – 5.0 m³/h</td>
+                        <td>Pulse Output / RS485</td>
+                        <td>Monitors Circulation Pump (CP-101) Integrity</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 4: LIVE TELEMETRY DASHBOARD PANEL -->
+        <section>
+            <h2 class="section-title">04. Real-Time Telemetry SCADA Control Dashboard</h2>
+            
+            <div class="grid-4">
+                
+                <div class="dash-card active-alert">
+                    <div class="label"><span class="status-light"></span>Borehole Tower Level</div>
+                    <div class="val">4.25</div>
+                    <div class="unit">Meters (85% Capacity)</div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="label"><span class="status-light"></span>Nursery Slab Temp</div>
+                    <div class="val">29.4</div>
+                    <div class="unit">°C (Target: 28-30°C)</div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="label"><span class="status-light"></span>Digester Dome Press</div>
+                    <div class="val">24.2</div>
+                    <div class="unit">mbar (Nominal)</div>
+                </div>
+
+                <div class="dash-card">
+                    <div class="label"><span class="status-light"></span>CHP Thermal Flow</div>
+                    <div class="val">1.55</div>
+                    <div class="unit">m³/h @ 60°C Header</div>
+                </div>
+
+            </div>
+
+            <div class="grid-2">
+                <div class="spec-card">
+                    <h3 class="sub-title">Off-Grid Electrical Telemetry Node</h3>
+                    <ul class="spec-list">
+                        <li><strong>PV Array Output:</strong> 24.8 kW (Highveld Peak Direct Radiation).</li>
+                        <li><strong>BESS State of Charge (SoC):</strong> 94.2% (Rack-Mount LFP Bank Nominal).</li>
+                        <li><strong>Current Unit Power Cost:</strong> ZAR 1.80/kWh (Insulated from Eskom/Municipal tariffs).</li>
+                        <li><strong>System Grid Status:</strong> 100% Islanded / Zero Interconnection Overhead.</li>
+                    </ul>
+                </div>
+
+                <div class="spec-card">
+                    <h3 class="sub-title">Fertilizer Production Telemetry Node</h3>
+                    <ul class="spec-list">
+                        <li><strong>Separator Status:</strong> Operating (1.5 kW Screw Press Active).</li>
+                        <li><strong>Solid Bio-Fertilizer Harvest Today:</strong> 540 kg Moist Cake (25% TS).</li>
+                        <li><strong>Moisture Content Curing Yard:</strong> 22% RH (Solar Shed Dynamic Airflow).</li>
+                        <li><strong>Commercial Fertilizer Value:</strong> ZAR 1,450 / Ton Equivalent Offset.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER / GOVERNANCE -->
+        <footer>
+            <div>
+                <strong>Project Governance:</strong> Executed under strict Scapush Precision engineering standards led by Sipho Wiseman Khuzwayo (Lwandile Engineering Projects). Layout and instrumentation verified for immediate operational deployment.
+            </div>
+            <div class="execution-stamp">
+                Scapush Precision Execution Fully Activated
+            </div>
+        </footer>
+
+    </div>
+
+
+</body></html>

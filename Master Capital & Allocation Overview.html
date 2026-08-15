@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lwandile Engineering Projects - Master Infrastructure CAPEX</title>
+  <style>
+    /* =========================================================
+       SCAPUSH PRECISION MASTER STYLESHEET
+       ========================================================= */
+    :root {
+      --bg-dark: #0A0E1A;
+      --card-bg: #111827;
+      --card-accent-bg: #1A2234;
+      --accent-gold: #FFB703;
+      --accent-teal: #00A896;
+      --accent-cyan: #07F2C9;
+      --text-main: #E5E7EB;
+      --text-muted: #9CA3AF;
+      --border-gold: rgba(255, 183, 3, 0.35);
+      --border-teal: rgba(0, 168, 150, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    /* SLIDE CONTAINER CARD */
+    .slide-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-gold);
+      border-radius: 12px;
+      padding: 28px;
+      width: 100%;
+      max-width: 960px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    /* HEADER ROW */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .badge-prestige {
+      background: rgba(255, 183, 3, 0.12);
+      color: var(--accent-gold);
+      border: 1px solid var(--accent-gold);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .budget-tag {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+    }
+
+    /* TITLES & TEXT */
+    .slide-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 18px;
+    }
+
+    .slide-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .slide-grid { grid-template-columns: 1fr; }
+    }
+
+    .spec-item {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 4px solid var(--accent-cyan);
+      padding: 14px 18px;
+      margin-bottom: 14px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .spec-title {
+      color: #FFFFFF;
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    .spec-desc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    /* HIGHLIGHT BOX */
+    .feature-box {
+      background: var(--card-accent-bg);
+      border: 1px solid var(--border-teal);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .feature-title {
+      color: var(--accent-gold);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .feature-desc {
+      color: var(--text-main);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .stamp-tag {
+      margin-top: 15px;
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+      font-family: 'Courier New', Courier, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* MASTER TABLE */
+    .master-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .master-table th {
+      color: var(--accent-gold);
+      border-bottom: 1px solid var(--accent-gold);
+      padding: 10px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .master-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.88rem;
+    }
+
+    .font-mono { font-family: 'Courier New', Courier, monospace; }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDE 1: MASTER OVERVIEW -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 1: Master Allocation Overview</span>
+      <span class="budget-tag">Total CAPEX: ZAR 3,100,000</span>
+    </div>
+    <h3 class="slide-title">Master Capital Allocation Overview</h3>
+    <p class="spec-desc">Every single Rand spent ties back directly to a specific biological defense, thermal mitigation, hydraulic lifeline, or operational cash buffer. EV infrastructure is integrated independently under partner funding.</p>
+    <table class="master-table">
+      <thead>
+        <tr>
+          <th>Asset Category</th>
+          <th>Share</th>
+          <th>Primary Budget Allocation</th>
+          <th>Core Risk Eliminated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Structural Shells & Civil Shells</strong></td>
+          <td>31.9%</td>
+          <td class="font-mono" style="color:var(--accent-gold)">ZAR 988,000</td>
+          <td>Climatic Exposure & Predation Mortalities</td>
+        </tr>
+        <tr>
+          <td><strong>Bio-Solar Energy & Microgrid</strong></td>
+          <td>23.2%</td>
+          <td class="font-mono" style="color:var(--accent-gold)">ZAR 720,000</td>
+          <td>Grid Deficits, Load-Shedding & Thermal Shock</td>
+        </tr>
+        <tr>
+          <td><strong>Hydrological, Biosecurity & IoT</strong></td>
+          <td>7.4%</td>
+          <td class="font-mono" style="color:var(--accent-gold)">ZAR 230,000</td>
+          <td>Pathogen Outbreaks & Operational Inefficiencies</td>
+        </tr>
+        <tr>
+          <td><strong>Working Capital, Civil Grid & Reserves</strong></td>
+          <td>37.5%</td>
+          <td class="font-mono" style="color:var(--accent-gold)">ZAR 1,162,000</td>
+          <td>Operational Cash Bottlenecks & Unforeseen Risk Buffer</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SLIDE 2: ITEM 1 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 2: Structural Allocation</span>
+      <span class="budget-tag">Est. Budget: ZAR 295,000</span>
+    </div>
+    <h3 class="slide-title">Item 1: 384m² Poultry Sprint Barn</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Engineering Function</div>
+          <p class="spec-desc">High-density galvanized steel framework built to withstand highveld wind loads while optimizing natural interior cross-ventilation.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Biological Function</div>
+          <p class="spec-desc">Houses 5,760 broilers safely at an exact stocking density of 15 birds per square meter, preventing heat stress and overcrowding.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🌿 Stewardship Focus</div>
+          <p class="feature-desc">The open-sided structural design utilizes zero-watt passive airflow, completely avoiding the heavy induction power traps of large active tunnel ventilation fans.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: ITEM 2 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 3: Climate Control Layout</span>
+      <span class="budget-tag">Est. Budget: ZAR 40,000</span>
+    </div>
+    <h3 class="slide-title">Item 2: Winch PVC Curtains & Dwarf Wall</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Engineering Function</div>
+          <p class="spec-desc">Heavy-duty 550g/m² UV-stabilized PVC curtains combined with a 600mm plastered masonry brick wall.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Biological Function</div>
+          <p class="spec-desc">Dwarf wall stops floor-level freezing drafts during brooding, while curtains seal completely within 90 seconds during highveld downpours.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🌧️ Rain Defense</div>
+          <p class="feature-desc">Prevents rainwater ingress completely, keeping floor litters dry to halt coccidiosis and respiratory outbreaks at the perimeter.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: ITEM 3 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 4: Infrastructure Insulation</span>
+      <span class="budget-tag">Est. Budget: ZAR 60,000</span>
+    </div>
+    <h3 class="slide-title">Item 3: 50mm Roof Insulation (PIR/EPS)</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Technical Function</div>
+          <p class="spec-desc">50mm high-density roof insulation boards fitted under roof sheeting to regulate internal climate extremes.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">⚡ Energy Loop Benefit</div>
+          <p class="spec-desc">Eliminates radiant solar heat gain in summer and seals thermal energy in winter, collapsing active brooding heat demand by 35%.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🔋 BESS Storage Shield</div>
+          <p class="feature-desc">Directly protects battery storage by preventing high electrical draws during cold brooding nights.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: ITEM 4 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 5: Biosecurity Fortress</span>
+      <span class="budget-tag">Est. Budget: ZAR 130,000</span>
+    </div>
+    <h3 class="slide-title">Item 4: 4-Pod Swine Nursery Block</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Engineering Function</div>
+          <p class="spec-desc">Standalone 48m² masonry shell divided by 150mm thick internal firewall barriers into four separate 12m² airtight rooms.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Biological Function</div>
+          <p class="spec-desc">Acts as an unyielding immunological barrier that structures maximum virus risk down to a single room.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🛡️ Risk Capping</div>
+          <p class="feature-desc">Caps potential pathogen exposure to just 25% of total batch capacity, securing the remaining 75% of live capital assets.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: ITEM 5 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 6: Sub-Floor Hygiene</span>
+      <span class="budget-tag">Est. Budget: ZAR 50,000</span>
+    </div>
+    <h3 class="slide-title">Item 5: Polypropylene Slatted Flooring</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Engineering Function</div>
+          <p class="spec-desc">Interlocking high-density modular plastic slats elevated over a 400mm deep concrete flush gutter channel.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Biological Function</div>
+          <p class="spec-desc">Keeps piglets off cold concrete slabs to stop hypothermia. Waste drops down immediately to keep feet dry.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🦠 Pathogen Interruption</div>
+          <p class="feature-desc">Separates animals from waste instantly, stopping fecal-oral pathogen lifecycles without high water washing loads.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: ITEM 6 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 7: Swine Production</span>
+      <span class="budget-tag">Est. Budget: ZAR 260,000</span>
+    </div>
+    <h3 class="slide-title">Item 6: 384m² Swine Finisher Barn</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Structural Function</div>
+          <p class="spec-desc">Open-sided finisher barn (12m x 32m) with heavy-duty steel framework, 16 internal pens, and concrete sorting corridors.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Biological Capacity</div>
+          <p class="spec-desc">Houses 160 market hogs comfortably at a generous 1.2m² per head for optimized deep grow-out cycles.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">📈 Flow Optimization</div>
+          <p class="feature-desc">Integrated concrete channels link directly to the digester mixing pit for daily automated waste clearing.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: ITEM 7 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 8: Sovereign Energy Core</span>
+      <span class="budget-tag">Est. Budget: ZAR 395,000</span>
+    </div>
+    <h3 class="slide-title">Item 7: 30 kW / 30 kWh Off-Grid BESS & Master PLC</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Engineering Function</div>
+          <p class="spec-desc">High-capacity lithium iron phosphate (LFP) storage coupled to smart hybrid industrial inverters and rooftop solar arrays.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Biological Function</div>
+          <p class="spec-desc">Maintains continuous power for automated nursery floor heating loops, water pumping, and poultry brooding zones.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">⚡ Grid Isolation</div>
+          <p class="feature-desc">Insulates the farm completely from national energy grid dropouts, eliminating mass mortality risks from cold snaps.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: ITEM 8 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 9: Bio-Energy Co-Generation</span>
+      <span class="budget-tag">Est. Budget: ZAR 325,000</span>
+    </div>
+    <h3 class="slide-title">Item 8: 70m³ Commercial Anaerobic Digestor & CHP GenSet Loop</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Engineering Function (70m³ Capacity)</div>
+          <p class="spec-desc">Heavy-duty 70m³ continuous-flow anaerobic digester linked to dual biological H₂S desulfurization scrubbers, gas storage bladders, and a modified internal combustion generator set.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Biological & Microgrid Target</div>
+          <p class="spec-desc">Converts raw livestock waste (1.2 : 1 volumetric ratio / 90:10 liquid:solids rheology) into baseline biogas fuel, producing night volts to charge the BESS and heat for nursery floors.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🔥 Closed Thermal Loop (CHP)</div>
+          <p class="feature-desc">Captures generator exhaust heat and cooling jacket heat as steam/hot water, routing it sub-surface under swine nursery floors to cut electrical heating draws to zero during cold Highveld nights.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION CERTIFIED</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: ITEM 9 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 10: Hydrological Infrastructure</span>
+      <span class="budget-tag">Est. Budget: ZAR 85,000</span>
+    </div>
+    <h3 class="slide-title">Item 9: Solar Borehole Pump & Elevated Water Towers</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Hydraulic Engineering Function</div>
+          <p class="spec-desc">Low-induction DC pumps charge a high elevated tower storage network using direct daytime solar PV generation.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Hydration Protection</div>
+          <p class="spec-desc">Ensures reliable static head pressure to drinking lines without continuous electrical pump cycling.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">💧 Emergency Reserve Buffer</div>
+          <p class="feature-desc">Holds a 5-day emergency water buffer to guarantee hydration survival during scheduled borehole maintenance or drought spells.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: ITEM 10 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 11: Hydrological Sanitization</span>
+      <span class="budget-tag">Est. Budget: ZAR 35,000</span>
+    </div>
+    <h3 class="slide-title">Item 10: UV & Inline Chlorination Dosing Shield</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Engineering Function</div>
+          <p class="spec-desc">Inline 50-micron sediment filter discs coupled to ultra-violet (UV) sterilizing tubes and kinetic chlorine dispensers.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Biological Function</div>
+          <p class="spec-desc">Neutralizes waterborne bacterial colonies and viruses before the water ever reaches internal drinker nipple lines.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🧫 Biofilm Defeat</div>
+          <p class="feature-desc">Kinetic chlorine injection eliminates organic biofilm inside drinker pipes, completely stopping sub-clinical gut infections.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: ITEM 11 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 12: Human Access Firewall</span>
+      <span class="budget-tag">Est. Budget: ZAR 70,000</span>
+    </div>
+    <h3 class="slide-title">Item 11: Biosecurity Change-House Block & Gate Boot</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Engineering Function</div>
+          <p class="spec-desc">Physical change-house facility layout separating outside dirty zones from inside clean production areas.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Biological Function</div>
+          <p class="spec-desc">Forces a strict shower-in and change protocol, blocking personnel clothes/shoes from tracking external viruses into barns.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🚚 Perimeter Gate Spray-Dip</div>
+          <p class="feature-desc">Includes a vehicle spray-dip boot at the primary gate line to neutralize pathogen tracking on delivery truck wheels.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: ITEM 12 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 13: Automation & Telemetry</span>
+      <span class="budget-tag">Est. Budget: ZAR 40,000</span>
+    </div>
+    <h3 class="slide-title">Item 12: LoRaWAN IoT Sensor Nervous System</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Automation Data Function</div>
+          <p class="spec-desc">Deploys continuous low-power radio tracking sensors for ambient temperature, ammonia gas, and water flow rates.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🧬 Operational Response</div>
+          <p class="spec-desc">Provides real-time visibility into environmental stress indicators before biological performance suffers.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🚨 Steward Alerts Generated</div>
+          <p class="feature-desc">Flags a 10% drop in water consumption or spikes in ammonia levels onto the primary smart management dashboard immediately.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: ITEM 13 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 14: Biological & Working Capital</span>
+      <span class="budget-tag">Est. Budget: ZAR 485,000</span>
+    </div>
+    <h3 class="slide-title">Item 13: Initial Livestock Stocking & Operational Working Capital</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Biological Asset Acquisition</div>
+          <p class="spec-desc">Procurement of initial high-yield swine breeding stock, 5,760 broiler chicks, and starter biological bacterial inoculants for the 70m³ digester.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🌾 Feed & Operational Buffer</div>
+          <p class="spec-desc">Funds a 90-day operational feed reserve ensuring farm liquidity and cash neutrality prior to initial poultry and swine harvest sales.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🛡️ Liquidity Cushion</div>
+          <p class="feature-desc">Protects the enterprise from early operational cash bottlenecks, guaranteeing zero-shortage survival during initial batch ramp-up.</p>
+        </div>
+        <div class="stamp-tag">• SCAPUSH PRECISION STANDARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: ITEM 14 -->
+  <div class="slide-card">
+    <div class="slide-header">
+      <span class="badge-prestige">Slide 15: Civil Grid & Reserve Buffer</span>
+      <span class="budget-tag">Est. Budget: ZAR 677,000</span>
+    </div>
+    <h3 class="slide-title">Item 14: Earthworks, Civil Sub-Surface Grid & Contingency Reserve</h3>
+    <div class="slide-grid">
+      <div>
+        <div class="spec-item">
+          <div class="spec-title">⚙️ Civil Engineering Scope (ZAR 262,000)</div>
+          <p class="spec-desc">Site leveling, foundation earthworks, subterranean PEX thermal piping, electrical busbar tie-ins, and digester commissioning.</p>
+        </div>
+        <div class="spec-item" style="border-left-color: var(--accent-gold);">
+          <div class="spec-title">🛡️ Capital Risk Reserve (ZAR 415,000)</div>
+          <p class="spec-desc">Explicit 13.4% unallocated cash contingency buffer held in reserve to insulate project milestones against unforeseen variables.</p>
+        </div>
+      </div>
+      <div class="feature-box">
+        <div>
+          <div class="feature-title">🔒 FINANCIAL LEDGER ARCHIVED</div>
+          <p class="feature-desc">Every Cent Accounted For. Every Asset Shielded.<br><strong style="color:var(--accent-gold)">Lwandile Engineering Projects (Pty) Ltd</strong><br>Just Energy Transition Submission</p>
+        </div>
+        <div class="stamp-tag">• 100% RECONCILED TO ZAR 3,100,000</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/ASUS/Downloads/gemini-code-1785427536459.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEP-IMP-ENG-2026 | System Architecture &amp; Engineering Artifact</title>
+    <style>
+        :root {
+            --bg-color: #0d131f;
+            --card-bg: #1a2332;
+            --accent-gold: #d4af37;
+            --teal: #14b8a6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --success: #34d399;
+            --code-bg: #0b0f19;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* Header Section */
+        header {
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .project-id {
+            color: var(--teal);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .authority-badge {
+            background-color: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--accent-gold);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            text-align: right;
+        }
+
+        .authority-badge .name {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .authority-badge .role {
+            color: var(--teal);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Layout Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 850px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
+        h2.section-title {
+            color: var(--accent-gold);
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3.sub-title {
+            color: var(--teal);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* Process Diagram Canvas */
+        .diagram-container {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+
+        .diagram-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            min-width: 750px;
+        }
+
+        .node {
+            background: var(--card-bg);
+            border: 1px solid var(--teal);
+            border-radius: 8px;
+            padding: 1rem;
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .node.gold-border {
+            border-color: var(--accent-gold);
+        }
+
+        .node h4 {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .node p {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .arrow {
+            color: var(--teal);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        /* Teachable Component Cards */
+        .spec-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .spec-list {
+            list-style: none;
+        }
+
+        .spec-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.88rem;
+            color: var(--text-main);
+        }
+
+        .spec-list li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-size: 0.6rem;
+            top: 0.2rem;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            margin-top: 0.5rem;
+        }
+
+        .data-table th, .data-table td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            color: var(--teal);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .data-table td.highlight {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-family: monospace;
+        }
+
+        .data-table td.success-text {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        /* Stage Gate Blueprint */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .gate-card {
+            background: var(--code-bg);
+            border-top: 3px solid var(--teal);
+            border-radius: 4px;
+            padding: 1rem;
+        }
+
+        .gate-card.active {
+            border-top-color: var(--accent-gold);
+        }
+
+        .gate-header {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .gate-title {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .gate-list {
+            list-style: none;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .gate-list li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Footer / Governance */
+        footer {
+            background: rgba(212, 175, 55, 0.05);
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.25rem;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .execution-stamp {
+            color: var(--accent-gold);
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HEADER -->
+        <header>
+            <div>
+                <div class="project-id">Project Identifier: LEP-IMP-ENG-2026</div>
+                <h1>Sovereign Bio-Solar &amp; Thermal Engine</h1>
+                <div class="subtitle">System Capacity: 30kW PV/BESS | 70m³ Anaerobic Digester | Closed-Loop Co-Gen</div>
+            </div>
+            <div class="authority-badge">
+                <div class="name">Sipho Wiseman Khuzwayo</div>
+                <div class="role">Managing Director | Lwandile Engineering Projects</div>
+                <div style="font-size: 0.7rem; color: var(--text-muted); margin-top: 2px;">Secunda-Kinross Corridor, Mpumalanga</div>
+            </div>
+        </header>
+
+        <!-- SECTION 1: SCHEMATIC PROCESS FLOW -->
+        <section>
+            <h2 class="section-title">01. Process &amp; Energy Flow Matrix</h2>
+            <div class="diagram-container">
+                <div class="diagram-flow">
+                    
+                    <div class="node">
+                        <h4>Solar Input</h4>
+                        <p>30 kW Monocrystalline PV Array</p>
+                        <p style="color:var(--teal); margin-top:4px;">Highveld Solar Line</p>
+                    </div>
+
+                    <div class="arrow">➔</div>
+
+                    <div class="node gold-border">
+                        <h4>Power Core</h4>
+                        <p>30kW Hybrid Inverter &amp; 30kWh BESS</p>
+                        <p style="color:var(--accent-gold); margin-top:4px;">ZAR 1.80/kWh Baseline</p>
+                    </div>
+
+                    <div class="arrow">➔</div>
+
+                    <div class="node">
+                        <h4>Biomass Loop</h4>
+                        <p>70 m³ Fixed-Dome Anaerobic Digester</p>
+                        <p style="color:var(--teal); margin-top:4px;">Methane Capture (LWP-BIO-DIGS)</p>
+                    </div>
+
+                    <div class="arrow">➔</div>
+
+                    <div class="node gold-border">
+                        <h4>Co-Gen CHP</h4>
+                        <p>Methane GenSet &amp; Heat Exchanger</p>
+                        <p style="color:var(--accent-gold); margin-top:4px;">28°C - 32.5°C Hydronic Loop</p>
+                    </div>
+
+                </div>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">
+                * Thermal and electrical integration routes zero-fuel methane exhaust directly into under-floor heating arrays, bypassing nighttime BESS draw.
+            </p>
+        </section>
+
+        <!-- SECTION 2: TEACHABLE COMPONENT SPECIFICATIONS -->
+        <section>
+            <h2 class="section-title">02. Teachable Component Specifications</h2>
+            
+            <div class="grid-2">
+                <!-- Power Core -->
+                <div class="spec-card">
+                    <h3 class="sub-title">1. Off-Grid Electrical Core (LWP-PWR-CORE)</h3>
+                    <ul class="spec-list">
+                        <li><strong>PV Array:</strong> 30 kW high-efficiency monocrystalline modules on high-tilt wind-rated mounts.</li>
+                        <li><strong>Inverter Sub-System:</strong> 30 kW industrial hybrid inverter with dual high-voltage MPPT inputs.</li>
+                        <li><strong>BESS Sub-System:</strong> 30 kWh LFP rack-mount storage with smart BMS for zero-downtime off-grid buffer.</li>
+                        <li><strong>Cost Boundary:</strong> Insulates execution strictly at ZAR 1.80/kWh operational baseline.</li>
+                    </ul>
+                </div>
+
+                <!-- Bio-Thermal Reactor -->
+                <div class="spec-card">
+                    <h3 class="sub-title">2. Bio-Thermal Engine (LWP-BIO-DIGS / GENS)</h3>
+                    <ul class="spec-list">
+                        <li><strong>Anaerobic Reactor:</strong> 70 m³ continuous fixed-dome reactor vessel.</li>
+                        <li><strong>Substrate Stream:</strong> Swine and poultry slurry auto-flushed via 2% gradient sloped sub-gutters.</li>
+                        <li><strong>Heat Exchanger:</strong> Modified methane GenSet converting raw biogas into electrical/thermal power.</li>
+                        <li><strong>Hydronic Plumb Loop:</strong> Floor target 32.5°C (brooding) and 28.0°C–30.0°C (nursery).</li>
+                    </ul>
+                </div>
+
+                <!-- Enclosures -->
+                <div class="spec-card">
+                    <h3 class="sub-title">3. Biosecure Enclosures (LWP-STR / LWP-ISO)</h3>
+                    <ul class="spec-list">
+                        <li><strong>Poultry Sprint Barn:</strong> 384 m² galvanized steel framing housing 5,760 broilers per sprint (34,560/yr).</li>
+                        <li><strong>Swine Finisher Barn:</strong> 384 m² slab with 16 pens and 1m central logistics corridor.</li>
+                        <li><strong>4-Pod Nursery Block:</strong> 48 m² isolated masonry structure with 150mm solid air-gaps (25% pathogen boundary).</li>
+                        <li><strong>Passive Climate:</strong> 18° roof pitch with 50mm PIR ceiling panels for fanless thermal siphon.</li>
+                    </ul>
+                </div>
+
+                <!-- SCADA & Automation -->
+                <div class="spec-card">
+                    <h3 class="sub-title">4. SCADA &amp; Automation (LWP-IOT-NERV)</h3>
+                    <ul class="spec-list">
+                        <li><strong>Telemetry Backbone:</strong> Outdoor IP67 LoRaWAN gateway connected to Node_01 SCADA PLC controller.</li>
+                        <li><strong>Environmental Sensors (TI-101):</strong> Real-time pod monitoring keeping NH₃ &lt; 15 ppm and CO₂ &lt; 1,200 ppm.</li>
+                        <li><strong>Process Actuators (XV-101):</strong> Automated slurry feed valves and methane pressure loops.</li>
+                        <li><strong>Hydrological Lifeline:</strong> Solar DC pump feeding 5-day elevated water tower with UV sterilization.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: FUNDER SUMMARY TABLE -->
+        <section>
+            <h2 class="section-title">03. Institutional Funder Summary &amp; Metrics</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Domain / Metric</th>
+                        <th>Value / Parameter</th>
+                        <th>Strategic Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total Capital Deployment</td>
+                        <td class="highlight">ZAR 3,100,000</td>
+                        <td>100% turnkey allocation (includes 10% statutory reserve buffer)</td>
+                    </tr>
+                    <tr>
+                        <td>Capital Payback Horizon</td>
+                        <td class="highlight">2.6 Years</td>
+                        <td class="success-text">Accelerated high-velocity return on investment</td>
+                    </tr>
+                    <tr>
+                        <td>Operational Margin</td>
+                        <td class="highlight">35.0% – 41.5% EBITDA</td>
+                        <td>Yr 1: R1.18M | Yr 2: R1.28M | Yr 3: R1.40M net operating runway</td>
+                    </tr>
+                    <tr>
+                        <td>Primary Annual Off-Take</td>
+                        <td class="highlight">ZAR 3,399,700 / yr</td>
+                        <td>34,560 Broilers (R2,324,500) + 480 Swine (R1,075,200)</td>
+                    </tr>
+                    <tr>
+                        <td>Utility &amp; Risk Defense</td>
+                        <td class="highlight">100% Off-Grid</td>
+                        <td>Complete isolation from municipal power surges and biosecurity threats</td>
+                    </tr>
+                    <tr>
+                        <td>JET Alignment Region</td>
+                        <td class="highlight">Mpumalanga Coal Corridor</td>
+                        <td>Direct socio-economic energy transition impact across Secunda and Kinross</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 4: STAGE-GATE IMPLEMENTATION -->
+        <section>
+            <h2 class="section-title">04. Stage-Gate Execution Blueprint</h2>
+            <div class="timeline">
+                
+                <div class="gate-card active">
+                    <div class="gate-header">Gate 1: Months 1-2</div>
+                    <div class="gate-title">Civils &amp; Power Foundation</div>
+                    <ul class="gate-list">
+                        <li>• Earthworks &amp; concrete foundations</li>
+                        <li>• 30kW Solar &amp; BESS setup</li>
+                        <li>• LoRaWAN telemetry backbone</li>
+                    </ul>
+                </div>
+
+                <div class="gate-card">
+                    <div class="gate-header">Gate 2: Months 3-4</div>
+                    <div class="gate-title">Bio-Reactor &amp; Structures</div>
+                    <ul class="gate-list">
+                        <li>• 70m³ Anaerobic Digester build</li>
+                        <li>• Biosecure Air-Gap Pods construction</li>
+                        <li>• Water tower &amp; UV line commissioning</li>
+                    </ul>
+                </div>
+
+                <div class="gate-card">
+                    <div class="gate-header">Gate 3: Months 5-6</div>
+                    <div class="gate-title">System Integration</div>
+                    <ul class="gate-list">
+                        <li>• Hydro-feed &amp; thermal loops online</li>
+                        <li>• Livestock seeding phase</li>
+                        <li>• SCADA sensor calibration (TI-101)</li>
+                    </ul>
+                </div>
+
+                <div class="gate-card">
+                    <div class="gate-header">Gate 4: Month 7+</div>
+                    <div class="gate-title">Commercial Execution</div>
+                    <ul class="gate-list">
+                        <li>• Full off-take distribution cycles</li>
+                        <li>• ZAR 1.80/kWh baseline lock</li>
+                        <li>• Bio-fertilizer market off-take</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER / GOVERNANCE -->
+        <footer>
+            <div>
+                <strong>Project Governance:</strong> Executed under strict audit standards led by Sipho Wiseman Khuzwayo (Lwandile Engineering Projects). Stage-gate progression requires sign-off across civil structural integrity, power quality, and biological isolation protocols.
+            </div>
+            <div class="execution-stamp">
+                Scapush Precision Execution Fully Activated
+            </div>
+        </footer>
+
+    </div>
+
+
+</body></html>

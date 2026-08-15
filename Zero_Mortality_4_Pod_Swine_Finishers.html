@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4-Pod Swine Finisher Hydronic Thermal Distribution - Teachability Deck</title>
+  <style>
+    :root {
+      --bg-dark: #0B1320;         /* Deep Navy Slate Canvas */
+      --card-bg: #111A2E;        /* Structure Base */
+      --card-inner: #162238;     /* Inner Sub-Pod Containers */
+      --electric-teal: #06B6D4;  /* Structure & Primary Signals */
+      --gold-glow: #EAB308;      /* Primary Accent & Headers */
+      --gold-alpha: rgba(234, 179, 8, 0.15);
+      --hot-red: #EF4444;         /* Thermal Supply Line */
+      --text-main: #F8FAFC;      /* Crisp Readable White */
+      --text-muted: #94A3B8;     /* Muted Grey Slate */
+      --border-color: #1E293B;   /* Grid & Frame Lines */
+      --font-mono: 'Courier New', Courier, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    /* Deck Container */
+    .deck-container {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      height: 680px;
+      background: var(--card-bg);
+      border: 2px solid var(--electric-teal);
+      border-radius: 8px;
+      box-shadow: 0 0 35px rgba(6, 182, 212, 0.15), 0 0 15px var(--gold-alpha);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* Top Technical Header */
+    .deck-header {
+      padding: 14px 24px;
+      background: rgba(11, 19, 32, 0.9);
+      border-bottom: 1px solid var(--electric-teal);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .header-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .header-main-title {
+      color: var(--gold-glow);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    .header-sub {
+      color: var(--electric-teal);
+      font-size: 0.75rem;
+    }
+
+    .header-meta {
+      text-align: right;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .header-meta span {
+      color: var(--gold-glow);
+      font-weight: 600;
+    }
+
+    /* CAD Layer Selection Bar */
+    .layer-bar {
+      padding: 8px 24px;
+      background: #0D1626;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      gap: 18px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--electric-teal);
+      align-items: center;
+    }
+
+    .layer-tag {
+      color: var(--gold-glow);
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .layer-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .layer-checkbox {
+      width: 10px;
+      height: 10px;
+      background: var(--electric-teal);
+      display: inline-block;
+      border-radius: 1px;
+    }
+
+    /* Slide Viewport */
+    .slide-viewport {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 24px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+    }
+
+    .slide.prev {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    /* CAD Outer Frame Blueprint */
+    .cad-frame {
+      border: 1px solid var(--gold-glow);
+      border-radius: 4px;
+      padding: 20px;
+      background: #080D17;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    /* Hydronic Schematic Architecture (Slide 1 & 2) */
+    .schematic-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    .line-supply {
+      height: 3px;
+      background: var(--hot-red);
+      width: 100%;
+      position: relative;
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+    }
+
+    .line-supply::after {
+      content: "HYDRONIC HOT SUPPLY LINE (SUB-FLOOR PEX LOOP)";
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--hot-red);
+      letter-spacing: 0.1em;
+    }
+
+    .line-return {
+      height: 3px;
+      background: var(--electric-teal);
+      width: 100%;
+      position: relative;
+      box-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
+      margin-top: 8px;
+    }
+
+    .line-return::after {
+      content: "HYDRONIC RETURN LINE (32.0 °C) — SCADA 2-WAY MODULATING ACTIVE";
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--electric-teal);
+      letter-spacing: 0.1em;
+    }
+
+    /* Pod Blocks Grid */
+    .pods-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 15px 0;
+    }
+
+    .pod-card {
+      border: 1px solid var(--gold-glow);
+      background: var(--card-inner);
+      padding: 12px;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .pod-title {
+      font-family: var(--font-mono);
+      color: var(--gold-glow);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+    }
+
+    .sub-pen-container {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      background: #0A111D;
+      padding: 6px;
+      border: 1px dashed var(--electric-teal);
+      border-radius: 3px;
+    }
+
+    .sub-pen {
+      border: 1px solid var(--electric-teal);
+      padding: 6px 2px;
+      background: rgba(6, 182, 212, 0.05);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-main);
+    }
+
+    .sub-pen-tag {
+      color: var(--gold-glow);
+      font-weight: 700;
+      display: block;
+    }
+
+    .pod-spec {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--electric-teal);
+      background: rgba(6, 182, 212, 0.1);
+      width: 100%;
+      padding: 4px;
+      border-radius: 2px;
+    }
+
+    .pod-age {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Technical Title Block Footer inside Slide */
+    .title-block-frame {
+      border: 1px solid var(--gold-glow);
+      background: #0A101C;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      padding: 10px 16px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+    }
+
+    .tb-project {
+      border-right: 1px solid var(--border-color);
+      padding-right: 12px;
+    }
+
+    .tb-project-code {
+      color: var(--electric-teal);
+      font-size: 0.65rem;
+    }
+
+    .tb-project-name {
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin: 2px 0;
+    }
+
+    .tb-ip {
+      color: var(--gold-glow);
+      font-size: 0.6rem;
+    }
+
+    .tb-designer {
+      padding-left: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .tb-designer-name {
+      color: var(--gold-glow);
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+
+    .tb-designer-role {
+      color: var(--text-muted);
+      font-size: 0.65rem;
+    }
+
+    /* Zero-Mortality Core Vector Grid (Slide 2) */
+    .vector-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .vector-card {
+      background: var(--card-inner);
+      border: 1px solid var(--electric-teal);
+      border-left: 4px solid var(--gold-glow);
+      padding: 14px;
+      border-radius: 4px;
+    }
+
+    .vector-header {
+      font-family: var(--font-mono);
+      color: var(--gold-glow);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .vector-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .vector-body strong {
+      color: var(--electric-teal);
+    }
+
+    /* Controls Deck Footer */
+    .deck-footer {
+      padding: 12px 24px;
+      background: #0B1320;
+      border-top: 1px solid var(--electric-teal);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+    }
+
+    .dots-container {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--gold-glow);
+      box-shadow: 0 0 8px var(--gold-glow);
+      transform: scale(1.2);
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid var(--electric-teal);
+      color: var(--electric-teal);
+      padding: 6px 16px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .btn:hover:not(:disabled) {
+      background: var(--gold-glow);
+      color: #0B1320;
+      border-color: var(--gold-glow);
+      box-shadow: 0 0 12px var(--gold-alpha);
+    }
+
+    .btn:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+
+    .schema-tag {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="deck-container">
+    <!-- Top Technical Header -->
+    <header class="deck-header">
+      <div class="header-title-block">
+        <div class="header-main-title">4-POD SWINE FINISHER HYDRONIC THERMAL DISTRIBUTION</div>
+        <div class="header-sub">Project: LEP-IMP-ENG-2026 | Biothermal Waste Heat Recovery Swine Nursery</div>
+      </div>
+      <div class="header-meta">
+        <div>DESIGN ARCHITECT: <span>Sipho Wiseman Khuzwayo</span></div>
+        <div>MANAGING DIRECTOR | LWANDILE ENGINEERING PROJECTS</div>
+      </div>
+    </header>
+
+    <!-- CAD Layer Status Bar -->
+    <div class="layer-bar">
+      <span class="layer-tag">CAD LAYERS:</span>
+      <div class="layer-item"><span class="layer-checkbox"></span> Sub-floor PEX Loop</div>
+      <div class="layer-item"><span class="layer-checkbox"></span> 4-Pod Containment (1-4)</div>
+      <div class="layer-item"><span class="layer-checkbox"></span> 16 Modular Sub-Pens</div>
+      <div class="layer-item"><span class="layer-checkbox"></span> SCADA Thermostatic Valves</div>
+    </div>
+
+    <!-- Slide Viewport Stage -->
+    <main class="slide-viewport">
+      
+      <!-- SLIDE 1: Hydronic Thermal & Spatial Schematic -->
+      <section class="slide active">
+        <div class="cad-frame">
+          <div class="schematic-diagram">
+            <div class="line-supply"></div>
+            
+            <div class="pods-grid">
+              <!-- Pod 01 -->
+              <div class="pod-card">
+                <div class="pod-title">POD 01</div>
+                <div class="sub-pen-container">
+                  <div class="sub-pen"><span class="sub-pen-tag">PEN A</span>20 Head</div>
+                  <div class="sub-pen"><span class="sub-pen-tag">PEN B</span>20 Head</div>
+                </div>
+                <div class="pod-spec">30.0 °C Target</div>
+                <div class="pod-age">7kg Weaners (Entry Wk 1-2)</div>
+              </div>
+
+              <!-- Pod 02 -->
+              <div class="pod-card">
+                <div class="pod-title">POD 02</div>
+                <div class="sub-pen-container">
+                  <div class="sub-pen"><span class="sub-pen-tag">PEN A</span>20 Head</div>
+                  <div class="sub-pen"><span class="sub-pen-tag">PEN B</span>20 Head</div>
+                </div>
+                <div class="pod-spec">26.0 °C Target</div>
+                <div class="pod-age">15kg - 30kg Growth</div>
+              </div>
+
+              <!-- Pod 03 -->
+              <div class="pod-card">
+                <div class="pod-title">POD 03</div>
+                <div class="sub-pen-container">
+                  <div class="sub-pen"><span class="sub-pen-tag">PEN A</span>20 Head</div>
+                  <div class="sub-pen"><span class="sub-pen-tag">PEN B</span>20 Head</div>
+                </div>
+                <div class="pod-spec">22.0 °C Target</div>
+                <div class="pod-age">30kg - 50kg Growth</div>
+              </div>
+
+              <!-- Pod 04 -->
+              <div class="pod-card">
+                <div class="pod-title">POD 04</div>
+                <div class="sub-pen-container">
+                  <div class="sub-pen"><span class="sub-pen-tag">PEN A</span>20 Head</div>
+                  <div class="sub-pen"><span class="sub-pen-tag">PEN B</span>20 Head</div>
+                </div>
+                <div class="pod-spec">18.0 °C Target</div>
+                <div class="pod-age">50kg - 70kg Dispatch</div>
+              </div>
+            </div>
+
+            <div class="line-return"></div>
+          </div>
+
+          <!-- Slide 1 Title Block -->
+          <div class="title-block-frame">
+            <div class="tb-project">
+              <div class="tb-project-code">PROJECT: LEP-IMP-ENG-2026</div>
+              <div class="tb-project-name">4-POD SWINE FINISHER HYDRONIC THERMAL SCHEMATIC</div>
+              <div class="tb-ip">PROPRIETARY INTELLECTUAL PROPERTY — LWANDILE ENGINEERING PROJECTS (PTY) LTD</div>
+            </div>
+            <div class="tb-designer">
+              <div class="tb-designer-name">Sipho Wiseman Khuzwayo</div>
+              <div class="tb-designer-role">MANAGING DIRECTOR | Secunda-Kinross Corridor, MP</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: Zero-Mortality Operational Protocols (Clean Layman Text) -->
+      <section class="slide">
+        <div class="cad-frame">
+          <div style="font-family: var(--font-mono); color: var(--gold-glow); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+            Zero-Mortality Execution Protocol (7kg Weaner → 70kg Dispatch)
+          </div>
+
+          <div class="vector-grid">
+            <div class="vector-card">
+              <div class="vector-header">1. Sub-Pen Partitioning & Weight Classing</div>
+              <div class="vector-body">
+                Split each <strong>96 m² pod</strong> into two <strong>48 m² sub-pens</strong> holding 20 pigs each. Sorting pigs by weight at entry stops bigger pigs from bullying smaller <strong>7 kg piglets</strong> away from food and water.
+              </div>
+            </div>
+
+            <div class="vector-card">
+              <div class="vector-header">2. Sub-Floor Thermal Protection</div>
+              <div class="vector-body">
+                Keep floor temperatures steady at <strong>28°C to 30°C</strong> for the first 14 days using hot water pipes under the concrete. This prevents cold drafts and stops piglets from piling on top of each other and suffocating.
+              </div>
+            </div>
+
+            <div class="vector-card">
+              <div class="vector-header">3. Spatial Density & Zero-Congestion</div>
+              <div class="vector-body">
+                Every pig receives <strong>1.9 m² of space</strong> at 70 kg dispatch size—nearly three times the industry standard of 0.65 m². This eliminates crowding, reduces stress, and stops tail-biting entirely.
+              </div>
+            </div>
+
+            <div class="vector-card">
+              <div class="vector-header">4. Slurry & Gas Elimination</div>
+              <div class="vector-body">
+                A <strong>2% floor slope</strong> drains manure continuously out of the barn into the biothermal digester. This keeps toxic ammonia gas below <strong>10 ppm</strong>, protecting the pigs' lung health.
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 Title Block -->
+          <div class="title-block-frame" style="margin-top: 10px;">
+            <div class="tb-project">
+              <div class="tb-project-code">PROJECT: LEP-IMP-ENG-2026</div>
+              <div class="tb-project-name">SWINE POD ZERO-MORTALITY TECHNICAL SPECIFICATION</div>
+              <div class="tb-ip">PROPRIETARY INTELLECTUAL PROPERTY — LWANDILE ENGINEERING PROJECTS (PTY) LTD</div>
+            </div>
+            <div class="tb-designer">
+              <div class="tb-designer-name">Sipho Wiseman Khuzwayo</div>
+              <div class="tb-designer-role">FILE: LEP-IMP-ENG-2026-POD_DWG_swine-thermal_v1.0.html</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: System Execution State & Verification -->
+      <section class="slide">
+        <div class="cad-frame">
+          <div style="font-family: var(--font-mono); color: var(--gold-glow); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--border-color); padding-bottom: 6px;">
+            System State & Capacity Summary
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 20px;">
+            <div style="background: var(--card-inner); border: 1px solid var(--electric-teal); padding: 18px; border-radius: 4px; text-align: center;">
+              <div style="font-family: var(--font-mono); color: var(--gold-glow); font-size: 1.8rem; font-weight: 700;">160 Head</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); margin-top: 4px;">TOTAL SWINE HERD CAPACITY</div>
+            </div>
+
+            <div style="background: var(--card-inner); border: 1px solid var(--electric-teal); padding: 18px; border-radius: 4px; text-align: center;">
+              <div style="font-family: var(--font-mono); color: var(--gold-glow); font-size: 1.8rem; font-weight: 700;">1.9 m²/pig</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); margin-top: 4px;">DISPATCH FLOOR ALLOWANCE</div>
+            </div>
+
+            <div style="background: var(--card-inner); border: 1px solid var(--electric-teal); padding: 18px; border-radius: 4px; text-align: center;">
+              <div style="font-family: var(--font-mono); color: var(--gold-glow); font-size: 1.8rem; font-weight: 700;">0.00%</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); margin-top: 4px;">TARGET MORTALITY RATE</div>
+            </div>
+          </div>
+
+          <div style="background: #0A111D; border: 1px solid var(--border-color); padding: 16px; border-radius: 4px; margin-top: 20px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); line-height: 1.6;">
+            <span style="color: var(--gold-glow); font-weight: 700;">SYSTEM AUDIT VERIFICATION:</span><br/>
+            All 4 pods adhere strictly to the 16-containment pen modular architecture. Microclimate valves automatically drop floor heat from 30°C down to 18°C as the pigs grow bigger and generate their own body heat.
+          </div>
+
+          <!-- Slide 3 Title Block -->
+          <div class="title-block-frame" style="margin-top: 15px;">
+            <div class="tb-project">
+              <div class="tb-project-code">PROJECT: LEP-IMP-ENG-2026</div>
+              <div class="tb-project-name">FINAL ARCHITECTURAL VERIFICATION DECK</div>
+              <div class="tb-ip">PROPRIETARY INTELLECTUAL PROPERTY — LWANDILE ENGINEERING PROJECTS (PTY) LTD</div>
+            </div>
+            <div class="tb-designer">
+              <div class="tb-designer-name">Sipho Wiseman Khuzwayo</div>
+              <div class="tb-designer-role">SCHEMA: Scapush Precision Active</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Controls Deck Footer -->
+    <footer class="deck-footer">
+      <div class="dots-container" id="dots"></div>
+      
+      <div class="schema-tag">FILE SCHEMA: Scapush Precision Active</div>
+
+      <div class="controls">
+        <button class="btn" id="prevBtn" onclick="changeSlide(-1)" disabled>
+          &#8592; PREV
+        </button>
+        <div id="counter" style="color: var(--gold-glow); font-size: 0.8rem; display: flex; align-items: center; padding: 0 8px;">01 / 03</div>
+        <button class="btn" id="nextBtn" onclick="changeSlide(1)">
+          NEXT &#8594;
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('counter');
+    const dotsContainer = document.getElementById('dots');
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+
+    // Generate Dots
+    slides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.remove('active', 'prev');
+        if (index === currentSlide) {
+          slide.classList.add('active');
+        } else if (index < currentSlide) {
+          slide.classList.add('prev');
+        }
+      });
+
+      // Update Dots
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+
+      // Update Counter
+      const currentFormatted = String(currentSlide + 1).padStart(2, '0');
+      const totalFormatted = String(totalSlides).padStart(2, '0');
+      counter.textContent = `${currentFormatted} / ${totalFormatted}`;
+
+      // Update Button States
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === totalSlides - 1;
+    }
+
+    function changeSlide(direction) {
+      const nextIndex = currentSlide + direction;
+      if (nextIndex >= 0 && nextIndex < totalSlides) {
+        currentSlide = nextIndex;
+        updateSlide();
+      }
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateSlide();
+    }
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') {
+        changeSlide(1);
+      } else if (e.key === 'ArrowLeft') {
+        changeSlide(-1);
+      }
+    });
+  </script>
+</body>
+</html>

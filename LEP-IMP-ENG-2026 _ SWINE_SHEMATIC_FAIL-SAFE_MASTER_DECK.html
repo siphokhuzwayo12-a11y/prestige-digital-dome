@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/ASUS/Downloads/gemini-code-1786030802418.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEP-IMP-ENG-2026 | SCAPUSH PRECISION MASTER DECK</title>
+    <style>
+        :root {
+            --bg-color: #030a16;
+            --panel-bg: #07152b;
+            --border-cyan: #00d8ff;
+            --border-gold: #ffcc00;
+            --text-gold: #ffcc00;
+            --text-cyan: #00d8ff;
+            --text-white: #ffffff;
+            --text-red: #ff3366;
+            --text-muted: #6272a4;
+            --sub-panel-bg: #0a1c38;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1350px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--border-cyan);
+            padding: 24px;
+            box-shadow: 0 0 20px rgba(0, 216, 255, 0.15);
+        }
+
+        /* Header Section */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--border-cyan);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .header-title h1 {
+            color: var(--text-gold);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .header-title p {
+            color: var(--text-cyan);
+            font-size: 0.85rem;
+        }
+
+        .header-credits {
+            text-align: right;
+            font-size: 0.75rem;
+        }
+
+        .header-credits .architect {
+            color: var(--text-gold);
+        }
+
+        .header-credits .company {
+            color: var(--text-cyan);
+        }
+
+        /* Schema Layers Bar */
+        .schema-layers {
+            background-color: var(--panel-bg);
+            border: 1px solid #102a45;
+            padding: 10px 16px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 24px;
+            font-size: 0.8rem;
+            align-items: center;
+        }
+
+        .schema-title {
+            color: var(--text-gold);
+            font-weight: bold;
+        }
+
+        .layer-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+        }
+
+        .color-box {
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background-color: var(--panel-bg);
+            border: 1px solid var(--border-gold);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            color: var(--text-gold);
+            text-align: center;
+            font-size: 1.05rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .card-subtitle {
+            border: 1px dashed var(--border-cyan);
+            color: var(--text-cyan);
+            text-align: center;
+            padding: 8px 4px;
+            font-size: 0.8rem;
+            margin-bottom: 16px;
+        }
+
+        .data-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            font-size: 0.78rem;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            line-height: 1.3;
+        }
+
+        .data-label {
+            color: var(--text-muted);
+            width: 45%;
+        }
+
+        .data-value {
+            width: 53%;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .val-cyan { color: var(--text-cyan); }
+        .val-gold { color: var(--text-gold); }
+        .val-red { color: var(--text-red); }
+        .val-white { color: var(--text-white); }
+
+        /* Footer Controls */
+        .footer {
+            border: 1px solid var(--border-cyan);
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--panel-bg);
+            font-size: 0.75rem;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .footer-line-1 { color: var(--text-gold); }
+        .footer-line-2 { color: var(--text-muted); }
+        .footer-status {
+            color: var(--text-gold);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--text-gold);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--border-cyan);
+            color: var(--text-cyan);
+            padding: 6px 16px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover:not(:disabled) {
+            background-color: rgba(0, 216, 255, 0.1);
+            box-shadow: 0 0 8px rgba(0, 216, 255, 0.4);
+        }
+
+        .btn:disabled {
+            border-color: #334155;
+            color: #334155;
+            cursor: not-allowed;
+        }
+
+        .page-indicator {
+            color: var(--text-gold);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .header-credits {
+                text-align: left;
+            }
+            .schema-layers {
+                flex-wrap: wrap;
+            }
+            .footer {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-title">
+            <h1 id="main-header-title">SWINE WELFARE &amp; MARKET DISPATCH SCHEMATIC</h1>
+            <p id="sub-header-text">Project: LEP-IMP-ENG-2026 | Swine (Piggery) Grow-Finish Operations</p>
+        </div>
+        <div class="header-credits">
+            <p>DESIGN ARCHITECT: <span class="architect">Sipho Wiseman Khuzwayo</span></p>
+            <p>MANAGING DIRECTOR | <span class="company">LWANDILE ENGINEERING PROJECTS</span></p>
+        </div>
+    </header>
+
+    <!-- Schema Layers -->
+    <div class="schema-layers">
+        <span class="schema-title">SCHEMA LAYERS:</span>
+        <div class="layer-item"><span class="color-box" style="background: var(--text-gold);"></span> Welfare Controls</div>
+        <div class="layer-item"><span class="color-box" style="background: var(--text-cyan);"></span> Feed Withdrawal</div>
+        <div class="layer-item"><span class="color-box" style="background: var(--text-red);"></span> Interlocks / Safety</div>
+        <div class="layer-item"><span class="color-box" style="background: var(--text-muted);"></span> Abattoir Dispatch</div>
+    </div>
+
+    <!-- Main Content Matrix -->
+    <main class="grid-container" id="slide-content"><div class="card">
+                <div class="card-title">WELFARE STANDARDS</div>
+                <div class="card-subtitle">Environmental Care</div>
+                <div class="data-list">
+                    
+                    <div class="data-row">
+                        <span class="data-label">Stocking Density:</span>
+                        <span class="data-value val-white">0.7 - 1.0 m² / Finisher Pig</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Thermal Control:</span>
+                        <span class="data-value val-white">18°C - 21°C (Grow-Finish)</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Air Quality:</span>
+                        <span class="data-value val-cyan">NH3 &lt; 10 ppm | H2S &lt; 5 ppm</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Bedding / Slat:</span>
+                        <span class="data-value val-white">Clean Concrete / Dry Slats</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Nipple Ratio:</span>
+                        <span class="data-value val-cyan">1 Nipple / 10-12 Pigs</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Trough Space:</span>
+                        <span class="data-value val-white">30 cm / Pig (Wet-Dry)</span>
+                    </div>
+                
+                </div>
+            </div><div class="card">
+                <div class="card-title">HARVEST PREP</div>
+                <div class="card-subtitle">Feed Withdrawal (T-12 hrs)</div>
+                <div class="data-list">
+                    
+                    <div class="data-row">
+                        <span class="data-label">Feed Withdrawal:</span>
+                        <span class="data-value val-gold">12-18 Hours Pre-Lairage</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Water Access:</span>
+                        <span class="data-value val-cyan">Ad Libitum Until Loading</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Gut Emptying:</span>
+                        <span class="data-value val-white">Reduces Mortality &amp; PSE Pork</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Pen Grouping:</span>
+                        <span class="data-value val-white">Keep Social Batches Intact</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Mixing Protocol:</span>
+                        <span class="data-value val-cyan">Zero Mixing of Unknown Groups</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Pre-Load Rest:</span>
+                        <span class="data-value val-white">Calm Environment &gt; 2 Hours</span>
+                    </div>
+                
+                </div>
+            </div><div class="card">
+                <div class="card-title">LOADING &amp; BOARDING</div>
+                <div class="card-subtitle">Humane Handling</div>
+                <div class="data-list">
+                    
+                    <div class="data-row">
+                        <span class="data-label">Moving Method:</span>
+                        <span class="data-value val-gold">Sorting Boards / No Prods</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Ramp Incline:</span>
+                        <span class="data-value val-white">Max 15° Angle (Non-Slip)</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Truck Density:</span>
+                        <span class="data-value val-white">0.4 m² / 100 kg Pig</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Stress Mitigation:</span>
+                        <span class="data-value val-red">Zero Skin Blemishes / Erythema</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Loading Window:</span>
+                        <span class="data-value val-cyan">Dawn / Twilight Hours</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Climate Control:</span>
+                        <span class="data-value val-cyan">Sprinklers Active in Heat</span>
+                    </div>
+                
+                </div>
+            </div><div class="card">
+                <div class="card-title">MARKET DISPATCH</div>
+                <div class="card-subtitle">Logistics &amp; Processing</div>
+                <div class="data-list">
+                    
+                    <div class="data-row">
+                        <span class="data-label">Target Live Wt:</span>
+                        <span class="data-value val-gold">105 kg - 115 kg</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Batch Size / Truck:</span>
+                        <span class="data-value val-white">80 - 120 Head</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Total Dispatch:</span>
+                        <span class="data-value val-cyan">~9,000 kg - 13,000 kg</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Transport Time:</span>
+                        <span class="data-value val-white">&lt; 3 Hours (Direct Route)</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Documentation:</span>
+                        <span class="data-value val-white">Health Cert &amp; Movement Permit</span>
+                    </div>
+                
+                    <div class="data-row">
+                        <span class="data-label">Lairage Rest:</span>
+                        <span class="data-value val-red">2-4 Hours Prior to Slaughter</span>
+                    </div>
+                
+                </div>
+            </div></main>
+
+    <!-- Footer Navigation -->
+    <footer class="footer">
+        <div class="footer-info">
+            <div class="footer-line-1">PROJECT: LEP-IMP-ENG-2026 | MODULE: LIVESTOCK OPERATIONS &amp; SAFETY MATRIX</div>
+            <div class="footer-line-2">PROPRIETARY INTELLECTUAL PROPERTY: LWANDILE ENGINEERING PROJECTS (PTY) LTD</div>
+            <div class="footer-status"><span class="status-dot"></span> FILE SCHEMA: Scapush Precision Active</div>
+        </div>
+        <div class="nav-controls">
+            <button class="btn" id="prev-btn" onclick="changeSlide(-1)" disabled="">← PREV</button>
+            <span class="page-indicator" id="page-num">01 / 04</span>
+            <button class="btn" id="next-btn" onclick="changeSlide(1)">NEXT →</button>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const slidesData = [
+        {
+            mainTitle: "SWINE WELFARE & MARKET DISPATCH SCHEMATIC",
+            subTitle: "Project: LEP-IMP-ENG-2026 | Swine (Piggery) Grow-Finish Operations",
+            cards: [
+                {
+                    header: "WELFARE STANDARDS",
+                    sub: "Environmental Care",
+                    rows: [
+                        { label: "Stocking Density:", val: "0.7 - 1.0 m² / Finisher Pig", class: "val-white" },
+                        { label: "Thermal Control:", val: "18°C - 21°C (Grow-Finish)", class: "val-white" },
+                        { label: "Air Quality:", val: "NH3 < 10 ppm | H2S < 5 ppm", class: "val-cyan" },
+                        { label: "Bedding / Slat:", val: "Clean Concrete / Dry Slats", class: "val-white" },
+                        { label: "Nipple Ratio:", val: "1 Nipple / 10-12 Pigs", class: "val-cyan" },
+                        { label: "Trough Space:", val: "30 cm / Pig (Wet-Dry)", class: "val-white" }
+                    ]
+                },
+                {
+                    header: "HARVEST PREP",
+                    sub: "Feed Withdrawal (T-12 hrs)",
+                    rows: [
+                        { label: "Feed Withdrawal:", val: "12-18 Hours Pre-Lairage", class: "val-gold" },
+                        { label: "Water Access:", val: "Ad Libitum Until Loading", class: "val-cyan" },
+                        { label: "Gut Emptying:", val: "Reduces Mortality & PSE Pork", class: "val-white" },
+                        { label: "Pen Grouping:", val: "Keep Social Batches Intact", class: "val-white" },
+                        { label: "Mixing Protocol:", val: "Zero Mixing of Unknown Groups", class: "val-cyan" },
+                        { label: "Pre-Load Rest:", val: "Calm Environment > 2 Hours", class: "val-white" }
+                    ]
+                },
+                {
+                    header: "LOADING & BOARDING",
+                    sub: "Humane Handling",
+                    rows: [
+                        { label: "Moving Method:", val: "Sorting Boards / No Prods", class: "val-gold" },
+                        { label: "Ramp Incline:", val: "Max 15° Angle (Non-Slip)", class: "val-white" },
+                        { label: "Truck Density:", val: "0.4 m² / 100 kg Pig", class: "val-white" },
+                        { label: "Stress Mitigation:", val: "Zero Skin Blemishes / Erythema", class: "val-red" },
+                        { label: "Loading Window:", val: "Dawn / Twilight Hours", class: "val-cyan" },
+                        { label: "Climate Control:", val: "Sprinklers Active in Heat", class: "val-cyan" }
+                    ]
+                },
+                {
+                    header: "MARKET DISPATCH",
+                    sub: "Logistics & Processing",
+                    rows: [
+                        { label: "Target Live Wt:", val: "105 kg - 115 kg", class: "val-gold" },
+                        { label: "Batch Size / Truck:", val: "80 - 120 Head", class: "val-white" },
+                        { label: "Total Dispatch:", val: "~9,000 kg - 13,000 kg", class: "val-cyan" },
+                        { label: "Transport Time:", val: "< 3 Hours (Direct Route)", class: "val-white" },
+                        { label: "Documentation:", val: "Health Cert & Movement Permit", class: "val-white" },
+                        { label: "Lairage Rest:", val: "2-4 Hours Prior to Slaughter", class: "val-red" }
+                    ]
+                }
+            ]
+        },
+        {
+            mainTitle: "SWINE BREEDING & SOW HERD SCHEMATIC",
+            subTitle: "Project: LEP-IMP-ENG-2026 | Swine Breeding & Sow Herd Management",
+            cards: [
+                {
+                    header: "WELFARE STANDARDS",
+                    sub: "Gestation & Farrowing",
+                    rows: [
+                        { label: "Group Housing:", val: "2.25 m² / Gestating Sow", class: "val-white" },
+                        { label: "Farrowing Temp:", val: "20°C Sow / 32°C Creep Area", class: "val-white" },
+                        { label: "Air Exchange:", val: "15-20 CMF Minimum Flow", class: "val-cyan" },
+                        { label: "Enrichment:", val: "Straw / Chew Ropes Active", class: "val-white" },
+                        { label: "Water Flow Rate:", val: "2.0 L/min via Nipple Drinker", class: "val-cyan" },
+                        { label: "Floor System:", val: "Cast Iron / Plastic Slat Combo", class: "val-white" }
+                    ]
+                },
+                {
+                    header: "CULL SOW DISPATCH",
+                    sub: "Withdrawal & Sorting",
+                    rows: [
+                        { label: "Feed Withdrawal:", val: "14-16 Hours Pre-Transport", class: "val-gold" },
+                        { label: "Water Access:", val: "Continuous Clean Water", class: "val-cyan" },
+                        { label: "Health Fitness:", val: "Zero Non-Ambulatory Stock", class: "val-red" },
+                        { label: "Isolation Penning:", val: "Separate High Body Mass Sows", class: "val-white" },
+                        { label: "Drafting Standard:", val: "Tagging & Traceability Clear", class: "val-cyan" },
+                        { label: "Handling Care:", val: "Individual Slow-Paced Boarding", class: "val-white" }
+                    ]
+                },
+                {
+                    header: "HEAVY TRANSPORT",
+                    sub: "Specialized Boarding",
+                    rows: [
+                        { label: "Ramp Assistance:", val: "Hydraulic Tailgate Lift Only", class: "val-gold" },
+                        { label: "Deck Clearance:", val: "Min 1.2 m Overhead Room", class: "val-white" },
+                        { label: "Truck Density:", val: "0.8 - 1.0 m² / Sow (>200kg)", class: "val-white" },
+                        { label: "Grip Surface:", val: "Heavy Rubber Mats / Cleats", class: "val-red" },
+                        { label: "Departure Time:", val: "Early AM / Low Heat Index", class: "val-cyan" },
+                        { label: "Bedding Layer:", val: "Shavings / Moisture Absorbent", class: "val-cyan" }
+                    ]
+                },
+                {
+                    header: "ABATTOIR LOGISTICS",
+                    sub: "Sow Processing Market",
+                    rows: [
+                        { label: "Target Live Wt:", val: "180 kg - 250 kg", class: "val-gold" },
+                        { label: "Batch Size / Truck:", val: "40 - 50 Head", class: "val-white" },
+                        { label: "Total Dispatch:", val: "~8,000 kg - 11,500 kg", class: "val-cyan" },
+                        { label: "Transport Limit:", val: "< 4 Hours Direct Routing", class: "val-white" },
+                        { label: "Documentation:", val: "Cull Declaration & Permit", class: "val-white" },
+                        { label: "Lairage Hold:", val: "3-6 Hours Showered Rest", class: "val-red" }
+                    ]
+                }
+            ]
+        },
+        {
+            mainTitle: "WEANER & NURSERY DISPATCH SCHEMATIC",
+            subTitle: "Project: LEP-IMP-ENG-2026 | Swine Weaner & Nursery Dispatch",
+            cards: [
+                {
+                    header: "WELFARE STANDARDS",
+                    sub: "Nursery Environment",
+                    rows: [
+                        { label: "Stocking Density:", val: "0.3 - 0.4 m² / Weaner Pig", class: "val-white" },
+                        { label: "Thermal Control:", val: "26°C - 30°C (Step-down)", class: "val-white" },
+                        { label: "Air Quality:", val: "NH3 < 5 ppm | Dust Free", class: "val-cyan" },
+                        { label: "Micro-Climate:", val: "Heat Pads / Overhead Lamps", class: "val-white" },
+                        { label: "Drinker Height:", val: "Adjusted to Shoulder Level", class: "val-cyan" },
+                        { label: "Feed Space:", val: "5 cm / Pig (Gruel & Pellets)", class: "val-white" }
+                    ]
+                },
+                {
+                    header: "TRANSFER PREP",
+                    sub: "Feed Management",
+                    rows: [
+                        { label: "Feed Withdrawal:", val: "Max 2-4 Hours Pre-Transit", class: "val-gold" },
+                        { label: "Hydration Focus:", val: "Electrolytes in Water Lines", class: "val-cyan" },
+                        { label: "Stress Defense:", val: "Probiotic Drench Pre-Load", class: "val-white" },
+                        { label: "Litter Batches:", val: "Maintain Nursery Pen Mates", class: "val-white" },
+                        { label: "Health Check:", val: "Vigorous Active Stock Only", class: "val-cyan" },
+                        { label: "Pre-Load Temp:", val: "Pre-Warm Transport Box", class: "val-white" }
+                    ]
+                },
+                {
+                    header: "CRATE & CONTAINER",
+                    sub: "Small Pig Boarding",
+                    rows: [
+                        { label: "Handling Method:", val: "Gentle Two-Hand Lift", class: "val-gold" },
+                        { label: "Ramp / Lift:", val: "Enclosed Level Loading Dock", class: "val-white" },
+                        { label: "Container Space:", val: "0.15 - 0.20 m² / Piglet", class: "val-white" },
+                        { label: "Draft Defense:", val: "Enclosed Curtains / Solid Sides", class: "val-red" },
+                        { label: "Transit Time:", val: "Mid-Day Controlled Climate", class: "val-cyan" },
+                        { label: "Bedding Layer:", val: "Thick Straw / Dustless Shavings", class: "val-cyan" }
+                    ]
+                },
+                {
+                    header: "FINISHER SITE DISPATCH",
+                    sub: "Off-Site Relocation",
+                    rows: [
+                        { label: "Target Live Wt:", val: "18 kg - 25 kg", class: "val-gold" },
+                        { label: "Batch Size / Truck:", val: "300 - 500 Head", class: "val-white" },
+                        { label: "Total Dispatch:", val: "~6,000 kg - 10,000 kg", class: "val-cyan" },
+                        { label: "Transit Window:", val: "< 2 Hours Express Route", class: "val-white" },
+                        { label: "Documentation:", val: "Biosecurity Movement Log", class: "val-white" },
+                        { label: "Unloading Warmth:", val: "Direct to Heated Finisher", class: "val-red" }
+                    ]
+                }
+            ]
+        },
+        {
+            mainTitle: "FAIL-SAFE & ZERO-MORTALITY INTERLOCK SCHEMATIC",
+            subTitle: "Project: LEP-IMP-ENG-2026 | Module 04: Emergency Safety & Redundancy Overrides",
+            cards: [
+                {
+                    header: "ENVIRONMENTAL CUT-OFFS",
+                    sub: "Critical Limit Triggers",
+                    rows: [
+                        { label: "Thermal High-Limit:", val: "Auto-Drop Curtains at > 28°C", class: "val-red" },
+                        { label: "Gas Spike (NH3):", val: "> 25 ppm Triggers 100% Exhaust", class: "val-gold" },
+                        { label: "Water Pressure Loss:", val: "Auto-Switch to Aux Tank", class: "val-cyan" },
+                        { label: "Pressure Anomaly:", val: "Static Pressure Alarm < 10 Pa", class: "val-white" },
+                        { label: "Sensor Drift:", val: "Self-Checking Dual Sensors", class: "val-cyan" },
+                        { label: "Sirens / Beacons:", val: "Hardwired Audible Alarm", class: "val-red" }
+                    ]
+                },
+                {
+                    header: "POWER & AIR REDUNDANCY",
+                    sub: "Hardware Fail-Safes",
+                    rows: [
+                        { label: "Main Power Loss:", val: "Auto-Gen Cut-In < 8 Secs", class: "val-gold" },
+                        { label: "Back-Up Air:", val: "DC Battery Dedicated Fans", class: "val-white" },
+                        { label: "UPS Logic Power:", val: "Min 4-Hour Emergency Reserve", class: "val-cyan" },
+                        { label: "Phase Failure:", val: "Auto Line Isolation Relay", class: "val-white" },
+                        { label: "Fuel Reserve:", val: "48-Hour Generator Diesel", class: "val-cyan" },
+                        { label: "Grid Re-Sync:", val: "Delayed Surge-Free Soft Start", class: "val-white" }
+                    ]
+                },
+                {
+                    header: "TRANSIT INTERLOCKS",
+                    sub: "Logistics Safety Locks",
+                    rows: [
+                        { label: "Transit Delay:", val: "Sprinkler Pulse if Delayed > 20m", class: "val-gold" },
+                        { label: "Density Interlock:", val: "Ramp Weight Lock (0.4m²/100kg)", class: "val-white" },
+                        { label: "Max Transit Hold:", val: "Forced Unload Trigger @ 4 Hrs", class: "val-red" },
+                        { label: "Temp Telemetry:", val: "Live Trailer Sensor Stream", class: "val-cyan" },
+                        { label: "Driver Alert:", val: "Cab Warning for High Heat", class: "val-red" },
+                        { label: "Geofence Check:", val: "Auto ETA Lock to Abattoir", class: "val-white" }
+                    ]
+                },
+                {
+                    header: "DEFAULT SAFE STATES",
+                    sub: "Zero-Mortality Overrides",
+                    rows: [
+                        { label: "System Fail-Safe:", val: "Drop to Open Air (Passive)", class: "val-gold" },
+                        { label: "Manual Override:", val: "Hardwired Wall Panic Switches", class: "val-red" },
+                        { label: "Network Outage:", val: "Local Controller Autonomous", class: "val-cyan" },
+                        { label: "Black Box Logging:", val: "72-Hour Non-Volatile Flash", class: "val-white" },
+                        { label: "Heartbeat Check:", val: "10-Second Controller Ping", class: "val-cyan" },
+                        { label: "Annual Audit:", val: "Physical Relay Test Passed", class: "val-white" }
+                    ]
+                }
+            ]
+        }
+    ];
+
+    let currentSlide = 0;
+
+    function renderSlide(index) {
+        const slide = slidesData[index];
+        const container = id => document.getElementById(id);
+        
+        document.getElementById('main-header-title').innerText = slide.mainTitle;
+        document.getElementById('sub-header-text').innerText = slide.subTitle;
+
+        const grid = container('slide-content');
+        grid.innerHTML = '';
+
+        slide.cards.forEach(card => {
+            const cardElem = document.createElement('div');
+            cardElem.className = 'card';
+            
+            let rowsHtml = '';
+            card.rows.forEach(r => {
+                rowsHtml += `
+                    <div class="data-row">
+                        <span class="data-label">${r.label}</span>
+                        <span class="data-value ${r.class}">${r.val}</span>
+                    </div>
+                `;
+            });
+
+            cardElem.innerHTML = `
+                <div class="card-title">${card.header}</div>
+                <div class="card-subtitle">${card.sub}</div>
+                <div class="data-list">
+                    ${rowsHtml}
+                </div>
+            `;
+            grid.appendChild(cardElem);
+        });
+
+        container('page-num').innerText = `0${index + 1} / 0${slidesData.length}`;
+        container('prev-btn').disabled = index === 0;
+        container('next-btn').disabled = index === slidesData.length - 1;
+    }
+
+    function changeSlide(direction) {
+        currentSlide += direction;
+        if (currentSlide < 0) currentSlide = 0;
+        if (currentSlide >= slidesData.length) currentSlide = slidesData.length - 1;
+        renderSlide(currentSlide);
+    }
+
+    renderSlide(currentSlide);
+</script>
+
+
+</body></html>
