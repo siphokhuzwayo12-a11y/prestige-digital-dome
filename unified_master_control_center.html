@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lwandile Integrated Agrivoltaic Master Control Center | Prestige Suite</title>
+    
+    <!-- Tailwind CSS for utility-first styling tokenization -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for robust engineering and biological icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- MathJax for rendering elegant LaTeX scientific formulas -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+        
+        /* Dynamic CSS Variables governed by the Master Theme Engine */
+        :root {
+            --theme-accent: #22d3ee;
+            --theme-accent-rgb: 34, 211, 238;
+            --theme-secondary: #fbbf24;
+            --theme-secondary-rgb: 251, 191, 36;
+            --theme-bg-glow: rgba(34, 211, 238, 0.08);
+            --theme-dark-bg: #030712;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--theme-dark-bg);
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(var(--theme-accent-rgb), 0.12) 0%, transparent 75%),
+                linear-gradient(to bottom, rgba(var(--theme-accent-rgb), 0.015) 1px, transparent 1px);
+            background-size: 100% 40px, 40px 40px;
+            transition: background-image 0.5s ease-in-out;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Sovereign blueprint design grid lines */
+        .blueprint-grid {
+            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(to right, rgba(var(--theme-accent-rgb), 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(var(--theme-accent-rgb), 0.03) 1px, transparent 1px);
+        }
+
+        /* Dynamic visual glow shadows */
+        .glow-accent {
+            filter: drop-shadow(0 0 10px rgba(var(--theme-accent-rgb), 0.7));
+        }
+        .glow-secondary {
+            filter: drop-shadow(0 0 12px rgba(var(--theme-secondary-rgb), 0.8));
+        }
+
+        /* SVG visual flow offset keyframes for logic lines */
+        .wire-flow {
+            stroke-dasharray: 8;
+            animation: flow 1.2s linear infinite;
+        }
+        @keyframes flow {
+            to {
+                stroke-dashoffset: -16;
+            }
+        }
+
+        /* Customized premium scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(var(--theme-accent-rgb), 0.3);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(var(--theme-accent-rgb), 0.6);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100 py-8 px-4 md:px-8 blueprint-grid transition-colors duration-500">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Beijing Submission Header -->
+        <header class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b pb-6 gap-6 transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.3)">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs uppercase tracking-[0.4em] font-bold transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">Lwandile Engineering Projects</span>
+                    <span class="text-[10px] bg-slate-900 text-slate-300 px-2 py-0.5 rounded border font-bold uppercase tracking-wider transition-colors duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.3)">Beijing Prestige Suite</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight mt-1 text-white flex items-center gap-3">
+                    <i class="fa-solid fa-microchip transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)"></i> Unified Bio-Solar Command Center
+                </h1>
+                <p class="text-slate-400 text-sm mt-1">
+                    Integrated environmental, electrical, and thermal logical replication suite calibrated for the R1.8M Baseline MVP.
+                </p>
+            </div>
+            
+            <!-- Metadata Registry Panel -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:flex items-center gap-3 bg-slate-950/80 p-4 rounded-2xl border w-full lg:w-auto text-xs mono transition-colors duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.2)">
+                <div class="pr-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">DOC ID</span>
+                    <span class="font-bold text-slate-300">LEP-UMC-001</span>
+                </div>
+                <div class="px-3 sm:border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">VERSION</span>
+                    <span class="font-bold transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">v3.0-PRESTIGE</span>
+                </div>
+                <div class="px-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">STATUS</span>
+                    <span class="font-bold flex items-center gap-1 transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">
+                        <span class="w-1.5 h-1.5 rounded-full animate-ping" style="background-color: rgba(var(--theme-accent-rgb), 1)"></span> SECURE
+                    </span>
+                </div>
+                <div class="pl-3">
+                    <span class="text-slate-500 block text-[9px] uppercase">AUTHORIZATION</span>
+                    <span class="font-bold text-[#d4af37]">S.W. KHUZWAYO</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Global Diurnal Overlord Control Panel -->
+        <section class="bg-slate-950/90 border-2 rounded-2xl p-6 shadow-2xl relative overflow-hidden transition-all duration-300" style="border-color: rgba(var(--theme-secondary-rgb), 0.3)">
+            <div class="absolute top-0 right-0 px-4 py-1 text-xs font-bold uppercase tracking-widest rounded-bl-xl border-l border-b transition-all duration-300" style="background-color: rgba(var(--theme-secondary-rgb), 0.1); border-color: rgba(var(--theme-secondary-rgb), 0.2); color: rgba(var(--theme-secondary-rgb), 1)">
+                Global Diurnal Overlord v3.0
+            </div>
+            
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 transition-colors duration-300" style="color: rgba(var(--theme-secondary-rgb), 1)">
+                <i class="fa-solid fa-clock"></i> 24-Hour Synced Lifecycle Overlord
+            </h2>
+            <p class="text-slate-300 text-sm mb-6 max-w-4xl">
+                Command the unified diurnal timeline. Triggering any stage below automatically recalibrates sensory registers, switches logic routes, and calculates biological outputs across **all three modules simultaneously**.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Dawn Override -->
+                <button onclick="setGlobalDiurnal('dawn')" class="text-left bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:bg-slate-900 transition-all group hover:border-[rgba(var(--theme-accent-rgb),0.5)]">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-amber-500 font-mono uppercase">06:00 AM — Dawn Sweep</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-amber-500 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Ammonia Flush & Solar Start</h3>
+                    <p class="text-xs text-slate-400">Solar starts charging; toxic gases are exhausted. Drip networks stay offline.</p>
+                </button>
+
+                <!-- Midday Peak -->
+                <button onclick="setGlobalDiurnal('midday')" class="text-left bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:bg-slate-900 transition-all group hover:border-[rgba(var(--theme-accent-rgb),0.5)]">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-yellow-400 font-mono uppercase">12:00 PM — Midday Peak</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-yellow-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Extreme Heat Stress Shield</h3>
+                    <p class="text-xs text-slate-400">Photon capture hits maximum. Automated misting and skin-wetting drippers ignite.</p>
+                </button>
+
+                <!-- Dusk -->
+                <button onclick="setGlobalDiurnal('dusk')" class="text-left bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:bg-slate-900 transition-all group hover:border-[rgba(var(--theme-accent-rgb),0.5)]">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-indigo-400 font-mono uppercase">18:00 PM — Dusk Sweep</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-indigo-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Steady State Comfort</h3>
+                    <p class="text-xs text-slate-400">Solar drops to standby. Environmental controls stabilize to optimal temperatures.</p>
+                </button>
+
+                <!-- Freeze -->
+                <button onclick="setGlobalDiurnal('freeze')" class="text-left bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:bg-slate-900 transition-all group hover:border-[rgba(var(--theme-accent-rgb),0.5)]">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-sky-400 font-mono uppercase">02:00 AM — Night Freeze</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-sky-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Highveld Freeze Override</h3>
+                    <p class="text-xs text-slate-400">Extreme cold danger. Biogas thermal valves flood the underfloor battery structure.</p>
+                </button>
+            </div>
+
+            <!-- Global Commentary Board -->
+            <div class="mt-4 bg-slate-900/60 border rounded-xl p-4 text-sm text-slate-200 transition-colors duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.2)">
+                <span class="text-[10px] uppercase font-mono tracking-wider block mb-1 transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">Unified Simulation Commentary</span>
+                <p id="globalNarrative">Select any diurnal stage above to execute synced calibrations across the three distinct energy-agriculture nodes.</p>
+            </div>
+        </section>
+
+        <!-- Module Select Tabs -->
+        <div class="flex flex-col sm:flex-row gap-3 bg-slate-950/80 p-2 rounded-2xl border transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.2)">
+            <button onclick="switchModule('thermal')" id="tab-thermal" class="flex-1 py-3 px-4 rounded-xl text-sm font-bold uppercase tracking-wider font-mono flex items-center justify-center gap-2 transition-all duration-300 bg-[rgba(var(--theme-accent-rgb),0.1)] border text-white" style="border-color: rgba(var(--theme-accent-rgb),0.3)">
+                <i class="fa-solid fa-fire"></i> Thermal Valve (Biogas)
+            </button>
+            <button onclick="switchModule('broiler')" id="tab-broiler" class="flex-1 py-3 px-4 rounded-xl text-sm font-bold uppercase tracking-wider font-mono flex items-center justify-center gap-2 transition-all duration-300 text-slate-400 hover:text-white hover:bg-slate-900">
+                <i class="fa-solid fa-feather"></i> Broiler MC (1,920 Birds)
+            </button>
+            <button onclick="switchModule('porcine')" id="tab-porcine" class="flex-1 py-3 px-4 rounded-xl text-sm font-bold uppercase tracking-wider font-mono flex items-center justify-center gap-2 transition-all duration-300 text-slate-400 hover:text-white hover:bg-slate-900">
+                <i class="fa-solid fa-piggy-bank"></i> Swine MC (160 Finisher)
+            </button>
+        </div>
+
+        <!-- Main Workspace Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Left Panel: Parameter Controls -->
+            <div class="lg:col-span-4 space-y-4">
+                
+                <!-- Sensor Calibration Node -->
+                <div class="bg-slate-950/90 backdrop-blur-md border rounded-2xl p-5 shadow-2xl transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.2)">
+                    <h2 class="text-lg font-bold mb-4 flex items-center justify-between border-b border-slate-800 pb-2 transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">
+                        <span><i class="fa-solid fa-sliders"></i> Sensor Calibration</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Node Override</span>
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Sensor Input A -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-slate-700 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label id="labelA" class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-sun text-amber-500"></i> A: Solar (120W/m²)
+                                </label>
+                                <span id="valA" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p id="descA" class="text-xs text-slate-400 mb-3">High (5V) when photon collection registers across system arrays.</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchA" class="sr-only peer" onchange="updateSystemState(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[rgba(var(--theme-accent-rgb),1)] peer-checked:after:bg-slate-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Sensor Input B -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-slate-700 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label id="labelB" class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-bolt text-emerald-400"></i> B: Generator / Toxic State
+                                </label>
+                                <span id="valB" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p id="descB" class="text-xs text-slate-400 mb-3">Logical control path for active system load carrying capability.</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchB" class="sr-only peer" onchange="updateSystemState(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[rgba(var(--theme-accent-rgb),1)] peer-checked:after:bg-slate-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Sensor Input C -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-slate-700 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label id="labelC" class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-shield-halved text-sky-400"></i> C: Safe Temperature Zone
+                                </label>
+                                <span id="valC" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p id="descC" class="text-xs text-slate-400 mb-3">Absolute protection buffer override to safeguard biological yield structures.</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchC" class="sr-only peer" onchange="updateSystemState(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[rgba(var(--theme-accent-rgb),1)] peer-checked:after:bg-slate-950"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Physical Engine Block -->
+                <div class="bg-slate-950/90 backdrop-blur-md border rounded-2xl p-5 shadow-2xl space-y-4 transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.2)">
+                    <h2 class="text-lg font-bold flex items-center justify-between border-b border-slate-800 pb-2 transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">
+                        <span><i class="fa-solid fa-calculator"></i> Physics Diagnostics</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Live Engine</span>
+                    </h2>
+                    
+                    <!-- Dynamic Core Voltage Selection -->
+                    <div class="flex items-center justify-between bg-slate-900/50 p-2.5 rounded-lg border border-slate-800">
+                        <span class="text-xs text-slate-400 font-sans">Core Voltage ($V_{CC}$)</span>
+                        <select id="voltageSelect" onchange="updateSystemState(false)" class="bg-slate-950 border rounded text-xs px-2 py-1 focus:outline-none font-bold mono transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.3); color: rgba(var(--theme-accent-rgb), 1)">
+                            <option value="5.0" selected>5.0V (Standard)</option>
+                            <option value="3.3">3.3V (Low-Power)</option>
+                        </select>
+                    </div>
+
+                    <!-- Dynamic Telemetry Outputs -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span id="labelMetric1" class="text-xs text-slate-400 font-sans">Aggregate Power draw</span>
+                            <span id="valMetric1" class="text-xs font-bold transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">110.0 μW</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span id="labelMetric2" class="text-xs text-slate-400 font-sans">Water Delivery Volume</span>
+                            <span id="valMetric2" class="text-xs font-bold transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">0.0 L/hr</span>
+                        </div>
+                    </div>
+
+                    <!-- Compact Double Indicator Status -->
+                    <div class="grid grid-cols-2 gap-3 text-xs mono">
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span id="labelBox1" class="text-slate-500 block text-[9px] uppercase">PROP DELAY</span>
+                            <span id="valBox1" class="font-bold text-sm transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">30 ns</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">Dual-cascade latency</span>
+                        </div>
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span id="labelBox2" class="text-slate-500 block text-[9px] uppercase">HEALTH INDEX</span>
+                            <span id="valBox2" class="font-bold text-sm transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">STANDBY</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">Ecological envelope</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Dynamic Blueprint Canvas & Timing Analyzer -->
+            <div class="lg:col-span-8 space-y-4">
+                
+                <!-- Logic Schematic Card -->
+                <div class="bg-slate-950/95 border rounded-2xl p-4 md:p-6 shadow-2xl relative overflow-hidden transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.2)">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2 border-b border-slate-800 pb-3">
+                        <h2 class="text-lg font-bold flex items-center gap-2 transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">
+                            <i class="fa-solid fa-diagram-project"></i> Dynamic CMOS Logic Schematic Visualizer
+                        </h2>
+                        <div class="flex gap-2">
+                            <button onclick="resetUnifiedCircuit()" class="px-3 py-1.5 text-xs font-semibold bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+                            </button>
+                            <button onclick="copyMasterFormula()" class="px-3 py-1.5 text-xs font-semibold bg-slate-900/50 border hover:bg-slate-900 rounded-lg transition-all flex items-center gap-1 transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb),0.3); color: rgba(var(--theme-accent-rgb), 1)">
+                                <i class="fa-solid fa-copy"></i> Copy Formula
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SVG Canvas -->
+                    <div class="w-full bg-slate-950/60 p-3 rounded-xl border border-slate-900 relative overflow-x-auto">
+                        <svg viewBox="0 0 800 400" class="w-full min-w-[700px] h-auto overflow-visible select-none">
+                            
+                            <!-- Definitions for Patterns and Custom Symbols -->
+                            <defs>
+                                <pattern id="blueprint-dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="10" cy="10" r="0.8" fill="rgba(var(--theme-accent-rgb), 0.15)" />
+                                </pattern>
+                                
+                                <!-- Standard OR Gate Symbol -->
+                                <g id="ieee-or-gate">
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0 C 48,0 42,2 32,10 C 22,18 12,25 0,25 C 8,12 8,-12 0,-25 Z" fill="#020617" stroke="rgba(var(--theme-accent-rgb), 1)" stroke-width="2.5"/>
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0" fill="none" stroke="rgba(var(--theme-accent-rgb), 0.4)" stroke-width="6" class="glow-accent"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="rgba(var(--theme-accent-rgb),1)" text-anchor="middle" class="mono">OR</text>
+                                </g>
+
+                                <!-- Standard AND Gate Symbol -->
+                                <g id="ieee-and-gate">
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25 L 0,25 Z" fill="#020617" stroke="rgba(var(--theme-accent-rgb), 1)" stroke-width="2.5"/>
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25" fill="none" stroke="rgba(var(--theme-accent-rgb), 0.4)" stroke-width="6" class="glow-accent"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="rgba(var(--theme-accent-rgb),1)" text-anchor="middle" class="mono">AND</text>
+                                </g>
+                            </defs>
+
+                            <rect width="800" height="400" fill="url(#blueprint-dots)" rx="8" />
+
+                            <!-- Bus Wires / Signal Paths -->
+                            <!-- Wire Input A to OR Gate Pin 1 -->
+                            <path id="wireA" d="M 120,60 L 220,60 L 220,85 L 250,85" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowA" d="M 120,60 L 220,60 L 220,85 L 250,85" fill="none" stroke="rgba(var(--theme-accent-rgb), 1)" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire Input B to OR Gate Pin 2 -->
+                            <path id="wireB" d="M 120,130 L 220,130 L 220,105 L 250,105" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowB" d="M 120,130 L 220,130 L 220,105 L 250,105" fill="none" stroke="rgba(var(--theme-accent-rgb), 1)" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- OR Output to AND 1 Input 1 -->
+                            <path id="wireOROut" d="M 302,95 L 390,95 L 390,195 L 430,195" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowOROut" d="M 302,95 L 390,95 L 390,195 L 430,195" fill="none" stroke="rgba(var(--theme-accent-rgb), 1)" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire Input C to AND 1 Input 2 -->
+                            <path id="wireC" d="M 120,215 L 430,215" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowC" d="M 120,215 L 430,215" fill="none" stroke="rgba(var(--theme-accent-rgb), 1)" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- AND 1 Output (Primary output) to output pin and AND 2 Input 2 -->
+                            <path id="wireYPrimary" d="M 482,205 L 560,205 M 560,205 L 680,205 M 560,205 L 560,315 L 600,315" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowYPrimary" d="M 482,205 L 560,205 M 560,205 L 680,205 M 560,205 L 560,315 L 600,315" fill="none" stroke="rgba(var(--theme-accent-rgb), 1)" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Tap Line Input A to AND 2 Input 1 -->
+                            <path id="wireTapA" d="M 180,60 L 180,335 L 370,335 L 370,295 L 600,295" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowTapA" d="M 180,60 L 180,335 L 370,335 L 370,295 L 600,295" fill="none" stroke="rgba(var(--theme-accent-rgb), 1)" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- AND 2 Output (Secondary output) to final node -->
+                            <path id="wireYSecondary" d="M 652,305 L 680,305" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowYSecondary" d="M 652,305 L 680,305" fill="none" stroke="rgba(var(--theme-secondary-rgb), 1)" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Logic Gate Assemblies -->
+                            <!-- OR Gate Assembly -->
+                            <g transform="translate(250, 95)" id="gateOR" class="transition-transform duration-200">
+                                <use href="#ieee-or-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN3</text>
+                                <text x="28" y="-32" font-size="11" fill="rgba(var(--theme-accent-rgb), 1)" font-weight="bold" class="mono" text-anchor="middle">74HC32 (OR)</text>
+                            </g>
+
+                            <!-- AND Gate 1 Assembly (Primary Engine) -->
+                            <g transform="translate(430, 205)" id="gateAND1" class="transition-transform duration-200">
+                                <use href="#ieee-and-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN3</text>
+                                <text x="25" y="-32" font-size="11" fill="rgba(var(--theme-accent-rgb), 1)" font-weight="bold" class="mono" text-anchor="middle">74HC08 (AND)</text>
+                            </g>
+
+                            <!-- AND Gate 2 Assembly (Secondary Engine - Bypass in Biogas Heat) -->
+                            <g transform="translate(600, 305)" id="gateAND2" class="transition-all duration-300">
+                                <use href="#ieee-and-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN3</text>
+                                <text x="25" y="-32" font-size="11" fill="rgba(var(--theme-accent-rgb), 1)" font-weight="bold" class="mono" text-anchor="middle">74HC08 (AND)</text>
+                            </g>
+
+                            <!-- Node Indicators -->
+                            <!-- Input A Indicator -->
+                            <g transform="translate(120, 60)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeA" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtA">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="rgba(var(--theme-accent-rgb), 1)" text-anchor="start" class="mono" id="labelNodeA">SOLAR (A)</text>
+                            </g>
+
+                            <!-- Input B Indicator -->
+                            <g transform="translate(120, 130)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeB" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtB">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="rgba(var(--theme-accent-rgb), 1)" text-anchor="start" class="mono" id="labelNodeB">Y_GEN (B)</text>
+                            </g>
+
+                            <!-- Input C Indicator -->
+                            <g transform="translate(120, 215)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeC" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtC">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="rgba(var(--theme-accent-rgb), 1)" text-anchor="start" class="mono" id="labelNodeC">FREEZE (C)</text>
+                            </g>
+
+                            <!-- Primary Output Terminal Y1 -->
+                            <g transform="translate(705, 205)">
+                                <circle r="22" fill="#020617" stroke="#475569" stroke-width="4" id="nodeY1" class="transition-all duration-200" />
+                                <text y="5" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle" class="mono" id="txtY1">0</text>
+                                <text x="-30" y="-32" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="start" class="mono" id="labelNodeY1">Y_HEAT</text>
+                            </g>
+
+                            <!-- Secondary Output Terminal Y2 -->
+                            <g transform="translate(705, 305)" id="grpNodeY2" class="transition-all duration-300">
+                                <circle r="22" fill="#020617" stroke="#475569" stroke-width="4" id="nodeY2" class="transition-all duration-200" />
+                                <text y="5" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle" class="mono" id="txtY2">0</text>
+                                <text x="-30" y="-32" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="start" class="mono" id="labelNodeY2">Y_BYPASS</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Real-time Equation Feedback Boxes -->
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div id="statusPrimary" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span id="labelFormulaPrimary" class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">Primary Stage Output</span>
+                                <span id="eqFormulaPrimary" class="font-bold mono" style="color: rgba(var(--theme-accent-rgb), 1)">Y_HEAT = (A ∨ B) ∧ C</span>
+                            </div>
+                            <span id="diagnosticPrimary" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                        <div id="statusSecondary" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span id="labelFormulaSecondary" class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">Secondary Stage Output</span>
+                                <span id="eqFormulaSecondary" class="font-bold mono" style="color: rgba(var(--theme-secondary-rgb), 1)">Y_MIST = A ∧ Y_VENT</span>
+                            </div>
+                            <span id="diagnosticSecondary" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real-time Scrolling Logic Analyzer -->
+                <div class="bg-slate-950/95 border rounded-2xl p-5 shadow-2xl space-y-3 transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.2)">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <h3 class="text-sm font-bold flex items-center gap-2 transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">
+                            <i class="fa-solid fa-chart-line"></i> Dynamic Scrolling Waveform Logic Analyzer
+                        </h3>
+                        <span class="text-[10px] uppercase font-mono text-slate-500">Real-time Oscilloscope Stream</span>
+                    </div>
+                    <!-- Timing Diagram Canvas -->
+                    <div class="relative bg-slate-950/80 p-2 rounded-xl border border-slate-900 overflow-hidden">
+                        <canvas id="waveformCanvas" width="800" height="180" class="w-full h-[180px] block"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Unified Agrivoltaic Science Portal -->
+        <section class="bg-slate-950/90 border rounded-2xl p-6 shadow-2xl space-y-6 transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.2)">
+            <h2 class="text-xl font-bold border-b border-slate-800 pb-3 flex items-center gap-2 transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">
+                <i class="fa-solid fa-graduation-cap"></i> Unified Agrivoltaics Science Portal & Teachability Engine
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <!-- Class 1 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="font-bold uppercase tracking-wider text-xs text-amber-500" id="portalTitle1">Lesson 1: Thermal Concrete battery</h3>
+                    <p class="text-slate-300" id="portalText1">
+                        Utilizing the high thermal mass of the concrete floor slabs, the system stores hot water derived from the 10kW Biogas generator's heat-exchange jacket. This serves as our primary defense during deep winter freezes.
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        Provides up to 14 hours of continuous thermal radiation without active fuel burning.
+                    </p>
+                </div>
+
+                <!-- Class 2 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="font-bold uppercase tracking-wider text-xs transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)" id="portalTitle2">Lesson 2: Integrated Logic Protections</h3>
+                    <p class="text-slate-300" id="portalText2">
+                        CMOS hardware integration protects livestock cohorts dynamically. Stage 1 OR calculations handle solar and secondary power availability, while the final Stage 2 AND logic routes protection buffers.
+                    </p>
+                    <div id="portalMath" class="text-slate-400 text-xs py-1">
+                        $$\text{Y\_HEAT} = (A \lor B) \land C$$
+                    </div>
+                </div>
+
+                <!-- Class 3 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="font-bold uppercase tracking-wider text-xs text-rose-500" id="portalTitle3">Lesson 3: Zero Mortality Standards</h3>
+                    <p class="text-slate-300" id="portalText3">
+                        By coupling high-efficiency ventilation with high-pressure misting/drip infrastructure, we eliminate the physical risks of excessive relative humidity, ammonia inhalation, and hypothermic draft shock.
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        Certified for 1,920-broiler and 160-porcine cohort operations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Verification Truth Table -->
+        <div class="bg-slate-950/90 backdrop-blur-md border rounded-2xl p-6 shadow-2xl transition-all duration-300" style="border-color: rgba(var(--theme-accent-rgb), 0.2)">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 border-b border-slate-800 pb-3 transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb), 1)">
+                <i class="fa-solid fa-table"></i> Diagnostic Verification Matrix
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 uppercase tracking-widest text-xs">
+                            <th class="py-3 px-3" id="thA">A: Solar</th>
+                            <th class="py-3 px-3" id="thB">B: Generator</th>
+                            <th class="py-3 px-3" id="thC">C: Safe Clear</th>
+                            <th class="py-3 px-3 text-center bg-slate-900/30 border-r border-slate-800/50" id="thY1">Primary (Y_PRIMARY)</th>
+                            <th class="py-3 px-3 text-center" id="thY2">Secondary (Y_SECONDARY)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="truthTableBody" class="mono text-slate-300 divide-y divide-slate-800/40">
+                        <!-- Content populated dynamically via JS theme engine -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Notification Toast -->
+        <div id="toast" class="fixed bottom-6 right-6 border px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-24 opacity-0 flex items-center gap-3 bg-slate-950" style="border-color: rgba(var(--theme-accent-rgb),0.3)">
+            <i class="fa-solid fa-circle-check text-lg transition-colors duration-300" style="color: rgba(var(--theme-accent-rgb),1)"></i>
+            <span id="toastText" class="text-xs font-semibold tracking-wider uppercase text-slate-200">Formula Copied</span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 border-t border-slate-900 text-xs text-slate-600 uppercase tracking-widest italic">
+            "Harnessing the Power of the Sunbeam" — Scapush Precision Execution
+        </footer>
+    </div>
+
+    <script>
+        // Module parameters database
+        let activeModule = 'thermal';
+        const canvas = document.getElementById('waveformCanvas');
+        const ctx = canvas.getContext('2d');
+        const historyData = [];
+        const maxHistoryPoints = 80;
+
+        // Custom styling palettes for theme transition
+        const palettes = {
+            thermal: {
+                accent: '34, 211, 238', // Cyan
+                secondary: '251, 191, 36', // Gold
+                glow: 'rgba(34, 211, 238, 0.08)'
+            },
+            broiler: {
+                accent: '16, 185, 129', // Emerald
+                secondary: '6, 182, 212', // Cyan
+                glow: 'rgba(16, 185, 129, 0.08)'
+            },
+            porcine: {
+                accent: '219, 39, 119', // Pink
+                secondary: '244, 63, 94', // Rose
+                glow: 'rgba(219, 39, 119, 0.08)'
+            }
+        };
+
+        // Module structural configurations
+        const configData = {
+            thermal: {
+                labelA: '<i class="fa-solid fa-sun text-amber-500"></i> A: Solar Harnessing',
+                descA: 'High (5V) when photon collection exceeds $120\\text{ W/m}^2$.',
+                labelB: '<i class="fa-solid fa-bolt text-emerald-400"></i> B: Grid Interconnection (Y_GEN)',
+                descB: 'High (5V) when grid interconnected node or Biogas Gen is active.',
+                labelC: '<i class="fa-solid fa-snowflake text-sky-400"></i> C: Freeze Safeguard',
+                descC: 'High (5V) when temperature drop threatens system arrays ($T \\le 2^\\circ\\text{C}$).',
+                
+                labelNodeA: 'SOLAR (A)',
+                labelNodeB: 'Y_GEN (B)',
+                labelNodeC: 'FREEZE (C)',
+                labelNodeY1: 'Y_HEAT',
+                labelNodeY2: 'Y_BYPASS', // Secondary unused in Biogas mode
+
+                labelMetric1: 'Dynamic Dynamic Power Consumption',
+                labelMetric2: 'Thermal Water delivery rate',
+                labelBox1: 'PROP DELAY ($t_{pd}$)',
+                labelBox2: 'THERMAL SHIELD STATUS',
+
+                thA: 'Solar (A)',
+                thB: 'Y_GEN (B)',
+                thC: 'Freeze (C)',
+                thY1: 'Thermal Valve (Y_HEAT)',
+                thY2: 'Unused Line (Bypass)',
+
+                portalTitle1: 'Lesson 1: The Sovereign Objective',
+                portalText1: 'In livestock projects (such as 1,920-broiler batches or 160-porcine cycles), standard heaters fail during South African grid failures (Load Shedding). Rapid thermal shifts cause mortality.',
+                portalTitle2: 'Lesson 2: CMOS Logical Guardians',
+                portalText2: 'We utilize structural 3-sensor hardware gate cascades to compute thermal distribution safely, preventing animal huddling or hypothermic stress without grid dependence.',
+                portalTitle3: 'Lesson 3: The Actuator Valve',
+                portalText3: 'When output Y_HEAT triggers, motorized PEX valves flood concrete flooring battery zones with water heat pulled directly from the Biogas water jacket.',
+
+                formulaPrimary: 'Y_HEAT = (A ∨ B) ∧ C',
+                formulaSecondary: 'Y_BYPASS = Unused',
+
+                primaryEqLabel: 'Biogas Thermal Valve Output',
+                secondaryEqLabel: 'Cascade Bypass State'
+            },
+            broiler: {
+                labelA: '<i class="fa-solid fa-temperature-high text-amber-500"></i> A: Heat Threshold ($T_{\\text{HIGH}}$)',
+                descA: 'High (5V) when temperature inside broiler housing exceeds $30^\\circ\\text{C}$.',
+                labelB: '<i class="fa-solid fa-biohazard text-cyan-400"></i> B: Toxic Air Overwrite ($A_{\\text{TOX}}$)',
+                descB: 'High (5V) when ammonia level exceeds $15\\text{ ppm}$ or $CO_2$ is dense.',
+                labelC: '<i class="fa-solid fa-shield-halved text-emerald-400"></i> C: Safe Temperature Zone ($C_{\\text{SAFE}}$)',
+                descC: 'High (5V) when ambient temperature is clear of cold stress danger ($T > 18^\\circ\\text{C}$).',
+                
+                labelNodeA: 'TEMP (A)',
+                labelNodeB: 'TOXIC (B)',
+                labelNodeC: 'C_SAFE (C)',
+                labelNodeY1: 'Y_VENT',
+                labelNodeY2: 'Y_MIST',
+
+                labelMetric1: 'Air Changes Per Hour (ACH)',
+                labelMetric2: 'Misting Output Flow',
+                labelBox1: 'PROP DELAY ($t_{pd}$)',
+                labelBox2: 'COGNITIVE HEAT INDEX',
+
+                thA: 'Temp Threshold (A)',
+                thB: 'Toxic Air (B)',
+                thC: 'C_SAFE Override (C)',
+                thY1: 'Ventilation Fans (Y_VENT)',
+                thY2: 'Evaporative Misting (Y_MIST)',
+
+                portalTitle1: 'Lesson 1: Biological Vulnerability',
+                portalText1: 'Broiler chickens do not have sweat glands. They release heat through panting. If ambient humidity exceeds 75% or temps hit 30°C without wind movement, mortality strikes within hours.',
+                portalTitle2: 'Lesson 2: Cascaded Boolean Gates',
+                portalText2: 'The node couples misting directly with ventilation, protecting chicks from suffocating in high humidity. Mist lines can physically only fire if active ventilation is high.',
+                portalTitle3: 'Lesson 3: The Cold Overwrite',
+                portalText3: 'During freezing winter nights, safe temperature deactivates (C=0). This locks out misting and ventilation instantly, protecting fragile chicks from respiratory shock.',
+
+                formulaPrimary: 'Y_VENT = (A ∨ B) ∧ C',
+                formulaSecondary: 'Y_MIST = A ∧ Y_VENT',
+
+                primaryEqLabel: 'Ventilation Fan Output',
+                secondaryEqLabel: 'Evaporative Misting Output'
+            },
+            porcine: {
+                labelA: '<i class="fa-solid fa-temperature-high text-amber-500"></i> A: Heat Threshold ($T_{\\text{HIGH}}$)',
+                descA: 'High (5V) when temperature inside swine housing exceeds $27^\\circ\\text{C}$.',
+                labelB: '<i class="fa-solid fa-biohazard text-pink-400"></i> B: Toxic Air Overwrite ($A_{\\text{TOX}}$)',
+                descB: 'High (5V) when ammonia ($NH_3$) or hydrogen sulfide ($H_2S$) build-up is dense.',
+                labelC: '<i class="fa-solid fa-shield-halved text-emerald-400"></i> C: Safe Temperature Zone ($C_{\\text{SAFE}}$)',
+                descC: 'High (5V) when ambient temperature is clear of cold draft danger ($T > 16^\\circ\\text{C}$).',
+                
+                labelNodeA: 'TEMP (A)',
+                labelNodeB: 'TOXIC (B)',
+                labelNodeC: 'C_SAFE (C)',
+                labelNodeY1: 'Y_FAN',
+                labelNodeY2: 'Y_DRIP',
+
+                labelMetric1: 'Air Changes Per Hour (ACH)',
+                labelMetric2: 'Water Drip Delivery Rate',
+                labelBox1: 'PROP DELAY ($t_{pd}$)',
+                labelBox2: 'SWINE HEAT INDEX',
+
+                thA: 'Temp Threshold (A)',
+                thB: 'Toxic Air (B)',
+                thC: 'C_SAFE Override (C)',
+                thY1: 'Exhaust Fans (Y_FAN)',
+                thY2: 'Skin Wetting Drip (Y_DRIP)',
+
+                portalTitle1: 'Lesson 1: Swine Thermal Inability',
+                portalText1: 'Large White swine do not possess functional sweat glands. Evaporative cooling must be facilitated artificially via skin-wetting drip lines and concurrent high-velocity airflow.',
+                portalTitle2: 'Lesson 2: Integrated Logical Safeguards',
+                portalText2: 'Stage 1 handles exhaust fan ventilation during heat or gas hazards. Stage 2 drippers open ONLY if the High Temperature sensor is active AND active ventilation is running.',
+                portalTitle3: 'Lesson 3: The Cold Draft Guard',
+                portalText3: 'Cold Draft sensor transitions to 0 during cold Mpumalanga winter nights, deactivating all gates to prevent pneumonia and hypothermia in our 160-Finisher swine cohort.',
+
+                formulaPrimary: 'Y_FAN = (A ∨ B) ∧ C',
+                formulaSecondary: 'Y_DRIP = A ∧ Y_FAN',
+
+                primaryEqLabel: 'Exhaust Ventilation Output',
+                secondaryEqLabel: 'Skin-Wetting Drip Output'
+            }
+        };
+
+        // Diurnal Scenario Database
+        const scenarios = {
+            dawn: {
+                thermal: { A: true, B: false, C: false, desc: "<strong>06:00 AM — Dawn Awakening:</strong> The sun rises over Mpumalanga. Solar array (A) begins registering. Temperature is rising, so the Freeze Safeguard sensor deactivates (C=0). No freeze threat means the biogas thermal valve remains safely closed (Y_HEAT=0)." },
+                broiler: { A: false, B: true, C: true, desc: "<strong>06:00 AM — Dawn Gas Sweep:</strong> overnight air has resulted in ammonia build-up (B=1). Air quality must be restored. Ventilation fans kick in to extract toxic compounds (Y_VENT=1) while misting remains locked out." },
+                porcine: { A: false, B: true, C: true, desc: "<strong>06:00 AM — Dawn Gas Sweep:</strong> Toxic gases have settled over the swine cohort overnight (B=1). Safe zone clears (C=1). Exhaust fans activate immediately to renew oxygen supply (Y_FAN=1)." }
+            },
+            midday: {
+                thermal: { A: true, B: false, C: false, desc: "<strong>12:00 PM — Midday Peak:</strong> Solar collection hits its maximum (A=1). Energy is directed to farm batteries and cooling fans. The main heating biogas valve stays off (Y_HEAT=0)." },
+                broiler: { A: true, B: false, C: true, desc: "<strong>12:00 PM — Peak Heat Stress Mitigation:</strong> Ambient temperature hits 33°C inside the broiler house (A=1, C=1). Exhaust fans run full speed (Y_VENT=1) and water misting arrays ignite (Y_MIST=1) to drop air temperature." },
+                porcine: { A: true, B: false, C: true, desc: "<strong>12:00 PM — Peak Heat Stress Mitigation:</strong> Solar radiation pushes temperatures to 32°C inside swine housing (A=1, C=1). Ventilation fans trigger (Y_FAN=1) and intermittent drip lines activate (Y_DRIP=1) to cool swine." }
+            },
+            dusk: {
+                thermal: { A: false, B: false, C: false, desc: "<strong>18:00 PM — Dusk Transition:</strong> The sun sets and solar generation fades below threshold (A=0). The freeze trigger remains inactive. System rests in standby mode." },
+                broiler: { A: false, B: false, C: true, desc: "<strong>18:00 PM — Dusk Operations:</strong> Temperatures drop to a comfortable 24°C (A=0). Ammonia levels are safe (B=0). Fans and misting arrays rest in standby." },
+                porcine: { A: false, B: false, C: true, desc: "<strong>18:00 PM — Dusk Standby:</strong> Ambient parameters settle into comfortable state (20°C). Fans and drip solenoids enter standby mode to conserve power." }
+            },
+            freeze: {
+                thermal: { A: false, B: true, C: true, desc: "<strong>02:00 AM — Winter Night Cold Baseload:</strong> Freezing Highveld night (C=1). Solar is gone (A=0), so the 10kW Biogas generator ignites to carry the load (B=1). The primary valve fires (Y_HEAT=1), heating the floor battery." },
+                broiler: { A: false, B: false, C: false, desc: "<strong>02:00 AM — Highveld Cold Guard:</strong> Extreme winter cold drops housing temperatures (C=0). To prevent freezing draft injury, fans and misting are strictly locked out (Y_VENT=0, Y_MIST=0)." },
+                porcine: { A: false, B: false, C: false, desc: "<strong>02:00 AM — Winter Cold Guard:</strong> Temperature plunges below draft hazard margins (C=0). Both drippers and fans are locked out immediately to conserve metabolic energy." }
+            }
+        };
+
+        function switchModule(moduleKey) {
+            activeModule = moduleKey;
+            
+            // Adjust CSS custom variables for visual state transformation
+            const palette = palettes[moduleKey];
+            document.documentElement.style.setProperty('--theme-accent', palette.accent);
+            document.documentElement.style.setProperty('--theme-accent-rgb', palette.accent);
+            document.documentElement.style.setProperty('--theme-secondary', palette.secondary);
+            document.documentElement.style.setProperty('--theme-secondary-rgb', palette.secondary);
+            document.documentElement.style.setProperty('--theme-bg-glow', palette.glow);
+
+            // Toggle active classes on tabs
+            ['thermal', 'broiler', 'porcine'].forEach(k => {
+                const tab = document.getElementById(`tab-${k}`);
+                if (k === moduleKey) {
+                    tab.className = "flex-1 py-3 px-4 rounded-xl text-sm font-bold uppercase tracking-wider font-mono flex items-center justify-center gap-2 transition-all duration-300 bg-[rgba(var(--theme-accent-rgb),0.1)] border text-white";
+                    tab.style.borderColor = `rgba(${palette.accent}, 0.3)`;
+                } else {
+                    tab.className = "flex-1 py-3 px-4 rounded-xl text-sm font-bold uppercase tracking-wider font-mono flex items-center justify-center gap-2 transition-all duration-300 text-slate-400 hover:text-white hover:bg-slate-900";
+                    tab.style.borderColor = 'transparent';
+                }
+            });
+
+            // Re-render UI labels
+            const info = configData[moduleKey];
+            document.getElementById('labelA').innerHTML = info.labelA;
+            document.getElementById('descA').textContent = info.descA;
+            document.getElementById('labelB').innerHTML = info.labelB;
+            document.getElementById('descB').textContent = info.descB;
+            document.getElementById('labelC').innerHTML = info.labelC;
+            document.getElementById('descC').textContent = info.descC;
+
+            document.getElementById('labelNodeA').textContent = info.labelNodeA;
+            document.getElementById('labelNodeB').textContent = info.labelNodeB;
+            document.getElementById('labelNodeC').textContent = info.labelNodeC;
+            document.getElementById('labelNodeY1').textContent = info.labelNodeY1;
+            document.getElementById('labelNodeY2').textContent = info.labelNodeY2;
+
+            document.getElementById('labelMetric1').textContent = info.labelMetric1;
+            document.getElementById('labelMetric2').textContent = info.labelMetric2;
+            document.getElementById('labelBox1').innerHTML = info.labelBox1;
+            document.getElementById('labelBox2').innerHTML = info.labelBox2;
+
+            document.getElementById('thA').textContent = info.thA;
+            document.getElementById('thB').textContent = info.thB;
+            document.getElementById('thC').textContent = info.thC;
+            document.getElementById('thY1').textContent = info.thY1;
+            document.getElementById('thY2').textContent = info.thY2;
+
+            document.getElementById('portalTitle1').textContent = info.portalTitle1;
+            document.getElementById('portalText1').textContent = info.portalText1;
+            document.getElementById('portalTitle2').textContent = info.portalTitle2;
+            document.getElementById('portalText2').textContent = info.portalText2;
+            document.getElementById('portalTitle3').textContent = info.portalTitle3;
+            document.getElementById('portalText3').textContent = info.portalText3;
+
+            document.getElementById('labelFormulaPrimary').textContent = info.primaryEqLabel;
+            document.getElementById('eqFormulaPrimary').textContent = info.formulaPrimary;
+            document.getElementById('labelFormulaSecondary').textContent = info.secondaryEqLabel;
+            document.getElementById('eqFormulaSecondary').textContent = info.formulaSecondary;
+
+            // Display or bypass Secondary Logic Gate U2B based on layout configuration
+            if (moduleKey === 'thermal') {
+                document.getElementById('gateAND2').setAttribute('opacity', '0.25');
+                document.getElementById('grpNodeY2').setAttribute('opacity', '0.25');
+            } else {
+                document.getElementById('gateAND2').setAttribute('opacity', '1.0');
+                document.getElementById('grpNodeY2').setAttribute('opacity', '1.0');
+            }
+
+            // Populating active truth table dynamic content
+            buildTruthTable();
+
+            // Run standard updates
+            updateSystemState(false);
+
+            // Re-render MathJax formula dynamically and safely to avoid async compilation errors
+            const mathContainer = document.getElementById('portalMath');
+            if (mathContainer) {
+                const mathFormula = moduleKey === 'thermal' ? 'Y\\_HEAT' : (moduleKey === 'broiler' ? 'Y\\_VENT' : 'Y\\_FAN');
+                mathContainer.innerHTML = `$$\\text{${mathFormula}} = (A \\lor B) \\land C$$`;
+                
+                // Confirm both the object and typeset function are loaded before calling
+                if (typeof MathJax !== 'undefined' && typeof MathJax.typesetPromise === 'function') {
+                    MathJax.typesetPromise([mathContainer]).catch(function(err) {
+                        console.warn("MathJax async typesetting deferred: ", err);
+                    });
+                }
+            }
+        }
+
+        function buildTruthTable() {
+            const body = document.getElementById('truthTableBody');
+            body.innerHTML = '';
+
+            const rowsData = [
+                [0,0,0], [0,0,1], [0,1,0], [0,1,1],
+                [1,0,0], [1,0,1], [1,1,0], [1,1,1]
+            ];
+
+            rowsData.forEach(row => {
+                const [a, b, c] = row;
+                const orOut = (a || b) ? 1 : 0;
+                const y1 = (orOut && c) ? 1 : 0;
+                
+                // Secondary calculations depend on mode
+                let y2 = 0;
+                if (activeModule === 'broiler' || activeModule === 'porcine') {
+                    y2 = (a && y1) ? 1 : 0;
+                }
+
+                const tr = document.createElement('tr');
+                tr.id = `row-${a}${b}${c}`;
+                tr.className = "transition-all duration-150 opacity-40 hover:opacity-100";
+                tr.innerHTML = `
+                    <td class="py-2.5 px-3">${a}</td>
+                    <td class="py-2.5 px-3">${b}</td>
+                    <td class="py-2.5 px-3">${c}</td>
+                    <td class="py-2.5 px-3 text-center bg-slate-900/10 border-r border-slate-800/50 font-bold" style="color: ${y1 ? 'rgba(var(--theme-accent-rgb),1)' : '#475569'}">${y1}</td>
+                    <td class="py-2.5 px-3 text-center font-bold" style="color: ${y2 ? 'rgba(var(--theme-secondary-rgb),1)' : '#475569'}">${y2}</td>
+                `;
+                body.appendChild(tr);
+            });
+        }
+
+        function setGlobalDiurnal(scenKey) {
+            const mScenarios = scenarios[scenKey];
+            if (!mScenarios) return;
+
+            const currentScenario = mScenarios[activeModule];
+            
+            // Set Switches
+            document.getElementById('switchA').checked = currentScenario.A;
+            document.getElementById('switchB').checked = currentScenario.B;
+            document.getElementById('switchC').checked = currentScenario.C;
+
+            // Render text
+            document.getElementById('globalNarrative').innerHTML = currentScenario.desc;
+
+            updateSystemState(false);
+        }
+
+        function updateSystemState(userInteractive = false) {
+            const activeA = document.getElementById('switchA').checked;
+            const activeB = document.getElementById('switchB').checked;
+            const activeC = document.getElementById('switchC').checked;
+            const coreVoltage = parseFloat(document.getElementById('voltageSelect').value);
+
+            const valA = activeA ? 1 : 0;
+            const valB = activeB ? 1 : 0;
+            const valC = activeC ? 1 : 0;
+
+            // Logic equations computations
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valY1 = (valOR && activeC) ? 1 : 0;
+            
+            let valY2 = 0;
+            if (activeModule === 'broiler' || activeModule === 'porcine') {
+                valY2 = (activeA && valY1) ? 1 : 0;
+            }
+
+            if (userInteractive) {
+                document.getElementById('globalNarrative').innerHTML = "<i class='fa-solid fa-fingerprint' style='color: rgba(var(--theme-accent-rgb), 1)'></i> <strong>Manual Calibration Override Active:</strong> You are dynamically controlling direct sensors. Observe how output circuits route energy safely.";
+            }
+
+            // Render physics diagnostics data
+            updateDynamicPhysics(coreVoltage, activeA, activeB, activeC, valY1, valY2);
+
+            // Update Input labels
+            document.getElementById('valA').innerText = activeA ? `1 (${coreVoltage}V)` : "0 (GND)";
+            document.getElementById('valB').innerText = activeB ? `1 (${coreVoltage}V)` : "0 (GND)";
+            document.getElementById('valC').innerText = activeC ? `1 (${coreVoltage}V)` : "0 (GND)";
+
+            document.getElementById('valA').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeA ? 'bg-slate-900 text-white border' : 'bg-slate-950 text-slate-500'}`;
+            if (activeA) document.getElementById('valA').style.borderColor = 'rgba(var(--theme-accent-rgb), 0.3)';
+            
+            document.getElementById('valB').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeB ? 'bg-slate-900 text-white border' : 'bg-slate-950 text-slate-500'}`;
+            if (activeB) document.getElementById('valB').style.borderColor = 'rgba(var(--theme-accent-rgb), 0.3)';
+
+            document.getElementById('valC').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeC ? 'bg-slate-900 text-white border' : 'bg-slate-950 text-slate-500'}`;
+            if (activeC) document.getElementById('valC').style.borderColor = 'rgba(var(--theme-accent-rgb), 0.3)';
+
+            // Render SVG text nodes
+            document.getElementById('txtA').textContent = valA;
+            document.getElementById('txtB').textContent = valB;
+            document.getElementById('txtC').textContent = valC;
+            document.getElementById('txtY1').textContent = valY1;
+            document.getElementById('txtY2').textContent = valY2;
+
+            // Color SVG Node indicators
+            setSVGNode('nodeA', activeA);
+            setSVGNode('nodeB', activeB);
+            setSVGNode('nodeC', activeC);
+
+            // Animate wire active color paths
+            const colorActive = `rgba(${palettes[activeModule].accent}, 1)`;
+            const colorSecondary = `rgba(${palettes[activeModule].secondary}, 1)`;
+            const colorInactive = "#1e293b";
+
+            document.getElementById('wireA').setAttribute('stroke', activeA ? colorActive : colorInactive);
+            toggleFlowLine('flowA', activeA);
+
+            document.getElementById('wireB').setAttribute('stroke', activeB ? colorActive : colorInactive);
+            toggleFlowLine('flowB', activeB);
+
+            document.getElementById('wireC').setAttribute('stroke', activeC ? colorActive : colorInactive);
+            toggleFlowLine('flowC', activeC);
+
+            document.getElementById('wireOROut').setAttribute('stroke', valOR ? colorActive : colorInactive);
+            toggleFlowLine('flowOROut', valOR);
+
+            document.getElementById('wireYPrimary').setAttribute('stroke', valY1 ? colorActive : colorInactive);
+            toggleFlowLine('flowYPrimary', valY1);
+
+            document.getElementById('wireTapA').setAttribute('stroke', activeA ? colorActive : colorInactive);
+            toggleFlowLine('flowTapA', activeA);
+
+            document.getElementById('wireYSecondary').setAttribute('stroke', valY2 ? colorSecondary : colorInactive);
+            toggleFlowLine('flowYSecondary', valY2);
+
+            // Primary Output node styling Y1
+            const nodeY1 = document.getElementById('nodeY1');
+            if (valY1) {
+                nodeY1.setAttribute('stroke', colorActive);
+                nodeY1.setAttribute('fill', `rgba(${palettes[activeModule].accent}, 0.1)`);
+                nodeY1.classList.add('glow-accent');
+            } else {
+                nodeY1.setAttribute('stroke', '#475569');
+                nodeY1.setAttribute('fill', '#020617');
+                nodeY1.classList.remove('glow-accent');
+            }
+
+            // Secondary Output node styling Y2
+            const nodeY2 = document.getElementById('nodeY2');
+            if (valY2) {
+                nodeY2.setAttribute('stroke', colorSecondary);
+                nodeY2.setAttribute('fill', `rgba(${palettes[activeModule].secondary}, 0.1)`);
+                nodeY2.classList.add('glow-secondary');
+            } else {
+                nodeY2.setAttribute('stroke', '#475569');
+                nodeY2.setAttribute('fill', '#020617');
+                nodeY2.classList.remove('glow-secondary');
+            }
+
+            // Live Diagnostic Box feedbacks
+            document.getElementById('diagnosticPrimary').textContent = valY1;
+            document.getElementById('diagnosticSecondary').textContent = valY2;
+
+            const boxPrimary = document.getElementById('statusPrimary');
+            const boxSecondary = document.getElementById('statusSecondary');
+
+            if (valY1) {
+                boxPrimary.className = "p-4 rounded-xl border text-sm flex items-center justify-between transition-all duration-200 bg-[rgba(var(--theme-accent-rgb),0.05)]";
+                boxPrimary.style.borderColor = "rgba(var(--theme-accent-rgb), 0.3)";
+                document.getElementById('diagnosticPrimary').className = "font-mono px-3 py-1 rounded font-bold text-lg border bg-slate-950";
+                document.getElementById('diagnosticPrimary').style.color = "rgba(var(--theme-accent-rgb), 1)";
+                document.getElementById('diagnosticPrimary').style.borderColor = "rgba(var(--theme-accent-rgb), 0.3)";
+            } else {
+                boxPrimary.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticPrimary').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+                document.getElementById('diagnosticPrimary').style.color = "";
+                document.getElementById('diagnosticPrimary').style.borderColor = "";
+            }
+
+            if (valY2) {
+                boxSecondary.className = "p-4 rounded-xl border text-sm flex items-center justify-between transition-all duration-200 bg-[rgba(var(--theme-secondary-rgb),0.05)]";
+                boxSecondary.style.borderColor = "rgba(var(--theme-secondary-rgb), 0.3)";
+                document.getElementById('diagnosticSecondary').className = "font-mono px-3 py-1 rounded font-bold text-lg border bg-slate-950 shadow-[0_0_15px_rgba(var(--theme-secondary-rgb),0.15)]";
+                document.getElementById('diagnosticSecondary').style.color = "rgba(var(--theme-secondary-rgb), 1)";
+                document.getElementById('diagnosticSecondary').style.borderColor = "rgba(var(--theme-secondary-rgb), 0.3)";
+            } else {
+                boxSecondary.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticSecondary').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+                document.getElementById('diagnosticSecondary').style.color = "";
+                document.getElementById('diagnosticSecondary').style.borderColor = "";
+            }
+
+            // Highlighting exact row in the verification matrix table
+            const rows = document.querySelectorAll('#truthTableBody tr');
+            rows.forEach(r => r.className = "transition-all duration-150 opacity-40 hover:opacity-100 border-l-4 border-transparent");
+
+            const activeRow = document.getElementById(`row-${valA}${valB}${valC}`);
+            if (activeRow) {
+                if (valY2) {
+                    activeRow.className = "text-white font-bold opacity-100 scale-[1.01] bg-[rgba(var(--theme-secondary-rgb),0.1)] border-l-4";
+                    activeRow.style.borderLeftColor = "rgba(var(--theme-secondary-rgb), 1)";
+                } else if (valY1) {
+                    activeRow.className = "text-white font-bold opacity-100 scale-[1.01] bg-[rgba(var(--theme-accent-rgb),0.1)] border-l-4";
+                    activeRow.style.borderLeftColor = "rgba(var(--theme-accent-rgb), 1)";
+                } else {
+                    activeRow.className = "text-white font-bold opacity-100 scale-[1.01] bg-slate-800/60 border-l-4 border-slate-500";
+                }
+            }
+
+            // Log parameters for scrolling Waveform Logic Analyzer
+            historyData.push({ A: valA, B: valB, C: valC, Y1: valY1, Y2: valY2 });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveforms();
+        }
+
+        function updateDynamicPhysics(volts, a, b, c, y1, y2) {
+            // Lower core voltage implies higher gate delay and lower active current consumption
+            const baseDelay = volts === 3.3 ? 20 : 15; // ns per gate block
+            const totalDelay = baseDelay * 2;
+            document.getElementById('valBox1').innerText = `${totalDelay} ns`;
+
+            let terminalCount = (a ? 1 : 0) + (b ? 1 : 0) + (c ? 1 : 0);
+            const capFactor = 22; // pF capacitance estimate
+            const powerCoeff = activeModule === 'thermal' ? 0.1 : 0.15;
+            const dynPower = terminalCount * capFactor * (volts * volts) * powerCoeff;
+            document.getElementById('valMetric1').innerText = `${dynPower.toFixed(1)} μW`;
+
+            // Display customized ecological indices depending on chosen module
+            if (activeModule === 'thermal') {
+                document.getElementById('valMetric2').innerText = y1 ? "45.0 L/hr" : "0.0 L/hr";
+                
+                let thermalState = "STANDBY";
+                let colorClass = "text-slate-500";
+                if (y1) {
+                    thermalState = "FLOODING BATTERY";
+                    colorClass = "text-amber-500 font-bold glow-secondary";
+                } else if (c) {
+                    thermalState = "MONITORING (FREEZE THREAT)";
+                    colorClass = "text-sky-400";
+                }
+                document.getElementById('valBox2').innerHTML = `<span class="${colorClass}">${thermalState}</span>`;
+            } 
+            else if (activeModule === 'broiler') {
+                document.getElementById('valMetric2').innerText = y2 ? "3.2 L/min" : "0.0 L/min";
+                document.getElementById('valMetric1').innerText = y1 ? "18.5 ACH" : "2.4 ACH";
+
+                let broilerState = "Comfortable (24°C)";
+                let colorClass = "text-emerald-400";
+                if (a) {
+                    broilerState = "Heat Warning (33°C)";
+                    colorClass = "text-amber-500 font-bold glow-secondary";
+                } else if (!c) {
+                    broilerState = "Freezing Guard active (4°C)";
+                    colorClass = "text-sky-400 font-bold";
+                }
+                document.getElementById('valBox2').innerHTML = `<span class="${colorClass}">${broilerState}</span>`;
+            } 
+            else if (activeModule === 'porcine') {
+                document.getElementById('valMetric2').innerText = y2 ? "45.0 L/hr" : "0.0 L/hr";
+                document.getElementById('valMetric1').innerText = y1 ? "12.5 ACH" : "1.2 ACH";
+
+                let swineState = "Comfortable (20°C)";
+                let colorClass = "text-emerald-400";
+                if (a) {
+                    swineState = "Heat Warning (32°C)";
+                    colorClass = "text-amber-500 font-bold glow-secondary";
+                } else if (!c) {
+                    swineState = "Draft Guard active (5°C)";
+                    colorClass = "text-sky-400 font-bold";
+                }
+                document.getElementById('valBox2').innerHTML = `<span class="${colorClass}">${swineState}</span>`;
+            }
+        }
+
+        // Helper SVG styling handlers
+        function setSVGNode(id, isActive) {
+            const node = document.getElementById(id);
+            if (isActive) {
+                node.setAttribute('stroke', `rgba(${palettes[activeModule].accent}, 1)`);
+                node.setAttribute('fill', `rgba(${palettes[activeModule].accent}, 0.15)`);
+            } else {
+                node.setAttribute('stroke', '#475569');
+                node.setAttribute('fill', '#020617');
+            }
+        }
+
+        function toggleFlowLine(id, isActive) {
+            const el = document.getElementById(id);
+            if (isActive) el.classList.remove('hidden');
+            else el.classList.add('hidden');
+        }
+
+        function drawWaveforms() {
+            if (!canvas) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const channels = ['A', 'B', 'C', 'Y1', 'Y2'];
+            const channelHeight = 22;
+            const channelSpacing = 6;
+
+            const accentColor = `rgba(${palettes[activeModule].accent}, 1)`;
+            const secondaryColor = `rgba(${palettes[activeModule].secondary}, 1)`;
+
+            channels.forEach((ch, idx) => {
+                const yOffset = idx * (channelHeight + channelSpacing) + 12;
+
+                // Channel Background Guides
+                ctx.strokeStyle = `rgba(${palettes[activeModule].accent}, 0.05)`;
+                ctx.lineWidth = 1;
+                ctx.strokeRect(80, yOffset, canvas.width - 90, channelHeight);
+
+                // Print Channel Labels
+                let chLabel = configData[activeModule][`labelNode${ch === 'Y1' ? 'Y1' : ch === 'Y2' ? 'Y2' : ch}`] || ch;
+                
+                if (ch === 'Y1') ctx.fillStyle = accentColor;
+                else if (ch === 'Y2') ctx.fillStyle = secondaryColor;
+                else ctx.fillStyle = '#64748b';
+
+                ctx.font = '10px JetBrains Mono';
+                ctx.fillText(`${chLabel}:`, 10, yOffset + 14);
+
+                // Drawing scrolling waveforms
+                if (historyData.length > 1) {
+                    ctx.beginPath();
+                    if (ch === 'Y1') ctx.strokeStyle = accentColor;
+                    else if (ch === 'Y2') ctx.strokeStyle = secondaryColor;
+                    else ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+
+                    ctx.lineWidth = 1.8;
+                    const stepSize = (canvas.width - 90) / maxHistoryPoints;
+
+                    for (let i = 0; i < historyData.length; i++) {
+                        const val = historyData[i][ch];
+                        const x = 80 + i * stepSize;
+                        const y = yOffset + channelHeight - (val * (channelHeight - 4)) - 2;
+
+                        if (i === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            const prevVal = historyData[i - 1][ch];
+                            const prevY = yOffset + channelHeight - (prevVal * (channelHeight - 4)) - 2;
+                            ctx.lineTo(x, prevY);
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.stroke();
+                }
+            });
+        }
+
+        function resetUnifiedCircuit() {
+            document.getElementById('switchA').checked = false;
+            document.getElementById('switchB').checked = false;
+            document.getElementById('switchC').checked = activeModule === 'thermal' ? false : true;
+            document.getElementById('globalNarrative').innerHTML = "Select any diurnal stage above to execute synced calibrations across the three distinct energy-agriculture nodes.";
+            updateSystemState(false);
+        }
+
+        function showDynamicToast(text) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastText').innerText = text;
+            toast.className = "fixed bottom-6 right-6 border px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-0 opacity-100 flex items-center gap-3 bg-slate-950";
+            setTimeout(() => {
+                toast.className = "fixed bottom-6 right-6 border px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-24 opacity-0 flex items-center gap-3 bg-slate-950";
+            }, 2500);
+        }
+
+        function copyMasterFormula() {
+            const formulaText = configData[activeModule].formulaPrimary;
+            const textarea = document.createElement('textarea');
+            textarea.value = formulaText;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showDynamicToast(`${activeModule.toUpperCase()} Formula Copied`);
+        }
+
+        // Initializing Waveform Data Pool
+        for (let i = 0; i < maxHistoryPoints; i++) {
+            historyData.push({ A: 0, B: 0, C: 1, Y1: 0, Y2: 0 });
+        }
+
+        // Initialize Dynamic Swine, Poultry, & Thermal processing modules
+        switchModule('thermal');
+
+        // Continuous logic streaming analyzer redraw
+        setInterval(() => {
+            const activeA = document.getElementById('switchA').checked ? 1 : 0;
+            const activeB = document.getElementById('switchB').checked ? 1 : 0;
+            const activeC = document.getElementById('switchC').checked ? 1 : 0;
+
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valY1 = (valOR && activeC) ? 1 : 0;
+            
+            let valY2 = 0;
+            if (activeModule === 'broiler' || activeModule === 'porcine') {
+                valY2 = (activeA && valY1) ? 1 : 0;
+            }
+
+            historyData.push({ A: activeA, B: activeB, C: activeC, Y1: valY1, Y2: valY2 });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveforms();
+        }, 300);
+    </script>
+</body>
+</html>

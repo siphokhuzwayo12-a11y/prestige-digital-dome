@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///C:/Users/ASUS/Downloads/gemini-code-1785456675209.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>70m³ Digester CAD | LEP-IMP-ENG-2026-DIG</title>
+    <style>
+        :root {
+            --bg-color: #0b1019;
+            --card-bg: #141c2b;
+            --accent-gold: #d4af37;
+            --teal: #14b8a6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.12);
+            --success: #34d399;
+            --gas-orange: #f97316;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: monospace; }
+        body { background-color: var(--bg-color); color: var(--text-main); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+        header {
+            padding: 1rem 2rem;
+            background: rgba(11, 16, 25, 0.95);
+            border-bottom: 2px solid var(--accent-gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-block h1 { color: var(--accent-gold); font-size: 1.1rem; text-transform: uppercase; }
+        .title-block p { color: var(--text-muted); font-size: 0.75rem; margin-top: 0.2rem; }
+
+        .toolbar {
+            background: var(--card-bg);
+            padding: 0.5rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .layer-toggle { display: flex; align-items: center; gap: 0.4rem; cursor: pointer; color: var(--teal); }
+        .layer-toggle input { cursor: pointer; }
+
+        .viewport { flex: 1; position: relative; background: var(--bg-color); display: flex; justify-content: center; align-items: center; padding: 1rem; }
+        svg { width: 100%; height: 100%; max-width: 1200px; max-height: 700px; border: 1px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+
+        footer {
+            padding: 0.75rem 2rem;
+            background: rgba(11, 16, 25, 0.95);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+        }
+        footer span { color: var(--accent-gold); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="title-block">
+            <h1>70m³ Anaerobic Digester Thermal &amp; Gas Integration</h1>
+            <p>Project: LEP-IMP-ENG-2026 | Standardized Interactive CAD Viewer</p>
+        </div>
+        <div style="text-align: right;">
+            <div style="color: var(--accent-gold); font-weight: bold; font-size: 0.9rem;">Sipho Wiseman Khuzwayo</div>
+            <div style="color: var(--teal); font-size: 0.7rem;">MANAGING DIRECTOR | LWANDILE ENGINEERING PROJECTS</div>
+        </div>
+    </header>
+
+    <div class="toolbar">
+        <span style="color: var(--accent-gold); font-weight: bold;">CAD Layers:</span>
+        <label class="layer-toggle"><input type="checkbox" checked="" onchange="toggleLayer(&#39;LAYER_VESSEL&#39;)"> 70m³ Digester Vessel</label>
+        <label class="layer-toggle"><input type="checkbox" checked="" onchange="toggleLayer(&#39;LAYER_HEATING_JACKET&#39;)"> Thermal Hydronic Loop</label>
+        <label class="layer-toggle"><input type="checkbox" checked="" onchange="toggleLayer(&#39;LAYER_GAS_LINE&#39;)"> Biogas &amp; Scrubber Lines</label>
+        <label class="layer-toggle"><input type="checkbox" checked="" onchange="toggleLayer(&#39;LAYER_SCADA_DIG&#39;)"> SCADA Instrumentation</label>
+        <label class="layer-toggle"><input type="checkbox" checked="" onchange="toggleLayer(&#39;LAYER_TITLE_BLOCK&#39;)"> Title Block &amp; IP</label>
+    </div>
+
+    <div class="viewport">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+            <defs>
+                <pattern id="cadGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.8"></path>
+                </pattern>
+            </defs>
+
+            <!-- CAD GRID & BORDER -->
+            <rect width="1200" height="700" fill="url(#cadGrid)"></rect>
+            <rect x="15" y="15" width="1170" height="670" fill="none" stroke="#d4af37" stroke-width="2"></rect>
+
+            <!-- LAYER 1: DIGESTER VESSEL -->
+            <g id="LAYER_VESSEL">
+                <path d="M 400 200 C 400 130, 700 130, 700 200 L 700 480 L 400 480 Z" fill="#141c2b" stroke="#d4af37" stroke-width="2.5"></path>
+                <text x="550" y="320" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">70m³ DIGESTER VESSEL</text>
+                <text x="550" y="340" fill="#94a3b8" font-size="10" text-anchor="middle">Mesophilic Reaction Core (37°C Standard)</text>
+            </g>
+
+            <!-- LAYER 2: THERMAL HYDRONIC LOOP -->
+            <g id="LAYER_HEATING_JACKET">
+                <!-- Internal Heating Coil -->
+                <path d="M 420 250 L 680 250 M 420 300 L 680 300 M 420 350 L 680 350 M 420 400 L 680 400 M 420 450 L 680 450" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4"></path>
+                
+                <!-- Supply / Return from CHP -->
+                <path d="M 150 250 L 420 250" fill="none" stroke="#ef4444" stroke-width="3.5"></path>
+                <text x="280" y="240" fill="#ef4444" font-size="10" font-weight="bold">CHP Hot Water Supply (60°C)</text>
+
+                <path d="M 420 450 L 150 450" fill="none" stroke="#3b82f6" stroke-width="3.5"></path>
+                <text x="280" y="470" fill="#3b82f6" font-size="10" font-weight="bold">CHP Return Loop (50°C)</text>
+            </g>
+
+            <!-- LAYER 3: BIOGAS & SCRUBBER LINES -->
+            <g id="LAYER_GAS_LINE">
+                <!-- Biogas Dome Discharge -->
+                <path d="M 550 150 L 550 80 L 900 80 L 900 220" fill="none" stroke="#f97316" stroke-width="3.5"></path>
+                <text x="700" y="70" fill="#f97316" font-size="10" font-weight="bold">RAW BIOGAS LINE (CH4 / CO2 / H2S)</text>
+
+                <!-- Scrubber Tank -->
+                <rect x="830" y="220" width="140" height="180" fill="#141c2b" stroke="#f97316" stroke-width="2" rx="4"></rect>
+                <text x="900" y="300" fill="#f97316" font-size="11" font-weight="bold" text-anchor="middle">BIOGAS SCRUBBER</text>
+                <text x="900" y="320" fill="#94a3b8" font-size="9" text-anchor="middle">(H2S Filter &amp; Moisture Trap)</text>
+
+                <!-- Clean Gas Out to CHP Engine -->
+                <line x1="900" y1="400" x2="900" y2="520" stroke="#f97316" stroke-width="3.5"></line>
+                <text x="910" y="480" fill="#f97316" font-size="10" font-weight="bold">CLEAN BIOGAS TO CHP</text>
+            </g>
+
+            <!-- LAYER 4: SCADA INSTRUMENTATION -->
+            <g id="LAYER_SCADA_DIG">
+                <!-- Core Temp Sensor -->
+                <circle cx="480" cy="370" r="16" fill="#070a10" stroke="#34d399" stroke-width="2"></circle>
+                <text x="480" y="374" fill="#34d399" font-size="9" font-weight="bold" text-anchor="middle">TE-301</text>
+                <text x="480" y="405" fill="#34d399" font-size="8" text-anchor="middle">Vessel Core Temp</text>
+
+                <!-- Biogas Pressure Transmitter -->
+                <circle cx="550" cy="115" r="16" fill="#070a10" stroke="#34d399" stroke-width="2"></circle>
+                <text x="550" y="119" fill="#34d399" font-size="9" font-weight="bold" text-anchor="middle">PT-301</text>
+                <text x="550" y="95" fill="#34d399" font-size="8" text-anchor="middle">Dome Pressure</text>
+
+                <!-- CH4 Analyzer -->
+                <circle cx="900" cy="150" r="16" fill="#070a10" stroke="#34d399" stroke-width="2"></circle>
+                <text x="900" y="154" fill="#34d399" font-size="8" font-weight="bold" text-anchor="middle">AT-301</text>
+                <text x="900" y="180" fill="#34d399" font-size="8" text-anchor="middle">CH4 % Quality</text>
+            </g>
+
+            <!-- LAYER 5: TITLE BLOCK -->
+            <g id="LAYER_TITLE_BLOCK">
+                <rect x="620" y="550" width="550" height="120" fill="#141c2b" stroke="#d4af37" stroke-width="1.5"></rect>
+                <line x1="880" y1="550" x2="880" y2="670" stroke="rgba(255,255,255,0.12)" stroke-width="1"></line>
+                
+                <text x="635" y="572" fill="#14b8a6" font-size="10" font-weight="bold">PROJECT: LEP-IMP-ENG-2026</text>
+                <text x="635" y="592" fill="#f8fafc" font-size="12" font-weight="bold">70m³ ANAEROBIC DIGESTER SCHEMATIC</text>
+                <text x="635" y="612" fill="#94a3b8" font-size="9">System: Thermal Hydronic Jacket &amp; Biogas Scrubber Pipeline</text>
+                <text x="635" y="650" fill="#d4af37" font-size="8" font-weight="bold">PROPRIETARY IP — LWANDILE ENGINEERING PROJECTS (PTY) LTD</text>
+
+                <text x="895" y="572" fill="#d4af37" font-size="10" font-weight="bold">DESIGN ARCHITECT:</text>
+                <text x="895" y="590" fill="#f8fafc" font-size="11" font-weight="bold">Sipho Wiseman Khuzwayo</text>
+                <text x="895" y="606" fill="#14b8a6" font-size="8" font-weight="bold">MANAGING DIRECTOR</text>
+                <text x="895" y="622" fill="#94a3b8" font-size="8">Secunda-Kinross Corridor, MP</text>
+
+                <rect x="895" y="635" width="260" height="22" fill="#070a10" stroke="rgba(255,255,255,0.12)"></rect>
+                <text x="900" y="650" fill="#34d399" font-size="8" font-weight="bold">FILE: LEP-IMP-ENG-2026-DIG_DWG_thermal-gas-manifold_v1.0_20260731.html</text>
+            </g>
+        </svg>
+    </div>
+
+    <footer>
+        <div><span>PROPRIETARY INTELLECTUAL PROPERTY</span> | Lwandile Engineering Projects (Pty) Ltd</div>
+        <div>FILE Schema: Scapush Precision Active</div>
+    </footer>
+
+    <script>
+        function toggleLayer(layerId) {
+            const layer = document.getElementById(layerId);
+            if (layer) {
+                layer.style.display = layer.style.display === 'none' ? 'block' : 'none';
+            }
+        }
+    </script>
+
+</body></html>

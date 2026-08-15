@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lwandile Hydroponics Nursery Controller | Prestige Blueprint</title>
+    <!-- Tailwind CSS for high-fidelity responsive design tokens -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for robust engineering and botanical icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- MathJax for rendering elegant LaTeX scientific formulas -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #022c22; /* Rich botanical deep forest green */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.15) 0%, transparent 75%),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+            background-size: 100% 40px, 40px 40px;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Hydrological blueprint design grid lines */
+        .blueprint-grid {
+            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(to right, rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+        }
+
+        /* Dynamic visual glow shadows */
+        .glow-emerald {
+            filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.7));
+        }
+        .glow-mint {
+            filter: drop-shadow(0 0 12px rgba(52, 211, 153, 0.8));
+        }
+        .glow-amber {
+            filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
+        }
+
+        /* SVG visual flow offset keyframes for logic lines */
+        .wire-flow {
+            stroke-dasharray: 8;
+            animation: flow 1.0s linear infinite;
+        }
+        @keyframes flow {
+            to {
+                stroke-dashoffset: -16;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100 py-8 px-4 md:px-8 blueprint-grid">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Beijing Submission Header -->
+        <header class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-emerald-500/30 pb-6 gap-6">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs uppercase tracking-[0.4em] text-emerald-400 font-bold">Lwandile Engineering Projects</span>
+                    <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20 font-bold uppercase tracking-wider">Beijing Prestige Gear</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight mt-1 text-white flex items-center gap-3">
+                    <i class="fa-solid fa-seedling text-emerald-400 animate-pulse"></i> Hydroponics Nursery Controller
+                </h1>
+                <p class="text-slate-400 text-sm mt-1">
+                    Transparent nursery microclimate shield running isolated CMOS gates for water-saving crop welfare.
+                </p>
+            </div>
+            
+            <!-- Metadata Registry Panel -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:flex items-center gap-3 bg-slate-950/80 p-4 rounded-2xl border border-emerald-500/20 w-full lg:w-auto text-xs mono">
+                <div class="pr-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">DOC ID</span>
+                    <span class="font-bold text-slate-300">LEP-HYD-005</span>
+                </div>
+                <div class="px-3 sm:border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">VERSION</span>
+                    <span class="font-bold text-emerald-400">v3.0-PRESTIGE</span>
+                </div>
+                <div class="px-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">STATUS</span>
+                    <span class="font-bold text-emerald-400 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping"></span> SECURE
+                    </span>
+                </div>
+                <div class="pl-3">
+                    <span class="text-slate-500 block text-[9px] uppercase">AUTHORIZATION</span>
+                    <span class="font-bold text-[#d4af37]">S.W. KHUZWAYO</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Diurnal Lifecycle Interactive Simulator Control Panel -->
+        <section class="bg-slate-950/90 border-2 border-emerald-500/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-emerald-500/10 text-emerald-400 px-4 py-1 text-xs font-bold uppercase tracking-widest rounded-bl-xl border-l border-b border-emerald-500/20">
+                Sovereign Nursery Engine
+            </div>
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-400">
+                <i class="fa-solid fa-clock"></i> Hydroponic Nursery Diurnal Lifecycle Walkthrough
+            </h2>
+            <p class="text-slate-300 text-sm mb-6 max-w-4xl">
+                Maintain uncompromised root environment parameters inside our transparent nursery. Click any lifecycle scenario below to run the real-time physical simulation and verify your automated crop welfare shields.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Scenario 1: Cool Dawn -->
+                <button onclick="setDiurnalScenario('dawn')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-[#d4af37] font-mono uppercase">06:00 AM — Dawn Warm-up</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Steady State Standby</h3>
+                    <p class="text-xs text-slate-400">Sun emerges over the nursery canopy. pH is resting optimally at 5.8. Systems ready.</p>
+                </button>
+
+                <!-- Scenario 2: Midday Peak Transpiration -->
+                <button onclick="setDiurnalScenario('heatstress')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-amber-500 font-mono uppercase">12:00 PM — Peak Heat</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Nutrient Transpiration</h3>
+                    <p class="text-xs text-slate-400">Evaporation demands trigger ($A=1$). Recirculation pump runs full-scale to nourish roots.</p>
+                </button>
+
+                <!-- Scenario 3: pH Out-Of-Bounds Drift -->
+                <button onclick="setDiurnalScenario('phdrift')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-emerald-400 font-mono uppercase">15:00 PM — Alkaline Drift</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">pH Correction Cycle</h3>
+                    <p class="text-xs text-slate-400">Nutrient pH drifts to 7.2 ($B=1$). Recirculation and acid dosing valve safely engage.</p>
+                </button>
+
+                <!-- Scenario 4: Dry Tank Cutoff -->
+                <button onclick="setDiurnalScenario('empty')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-rose-500 font-mono uppercase">23:00 PM — Warning</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Dry Reservoir Safety</h3>
+                    <p class="text-xs text-slate-400">Tank level falls below safety bounds ($C=0$). Complete logical lockout prevents motor burnout.</p>
+                </button>
+            </div>
+
+            <!-- Dynamic Scenario Narrative Board -->
+            <div id="narrativeBoard" class="mt-4 bg-[#10b981]/10 border border-emerald-500/20 rounded-xl p-4 text-sm text-slate-200">
+                <span class="text-[10px] uppercase font-mono tracking-wider text-emerald-400 block mb-1">Live Controller Commentary</span>
+                <p id="scenarioDescription">Select any of the operational phases above to begin the training walkthrough. Observe how the root nutrients, logic gates, and simulated hydraulic power react dynamically.</p>
+            </div>
+        </section>
+
+        <!-- Main Workspace Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Left Panel: Parameter Controls & Physics Engines -->
+            <div class="lg:col-span-4 space-y-4">
+                
+                <!-- Signal Controllers -->
+                <div class="bg-slate-950/90 backdrop-blur-md border border-emerald-500/20 rounded-2xl p-5 shadow-2xl">
+                    <h2 class="text-lg font-bold mb-4 flex items-center justify-between text-emerald-400 border-b border-slate-800 pb-2">
+                        <span><i class="fa-solid fa-sliders"></i> Sensor Calibration</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Live Inputs</span>
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Input A -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-emerald-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-droplet text-amber-500"></i> A: Nutrient/Moisture Deficit
+                                </label>
+                                <span id="valA" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when root-zone moisture or substrate saturation drops below threshold.</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchA" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 peer-checked:after:bg-emerald-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Input B -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-emerald-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-flask-vial text-cyan-400"></i> B: pH Out-of-Bounds ($pH_{\text{ERR}}$)
+                                </label>
+                                <span id="valB" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when nutrient solution pH drifts outside the optimal $5.5 - 6.5$ band.</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchB" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 peer-checked:after:bg-emerald-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Input C -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-emerald-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-square-poll-vertical text-emerald-400"></i> C: Safe Reservoir Level
+                                </label>
+                                <span id="valC" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when concentrate reservoir level exceeds $15\%$ (Anti-Dry Run).</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchC" class="sr-only peer" checked onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 peer-checked:after:bg-emerald-950"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Physical Engine Block -->
+                <div class="bg-slate-950/90 backdrop-blur-md border border-emerald-500/20 rounded-2xl p-5 shadow-2xl space-y-4">
+                    <h2 class="text-lg font-bold flex items-center justify-between text-emerald-400 border-b border-slate-800 pb-2">
+                        <span><i class="fa-solid fa-calculator"></i> Nursery Diagnostics</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Live Physics</span>
+                    </h2>
+                    
+                    <!-- Dynamic Hydrological Flow -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-sans">Nutrient Flow Recirculation</span>
+                            <span id="recircRate" class="text-xs font-bold text-emerald-400">0.0 L/min</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-sans">pH Corrector Dosing Rate</span>
+                            <span id="dosingRate" class="text-xs font-bold text-cyan-400">0.0 mL/min</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Power consumption & current delay -->
+                    <div class="grid grid-cols-2 gap-3 text-xs mono font-sans">
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-500 block text-[9px] uppercase">PUMP STATUS</span>
+                            <span id="pumpStatusVal" class="text-emerald-400 font-bold text-sm">OFF</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">Submersible 24V Motor</span>
+                        </div>
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-500 block text-[9px] uppercase">NURSERY pH</span>
+                            <span id="pHValueText" class="text-emerald-400 font-bold text-sm">Optimal (5.8)</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">Double Junction Sensor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: High-Fidelity Blueprint Canvas & Waveform -->
+            <div class="lg:col-span-8 space-y-4">
+                
+                <!-- Schematic Canvas -->
+                <div class="bg-slate-950/95 backdrop-blur-md border border-emerald-500/20 rounded-2xl p-4 md:p-6 shadow-2xl relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2 border-b border-slate-800 pb-3">
+                        <h2 class="text-lg font-bold text-emerald-400 flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project"></i> Hydroponics Logic Controller Schematic
+                        </h2>
+                        <div class="flex gap-2">
+                            <button onclick="resetCircuit()" class="px-3 py-1.5 text-xs font-semibold bg-slate-900 border border-slate-800 hover:border-emerald-500/30 rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+                            </button>
+                            <button onclick="copyFormulas()" class="px-3 py-1.5 text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-copy"></i> Copy Formulas
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SVG Canvas -->
+                    <div class="w-full bg-slate-950/60 p-3 rounded-xl border border-emerald-500/10 relative overflow-x-auto">
+                        <svg viewBox="0 0 800 400" class="w-full min-w-[700px] h-auto overflow-visible select-none">
+                            
+                            <!-- Definitions for IEEE Gates -->
+                            <defs>
+                                <pattern id="blueprint-dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="10" cy="10" r="0.8" fill="rgba(16, 185, 129, 0.15)" />
+                                </pattern>
+                                
+                                <!-- Standard OR Gate Symbol -->
+                                <g id="ieee-or-gate">
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0 C 48,0 42,2 32,10 C 22,18 12,25 0,25 C 8,12 8,-12 0,-25 Z" fill="#064e3b" stroke="#10b981" stroke-width="2.5"/>
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="6" class="glow-emerald"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="#10b981" text-anchor="middle" class="mono">OR</text>
+                                </g>
+
+                                <!-- Standard AND Gate Symbol -->
+                                <g id="ieee-and-gate">
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25 L 0,25 Z" fill="#064e3b" stroke="#10b981" stroke-width="2.5"/>
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="6" class="glow-emerald"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="#10b981" text-anchor="middle" class="mono">AND</text>
+                                </g>
+                            </defs>
+
+                            <rect width="800" height="400" fill="url(#blueprint-dots)" rx="8" />
+
+                            <!-- Bus Wires / Signal Paths -->
+                            <!-- Wire Input A to OR Pin 1 -->
+                            <path id="wireA" d="M 120,60 L 220,60 L 220,85 L 250,85" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowA" d="M 120,60 L 220,60 L 220,85 L 250,85" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire Input B to OR Pin 2 -->
+                            <path id="wireB" d="M 120,130 L 220,130 L 220,105 L 250,105" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowB" d="M 120,130 L 220,130 L 220,105 L 250,105" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- OR Output to AND 1 Input 1 -->
+                            <path id="wireOROut" d="M 302,95 L 390,95 L 390,195 L 430,195" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowOROut" d="M 302,95 L 390,95 L 390,195 L 430,195" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire Input C to AND 1 Input 2 -->
+                            <path id="wireC" d="M 120,215 L 430,215" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowC" d="M 120,215 L 430,215" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- AND 1 Output (Y_PUMP) to Final Output and AND 2 Input 2 -->
+                            <path id="wireYVent" d="M 482,205 L 560,205 M 560,205 L 680,205 M 560,205 L 560,315 L 600,315" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowYVent" d="M 482,205 L 560,205 M 560,205 L 680,205 M 560,205 L 560,315 L 600,315" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Input B tapped connection to AND 2 Input 1 -->
+                            <path id="wireTapA" d="M 180,130 L 180,335 L 370,335 L 370,295 L 600,295" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowTapA" d="M 180,130 L 180,335 L 370,335 L 370,295 L 600,295" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- AND 2 Output (Y_DOSING) to output node -->
+                            <path id="wireYMist" d="M 652,305 L 680,305" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowYMist" d="M 652,305 L 680,305" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Logic Gate Assemblies -->
+                            <!-- OR Gate U1A -->
+                            <g transform="translate(250, 95)" id="gateU1A" class="transition-transform duration-200">
+                                <use href="#ieee-or-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN3</text>
+                                <text x="28" y="-32" font-size="11" fill="#10b981" font-weight="bold" class="mono" text-anchor="middle">74HC32 (OR)</text>
+                            </g>
+
+                            <!-- AND Gate U2A (Nutrient Pump Engine) -->
+                            <g transform="translate(430, 205)" id="gateU2A" class="transition-transform duration-200">
+                                <use href="#ieee-and-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN3</text>
+                                <text x="25" y="-32" font-size="11" fill="#10b981" font-weight="bold" class="mono" text-anchor="middle">74HC08 (AND)</text>
+                            </g>
+
+                            <!-- AND Gate U2B (Dosing Solenoid Engine) -->
+                            <g transform="translate(600, 305)" id="gateU2B" class="transition-transform duration-200">
+                                <use href="#ieee-and-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN3</text>
+                                <text x="25" y="-32" font-size="11" fill="#10b981" font-weight="bold" class="mono" text-anchor="middle">74HC08 (AND)</text>
+                            </g>
+
+                            <!-- Node Indicators -->
+                            <!-- Deficit Input A -->
+                            <g transform="translate(120, 60)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeA" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtA">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#10b981" text-anchor="start" class="mono">DEFICIT (A)</text>
+                            </g>
+
+                            <!-- pH drift Input B -->
+                            <g transform="translate(120, 130)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeB" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtB">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#10b981" text-anchor="start" class="mono">pH_ERR (B)</text>
+                            </g>
+
+                            <!-- Tank Safety Input C -->
+                            <g transform="translate(120, 215)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeC" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtC">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#10b981" text-anchor="start" class="mono">CLEAR (C)</text>
+                            </g>
+
+                            <!-- Pump Output Node Y1 -->
+                            <g transform="translate(705, 205)">
+                                <circle r="22" fill="#020617" stroke="#475569" stroke-width="4" id="nodeY1" class="transition-all duration-200" />
+                                <text y="5" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle" class="mono" id="txtY1">0</text>
+                                <text x="-30" y="-32" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="start" class="mono">PUMP (Y_PUMP)</text>
+                            </g>
+
+                            <!-- Dosing Output Node Y2 -->
+                            <g transform="translate(705, 305)">
+                                <circle r="22" fill="#020617" stroke="#475569" stroke-width="4" id="nodeY2" class="transition-all duration-200" />
+                                <text y="5" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle" class="mono" id="txtY2">0</text>
+                                <text x="-30" y="-32" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="start" class="mono">DOSING (Y_DOSING)</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Formula and Stages Block -->
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div id="statusVENT" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">Nutrient Pump Output (U2A Out)</span>
+                                <span class="font-bold text-emerald-400 mono">Y_PUMP = (A ∨ B) ∧ C</span>
+                            </div>
+                            <span id="diagnosticVENT" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                        <div id="statusMIST" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">pH Corrector Dosing (U2B Out)</span>
+                                <span class="font-bold text-cyan-400 mono">Y_DOSING = B ∧ Y_PUMP</span>
+                            </div>
+                            <span id="diagnosticMIST" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scrolling Waveform Timing Diagram -->
+                <div class="bg-slate-950/95 border border-emerald-500/20 rounded-2xl p-5 shadow-2xl space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <h3 class="text-sm font-bold text-emerald-400 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line"></i> Hydrological Logic Analyzer Stream
+                        </h3>
+                        <span class="text-[10px] uppercase font-mono text-slate-500">Timing Diagram</span>
+                    </div>
+                    <!-- Timing Diagram Canvas -->
+                    <div class="relative bg-slate-950/80 p-2 rounded-xl border border-slate-900 overflow-hidden">
+                        <canvas id="waveformCanvas" width="800" height="180" class="w-full h-[180px] block"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Novice Guide to Hydrological Sovereignty -->
+        <section class="bg-slate-950/90 border border-emerald-500/20 rounded-2xl p-6 shadow-2xl space-y-6">
+            <h2 class="text-xl font-bold text-emerald-400 border-b border-slate-800 pb-3 flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> The Novice Guide to Hydroponic Welfare: Transparent Nursery Shield
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <!-- Lesson 1 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-[#d4af37] font-bold uppercase tracking-wider text-xs">Lesson 1: Nutrient Lockout Vulnerability</h3>
+                    <p class="text-slate-300">
+                        In typical crop systems, substrate pH shifts go unnoticed until plants suffer from nitrogen or phosphorus deficiency (Nutrient Lockout). By housing the crops inside our high-transparency nursery, we manage microclimates and root moisture tension via digital sensory triggers.
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        This digital CMOS hardware edge automation prevents physical crop decay under severe environmental changes.
+                    </p>
+                </div>
+
+                <!-- Lesson 2 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-emerald-400 font-bold uppercase tracking-wider text-xs">Lesson 2: Cascaded Chemical Safety</h3>
+                    <p class="text-slate-300">
+                        The nursery controller implements absolute safeguard execution via two cascaded logical checks:
+                    </p>
+                    <ul class="list-disc list-inside text-slate-400 text-xs space-y-1">
+                        <li><strong>Stage 1 (Nutrient Pump):</strong> Recirculation pumps activate if there is a moisture/nutrient deficit ($A$) OR pH drift ($B$), provided the main storage reserve is clear ($C$):
+                        $$\text{Y\_PUMP} = (A \lor B) \land C$$</li>
+                        <li><strong>Stage 2 (Dosing Solenoid):</strong> Corrective dosing valves open ONLY if the pH is verified out of bounds ($B$) AND active nutrient flow ($Y_{\text{PUMP}}$) is verified running:
+                        $$\text{Y\_DOSING} = B \land \text{Y\_PUMP}$$</li>
+                    </ul>
+                </div>
+
+                <!-- Lesson 3 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-cyan-400 font-bold uppercase tracking-wider text-xs">Lesson 3: Concentration Shock Guard</h3>
+                    <p class="text-slate-300">
+                        In traditional automated setups, dosing acid directly into a stagnant pipe shocks the roots with toxic localized acidic blocks. Because our dosing logic is structurally coupled ($Y_{\text{DOSING}} = B \land Y_{\text{PUMP}}$), pH modifiers can physically only dispense when water is actively circulating.
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        If the water level falls ($C = 0$), the entire loop shuts down, preventing pump burnout and chemical oversaturation.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diagnostic System Truth Table -->
+        <div class="bg-slate-950/90 backdrop-blur-md border border-emerald-500/20 rounded-2xl p-6 shadow-2xl">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-400 border-b border-slate-800 pb-3">
+                <i class="fa-solid fa-table"></i> Diagnostic Verification Matrix
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 uppercase tracking-widest text-xs">
+                            <th class="py-3 px-3">Deficit (A)</th>
+                            <th class="py-3 px-3">pH drift (B)</th>
+                            <th class="py-3 px-3">Tank Clear (C)</th>
+                            <th class="py-3 px-3 text-center bg-emerald-950/25 border-r border-slate-800/50">Nutrient Pump (Y_PUMP)</th>
+                            <th class="py-3 px-3 text-center text-cyan-400 bg-cyan-500/5">pH Dosing Adjuster (Y_DOSING)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="truthTableBody" class="mono text-slate-300 divide-y divide-slate-800/40">
+                        <tr id="row-000" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-001" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-010" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-011" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center text-emerald-400 font-bold bg-emerald-500/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center text-cyan-400 font-bold bg-cyan-500/10">1</td>
+                        </tr>
+                        <tr id="row-100" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-101" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center text-emerald-400 font-bold bg-emerald-500/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-110" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-111" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center text-emerald-400 font-bold bg-emerald-500/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center text-cyan-400 font-bold bg-cyan-500/10">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Custom Notification Toast -->
+        <div id="toast" class="fixed bottom-6 right-6 bg-emerald-950 border border-emerald-500/30 px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-24 opacity-0 flex items-center gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+            <span id="toastText" class="text-xs font-semibold tracking-wider uppercase text-slate-200">Formula Copied</span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 border-t border-slate-900 text-xs text-slate-600 uppercase tracking-widest italic">
+            "Harnessing the Power of the Sunbeam" — Scapush Precision Execution
+        </footer>
+    </div>
+
+    <script>
+        // Waveform parameters
+        const canvas = document.getElementById('waveformCanvas');
+        const ctx = canvas.getContext('2d');
+        const historyData = [];
+        const maxHistoryPoints = 80;
+
+        // Interactive Diurnal Scenarios Database
+        const scenarios = {
+            dawn: {
+                A: false, B: false, C: true,
+                desc: "<strong>06:00 AM — Dawn Warm-up:</strong> Substrate moisture is saturated over the nursery field. pH is optimal at 5.8 ($A = 0, B = 0$). Reservoir level is verified clear ($C = 1$). Main pumps and dosing modules rest on standby, conserving water pressure."
+            },
+            heatstress: {
+                A: true, B: false, C: true,
+                desc: "<strong>12:00 PM — Nutrient Transpiration Demand:</strong> High thermal radiation drives evaporation within the nursery ($A = 1$). Recirculation pump activates ($Y_{\text{PUMP}} = 1$) to supply the crop root blocks. Dosing stays closed as pH resides comfortably at 5.8 ($Y_{\text{DOSING}} = 0$)."
+            },
+            phdrift: {
+                A: false, B: true, C: true,
+                desc: "<strong>15:00 PM — Crop pH Correction Cycle:</strong> Substrate pH drifts to 7.2 ($B = 1$). To safely mix the modifier, the nutrient pump ignites ($Y_{\text{PUMP}} = 1$) and the pH dosing valve opens ($Y_{\text{DOSING}} = 1$). The active recirculation dilutes the acid cleanly before reaching root channels."
+            },
+            empty: {
+                A: true, B: true, C: false,
+                desc: "<strong>23:00 PM — Dry Reservoir Safe Cutoff:</strong> Deficit rises but water tank drops below safe operating limits ($C = 0$). Both outputs are strictly locked out ($Y_{\text{PUMP}} = Y_{\text{DOSING}} = 0$), preventing dry-run pump combustion and protecting the roots from concentration shock."
+            }
+        };
+
+        function setDiurnalScenario(scenKey) {
+            const data = scenarios[scenKey];
+            if (!data) return;
+
+            // Set Checkboxes
+            document.getElementById('switchA').checked = data.A;
+            document.getElementById('switchB').checked = data.B;
+            document.getElementById('switchC').checked = data.C;
+
+            // Update Narrative
+            document.getElementById('scenarioDescription').innerHTML = data.desc;
+
+            // Run normal circuit flow update
+            updateCircuit(false);
+
+            // Update MathJax rendering dynamically to keep calculations elegant
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function updateCircuit(userInteractive = false) {
+            // Read UI States
+            const activeA = document.getElementById('switchA').checked;
+            const activeB = document.getElementById('switchB').checked;
+            const activeC = document.getElementById('switchC').checked;
+
+            const valA = activeA ? 1 : 0;
+            const valB = activeB ? 1 : 0;
+            const valC = activeC ? 1 : 0;
+
+            // Cascaded logic equations
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valPump = (valOR && activeC) ? 1 : 0;
+            const valDosing = (activeB && valPump) ? 1 : 0;
+
+            if (userInteractive) {
+                document.getElementById('scenarioDescription').innerHTML = "<i class='fa-solid fa-fingerprint text-emerald-400'></i> <strong>Manual Overrides Active:</strong> You are currently calibrating individual sensory inputs. Observe how the solar pump logic and pH dosing solenoids adjust to protect hydroponic crop welfare.";
+            }
+
+            // Update Physics Metrics
+            updateBioDiagnostics(activeA, activeB, activeC, valPump, valDosing);
+
+            // Update Input indicators
+            document.getElementById('valA').innerText = activeA ? "1 (5.0V)" : "0 (GND)";
+            document.getElementById('valB').innerText = activeB ? "1 (5.0V)" : "0 (GND)";
+            document.getElementById('valC').innerText = activeC ? "1 (5.0V)" : "0 (GND)";
+
+            document.getElementById('valA').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeA ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-950 text-slate-500'}`;
+            document.getElementById('valB').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeB ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-950 text-slate-500'}`;
+            document.getElementById('valC').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeC ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-950 text-slate-500'}`;
+
+            // Update SVG terminal values
+            document.getElementById('txtA').textContent = valA;
+            document.getElementById('txtB').textContent = valB;
+            document.getElementById('txtC').textContent = valC;
+            document.getElementById('txtY1').textContent = valPump;
+            document.getElementById('txtY2').textContent = valDosing;
+
+            // Visual styling adjustments on nodes
+            setNodeState('nodeA', activeA);
+            setNodeState('nodeB', activeB);
+            setNodeState('nodeC', activeC);
+
+            // Active path current flow
+            const activeColor = "#10b981";
+            const inactiveColor = "#1e293b";
+            const dosingActiveColor = "#06b6d4";
+
+            document.getElementById('wireA').setAttribute('stroke', activeA ? activeColor : inactiveColor);
+            toggleFlow('flowA', activeA);
+
+            document.getElementById('wireB').setAttribute('stroke', activeB ? activeColor : inactiveColor);
+            toggleFlow('flowB', activeB);
+
+            document.getElementById('wireC').setAttribute('stroke', activeC ? activeColor : inactiveColor);
+            toggleFlow('flowC', activeC);
+
+            document.getElementById('wireOROut').setAttribute('stroke', valOR ? activeColor : inactiveColor);
+            toggleFlow('flowOROut', valOR);
+
+            document.getElementById('wireYVent').setAttribute('stroke', valPump ? activeColor : inactiveColor);
+            toggleFlow('flowYVent', valPump);
+
+            document.getElementById('wireTapA').setAttribute('stroke', activeB ? activeColor : inactiveColor);
+            toggleFlow('flowTapA', activeB);
+
+            document.getElementById('wireYMist').setAttribute('stroke', valDosing ? dosingActiveColor : inactiveColor);
+            toggleFlow('flowYMist', valDosing);
+
+            // Output visual state for Pump (Y_PUMP)
+            const pumpNode = document.getElementById('nodeY1');
+            if (valPump) {
+                pumpNode.setAttribute('stroke', '#10b981');
+                pumpNode.setAttribute('fill', '#064e3b');
+                pumpNode.classList.add('glow-emerald');
+            } else {
+                pumpNode.setAttribute('stroke', '#475569');
+                pumpNode.setAttribute('fill', '#020617');
+                pumpNode.classList.remove('glow-emerald');
+            }
+
+            // Output visual state for Dosing (Y_DOSING)
+            const dosingNode = document.getElementById('nodeY2');
+            if (valDosing) {
+                dosingNode.setAttribute('stroke', '#06b6d4');
+                dosingNode.setAttribute('fill', '#083344');
+                dosingNode.classList.add('glow-mint');
+            } else {
+                dosingNode.setAttribute('stroke', '#475569');
+                dosingNode.setAttribute('fill', '#020617');
+                dosingNode.classList.remove('glow-mint');
+            }
+
+            // Real-time Equation feedback boxes
+            document.getElementById('diagnosticVENT').textContent = valPump;
+            document.getElementById('diagnosticMIST').textContent = valDosing;
+
+            const boxVENT = document.getElementById('statusVENT');
+            const boxMIST = document.getElementById('statusMIST');
+
+            if (valPump) {
+                boxVENT.className = "bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/30 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticVENT').className = "font-mono bg-emerald-950 px-3 py-1 rounded text-emerald-400 font-bold text-lg border border-emerald-500/20";
+            } else {
+                boxVENT.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticVENT').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+            }
+
+            if (valDosing) {
+                boxMIST.className = "bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/30 text-sm flex items-center justify-between transition-all duration-200 shadow-[0_0_15px_rgba(6,182,212,0.15)]";
+                document.getElementById('diagnosticMIST').className = "font-mono bg-cyan-950 px-3 py-1 rounded text-cyan-400 font-bold text-lg border border-cyan-500/20";
+            } else {
+                boxMIST.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticMIST').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+            }
+
+            // Truth Table Row Highlighting
+            const rows = document.querySelectorAll('#truthTableBody tr');
+            rows.forEach(r => r.className = "transition-all duration-150 opacity-40 hover:opacity-100");
+
+            const activeRow = document.getElementById(`row-${valA}${valB}${valC}`);
+            if (activeRow) {
+                if (valDosing) {
+                    activeRow.className = "bg-cyan-500/10 text-cyan-300 font-bold opacity-100 scale-[1.01] border-l-4 border-cyan-500";
+                } else if (valPump) {
+                    activeRow.className = "bg-emerald-500/10 text-emerald-300 font-bold opacity-100 scale-[1.01] border-l-4 border-emerald-500";
+                } else {
+                    activeRow.className = "bg-slate-800/60 text-white font-bold opacity-100 scale-[1.01] border-l-4 border-slate-600";
+                }
+            }
+
+            // Push state slice to history pool
+            historyData.push({ A: valA, B: valB, C: valC, V: valPump, M: valDosing });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveform();
+        }
+
+        function updateBioDiagnostics(a, b, c, pump, dosing) {
+            // Flow and dosing rates based on active outputs
+            document.getElementById('recircRate').innerText = pump ? "8.5 L/min" : "0.0 L/min";
+            document.getElementById('dosingRate').innerText = dosing ? "50 mL/min" : "0 mL/min";
+            document.getElementById('pumpStatusVal').innerText = pump ? "RUNNING" : "OFF";
+            document.getElementById('pumpStatusVal').className = pump ? "text-emerald-400 font-bold" : "text-slate-500";
+
+            let pHText = "Optimal (5.8)";
+            let pHStyle = "text-emerald-400";
+            if (b && dosing) {
+                pHText = "Dosing Acid... (7.2 → 5.8)";
+                pHStyle = "text-cyan-400 font-bold animate-pulse";
+            } else if (b) {
+                pHText = "Alkaline Drift! (7.2)";
+                pHStyle = "text-amber-500 font-bold";
+            } else if (!c) {
+                pHText = "Locked Out (Low Reserve)";
+                pHStyle = "text-rose-500 font-bold";
+            }
+
+            const labelEl = document.getElementById('pHValueText');
+            labelEl.innerText = pHText;
+            labelEl.className = `text-sm ${pHStyle}`;
+        }
+
+        function setNodeState(id, isActive) {
+            const node = document.getElementById(id);
+            node.setAttribute('stroke', isActive ? '#10b981' : '#475569');
+            node.setAttribute('fill', isActive ? '#064e3b' : '#020617');
+        }
+
+        function toggleFlow(id, active) {
+            const el = document.getElementById(id);
+            if (active) el.classList.remove('hidden');
+            else el.classList.add('hidden');
+        }
+
+        function resetCircuit() {
+            document.getElementById('switchA').checked = false;
+            document.getElementById('switchB').checked = false;
+            document.getElementById('switchC').checked = true;
+            document.getElementById('scenarioDescription').innerHTML = "Select any of the diurnal phases above to begin the training walkthrough. Observe how the inputs, logic gates, output controllers, and simulated crop-metrics react dynamically.";
+            updateCircuit();
+        }
+
+        function showNotification(text) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastText').innerText = text;
+            toast.className = "fixed bottom-6 right-6 bg-emerald-950 border border-emerald-500/30 px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-0 opacity-100 flex items-center gap-3";
+            setTimeout(() => {
+                toast.className = "fixed bottom-6 right-6 bg-emerald-950 border border-emerald-500/30 px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-24 opacity-0 flex items-center gap-3";
+            }, 2500);
+        }
+
+        function copyFormulas() {
+            const formula = "Y_PUMP = (Deficit OR pH_ERR) AND Tank_Clear; Y_DOSING = pH_ERR AND Y_PUMP";
+            const textarea = document.createElement('textarea');
+            textarea.value = formula;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showNotification("Logic Formulas Copied");
+        }
+
+        function drawWaveform() {
+            if (!canvas) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const channels = ['A', 'B', 'C', 'V', 'M'];
+            const channelLabels = { A: 'A:DEFICIT', B: 'B:pH_ERR', C: 'C:CLEAR', V: 'Y_PUMP', M: 'Y_DOSING' };
+            const channelHeight = 22;
+            const channelSpacing = 6;
+            
+            channels.forEach((ch, idx) => {
+                const yOffset = idx * (channelHeight + channelSpacing) + 12;
+                
+                // Draw channel background guides
+                ctx.strokeStyle = 'rgba(16, 185, 129, 0.05)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(60, yOffset, canvas.width - 70, channelHeight);
+                
+                // Draw Label
+                if (ch === 'V') ctx.style = '#10b981';
+                else if (ch === 'M') ctx.fillStyle = '#06b6d4';
+                else ctx.fillStyle = '#64748b';
+                
+                ctx.font = '10px JetBrains Mono';
+                ctx.fillText(`${channelLabels[ch]}:`, 10, yOffset + 14);
+
+                // Plot wave history
+                if (historyData.length > 1) {
+                    ctx.beginPath();
+                    if (ch === 'V') ctx.strokeStyle = '#10b981';
+                    else if (ch === 'M') ctx.strokeStyle = '#06b6d4';
+                    else ctx.strokeStyle = '#334155';
+                    
+                    ctx.lineWidth = 1.8;
+                    const stepSize = (canvas.width - 70) / maxHistoryPoints;
+                    
+                    for (let i = 0; i < historyData.length; i++) {
+                        const val = historyData[i][ch];
+                        const x = 60 + i * stepSize;
+                        const y = yOffset + channelHeight - (val * (channelHeight - 4)) - 2;
+                        
+                        if (i === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            const prevVal = historyData[i - 1][ch];
+                            const prevY = yOffset + channelHeight - (prevVal * (channelHeight - 4)) - 2;
+                            ctx.lineTo(x, prevY);
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.stroke();
+                }
+            });
+        }
+
+        // Initialize wave points pool
+        for(let i=0; i<maxHistoryPoints; i++) {
+            historyData.push({ A: 0, B: 0, C: 1, V: 0, M: 0 });
+        }
+
+        // Run initialization loop
+        updateCircuit();
+
+        // Standard dynamic scrolling animation loop
+        setInterval(() => {
+            const activeA = document.getElementById('switchA').checked ? 1 : 0;
+            const activeB = document.getElementById('switchB').checked ? 1 : 0;
+            const activeC = document.getElementById('switchC').checked ? 1 : 0;
+            
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valPump = (valOR && activeC) ? 1 : 0;
+            const valDosing = (activeB && valPump) ? 1 : 0;
+
+            historyData.push({ A: activeA, B: activeB, C: activeC, V: valPump, M: valDosing });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveform();
+        }, 300);
+    </script>
+</body>
+</html>

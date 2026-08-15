@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lwandile Agrivoltaics | Prestige Master Logic Blueprint</title>
+    <!-- Tailwind CSS for high-fidelity responsive design tokens -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for engineering icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- MathJax for rendering elegant LaTeX formulas in the training guide -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #030712; /* Deep engineering black-blue */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(14, 116, 144, 0.15) 0%, transparent 75%),
+                linear-gradient(to bottom, rgba(14, 116, 144, 0.02) 1px, transparent 1px);
+            background-size: 100% 40px, 40px 40px;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Blueprint grid pattern */
+        .blueprint-grid {
+            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(to right, rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+        }
+        /* Glowing effects for active states */
+        .glow-active {
+            filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.6));
+        }
+        .glow-thermal {
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.8));
+        }
+        .wire-flow {
+            stroke-dasharray: 8;
+            animation: flow 1.2s linear infinite;
+        }
+        @keyframes flow {
+            to {
+                stroke-dashoffset: -16;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100 py-8 px-4 md:px-8 blueprint-grid">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Beijing Submission Header -->
+        <header class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-cyan-500/30 pb-6 gap-6">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs uppercase tracking-[0.4em] text-cyan-400 font-bold">Lwandile Engineering Projects</span>
+                    <span class="text-[10px] bg-cyan-500/10 text-cyan-400 px-2 py-0.5 rounded border border-cyan-500/20 font-bold uppercase tracking-wider">Beijing Prestige Gear</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight mt-1 text-white flex items-center gap-3">
+                    <i class="fa-solid fa-microchip text-cyan-400"></i> Thermal Valve Master Blueprint
+                </h1>
+                <p class="text-slate-400 text-sm mt-1">
+                    Certified hardware schematic for CMOS gate-level implementation under the Just Energy Transition (JET) Framework.
+                </p>
+            </div>
+            
+            <!-- Metadata Registry Panel -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:flex items-center gap-3 bg-slate-950/80 p-4 rounded-2xl border border-cyan-500/20 w-full lg:w-auto text-xs mono">
+                <div class="pr-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">DOC ID</span>
+                    <span class="font-bold text-slate-300">LEP-TVL-001</span>
+                </div>
+                <div class="px-3 sm:border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">VERSION</span>
+                    <span class="font-bold text-emerald-400">v3.0-PRESTIGE</span>
+                </div>
+                <div class="px-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">STATUS</span>
+                    <span class="font-bold text-cyan-400 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-ping"></span> SECURE
+                    </span>
+                </div>
+                <div class="pl-3">
+                    <span class="text-slate-500 block text-[9px] uppercase">AUTHORIZATION</span>
+                    <span class="font-bold text-[#d4af37]">S.W. KHUZWAYO</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Diurnal Lifecycle Interactive Simulator Control Panel -->
+        <section class="bg-slate-950/90 border-2 border-amber-500/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-amber-500/10 text-[#d4af37] px-4 py-1 text-xs font-bold uppercase tracking-widest rounded-bl-xl border-l border-b border-amber-500/20">
+                Teachability Engine v1.0
+            </div>
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-amber-400">
+                <i class="fa-solid fa-clock"></i> Interactive 24-Hour Diurnal Cycle Walkthrough
+            </h2>
+            <p class="text-slate-300 text-sm mb-6 max-w-4xl">
+                As a steward of this sovereign design, select one of the core operational stages below. Watch the logic schematic, physics analyzer, and the scrolling waveform automatically transition to prove how this system guarantees <strong>Zero Mortality</strong> from dawn to dawn.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Scenario 1: Dawn -->
+                <button onclick="setDiurnalScenario('dawn')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-amber-500 font-mono uppercase">06:00 AM — Dawn</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Dawn Awakening</h3>
+                    <p class="text-xs text-slate-400">Solar starts to register; system transitions smoothly out of Night Protocol.</p>
+                </button>
+
+                <!-- Scenario 2: Midday Peak (Heat Stress Mitigation) -->
+                <button onclick="setDiurnalScenario('midday')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-yellow-400 font-mono uppercase">12:00 PM — Midday</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Heat Stress Mitigation</h3>
+                    <p class="text-xs text-slate-400">Solar is massive. Power redirected to misting & high-velocity ventilation.</p>
+                </button>
+
+                <!-- Scenario 3: Dusk -->
+                <button onclick="setDiurnalScenario('dusk')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-indigo-400 font-mono uppercase">18:00 PM — Dusk</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Dusk Transition</h3>
+                    <p class="text-xs text-slate-400">Solar fades completely. System prepares for the cold Highveld night.</p>
+                </button>
+
+                <!-- Scenario 4: The Deep Freeze (02:00 AM) -->
+                <button onclick="setDiurnalScenario('freeze')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-cyan-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-sky-400 font-mono uppercase">02:00 AM — Night</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Highveld Deep Freeze</h3>
+                    <p class="text-xs text-slate-400">Freezing temperatures threat. Biogas generator fires up; thermal valve opens.</p>
+                </button>
+            </div>
+
+            <!-- Dynamic Scenario Narrative Board -->
+            <div id="narrativeBoard" class="mt-4 bg-[#2d1a17]/20 border border-[#d4af37]/20 rounded-xl p-4 text-sm text-slate-200">
+                <span class="text-[10px] uppercase font-mono tracking-wider text-amber-500 block mb-1">Live Scenario Walkthrough</span>
+                <p id="scenarioDescription">Select any of the diurnal phases above to begin the training walk-through. Observe how the inputs, logic gates, output valves, and simulated physics respond dynamically to preserve life.</p>
+            </div>
+        </section>
+
+        <!-- Main Workspace Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Left Panel: Parameter Controls & Physics Engines -->
+            <div class="lg:col-span-4 space-y-4">
+                
+                <!-- Signal Controllers -->
+                <div class="bg-slate-950/90 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-5 shadow-2xl">
+                    <h2 class="text-lg font-bold mb-4 flex items-center justify-between text-cyan-400 border-b border-slate-800 pb-2">
+                        <span><i class="fa-solid fa-sliders"></i> Digital Inputs</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Live Calibration</span>
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Input A -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-cyan-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-sun text-amber-500"></i> A: Solar Harnessing
+                                </label>
+                                <span id="valA" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when photon collection exceeds $120\text{ W/m}^2$.</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchA" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500 peer-checked:after:bg-cyan-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Input B -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-cyan-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-bolt text-emerald-400"></i> B: Grid Connection (Y_GEN)
+                                </label>
+                                <span id="valB" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when grid interconnected node or Biogas Gen is active.</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchB" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500 peer-checked:after:bg-cyan-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Input C -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-cyan-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-snowflake text-sky-400"></i> C: Freeze Safeguard
+                                </label>
+                                <span id="valC" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when temperature drop threatens system arrays ($T \le 2^\circ\text{C}$).</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchC" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500 peer-checked:after:bg-cyan-950"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Physical Engine Block -->
+                <div class="bg-slate-950/90 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-5 shadow-2xl space-y-4">
+                    <h2 class="text-lg font-bold flex items-center justify-between text-cyan-400 border-b border-slate-800 pb-2">
+                        <span><i class="fa-solid fa-gauge-high"></i> Physics Diagnostics</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Datasheet Spec</span>
+                    </h2>
+                    
+                    <!-- Dynamic Voltage Selection -->
+                    <div class="flex items-center justify-between bg-slate-900/50 p-2.5 rounded-lg border border-slate-800">
+                        <span class="text-xs text-slate-400 font-sans">Core Voltage ($V_{CC}$)</span>
+                        <select id="voltageSelect" onchange="updateCircuit()" class="bg-slate-950 border border-cyan-500/30 rounded text-cyan-400 text-xs px-2 py-1 focus:outline-none focus:border-cyan-400 font-bold mono">
+                            <option value="5.0">5.0V (Standard)</option>
+                            <option value="3.3">3.3V (Low-Power)</option>
+                        </select>
+                    </div>
+
+                    <!-- Dynamic Propagation Delay & Current Calculator -->
+                    <div class="grid grid-cols-2 gap-3 text-xs mono font-sans">
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-500 block text-[9px] uppercase">PROP DELAY ($t_{pd}$)</span>
+                            <span id="delayValue" class="text-emerald-400 font-bold text-sm">30 ns</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">U1A + U2A Combined</span>
+                        </div>
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-500 block text-[9px] uppercase">POWER DIS ($P_{D}$)</span>
+                            <span id="powerValue" class="text-cyan-400 font-bold text-sm">110 μW</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">Dynamic CMOS Calc</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: High-Fidelity Blueprint Canvas & Waveform -->
+            <div class="lg:col-span-8 space-y-4">
+                
+                <!-- Schematic Canvas -->
+                <div class="bg-slate-950/95 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-4 md:p-6 shadow-2xl relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2 border-b border-slate-800 pb-3">
+                        <h2 class="text-lg font-bold text-cyan-400 flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project"></i> IEEE/ANSI Standard Logical Mapping
+                        </h2>
+                        <div class="flex gap-2">
+                            <button onclick="resetCircuit()" class="px-3 py-1.5 text-xs font-semibold bg-slate-900 border border-slate-800 hover:border-cyan-500/30 rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+                            </button>
+                            <button onclick="copyBlueprintFormula()" class="px-3 py-1.5 text-xs font-semibold bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-copy"></i> Copy Formula
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SVG Canvas -->
+                    <div class="w-full bg-slate-950/60 p-3 rounded-xl border border-cyan-500/10 relative overflow-x-auto">
+                        <svg viewBox="0 0 800 400" class="w-full min-w-[700px] h-auto overflow-visible select-none">
+                            
+                            <!-- Definitions for IEEE Gates -->
+                            <defs>
+                                <pattern id="blueprint-dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="10" cy="10" r="0.8" fill="rgba(6, 182, 212, 0.15)" />
+                                </pattern>
+                                
+                                <!-- Standard OR Gate Symbol -->
+                                <g id="ieee-or-gate">
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0 C 48,0 42,2 32,10 C 22,18 12,25 0,25 C 8,12 8,-12 0,-25 Z" fill="#082f49" stroke="#22d3ee" stroke-width="2.5"/>
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0" fill="none" stroke="rgba(34, 211, 238, 0.4)" stroke-width="6" class="glow-active"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="#06b6d4" text-anchor="middle" class="mono">OR</text>
+                                </g>
+
+                                <!-- Standard AND Gate Symbol -->
+                                <g id="ieee-and-gate">
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25 L 0,25 Z" fill="#082f49" stroke="#22d3ee" stroke-width="2.5"/>
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25" fill="none" stroke="rgba(34, 211, 238, 0.4)" stroke-width="6" class="glow-active"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="#06b6d4" text-anchor="middle" class="mono">AND</text>
+                                </g>
+                            </defs>
+
+                            <rect width="800" height="400" fill="url(#blueprint-dots)" rx="8" />
+
+                            <!-- Bus Wires / Signal Paths -->
+                            <!-- Wire A -->
+                            <path id="wireA" d="M 120,80 L 220,80 L 220,115 L 260,115" fill="none" stroke="#334155" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowA" d="M 120,80 L 220,80 L 220,115 L 260,115" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire B -->
+                            <path id="wireB" d="M 120,160 L 220,160 L 220,135 L 260,135" fill="none" stroke="#334155" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowB" d="M 120,160 L 220,160 L 220,135 L 260,135" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire C -->
+                            <path id="wireC" d="M 120,280 L 440,280 L 440,225 L 490,225" fill="none" stroke="#334155" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowC" d="M 120,280 L 440,280 L 440,225 L 490,225" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire OR Output -> AND Input 1 -->
+                            <path id="wireOROut" d="M 315,125 L 410,125 L 410,205 L 490,205" fill="none" stroke="#334155" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowOROut" d="M 315,125 L 410,125 L 410,205 L 490,205" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire Final Output -->
+                            <path id="wireFinal" d="M 545,215 L 670,215" fill="none" stroke="#334155" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowFinal" d="M 545,215 L 670,215" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Logic Gate Assemblies -->
+                            <!-- OR Gate U1A -->
+                            <g transform="translate(260, 125)" id="gateU1A" class="transition-transform duration-200">
+                                <use href="#ieee-or-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN3</text>
+                                <text x="28" y="-32" font-size="11" fill="#22d3ee" font-weight="bold" class="mono" text-anchor="middle">74HC32 (OR)</text>
+                            </g>
+
+                            <!-- AND Gate U2A -->
+                            <g transform="translate(490, 215)" id="gateU2A" class="transition-transform duration-200">
+                                <use href="#ieee-and-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN3</text>
+                                <text x="25" y="-32" font-size="11" fill="#22d3ee" font-weight="bold" class="mono" text-anchor="middle">74HC08 (AND)</text>
+                            </g>
+
+                            <!-- Node Indicators -->
+                            <!-- Solar A -->
+                            <g transform="translate(120, 80)">
+                                <circle r="13" fill="#0f172a" stroke="#475569" stroke-width="3.5" id="nodeA" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtA">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#0891b2" text-anchor="start" class="mono">SOLAR (A)</text>
+                            </g>
+
+                            <!-- Grid B -->
+                            <g transform="translate(120, 160)">
+                                <circle r="13" fill="#0f172a" stroke="#475569" stroke-width="3.5" id="nodeB" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtB">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#0891b2" text-anchor="start" class="mono">Y_GEN (B)</text>
+                            </g>
+
+                            <!-- Freeze C -->
+                            <g transform="translate(120, 280)">
+                                <circle r="13" fill="#0f172a" stroke="#475569" stroke-width="3.5" id="nodeC" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtC">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#0891b2" text-anchor="start" class="mono">FREEZE (C)</text>
+                            </g>
+
+                            <!-- Valve Output Node -->
+                            <g transform="translate(685, 215)">
+                                <circle r="24" fill="#0f172a" stroke="#475569" stroke-width="4" id="nodeY" class="transition-all duration-200" />
+                                <text y="5" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle" class="mono" id="txtY">0</text>
+                                <text x="-30" y="-32" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="start" class="mono">VALVE (Y_HEAT)</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Formula and Stages Block -->
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div id="statusOR" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">OR Stage (U1A Out)</span>
+                                <span class="font-bold text-cyan-400 mono">Solar ∨ Y_GEN</span>
+                            </div>
+                            <span id="diagnosticOR" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                        <div id="statusAND" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">AND Stage (U2A Out)</span>
+                                <span class="font-bold text-amber-500 mono">Y_HEAT = (A ∨ B) ∧ C</span>
+                            </div>
+                            <span id="diagnosticFinal" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scrolling Waveform Timing Diagram -->
+                <div class="bg-slate-950/95 border border-cyan-500/20 rounded-2xl p-5 shadow-2xl space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <h3 class="text-sm font-bold text-cyan-400 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line"></i> Scrolling Waveform Logic Analyzer
+                        </h3>
+                        <span class="text-[10px] uppercase font-mono text-slate-500">Real-time Stream</span>
+                    </div>
+                    <!-- Timing Diagram Canvas -->
+                    <div class="relative bg-slate-950/80 p-2 rounded-xl border border-slate-900 overflow-hidden">
+                        <canvas id="waveformCanvas" width="800" height="150" class="w-full h-[150px] block"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Novice Guide to Thermal Sovereignty -->
+        <section class="bg-slate-950/90 border border-cyan-500/20 rounded-2xl p-6 shadow-2xl space-y-6">
+            <h2 class="text-xl font-bold text-cyan-400 border-b border-slate-800 pb-3 flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> The Novice Guide to Thermal Sovereignty: Zero Mortality Blueprint
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <!-- Lesson 1 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-amber-500 font-bold uppercase tracking-wider text-xs">Lesson 1: The Sovereign Objective</h3>
+                    <p class="text-slate-300">
+                        In livestock projects (such as <strong>1,920-broiler batches</strong> or <strong>160-porcine cycles</strong>), standard heaters fail during South African grid failures (Load Shedding). Rapid thermal shifts cause mortality. 
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        Our objective is absolute temperature protection ($T \approx 30^\circ\text{C}$ for broilers) completely independent of the national grid.
+                    </p>
+                </div>
+
+                <!-- Lesson 2 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-cyan-400 font-bold uppercase tracking-wider text-xs">Lesson 2: The Logical Guardians</h3>
+                    <p class="text-slate-300">
+                        We use three environmental inputs represented as binary values:
+                    </p>
+                    <ul class="list-disc list-inside text-slate-400 text-xs space-y-1">
+                        <li><strong>Input $A$:</strong> Solar energy harvesting level.</li>
+                        <li><strong>Input $B$:</strong> Active generator output ($Y_{GEN}$).</li>
+                        <li><strong>Input $C$:</strong> Cold threshold trigger ($T \le 2^\circ\text{C}$).</li>
+                    </ul>
+                    <p class="text-slate-300 mt-1">
+                        The ultimate safeguard is computed by the Boolean master formula:
+                        $$\text{Y\_HEAT} = (A \lor B) \land C$$
+                    </p>
+                </div>
+
+                <!-- Lesson 3 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-emerald-400 font-bold uppercase tracking-wider text-xs">Lesson 3: The Actuator (Hydronic Valve)</h3>
+                    <p class="text-slate-300">
+                        When the output valve $Y_{HEAT}$ fires ($1$), it opens motorized PEX valves. This floods the underfloor concrete "thermal battery" with heat derived from the Biogas generator's water jacket.
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        By utilizing the structural thermal mass of concrete, we maintain heat for up to 14 hours without active fuel burning.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diagnostic System Truth Table -->
+        <div class="bg-slate-950/90 backdrop-blur-md border border-cyan-500/20 rounded-2xl p-6 shadow-2xl">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-cyan-400 border-b border-slate-800 pb-3">
+                <i class="fa-solid fa-table"></i> Diagnostic Verification Matrix
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 uppercase tracking-widest text-xs">
+                            <th class="py-3 px-3">Solar (A)</th>
+                            <th class="py-3 px-3">Y_GEN (B)</th>
+                            <th class="py-3 px-3">Freeze (C)</th>
+                            <th class="py-3 px-3 text-center bg-cyan-950/25 border-r border-slate-800/50">OR Stage Output</th>
+                            <th class="py-3 px-3 text-center text-cyan-400 bg-cyan-500/5">Y_HEAT Output</th>
+                        </tr>
+                    </thead>
+                    <tbody id="truthTableBody" class="mono text-slate-300 divide-y divide-slate-800/40">
+                        <tr id="row-000" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-cyan-950/10 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold">0</td>
+                        </tr>
+                        <tr id="row-001" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center bg-cyan-950/10 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold">0</td>
+                        </tr>
+                        <tr id="row-010" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-cyan-950/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center font-bold">0</td>
+                        </tr>
+                        <tr id="row-011" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center bg-cyan-950/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center text-cyan-400 font-bold bg-cyan-500/10">1</td>
+                        </tr>
+                        <tr id="row-100" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-cyan-950/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center font-bold">0</td>
+                        </tr>
+                        <tr id="row-101" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center bg-cyan-950/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center text-cyan-400 font-bold bg-cyan-500/10">1</td>
+                        </tr>
+                        <tr id="row-110" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-cyan-950/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center font-bold">0</td>
+                        </tr>
+                        <tr id="row-111" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center bg-cyan-950/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center text-cyan-400 font-bold bg-cyan-500/10">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 border-t border-slate-900 text-xs text-slate-500 uppercase tracking-widest italic">
+            "Harnessing the Power of the Sunbeam" — Scapush Precision Execution
+        </footer>
+    </div>
+
+    <script>
+        // Waveform parameters
+        const canvas = document.getElementById('waveformCanvas');
+        const ctx = canvas.getContext('2d');
+        const historyData = [];
+        const maxHistoryPoints = 80;
+
+        // Interactive Diurnal Scenarios Database
+        const scenarios = {
+            dawn: {
+                A: true, B: false, C: false,
+                desc: "<strong>06:00 AM — Dawn Awakening:</strong> The sun rises over the Highveld. Solar array ($A$) begins registering current ($1$). The temperature is cold but rising, meaning the Freeze Safeguard sensor ($C$) deactivates ($0$). Since there's no freeze threat, the thermal valve remains safely closed ($Y_{HEAT} = 0$). Energy is prioritized for battery recharging."
+            },
+            midday: {
+                A: true, B: false, C: false,
+                desc: "<strong>12:00 PM — Midday Peak & Heat Stress Mitigation:</strong> Solar irradiance is massive ($A = 1$). To prevent deadly <strong>heat stress</strong> in the broiler house, all surplus energy is dynamically channeled into high-volume evaporative misting and high-velocity ventilation systems. The primary heating circuit remains off ($Y_{HEAT} = 0$), keeping the structure cool, protected, and fully within safe operational parameters."
+            },
+            dusk: {
+                A: false, B: false, C: false,
+                desc: "<strong>18:00 PM — Dusk Transition:</strong> The sun sets and solar generation falls below the threshold ($A = 0$). No biogas generation is running ($B = 0$) as we rely on residual warmth in the structures. The Freeze Safeguard ($C$) is still inactive ($0$). The system rests in a balanced standby mode."
+            },
+            freeze: {
+                A: false, B: true, C: true,
+                desc: "<strong>02:00 AM — The Deep Winter Freeze:</strong> July in Secunda ($T \\le 2^\\circ\\text{C}$). The Freeze Safeguard ($C$) fires ($1$). Because there is no solar ($A = 0$), the <strong>10kW Biogas Generator</strong> is ignited immediately ($B = Y_{GEN} = 1$). The OR gate evaluates to $1$ ($0 \\lor 1 = 1$), passing to the final AND gate. Since both paths are active ($1 \\land 1 = 1$), the thermal valve output $Y_{HEAT}$ triggers ($1$), flooding the underfloor concrete battery with heat to prevent animal huddling and death."
+            }
+        };
+
+        function setDiurnalScenario(scenKey) {
+            const data = scenarios[scenKey];
+            if (!data) return;
+
+            // Set Checkboxes
+            document.getElementById('switchA').checked = data.A;
+            document.getElementById('switchB').checked = data.B;
+            document.getElementById('switchC').checked = data.C;
+
+            // Update Narrative
+            document.getElementById('scenarioDescription').innerHTML = data.desc;
+
+            // Run normal circuit flow update
+            updateCircuit(false); // don't clear narrative
+
+            // Update MathJax rendering dynamically to keep calculations elegant
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function updateCircuit(userInteractive = false) {
+            // Read UI States
+            const activeA = document.getElementById('switchA').checked;
+            const activeB = document.getElementById('switchB').checked;
+            const activeC = document.getElementById('switchC').checked;
+            const coreVoltage = parseFloat(document.getElementById('voltageSelect').value);
+
+            const valA = activeA ? 1 : 0;
+            const valB = activeB ? 1 : 0;
+            const valC = activeC ? 1 : 0;
+
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valFinal = (valOR && activeC) ? 1 : 0;
+
+            if (userInteractive) {
+                document.getElementById('scenarioDescription').innerHTML = "<i class='fa-solid fa-fingerprint text-cyan-400'></i> <strong>Manual Overrides Active:</strong> You are currently hand-calibrating live signal lines. Observe how the gates and waveforms evaluate dynamically based on your inputs.";
+            }
+
+            // Update Dynamic Metadata
+            updatePhysicsMetrics(coreVoltage, activeA, activeB, activeC);
+
+            // Update Input indicators
+            document.getElementById('valA').innerText = activeA ? `1 (${coreVoltage}V)` : "0 (GND)";
+            document.getElementById('valB').innerText = activeB ? `1 (${coreVoltage}V)` : "0 (GND)";
+            document.getElementById('valC').innerText = activeC ? `1 (${coreVoltage}V)` : "0 (GND)";
+
+            document.getElementById('valA').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeA ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-950 text-slate-500'}`;
+            document.getElementById('valB').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeB ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-950 text-slate-500'}`;
+            document.getElementById('valC').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeC ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-950 text-slate-500'}`;
+
+            // Update SVG terminal values
+            document.getElementById('txtA').textContent = valA;
+            document.getElementById('txtB').textContent = valB;
+            document.getElementById('txtC').textContent = valC;
+            document.getElementById('txtY').textContent = valFinal;
+
+            // Visual styling adjustments on nodes
+            setNodeState('nodeA', activeA);
+            setNodeState('nodeB', activeB);
+            setNodeState('nodeC', activeC);
+
+            // Active path current flow
+            const activeColor = "#22d3ee";
+            const inactiveColor = "#1e293b";
+            const outputGlowColor = "#f59e0b";
+
+            document.getElementById('wireA').setAttribute('stroke', activeA ? activeColor : inactiveColor);
+            toggleFlow('flowA', activeA);
+
+            document.getElementById('wireB').setAttribute('stroke', activeB ? activeColor : inactiveColor);
+            toggleFlow('flowB', activeB);
+
+            document.getElementById('wireC').setAttribute('stroke', activeC ? activeColor : inactiveColor);
+            toggleFlow('flowC', activeC);
+
+            document.getElementById('wireOROut').setAttribute('stroke', valOR ? activeColor : inactiveColor);
+            toggleFlow('flowOROut', valOR);
+
+            document.getElementById('wireFinal').setAttribute('stroke', valFinal ? outputGlowColor : inactiveColor);
+            toggleFlow('flowFinal', valFinal);
+
+            // Output visual state
+            const finalNode = document.getElementById('nodeY');
+            if (valFinal) {
+                finalNode.setAttribute('stroke', '#d4af37');
+                finalNode.setAttribute('fill', '#2d1a17');
+                finalNode.classList.add('glow-thermal');
+            } else {
+                finalNode.setAttribute('stroke', '#475569');
+                finalNode.setAttribute('fill', '#0f172a');
+                finalNode.classList.remove('glow-thermal');
+            }
+
+            // Realtime Equation feedback boxes
+            document.getElementById('diagnosticOR').textContent = valOR;
+            document.getElementById('diagnosticFinal').textContent = valFinal;
+
+            const boxOR = document.getElementById('statusOR');
+            const boxAND = document.getElementById('statusAND');
+
+            if (valOR) {
+                boxOR.className = "bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/30 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticOR').className = "font-mono bg-cyan-950 px-3 py-1 rounded text-cyan-400 font-bold text-lg border border-cyan-500/20";
+            } else {
+                boxOR.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticOR').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+            }
+
+            if (valFinal) {
+                boxAND.className = "bg-amber-500/10 p-4 rounded-xl border border-amber-500/30 text-sm flex items-center justify-between transition-all duration-200 shadow-[0_0_15px_rgba(245,158,11,0.15)]";
+                document.getElementById('diagnosticFinal').className = "font-mono bg-amber-950 px-3 py-1 rounded text-amber-400 font-bold text-lg border border-amber-500/20";
+            } else {
+                boxAND.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticFinal').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+            }
+
+            // Truth Table Row Highlighting
+            const rows = document.querySelectorAll('#truthTableBody tr');
+            rows.forEach(r => r.className = "transition-all duration-150 opacity-40 hover:opacity-100");
+
+            const activeRow = document.getElementById(`row-${valA}${valB}${valC}`);
+            if (activeRow) {
+                if (valFinal) {
+                    activeRow.className = "bg-cyan-500/10 text-cyan-300 font-bold opacity-100 scale-[1.01] border-l-4 border-cyan-500";
+                } else {
+                    activeRow.className = "bg-slate-800/60 text-white font-bold opacity-100 scale-[1.01] border-l-4 border-slate-600";
+                }
+            }
+
+            // Push state slice to the logic timing data pool
+            historyData.push({ A: valA, B: valB, C: valC, Y: valFinal });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveform();
+        }
+
+        function updatePhysicsMetrics(volts, a, b, c) {
+            // CMOS Datasheet dynamics: Lower voltage = longer delay, lower static power dissipation
+            const baseDelay = volts === 3.3 ? 22 : 15; // ns per gate block
+            const totalDelay = baseDelay * 2; // OR + AND gate cascade
+            document.getElementById('delayValue').innerText = `${totalDelay} ns`;
+
+            // Calculate active dynamic current dissipation
+            let activeTerminals = (a ? 1 : 0) + (b ? 1 : 0) + (c ? 1 : 0);
+            const capFactor = 22; // pF standard
+            const dynamicPower = activeTerminals * capFactor * (volts * volts) * 0.1; // estimate in microwatts
+            document.getElementById('powerValue').innerText = `${dynamicPower.toFixed(1)} μW`;
+        }
+
+        function setNodeState(id, isActive) {
+            const node = document.getElementById(id);
+            node.setAttribute('stroke', isActive ? '#22d3ee' : '#475569');
+            node.setAttribute('fill', isActive ? '#083344' : '#0f172a');
+        }
+
+        function toggleFlow(id, active) {
+            const el = document.getElementById(id);
+            if (active) el.classList.remove('hidden');
+            else el.classList.add('hidden');
+        }
+
+        function resetCircuit() {
+            document.getElementById('switchA').checked = false;
+            document.getElementById('switchB').checked = false;
+            document.getElementById('switchC').checked = false;
+            document.getElementById('scenarioDescription').innerHTML = "Select any of the diurnal phases above to begin the training walk-through. Observe how the inputs, logic gates, output valves, and simulated physics respond dynamically to preserve life.";
+            updateCircuit();
+        }
+
+        function copyBlueprintFormula() {
+            const formula = "Y_HEAT = (Solar OR Y_GEN) AND Freeze";
+            navigator.clipboard.writeText(formula).then(() => {
+                alert("Boolean logic equation copied successfully under LEP precision parameters!");
+            });
+        }
+
+        // Waveform Plotter
+        function drawWaveform() {
+            if (!canvas) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const channels = ['A', 'B', 'C', 'Y'];
+            const channelHeight = 30;
+            const channelSpacing = 5;
+            
+            channels.forEach((ch, idx) => {
+                const yOffset = idx * (channelHeight + channelSpacing) + 15;
+                
+                // Draw channel background guides
+                ctx.strokeStyle = 'rgba(6, 182, 212, 0.05)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(50, yOffset, canvas.width - 60, channelHeight);
+                
+                // Draw Label
+                ctx.fillStyle = ch === 'Y' ? '#fbbf24' : '#22d3ee';
+                ctx.font = '10px JetBrains Mono';
+                ctx.fillText(`${ch}:`, 15, yOffset + 18);
+
+                // Plot wave history
+                if (historyData.length > 1) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = ch === 'Y' ? '#f59e0b' : '#06b6d4';
+                    ctx.lineWidth = 1.8;
+                    
+                    const stepSize = (canvas.width - 60) / maxHistoryPoints;
+                    
+                    for (let i = 0; i < historyData.length; i++) {
+                        const val = historyData[i][ch];
+                        const x = 50 + i * stepSize;
+                        // Map high logical state to the top of the channel rectangle
+                        const y = yOffset + channelHeight - (val * (channelHeight - 6)) - 3;
+                        
+                        if (i === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            // Step plot configuration (square wave)
+                            const prevVal = historyData[i - 1][ch];
+                            const prevX = 50 + (i - 1) * stepSize;
+                            const prevY = yOffset + channelHeight - (prevVal * (channelHeight - 6)) - 3;
+                            ctx.lineTo(x, prevY);
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.stroke();
+                }
+            });
+        }
+
+        // Initialize wave points pool
+        for(let i=0; i<maxHistoryPoints; i++) {
+            historyData.push({ A: 0, B: 0, C: 0, Y: 0 });
+        }
+
+        // Run initialization loop
+        updateCircuit();
+
+        // Standard dynamic scrolling animation loop
+        setInterval(() => {
+            const activeA = document.getElementById('switchA').checked ? 1 : 0;
+            const activeB = document.getElementById('switchB').checked ? 1 : 0;
+            const activeC = document.getElementById('switchC').checked ? 1 : 0;
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valFinal = (valOR && activeC) ? 1 : 0;
+
+            historyData.push({ A: activeA, B: activeB, C: activeC, Y: valFinal });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveform();
+        }, 300);
+    </script>
+</body>
+</html>

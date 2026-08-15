@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lwandile Swine Environmental Controller | Prestige Blueprint</title>
+    <!-- Tailwind CSS for high-fidelity responsive design tokens -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for engineering icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- MathJax for rendering elegant LaTeX formulas in the teaching guide -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #020617; /* Cyber space slate-black */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(236, 72, 153, 0.1) 0%, transparent 75%),
+                linear-gradient(to bottom, rgba(236, 72, 153, 0.02) 1px, transparent 1px);
+            background-size: 100% 40px, 40px 40px;
+        }
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        /* Swine blueprint grid pattern */
+        .blueprint-grid {
+            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(to right, rgba(236, 72, 153, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(236, 72, 153, 0.03) 1px, transparent 1px);
+        }
+        /* Glowing effects for active states */
+        .glow-pink {
+            filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.7));
+        }
+        .glow-rose {
+            filter: drop-shadow(0 0 12px rgba(244, 63, 94, 0.8));
+        }
+        .glow-amber {
+            filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
+        }
+        .wire-flow {
+            stroke-dasharray: 8;
+            animation: flow 1.0s linear infinite;
+        }
+        @keyframes flow {
+            to {
+                stroke-dashoffset: -16;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100 py-8 px-4 md:px-8 blueprint-grid">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Beijing Submission Header -->
+        <header class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-pink-500/30 pb-6 gap-6">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs uppercase tracking-[0.4em] text-pink-400 font-bold">Lwandile Engineering Projects</span>
+                    <span class="text-[10px] bg-pink-500/10 text-pink-400 px-2 py-0.5 rounded border border-pink-500/20 font-bold uppercase tracking-wider">Beijing Prestige Gear</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight mt-1 text-white flex items-center gap-3">
+                    <i class="fa-solid fa-piggy-bank text-pink-400"></i> Porcine Microclimate Controller
+                </h1>
+                <p class="text-slate-400 text-sm mt-1">
+                    Multi-stage logical protection matrix mapped for 160-Finisher swine cohorts under the JET Framework.
+                </p>
+            </div>
+            
+            <!-- Metadata Registry Panel -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:flex items-center gap-3 bg-slate-950/80 p-4 rounded-2xl border border-pink-500/20 w-full lg:w-auto text-xs mono">
+                <div class="pr-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">DOC ID</span>
+                    <span class="font-bold text-slate-300">LEP-POR-003</span>
+                </div>
+                <div class="px-3 sm:border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">VERSION</span>
+                    <span class="font-bold text-pink-400">v3.0-PRESTIGE</span>
+                </div>
+                <div class="px-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">STATUS</span>
+                    <span class="font-bold text-pink-400 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-pink-400 rounded-full animate-ping"></span> SECURE
+                    </span>
+                </div>
+                <div class="pl-3">
+                    <span class="text-slate-500 block text-[9px] uppercase">AUTHORIZATION</span>
+                    <span class="font-bold text-[#d4af37]">S.W. KHUZWAYO</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Diurnal Lifecycle Interactive Simulator Control Panel -->
+        <section class="bg-slate-950/90 border-2 border-pink-500/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-pink-500/10 text-pink-400 px-4 py-1 text-xs font-bold uppercase tracking-widest rounded-bl-xl border-l border-b border-pink-500/20">
+                Sovereign Teachability Engine
+            </div>
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-pink-400">
+                <i class="fa-solid fa-clock"></i> Porcine Diurnal Microclimate Walkthrough
+            </h2>
+            <p class="text-slate-300 text-sm mb-6 max-w-4xl">
+                Observe how the logical controllers prevent biological mortality by dynamically evaluating ambient temperature inputs, ventilation thresholds, and swine drip-cooling intervals. Click a scenario below to run the simulation.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Scenario 1: Cool Dawn -->
+                <button onclick="setDiurnalScenario('dawn')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-pink-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-pink-400 font-mono uppercase">07:00 AM — Dawn Sweep</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-pink-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Dawn Gas Clear</h3>
+                    <p class="text-xs text-slate-400">Ammonia build-up triggers safety ventilation. Drip lines remain strictly locked out.</p>
+                </button>
+
+                <!-- Scenario 2: Midday Peak Heat Stress -->
+                <button onclick="setDiurnalScenario('heatstress')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-pink-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-amber-500 font-mono uppercase">13:00 PM — Peak Heat</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-pink-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Porcine Skin Wetting</h3>
+                    <p class="text-xs text-slate-400">Temp hits $32^\circ\text{C}$. High ventilation runs; intermittent drip-lines trigger skin-cooling.</p>
+                </button>
+
+                <!-- Scenario 3: Quiet Evening -->
+                <button onclick="setDiurnalScenario('evening')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-pink-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-pink-400 font-mono uppercase">19:00 PM — Evening</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-pink-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Steady State Comfort</h3>
+                    <p class="text-xs text-slate-400">Temps drop to comfortable $20^\circ\text{C}$. Environmental standby operations.</p>
+                </button>
+
+                <!-- Scenario 4: Deep Freeze Safeguard -->
+                <button onclick="setDiurnalScenario('freeze')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-pink-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-sky-400 font-mono uppercase">01:00 AM — Winter Draft</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-pink-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Swine Draft Lockout</h3>
+                    <p class="text-xs text-slate-400">Freezing drafts threat ($T = 5^\circ\text{C}$). Cold override locks out both drippers and fans.</p>
+                </button>
+            </div>
+
+            <!-- Dynamic Scenario Narrative Board -->
+            <div id="narrativeBoard" class="mt-4 bg-[#ef4444]/10 border border-pink-500/20 rounded-xl p-4 text-sm text-slate-200">
+                <span class="text-[10px] uppercase font-mono tracking-wider text-pink-400 block mb-1">Live Controller Commentary</span>
+                <p id="scenarioDescription">Select any of the operational phases above to begin the training walkthrough. Observe how the inputs, logic gates, output controllers, and simulated swine-metrics react dynamically.</p>
+            </div>
+        </section>
+
+        <!-- Main Workspace Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Left Panel: Parameter Controls & Physics Engines -->
+            <div class="lg:col-span-4 space-y-4">
+                
+                <!-- Signal Controllers -->
+                <div class="bg-slate-950/90 backdrop-blur-md border border-pink-500/20 rounded-2xl p-5 shadow-2xl">
+                    <h2 class="text-lg font-bold mb-4 flex items-center justify-between text-pink-400 border-b border-slate-800 pb-2">
+                        <span><i class="fa-solid fa-sliders"></i> Sensor Calibration</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Live Inputs</span>
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Input A -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-pink-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-temperature-high text-amber-500"></i> A: Heat Threshold ($T_{\text{HIGH}}$)
+                                </label>
+                                <span id="valA" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when temperature inside swine housing exceeds $27^\circ\text{C}$.</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchA" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-500 peer-checked:after:bg-pink-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Input B -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-pink-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-biohazard text-pink-400"></i> B: Toxic Air Overwrite ($A_{\text{TOX}}$)
+                                </label>
+                                <span id="valB" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when ammonia ($NH_3$) or hydrogen sulfide ($H_2S$) build-up is dense.</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchB" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-500 peer-checked:after:bg-pink-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Input C -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-pink-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-shield-halved text-emerald-400"></i> C: Safe Temperature Zone ($C_{\text{SAFE}}$)
+                                </label>
+                                <span id="valC" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when ambient temperature is clear of cold draft danger ($T > 16^\circ\text{C}$).</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchC" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-pink-500 peer-checked:after:bg-pink-950"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Physical Engine Block -->
+                <div class="bg-slate-950/90 backdrop-blur-md border border-pink-500/20 rounded-2xl p-5 shadow-2xl space-y-4">
+                    <h2 class="text-lg font-bold flex items-center justify-between text-pink-400 border-b border-slate-800 pb-2">
+                        <span><i class="fa-solid fa-calculator"></i> Porcine Diagnostics</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Live Physics</span>
+                    </h2>
+                    
+                    <!-- Dynamic Air Exchange Rate -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-sans">Water Drip Delivery Rate</span>
+                            <span id="dripRate" class="text-xs font-bold text-pink-400">0.0 L/hr</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-sans">Air Changes Per Hour (ACH)</span>
+                            <span id="achRate" class="text-xs font-bold text-emerald-400">1.2 ACH</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Power consumption & current delay -->
+                    <div class="grid grid-cols-2 gap-3 text-xs mono font-sans">
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-500 block text-[9px] uppercase">EXHAUST FANS</span>
+                            <span id="fanSpeed" class="text-pink-400 font-bold text-sm">0 RPM</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">Dual-axial status</span>
+                        </div>
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-500 block text-[9px] uppercase">SWINE HEAT INDEX</span>
+                            <span id="heatIndexValue" class="text-emerald-400 font-bold text-sm">Safe (20°C)</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">Calculated comfort index</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: High-Fidelity Swine Blueprint Canvas & Waveform -->
+            <div class="lg:col-span-8 space-y-4">
+                
+                <!-- Schematic Canvas -->
+                <div class="bg-slate-950/95 backdrop-blur-md border border-pink-500/20 rounded-2xl p-4 md:p-6 shadow-2xl relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2 border-b border-slate-800 pb-3">
+                        <h2 class="text-lg font-bold text-pink-400 flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project"></i> Swine Environmental Controller Schematic
+                        </h2>
+                        <div class="flex gap-2">
+                            <button onclick="resetCircuit()" class="px-3 py-1.5 text-xs font-semibold bg-slate-900 border border-slate-800 hover:border-pink-500/30 rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+                            </button>
+                            <button onclick="copyFormulas()" class="px-3 py-1.5 text-xs font-semibold bg-pink-500/10 border border-pink-500/30 text-pink-400 hover:bg-pink-500/20 rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-copy"></i> Copy Formulas
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SVG Canvas -->
+                    <div class="w-full bg-slate-950/60 p-3 rounded-xl border border-pink-500/10 relative overflow-x-auto">
+                        <svg viewBox="0 0 800 400" class="w-full min-w-[700px] h-auto overflow-visible select-none">
+                            
+                            <!-- Definitions for IEEE Gates -->
+                            <defs>
+                                <pattern id="blueprint-dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="10" cy="10" r="0.8" fill="rgba(236, 72, 153, 0.15)" />
+                                </pattern>
+                                
+                                <!-- Standard OR Gate Symbol -->
+                                <g id="ieee-or-gate">
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0 C 48,0 42,2 32,10 C 22,18 12,25 0,25 C 8,12 8,-12 0,-25 Z" fill="#431407" stroke="#db2777" stroke-width="2.5"/>
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0" fill="none" stroke="rgba(236, 72, 153, 0.4)" stroke-width="6" class="glow-pink"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="#db2777" text-anchor="middle" class="mono">OR</text>
+                                </g>
+
+                                <!-- Standard AND Gate Symbol -->
+                                <g id="ieee-and-gate">
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25 L 0,25 Z" fill="#431407" stroke="#db2777" stroke-width="2.5"/>
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25" fill="none" stroke="rgba(236, 72, 153, 0.4)" stroke-width="6" class="glow-pink"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="#db2777" text-anchor="middle" class="mono">AND</text>
+                                </g>
+                            </defs>
+
+                            <rect width="800" height="400" fill="url(#blueprint-dots)" rx="8" />
+
+                            <!-- Bus Wires / Signal Paths -->
+                            <!-- Wire T_HIGH to OR Pin 1 -->
+                            <path id="wireA" d="M 120,60 L 220,60 L 220,85 L 250,85" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowA" d="M 120,60 L 220,60 L 220,85 L 250,85" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire A_TOX to OR Pin 2 -->
+                            <path id="wireB" d="M 120,130 L 220,130 L 220,105 L 250,105" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowB" d="M 120,130 L 220,130 L 220,105 L 250,105" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- OR Output to AND 1 Input 1 -->
+                            <path id="wireOROut" d="M 302,95 L 390,95 L 390,195 L 430,195" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowOROut" d="M 302,95 L 390,95 L 390,195 L 430,195" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire C_SAFE to AND 1 Input 2 -->
+                            <path id="wireC" d="M 120,215 L 430,215" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowC" d="M 120,215 L 430,215" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- AND 1 Output (Y_FAN) to Final Output and AND 2 Input 2 -->
+                            <path id="wireYFan" d="M 482,205 L 560,205 M 560,205 L 680,205 M 560,205 L 560,315 L 600,315" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowYFan" d="M 482,205 L 560,205 M 560,205 L 680,205 M 560,205 L 560,315 L 600,315" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- T_HIGH tapped connection to AND 2 Input 1 -->
+                            <path id="wireTapA" d="M 180,60 L 180,335 L 370,335 L 370,295 L 600,295" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowTapA" d="M 180,60 L 180,335 L 370,335 L 370,295 L 600,295" fill="none" stroke="#db2777" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- AND 2 Output (Y_DRIP) to output node -->
+                            <path id="wireYDrip" d="M 652,305 L 680,305" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowYDrip" d="M 652,305 L 680,305" fill="none" stroke="#f43f5e" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Logic Gate Assemblies -->
+                            <!-- OR Gate U1A -->
+                            <g transform="translate(250, 95)" id="gateU1A" class="transition-transform duration-200">
+                                <use href="#ieee-or-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN3</text>
+                                <text x="28" y="-32" font-size="11" fill="#db2777" font-weight="bold" class="mono" text-anchor="middle">74HC32 (OR)</text>
+                            </g>
+
+                            <!-- AND Gate U2A (Ventilation Engine) -->
+                            <g transform="translate(430, 205)" id="gateU2A" class="transition-transform duration-200">
+                                <use href="#ieee-and-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN3</text>
+                                <text x="25" y="-32" font-size="11" fill="#db2777" font-weight="bold" class="mono" text-anchor="middle">74HC08 (AND)</text>
+                            </g>
+
+                            <!-- AND Gate U2B (Drip Engine) -->
+                            <g transform="translate(600, 305)" id="gateU2B" class="transition-transform duration-200">
+                                <use href="#ieee-and-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN3</text>
+                                <text x="25" y="-32" font-size="11" fill="#db2777" font-weight="bold" class="mono" text-anchor="middle">74HC08 (AND)</text>
+                            </g>
+
+                            <!-- Node Indicators -->
+                            <!-- Temp Input A -->
+                            <g transform="translate(120, 60)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeA" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtA">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#pink-400" text-anchor="start" class="mono">TEMP (A)</text>
+                            </g>
+
+                            <!-- Toxic Input B -->
+                            <g transform="translate(120, 130)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeB" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtB">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#pink-400" text-anchor="start" class="mono">TOXIC (B)</text>
+                            </g>
+
+                            <!-- Safety Input C -->
+                            <g transform="translate(120, 215)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeC" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtC">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#pink-400" text-anchor="start" class="mono">C_SAFE (C)</text>
+                            </g>
+
+                            <!-- Fan Output Node Y1 -->
+                            <g transform="translate(705, 205)">
+                                <circle r="22" fill="#020617" stroke="#475569" stroke-width="4" id="nodeY1" class="transition-all duration-200" />
+                                <text y="5" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle" class="mono" id="txtY1">0</text>
+                                <text x="-30" y="-32" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="start" class="mono">FAN (Y_FAN)</text>
+                            </g>
+
+                            <!-- Drip Output Node Y2 -->
+                            <g transform="translate(705, 305)">
+                                <circle r="22" fill="#020617" stroke="#475569" stroke-width="4" id="nodeY2" class="transition-all duration-200" />
+                                <text y="5" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle" class="mono" id="txtY2">0</text>
+                                <text x="-30" y="-32" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="start" class="mono">DRIP (Y_DRIP)</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Formula and Stages Block -->
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div id="statusFAN" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">Ventilation Output (U2A Out)</span>
+                                <span class="font-bold text-pink-400 mono">Y_FAN = (A ∨ B) ∧ C</span>
+                            </div>
+                            <span id="diagnosticFAN" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                        <div id="statusDRIP" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">Skin-Wetting Output (U2B Out)</span>
+                                <span class="font-bold text-rose-400 mono">Y_DRIP = A ∧ Y_FAN</span>
+                            </div>
+                            <span id="diagnosticDRIP" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scrolling Waveform Timing Diagram -->
+                <div class="bg-slate-950/95 border border-pink-500/20 rounded-2xl p-5 shadow-2xl space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <h3 class="text-sm font-bold text-pink-400 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line"></i> Swine Logic Analyzer Real-time Stream
+                        </h3>
+                        <span class="text-[10px] uppercase font-mono text-slate-500">Timing Diagram</span>
+                    </div>
+                    <!-- Timing Diagram Canvas -->
+                    <div class="relative bg-slate-950/80 p-2 rounded-xl border border-slate-900 overflow-hidden">
+                        <canvas id="waveformCanvas" width="800" height="180" class="w-full h-[180px] block"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Novice Guide to Swine Logic & Microclimates -->
+        <section class="bg-slate-950/90 border border-pink-500/20 rounded-2xl p-6 shadow-2xl space-y-6">
+            <h2 class="text-xl font-bold text-pink-400 border-b border-slate-800 pb-3 flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> The Novice Guide to Swine Logic Systems: Swine Heat Stress Shield
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <!-- Lesson 1 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-amber-500 font-bold uppercase tracking-wider text-xs">Lesson 1: Swine Thermal Inability</h3>
+                    <p class="text-slate-300">
+                        Large White swine (specifically heavy **Finisher pigs** inside your **160-head cohort**) do not possess functional sweat glands. Because they cannot sweat, evaporative cooling *must* be facilitated artificially via skin-wetting drip lines and concurrent high-velocity airflow. 
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        This controller dynamically prevents respiratory failure and cardiac arrest from heat stress.
+                    </p>
+                </div>
+
+                <!-- Lesson 2 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-pink-400 font-bold uppercase tracking-wider text-xs">Lesson 2: Integrated Logical Safeguards</h3>
+                    <p class="text-slate-300">
+                        The controller executes high-performance protection using two stages of Boolean logic:
+                    </p>
+                    <ul class="list-disc list-inside text-slate-400 text-xs space-y-1">
+                        <li><strong>Stage 1 (Ventilation):</strong> Fans activate if there is Heat ($A$) OR Toxicity ($B$), AND the safety override ($C$) is clear:
+                        $$\text{Y\_FAN} = (A \lor B) \land C$$</li>
+                        <li><strong>Stage 2 (Drip-Wetting):</strong> Drip valves open ONLY if the High Temperature sensor ($A$) is active AND active ventilation ($Y_{\text{FAN}}$) is confirmed running:
+                        $$\text{Y\_DRIP} = A \land \text{Y\_FAN}$$</li>
+                    </ul>
+                </div>
+
+                <!-- Lesson 3 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-rose-400 font-bold uppercase tracking-wider text-xs">Lesson 3: The Cold Draft Guard</h3>
+                    <p class="text-slate-300">
+                        During cold Mpumalanga winter nights ($T \le 16^\circ\text{C}$), the Cold Draft sensor ($C_{\text{SAFE}}$) transitions to $0$. This deactivates the AND gates, locking out both fans and water drippers immediately to protect vulnerable swine from pneumonia and dynamic shock.
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        By integrating physical protection parameters directly into the logic hardware, we safeguard biological yields.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diagnostic System Truth Table -->
+        <div class="bg-slate-950/90 backdrop-blur-md border border-pink-500/20 rounded-2xl p-6 shadow-2xl">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-pink-400 border-b border-slate-800 pb-3">
+                <i class="fa-solid fa-table"></i> Diagnostic Verification Matrix
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 uppercase tracking-widest text-xs">
+                            <th class="py-3 px-3">Temp Threshold (A)</th>
+                            <th class="py-3 px-3">Ammonia Hazard (B)</th>
+                            <th class="py-3 px-3">Temp Safe Clear (C)</th>
+                            <th class="py-3 px-3 text-center bg-pink-950/25 border-r border-slate-800/50">Ventilation (Y_FAN)</th>
+                            <th class="py-3 px-3 text-center text-rose-400 bg-rose-500/5">Evaporative Skin-Wetting (Y_DRIP)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="truthTableBody" class="mono text-slate-300 divide-y divide-slate-800/40">
+                        <tr id="row-000" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-001" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-010" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-011" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center text-pink-400 font-bold bg-pink-500/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-100" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-101" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center text-pink-400 font-bold bg-pink-500/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center text-rose-400 font-bold bg-rose-500/10">1</td>
+                        </tr>
+                        <tr id="row-110" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-111" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center text-pink-400 font-bold bg-pink-500/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center text-rose-400 font-bold bg-rose-500/10">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Custom Notification Toast -->
+        <div id="toast" class="fixed bottom-6 right-6 bg-pink-950 border border-pink-500/30 px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-24 opacity-0 flex items-center gap-3">
+            <i class="fa-solid fa-circle-check text-pink-400 text-lg"></i>
+            <span id="toastText" class="text-xs font-semibold tracking-wider uppercase text-slate-200">Formula Copied</span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 border-t border-slate-900 text-xs text-slate-600 uppercase tracking-widest italic">
+            "Harnessing the Power of the Sunbeam" — Scapush Precision Execution
+        </footer>
+    </div>
+
+    <script>
+        // Waveform parameters
+        const canvas = document.getElementById('waveformCanvas');
+        const ctx = canvas.getContext('2d');
+        const historyData = [];
+        const maxHistoryPoints = 80;
+
+        // Interactive Diurnal Scenarios Database for Porcine
+        const scenarios = {
+            dawn: {
+                A: false, B: true, C: true,
+                desc: "<strong>07:00 AM — Dawn Gas Sweep:</strong> Stagnant overnight air inside the swine housing has resulted in a toxic ammonia build-up ($B = 1$). Temperatures are above our safety draft lockout limit ($C = 1$). To clear the stale air, the exhaust fans trigger ($Y_{\text{FAN}} = 1$), but because it is still cool, the drip skin-wetting solenoid is kept safely closed ($Y_{\text{DRIP}} = 0$)."
+            },
+            heatstress: {
+                A: true, B: false, C: true,
+                desc: "<strong>13:00 PM — Swine Skin Wetting:</strong> Solar thermal radiation pushes temperatures within the swine housing to $32^\circ\text{C}$ ($A = 1, C = 1$). Air velocity fans run at peak capacity ($Y_{\text{FAN}} = 1$) to establish convective cooling, and the drip nozzles open ($Y_{\text{DRIP}} = 1$). High-volume water droplets wet the pigs' backs, and the airflow evaporates the moisture, pulling heat away from their bodies."
+            },
+            evening: {
+                A: false, B: false, C: true,
+                desc: "<strong>19:00 PM — Steady State Operations:</strong> Temperature resides in the optimal swine comfort bracket of $20^\circ\text{C}$ ($A = 0, C = 1$), and ammonia levels are well below safety thresholds ($B = 0$). Fans and drip solenoids rest in standby mode, maintaining quiet, energy-efficient comfort for the 160-Finisher swine cohort."
+            },
+            freeze: {
+                A: false, B: false, C: false,
+                desc: "<strong>01:00 AM — Winter Night Cold Guard:</strong> Extreme cold draft settling over Highveld grasslands ($T = 5^\circ\text{C}$). To protect finishing pigs from severe hypothermic shock, the Cold Safe indicator deactivates ($C_{\text{SAFE}} = 0$). This absolute override instantly locks out exhaust ventilation and skin-wetting drippers ($Y_{\text{FAN}} = Y_{\text{DRIP}} = 0$), conserving animal metabolic energy."
+            }
+        };
+
+        function setDiurnalScenario(scenKey) {
+            const data = scenarios[scenKey];
+            if (!data) return;
+
+            // Set Checkboxes
+            document.getElementById('switchA').checked = data.A;
+            document.getElementById('switchB').checked = data.B;
+            document.getElementById('switchC').checked = data.C;
+
+            // Update Narrative
+            document.getElementById('scenarioDescription').innerHTML = data.desc;
+
+            // Run normal circuit flow update
+            updateCircuit(false);
+
+            // Update MathJax rendering dynamically to keep calculations elegant
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function updateCircuit(userInteractive = false) {
+            // Read UI States
+            const activeA = document.getElementById('switchA').checked;
+            const activeB = document.getElementById('switchB').checked;
+            const activeC = document.getElementById('switchC').checked;
+
+            const valA = activeA ? 1 : 0;
+            const valB = activeB ? 1 : 0;
+            const valC = activeC ? 1 : 0;
+
+            // Swine specific cascaded logic equations
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valFan = (valOR && activeC) ? 1 : 0;
+            const valDrip = (activeA && valFan) ? 1 : 0;
+
+            if (userInteractive) {
+                document.getElementById('scenarioDescription').innerHTML = "<i class='fa-solid fa-fingerprint text-pink-400'></i> <strong>Manual Overrides Active:</strong> You are currently calibrating individual sensory inputs. Observe how the ventilation logic and drip nozzles adjust to keep parameters healthy.";
+            }
+
+            // Update Physics Metrics
+            updateBioDiagnostics(activeA, activeB, activeC, valFan, valDrip);
+
+            // Update Input indicators
+            document.getElementById('valA').innerText = activeA ? "1 (5.0V)" : "0 (GND)";
+            document.getElementById('valB').innerText = activeB ? "1 (5.0V)" : "0 (GND)";
+            document.getElementById('valC').innerText = activeC ? "1 (5.0V)" : "0 (GND)";
+
+            document.getElementById('valA').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeA ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-950 text-slate-500'}`;
+            document.getElementById('valB').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeB ? 'bg-pink-500/20 text-pink-400' : 'bg-slate-950 text-slate-500'}`;
+            document.getElementById('valC').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeC ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-950 text-slate-500'}`;
+
+            // Update SVG terminal values
+            document.getElementById('txtA').textContent = valA;
+            document.getElementById('txtB').textContent = valB;
+            document.getElementById('txtC').textContent = valC;
+            document.getElementById('txtY1').textContent = valFan;
+            document.getElementById('txtY2').textContent = valDrip;
+
+            // Visual styling adjustments on nodes
+            setNodeState('nodeA', activeA);
+            setNodeState('nodeB', activeB);
+            setNodeState('nodeC', activeC);
+
+            // Active path current flow
+            const activeColor = "#db2777";
+            const inactiveColor = "#1e293b";
+            const dripActiveColor = "#f43f5e";
+
+            document.getElementById('wireA').setAttribute('stroke', activeA ? activeColor : inactiveColor);
+            toggleFlow('flowA', activeA);
+
+            document.getElementById('wireB').setAttribute('stroke', activeB ? activeColor : inactiveColor);
+            toggleFlow('flowB', activeB);
+
+            document.getElementById('wireC').setAttribute('stroke', activeC ? activeColor : inactiveColor);
+            toggleFlow('flowC', activeC);
+
+            document.getElementById('wireOROut').setAttribute('stroke', valOR ? activeColor : inactiveColor);
+            toggleFlow('flowOROut', valOR);
+
+            document.getElementById('wireYFan').setAttribute('stroke', valFan ? activeColor : inactiveColor);
+            toggleFlow('flowYFan', valFan);
+
+            document.getElementById('wireTapA').setAttribute('stroke', activeA ? activeColor : inactiveColor);
+            toggleFlow('flowTapA', activeA);
+
+            document.getElementById('wireYDrip').setAttribute('stroke', valDrip ? dripActiveColor : inactiveColor);
+            toggleFlow('flowYDrip', valDrip);
+
+            // Output visual state for Swine Fan (Y_FAN)
+            const fanNode = document.getElementById('nodeY1');
+            if (valFan) {
+                fanNode.setAttribute('stroke', '#db2777');
+                fanNode.setAttribute('fill', '#431407');
+                fanNode.classList.add('glow-pink');
+            } else {
+                fanNode.setAttribute('stroke', '#475569');
+                fanNode.setAttribute('fill', '#020617');
+                fanNode.classList.remove('glow-pink');
+            }
+
+            // Output visual state for Swine Drip (Y_DRIP)
+            const dripNode = document.getElementById('nodeY2');
+            if (valDrip) {
+                dripNode.setAttribute('stroke', '#f43f5e');
+                dripNode.setAttribute('fill', '#4c0519');
+                dripNode.classList.add('glow-rose');
+            } else {
+                dripNode.setAttribute('stroke', '#475569');
+                dripNode.setAttribute('fill', '#020617');
+                dripNode.classList.remove('glow-rose');
+            }
+
+            // Real-time Equation feedback boxes
+            document.getElementById('diagnosticFAN').textContent = valFan;
+            document.getElementById('diagnosticDRIP').textContent = valDrip;
+
+            const boxFAN = document.getElementById('statusFAN');
+            const boxDRIP = document.getElementById('statusDRIP');
+
+            if (valFan) {
+                boxFAN.className = "bg-pink-500/10 p-4 rounded-xl border border-pink-500/30 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticFAN').className = "font-mono bg-pink-950 px-3 py-1 rounded text-pink-400 font-bold text-lg border border-pink-500/20";
+            } else {
+                boxFAN.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticFAN').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+            }
+
+            if (valDrip) {
+                boxDRIP.className = "bg-rose-500/10 p-4 rounded-xl border border-rose-500/30 text-sm flex items-center justify-between transition-all duration-200 shadow-[0_0_15px_rgba(244,63,94,0.15)]";
+                document.getElementById('diagnosticDRIP').className = "font-mono bg-rose-950 px-3 py-1 rounded text-rose-400 font-bold text-lg border border-rose-500/20";
+            } else {
+                boxDRIP.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticDRIP').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+            }
+
+            // Truth Table Row Highlighting
+            const rows = document.querySelectorAll('#truthTableBody tr');
+            rows.forEach(r => r.className = "transition-all duration-150 opacity-40 hover:opacity-100");
+
+            const activeRow = document.getElementById(`row-${valA}${valB}${valC}`);
+            if (activeRow) {
+                if (valDrip) {
+                    activeRow.className = "bg-rose-500/10 text-rose-300 font-bold opacity-100 scale-[1.01] border-l-4 border-rose-500";
+                } else if (valFan) {
+                    activeRow.className = "bg-pink-500/10 text-pink-300 font-bold opacity-100 scale-[1.01] border-l-4 border-pink-500";
+                } else {
+                    activeRow.className = "bg-slate-800/60 text-white font-bold opacity-100 scale-[1.01] border-l-4 border-slate-600";
+                }
+            }
+
+            // Push state slice to history pool
+            historyData.push({ A: valA, B: valB, C: valC, V: valFan, M: valDrip });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveform();
+        }
+
+        function updateBioDiagnostics(a, b, c, fan, drip) {
+            // Swine physics diagnostics rates based on active logical outputs
+            document.getElementById('dripRate').innerText = drip ? "45.0 L/hr" : "0.0 L/hr";
+            document.getElementById('achRate').innerText = fan ? "12.5 ACH" : "1.2 ACH";
+            document.getElementById('fanSpeed').innerText = fan ? "1200 RPM" : "0 RPM";
+
+            let tempStr = "Comfortable (20°C)";
+            let tempStyle = "text-emerald-400";
+            if (a) {
+                tempStr = "Heat Stress Warning (32°C)";
+                tempStyle = "text-amber-500 font-bold";
+            } else if (!c) {
+                tempStr = "Winter Guard Locked (5°C)";
+                tempStyle = "text-sky-400 font-bold";
+            }
+
+            const labelEl = document.getElementById('heatIndexValue');
+            labelEl.innerText = tempStr;
+            labelEl.className = `text-sm ${tempStyle}`;
+        }
+
+        function setNodeState(id, isActive) {
+            const node = document.getElementById(id);
+            node.setAttribute('stroke', isActive ? '#db2777' : '#475569');
+            node.setAttribute('fill', isActive ? '#431407' : '#020617');
+        }
+
+        function toggleFlow(id, active) {
+            const el = document.getElementById(id);
+            if (active) el.classList.remove('hidden');
+            else el.classList.add('hidden');
+        }
+
+        function resetCircuit() {
+            document.getElementById('switchA').checked = false;
+            document.getElementById('switchB').checked = false;
+            document.getElementById('switchC').checked = true;
+            document.getElementById('scenarioDescription').innerHTML = "Select any of the diurnal phases above to begin the training walkthrough. Observe how the inputs, logic gates, output controllers, and simulated bio-metrics react dynamically.";
+            updateCircuit();
+        }
+
+        function showNotification(text) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastText').innerText = text;
+            toast.className = "fixed bottom-6 right-6 bg-pink-950 border border-pink-500/30 px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-0 opacity-100 flex items-center gap-3";
+            setTimeout(() => {
+                toast.className = "fixed bottom-6 right-6 bg-pink-950 border border-pink-500/30 px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-24 opacity-0 flex items-center gap-3";
+            }, 2500);
+        }
+
+        function copyFormulas() {
+            const formula = "Y_FAN = (Temp OR Toxic) AND C_SAFE; Y_DRIP = Temp AND Y_FAN";
+            const textarea = document.createElement('textarea');
+            textarea.value = formula;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showNotification("Logic Formulas Copied");
+        }
+
+        function drawWaveform() {
+            if (!canvas) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const channels = ['A', 'B', 'C', 'V', 'M'];
+            const channelLabels = { A: 'A:TEMP', B: 'B:TOXIC', C: 'C:SAFE', V: 'Y_FAN', M: 'Y_DRIP' };
+            const channelHeight = 22;
+            const channelSpacing = 6;
+            
+            channels.forEach((ch, idx) => {
+                const yOffset = idx * (channelHeight + channelSpacing) + 12;
+                
+                // Draw channel background guides
+                ctx.strokeStyle = 'rgba(236, 72, 153, 0.05)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(60, yOffset, canvas.width - 70, channelHeight);
+                
+                // Draw Label
+                if (ch === 'V') ctx.fillStyle = '#db2777';
+                else if (ch === 'M') ctx.fillStyle = '#f43f5e';
+                else ctx.fillStyle = '#64748b';
+                
+                ctx.font = '10px JetBrains Mono';
+                ctx.fillText(`${channelLabels[ch]}:`, 10, yOffset + 14);
+
+                // Plot wave history
+                if (historyData.length > 1) {
+                    ctx.beginPath();
+                    if (ch === 'V') ctx.strokeStyle = '#db2777';
+                    else if (ch === 'M') ctx.strokeStyle = '#f43f5e';
+                    else ctx.strokeStyle = '#334155';
+                    
+                    ctx.lineWidth = 1.8;
+                    const stepSize = (canvas.width - 70) / maxHistoryPoints;
+                    
+                    for (let i = 0; i < historyData.length; i++) {
+                        const val = historyData[i][ch];
+                        const x = 60 + i * stepSize;
+                        // Map logic value to high/low heights within current channel window
+                        const y = yOffset + channelHeight - (val * (channelHeight - 4)) - 2;
+                        
+                        if (i === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            const prevVal = historyData[i - 1][ch];
+                            const prevY = yOffset + channelHeight - (prevVal * (channelHeight - 4)) - 2;
+                            ctx.lineTo(x, prevY);
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.stroke();
+                }
+            });
+        }
+
+        // Initialize wave points pool
+        for(let i=0; i<maxHistoryPoints; i++) {
+            historyData.push({ A: 0, B: 0, C: 1, V: 0, M: 0 });
+        }
+
+        // Run initialization loop
+        updateCircuit();
+
+        // Standard dynamic scrolling animation loop
+        setInterval(() => {
+            const activeA = document.getElementById('switchA').checked ? 1 : 0;
+            const activeB = document.getElementById('switchB').checked ? 1 : 0;
+            const activeC = document.getElementById('switchC').checked ? 1 : 0;
+            
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valFan = (valOR && activeC) ? 1 : 0;
+            const valDrip = (activeA && valFan) ? 1 : 0;
+
+            historyData.push({ A: activeA, B: activeB, C: activeC, V: valFan, M: valDrip });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveform();
+        }, 300);
+    </script>
+</body>
+</html>

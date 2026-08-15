@@ -533,7 +533,7 @@
             Select an operational condition below to simulate how SCADA logic gates, truth table indices, and physical fail-safe triggers automatically execute to guarantee Zero Mortality.
         </p>
         <div class="scenario-grid">
-            <div class="scenario-card active" onclick="selectScenario(0)">
+            <div class="scenario-card" onclick="selectScenario(0)">
                 <div class="scenario-time">MODE 01 — NOMINAL</div>
                 <div class="scenario-name">Normal Operations</div>
                 <div class="scenario-text">All environmental sensors normal, grid power active, backup standby online.</div>
@@ -548,13 +548,13 @@
                 <div class="scenario-name">Ammonia Hazard</div>
                 <div class="scenario-text">Ammonia exceeds 20 ppm limit. Triggers purge mode to protect flock.</div>
             </div>
-            <div class="scenario-card" onclick="selectScenario(3)">
+            <div class="scenario-card active" onclick="selectScenario(3)">
                 <div class="scenario-time">MODE 04 — BLACKOUT</div>
                 <div class="scenario-name">Total Power Loss</div>
                 <div class="scenario-text">Mains grid down &amp; generator fails. De-energizes curtain solenoids safely.</div>
             </div>
         </div>
-        <div class="active-explanation" id="scenario-explanation"><strong>NOMINAL MODE:</strong> System running in standard closed-loop feedback mode. Grid power online, environmental thresholds optimal. Zero mortality risk.</div>
+        <div class="active-explanation" id="scenario-explanation"><strong>BLACKOUT FAIL-SAFE:</strong> Mains grid power lost AND generator fails to start. AND Gate engages, forcing passive curtain solenoids to de-energize and drop by gravity.</div>
     </section>
 
     <!-- Main Workspace Grid -->

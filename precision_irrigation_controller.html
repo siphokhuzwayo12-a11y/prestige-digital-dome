@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lwandile Precision Irrigation Controller | Prestige Blueprint</title>
+    <!-- Tailwind CSS for modern responsive utility design styling tokens -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for robust engineering and biological icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- MathJax for rendering elegant LaTeX scientific formulas in the teachability core -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #020617; /* Cyber space slate-black */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.1) 0%, transparent 75%),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.02) 1px, transparent 1px);
+            background-size: 100% 40px, 40px 40px;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Hydrological blueprint design grid lines */
+        .blueprint-grid {
+            background-size: 20px 20px;
+            background-image: 
+                linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+        }
+
+        /* Dynamic visual glow shadows */
+        .glow-emerald {
+            filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.7));
+        }
+        .glow-cyan {
+            filter: drop-shadow(0 0 12px rgba(6, 182, 212, 0.8));
+        }
+        .glow-amber {
+            filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.8));
+        }
+
+        /* SVG visual flow offset keyframes for logic lines */
+        .wire-flow {
+            stroke-dasharray: 8;
+            animation: flow 1.0s linear infinite;
+        }
+        @keyframes flow {
+            to {
+                stroke-dashoffset: -16;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-100 py-8 px-4 md:px-8 blueprint-grid">
+
+    <div class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Beijing Submission Header -->
+        <header class="flex flex-col lg:flex-row justify-between items-start lg:items-center border-b border-emerald-500/30 pb-6 gap-6">
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs uppercase tracking-[0.4em] text-emerald-400 font-bold">Lwandile Engineering Projects</span>
+                    <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20 font-bold uppercase tracking-wider">Beijing Prestige Gear</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight mt-1 text-white flex items-center gap-3">
+                    <i class="fa-solid fa-droplet text-emerald-400"></i> Hydrological & Precision Irrigation Controller
+                </h1>
+                <p class="text-slate-400 text-sm mt-1">
+                    Isolated CMOS hardware controller for 30% water-saving optimization and borehole pressure stabilization.
+                </p>
+            </div>
+            
+            <!-- Metadata Registry Panel -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:flex items-center gap-3 bg-slate-950/80 p-4 rounded-2xl border border-emerald-500/20 w-full lg:w-auto text-xs mono">
+                <div class="pr-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">DOC ID</span>
+                    <span class="font-bold text-slate-300">LEP-IRR-004</span>
+                </div>
+                <div class="px-3 sm:border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">VERSION</span>
+                    <span class="font-bold text-emerald-400">v3.0-PRESTIGE</span>
+                </div>
+                <div class="px-3 border-r border-slate-800">
+                    <span class="text-slate-500 block text-[9px] uppercase">STATUS</span>
+                    <span class="font-bold text-emerald-400 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping"></span> SECURE
+                    </span>
+                </div>
+                <div class="pl-3">
+                    <span class="text-slate-500 block text-[9px] uppercase">AUTHORIZATION</span>
+                    <span class="font-bold text-[#d4af37]">S.W. KHUZWAYO</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Diurnal Lifecycle Interactive Simulator Control Panel -->
+        <section class="bg-slate-950/90 border-2 border-emerald-500/30 rounded-2xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-emerald-500/10 text-emerald-400 px-4 py-1 text-xs font-bold uppercase tracking-widest rounded-bl-xl border-l border-b border-emerald-500/20">
+                Sovereign Hydrological Engine
+            </div>
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-400">
+                <i class="fa-solid fa-clock"></i> Precision Hydrological Diurnal Walkthrough
+            </h2>
+            <p class="text-slate-300 text-sm mb-6 max-w-4xl">
+                Observe how the isolated physical CMOS logic gates conserve water resources while protecting our solar pump arrays. Click a scenario below to execute the synchronized simulation.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Scenario 1: Cool Dawn -->
+                <button onclick="setDiurnalScenario('dawn')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-[#d4af37] font-mono uppercase">06:00 AM — Dawn Sweep</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Morning Saturated soil</h3>
+                    <p class="text-xs text-slate-400">Soil moisture is optimal. Borehole safety clear. Pumps and solenoids rest on standby.</p>
+                </button>
+
+                <!-- Scenario 2: Midday Evapotranspiration -->
+                <button onclick="setDiurnalScenario('heatstress')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-amber-500 font-mono uppercase">13:00 PM — Transpiration</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Evaporative Crop Demand</h3>
+                    <p class="text-xs text-slate-400">High heat ($A=1$). Safe water reserve ($C=1$). Solar pump triggers, drip line active.</p>
+                </button>
+
+                <!-- Scenario 3: Dusk Stabilize -->
+                <button onclick="setDiurnalScenario('evening')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-cyan-400 font-mono uppercase">18:00 PM — Sunset</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Steady State Standby</h3>
+                    <p class="text-xs text-slate-400">Sun sets. Grid/Generator baseline bypass handles minor flow. Stabilized pressure.</p>
+                </button>
+
+                <!-- Scenario 4: Borehole Empty Lockout -->
+                <button onclick="setDiurnalScenario('dry')" class="text-left bg-slate-900/60 p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 hover:bg-slate-900 transition-all group">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-rose-500 font-mono uppercase">02:00 AM — Warning</span>
+                        <i class="fa-solid fa-circle-chevron-right text-slate-600 group-hover:text-emerald-400 transition-colors"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-sm mb-1">Dry Borehole Safety</h3>
+                    <p class="text-xs text-slate-400">High deficit ($A=1$). Water tank empty ($C=0$). Hard logical lockout to prevent motor burnout.</p>
+                </button>
+            </div>
+
+            <!-- Dynamic Scenario Narrative Board -->
+            <div id="narrativeBoard" class="mt-4 bg-[#10b981]/10 border border-emerald-500/20 rounded-xl p-4 text-sm text-slate-200">
+                <span class="text-[10px] uppercase font-mono tracking-wider text-emerald-400 block mb-1">Live Controller Commentary</span>
+                <p id="scenarioDescription">Select any of the operational phases above to begin the training walkthrough. Observe how the soil metrics, logic gates, and simulated hydraulic power react dynamically.</p>
+            </div>
+        </section>
+
+        <!-- Main Workspace Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- Left Panel: Parameter Controls & Physics Engines -->
+            <div class="lg:col-span-4 space-y-4">
+                
+                <!-- Signal Controllers -->
+                <div class="bg-slate-950/90 backdrop-blur-md border border-emerald-500/20 rounded-2xl p-5 shadow-2xl">
+                    <h2 class="text-lg font-bold mb-4 flex items-center justify-between text-emerald-400 border-b border-slate-800 pb-2">
+                        <span><i class="fa-solid fa-sliders"></i> Sensor Calibration</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Live Inputs</span>
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Input A -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-emerald-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-temperature-high text-amber-500"></i> A: Moisture Deficit ($SM_{\text{DEF}}$)
+                                </label>
+                                <span id="valA" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when soil water tension exceeds $45\text{ kPa}$ (Dry Soil).</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchA" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 peer-checked:after:bg-emerald-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Input B -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-emerald-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-sun text-cyan-400"></i> B: Peak Solar / Transpiration
+                                </label>
+                                <span id="valB" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when solar radiation exceeds $120\text{ W/m}^2$ (Peak Sun).</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchB" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 peer-checked:after:bg-emerald-950"></div>
+                            </label>
+                        </div>
+
+                        <!-- Input C -->
+                        <div class="bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 hover:border-emerald-500/30 transition-all">
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="font-bold text-sm text-slate-200 flex items-center gap-2">
+                                    <i class="fa-solid fa-square-poll-vertical text-emerald-400"></i> C: Borehole Reserve Clear
+                                </label>
+                                <span id="valC" class="mono text-xs px-2 py-0.5 rounded bg-slate-950 text-slate-500 font-bold">0 (GND)</span>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-3">High (5V) when reservoir tank level exceeds $20\%$ (Anti-Dry Run).</p>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="switchC" class="sr-only peer" onchange="updateCircuit(true)">
+                                <div class="w-11 h-6 bg-slate-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500 peer-checked:after:bg-emerald-950"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Physical Engine Block -->
+                <div class="bg-slate-950/90 backdrop-blur-md border border-emerald-500/20 rounded-2xl p-5 shadow-2xl space-y-4">
+                    <h2 class="text-lg font-bold flex items-center justify-between text-emerald-400 border-b border-slate-800 pb-2">
+                        <span><i class="fa-solid fa-calculator"></i> Hydrological Diagnostics</span>
+                        <span class="text-xs uppercase font-mono text-slate-500">Live Physics</span>
+                    </h2>
+                    
+                    <!-- Dynamic Hydrological Flow -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-sans">Water Delivery Solenoid Rate</span>
+                            <span id="dripRate" class="text-xs font-bold text-emerald-400">0.0 L/min</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-sans">Borehole Dynamic Flow</span>
+                            <span id="achRate" class="text-xs font-bold text-cyan-400">0.0 L/min</span>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Power consumption & current delay -->
+                    <div class="grid grid-cols-2 gap-3 text-xs mono font-sans">
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-500 block text-[9px] uppercase">SOLAR PUMP</span>
+                            <span id="fanSpeed" class="text-emerald-400 font-bold text-sm">0 RPM</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">Brushless Motor State</span>
+                        </div>
+                        <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-800">
+                            <span class="text-slate-500 block text-[9px] uppercase">SOIL TENSION INDEX</span>
+                            <span id="heatIndexValue" class="text-emerald-400 font-bold text-sm">Optimal Saturation</span>
+                            <span class="text-[9px] text-slate-500 block mt-0.5">Centibar Soil Tensiometer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: High-Fidelity Blueprint Canvas & Waveform -->
+            <div class="lg:col-span-8 space-y-4">
+                
+                <!-- Schematic Canvas -->
+                <div class="bg-slate-950/95 backdrop-blur-md border border-emerald-500/20 rounded-2xl p-4 md:p-6 shadow-2xl relative overflow-hidden">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2 border-b border-slate-800 pb-3">
+                        <h2 class="text-lg font-bold text-emerald-400 flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project"></i> Hydrological Logic Controller Schematic
+                        </h2>
+                        <div class="flex gap-2">
+                            <button onclick="resetCircuit()" class="px-3 py-1.5 text-xs font-semibold bg-slate-900 border border-slate-800 hover:border-emerald-500/30 rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-arrow-rotate-left"></i> Reset
+                            </button>
+                            <button onclick="copyFormulas()" class="px-3 py-1.5 text-xs font-semibold bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 rounded-lg transition-all flex items-center gap-1">
+                                <i class="fa-solid fa-copy"></i> Copy Formulas
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- SVG Canvas -->
+                    <div class="w-full bg-slate-950/60 p-3 rounded-xl border border-emerald-500/10 relative overflow-x-auto">
+                        <svg viewBox="0 0 800 400" class="w-full min-w-[700px] h-auto overflow-visible select-none">
+                            
+                            <!-- Definitions for IEEE Gates -->
+                            <defs>
+                                <pattern id="blueprint-dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="10" cy="10" r="0.8" fill="rgba(16, 185, 129, 0.15)" />
+                                </pattern>
+                                
+                                <!-- Standard OR Gate Symbol -->
+                                <g id="ieee-or-gate">
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0 C 48,0 42,2 32,10 C 22,18 12,25 0,25 C 8,12 8,-12 0,-25 Z" fill="#064e3b" stroke="#10b981" stroke-width="2.5"/>
+                                    <path d="M 0,-25 C 12,-25 22,-18 32,-10 C 42,-2 48,0 52,0" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="6" class="glow-emerald"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="#10b981" text-anchor="middle" class="mono">OR</text>
+                                </g>
+
+                                <!-- Standard AND Gate Symbol -->
+                                <g id="ieee-and-gate">
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25 L 0,25 Z" fill="#064e3b" stroke="#10b981" stroke-width="2.5"/>
+                                    <path d="M 0,-25 L 25,-25 C 45,-25 45,25 25,25" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="6" class="glow-emerald"/>
+                                    <text x="18" y="5" font-family="sans-serif" font-size="11" font-weight="bold" fill="#10b981" text-anchor="middle" class="mono">AND</text>
+                                </g>
+                            </defs>
+
+                            <rect width="800" height="400" fill="url(#blueprint-dots)" rx="8" />
+
+                            <!-- Bus Wires / Signal Paths -->
+                            <!-- Wire T_HIGH to OR Pin 1 -->
+                            <path id="wireA" d="M 120,60 L 220,60 L 220,85 L 250,85" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowA" d="M 120,60 L 220,60 L 220,85 L 250,85" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire A_TOX to OR Pin 2 -->
+                            <path id="wireB" d="M 120,130 L 220,130 L 220,105 L 250,105" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowB" d="M 120,130 L 220,130 L 220,105 L 250,105" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- OR Output to AND 1 Input 1 -->
+                            <path id="wireOROut" d="M 302,95 L 390,95 L 390,195 L 430,195" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowOROut" d="M 302,95 L 390,95 L 390,195 L 430,195" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Wire C_SAFE to AND 1 Input 2 -->
+                            <path id="wireC" d="M 120,215 L 430,215" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowC" d="M 120,215 L 430,215" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- AND 1 Output (Y_VENT) to Final Output and AND 2 Input 2 -->
+                            <path id="wireYVent" d="M 482,205 L 560,205 M 560,205 L 680,205 M 560,205 L 560,315 L 600,315" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowYVent" d="M 482,205 L 560,205 M 560,205 L 680,205 M 560,205 L 560,315 L 600,315" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- T_HIGH tapped connection to AND 2 Input 1 -->
+                            <path id="wireTapA" d="M 180,60 L 180,335 L 370,335 L 370,295 L 600,295" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowTapA" d="M 180,60 L 180,335 L 370,335 L 370,295 L 600,295" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- AND 2 Output (Y_MIST) to output node -->
+                            <path id="wireYMist" d="M 652,305 L 680,305" fill="none" stroke="#1e293b" stroke-width="4.5" stroke-linecap="round" class="transition-all duration-200" />
+                            <path id="flowYMist" d="M 652,305 L 680,305" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" class="wire-flow hidden opacity-85" />
+
+                            <!-- Logic Gate Assemblies -->
+                            <!-- OR Gate U1A -->
+                            <g transform="translate(250, 95)" id="gateU1A" class="transition-transform duration-200">
+                                <use href="#ieee-or-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U1A PIN3</text>
+                                <text x="28" y="-32" font-size="11" fill="#10b981" font-weight="bold" class="mono" text-anchor="middle">74HC32 (OR)</text>
+                            </g>
+
+                            <!-- AND Gate U2A (Pump Engine) -->
+                            <g transform="translate(430, 205)" id="gateU2A" class="transition-transform duration-200">
+                                <use href="#ieee-and-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2A PIN3</text>
+                                <text x="25" y="-32" font-size="11" fill="#10b981" font-weight="bold" class="mono" text-anchor="middle">74HC08 (AND)</text>
+                            </g>
+
+                            <!-- AND Gate U2B (Drip Engine) -->
+                            <g transform="translate(600, 305)" id="gateU2B" class="transition-transform duration-200">
+                                <use href="#ieee-and-gate"/>
+                                <text x="-12" y="-14" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN1</text>
+                                <text x="-12" y="19" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN2</text>
+                                <text x="63" y="-6" font-size="8" fill="#64748b" font-weight="bold" class="mono">U2B PIN3</text>
+                                <text x="25" y="-32" font-size="11" fill="#10b981" font-weight="bold" class="mono" text-anchor="middle">74HC08 (AND)</text>
+                            </g>
+
+                            <!-- Node Indicators -->
+                            <!-- Deficit Input A -->
+                            <g transform="translate(120, 60)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeA" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtA">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#10b981" text-anchor="start" class="mono">DEFICIT (A)</text>
+                            </g>
+
+                            <!-- Solar Input B -->
+                            <g transform="translate(120, 130)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeB" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtB">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#10b981" text-anchor="start" class="mono">SOLAR (B)</text>
+                            </g>
+
+                            <!-- Safe Input C -->
+                            <g transform="translate(120, 215)">
+                                <circle r="13" fill="#020617" stroke="#475569" stroke-width="3.5" id="nodeC" class="transition-all duration-200"/>
+                                <text y="4" font-size="10" font-weight="bold" fill="#94a3b8" text-anchor="middle" class="mono" id="txtC">0</text>
+                                <text x="-25" y="-20" font-size="11" font-weight="bold" fill="#10b981" text-anchor="start" class="mono">RESERVE (C)</text>
+                            </g>
+
+                            <!-- Pump Output Node Y1 -->
+                            <g transform="translate(705, 205)">
+                                <circle r="22" fill="#020617" stroke="#475569" stroke-width="4" id="nodeY1" class="transition-all duration-200" />
+                                <text y="5" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle" class="mono" id="txtY1">0</text>
+                                <text x="-30" y="-32" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="start" class="mono">PUMP (Y_PUMP)</text>
+                            </g>
+
+                            <!-- Drip Output Node Y2 -->
+                            <g transform="translate(705, 305)">
+                                <circle r="22" fill="#020617" stroke="#475569" stroke-width="4" id="nodeY2" class="transition-all duration-200" />
+                                <text y="5" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle" class="mono" id="txtY2">0</text>
+                                <text x="-30" y="-32" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="start" class="mono">DRIP (Y_DRIP)</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <!-- Formula and Stages Block -->
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div id="statusVENT" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">Solar Pump Output (U2A Out)</span>
+                                <span class="font-bold text-emerald-400 mono">Y_PUMP = (A ∨ B) ∧ C</span>
+                            </div>
+                            <span id="diagnosticVENT" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                        <div id="statusMIST" class="bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200">
+                            <div>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 font-bold block">Precision Drip Solenoid (U2B Out)</span>
+                                <span class="font-bold text-cyan-400 mono">Y_DRIP = A ∧ Y_PUMP</span>
+                            </div>
+                            <span id="diagnosticMIST" class="font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scrolling Waveform Timing Diagram -->
+                <div class="bg-slate-950/95 border border-emerald-500/20 rounded-2xl p-5 shadow-2xl space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-2">
+                        <h3 class="text-sm font-bold text-emerald-400 flex items-center gap-2">
+                            <i class="fa-solid fa-chart-line"></i> Hydrological Logic Analyzer Stream
+                        </h3>
+                        <span class="text-[10px] uppercase font-mono text-slate-500">Timing Diagram</span>
+                    </div>
+                    <!-- Timing Diagram Canvas -->
+                    <div class="relative bg-slate-950/80 p-2 rounded-xl border border-slate-900 overflow-hidden">
+                        <canvas id="waveformCanvas" width="800" height="180" class="w-full h-[180px] block"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Novice Guide to Hydrological Sovereignty -->
+        <section class="bg-slate-950/90 border border-emerald-500/20 rounded-2xl p-6 shadow-2xl space-y-6">
+            <h2 class="text-xl font-bold text-emerald-400 border-b border-slate-800 pb-3 flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> The Novice Guide to Hydrological Sovereignty: Precision Water-Saving Shield
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <!-- Lesson 1 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-amber-500 font-bold uppercase tracking-wider text-xs">Lesson 1: Smart Microclimate Shading</h3>
+                    <p class="text-slate-300">
+                        In typical crop setups, unshaded ground leads to rapid soil drying and hyper-evaporation under severe Mpumalanga conditions. By shielding the crops under circular solar array shading structures, we drop crop transpiration demand by up to $30\%$.
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        This physical edge microchip automates borehole delivery pressure and saves electrical power.
+                    </p>
+                </div>
+
+                <!-- Lesson 2 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-emerald-400 font-bold uppercase tracking-wider text-xs">Lesson 2: Cascaded Boolean Safeguards</h3>
+                    <p class="text-slate-300">
+                        The controller executes high-performance protection using two stages of Boolean logic:
+                    </p>
+                    <ul class="list-disc list-inside text-slate-400 text-xs space-y-1">
+                        <li><strong>Stage 1 (Solar Pump):</strong> Solar pumps trigger if there is Dry Soil ($A$) OR peak solar radiation ($B$), provided the reservoir tank clearance ($C$) is safe:
+                        $$\text{Y\_PUMP} = (A \lor B) \land C$$</li>
+                        <li><strong>Stage 2 (Drip Solenoid):</strong> Irrigation valves open ONLY if the Soil Moisture Deficit ($A$) is verified AND water pressure line ($Y_{\text{PUMP}}$) is active:
+                        $$\text{Y\_DRIP} = A \land \text{Y\_PUMP}$$</li>
+                    </ul>
+                </div>
+
+                <!-- Lesson 3 -->
+                <div class="space-y-2 bg-slate-900/40 p-4 rounded-xl border border-slate-800">
+                    <h3 class="text-cyan-400 font-bold uppercase tracking-wider text-xs">Lesson 3: The Dry Run Safeguard</h3>
+                    <p class="text-slate-300">
+                        During periods of empty reserve tanks ($C = 0$), the Borehole Safe sensor transitions to ground level. This deactivates both output gates instantly, protecting our brushless DC pump motors from catastrophic dry-run friction burnout.
+                    </p>
+                    <p class="text-slate-400 text-xs italic">
+                        By integrating physical protection parameters directly into the logic hardware, we safeguard biological yields.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diagnostic System Truth Table -->
+        <div class="bg-slate-950/90 backdrop-blur-md border border-emerald-500/20 rounded-2xl p-6 shadow-2xl">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-emerald-400 border-b border-slate-800 pb-3">
+                <i class="fa-solid fa-table"></i> Diagnostic Verification Matrix
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 uppercase tracking-widest text-xs">
+                            <th class="py-3 px-3">Deficit (A)</th>
+                            <th class="py-3 px-3">Peak Sun (B)</th>
+                            <th class="py-3 px-3">Reserve Clear (C)</th>
+                            <th class="py-3 px-3 text-center bg-emerald-950/25 border-r border-slate-800/50">Solar Pump (Y_PUMP)</th>
+                            <th class="py-3 px-3 text-center text-cyan-400 bg-cyan-500/5">Irrigation Solenoid (Y_DRIP)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="truthTableBody" class="mono text-slate-300 divide-y divide-slate-800/40">
+                        <tr id="row-000" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-001" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-010" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-011" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center text-emerald-400 font-bold bg-emerald-500/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-100" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-101" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center text-emerald-400 font-bold bg-emerald-500/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center text-cyan-400 font-bold bg-cyan-500/10">1</td>
+                        </tr>
+                        <tr id="row-110" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">0</td>
+                            <td class="py-2.5 px-3 text-center bg-slate-900/20 border-r border-slate-800/50">0</td>
+                            <td class="py-2.5 px-3 text-center font-bold text-slate-600">0</td>
+                        </tr>
+                        <tr id="row-111" class="transition-all duration-150 opacity-40 hover:opacity-100">
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3">1</td>
+                            <td class="py-2.5 px-3 text-center text-emerald-400 font-bold bg-emerald-500/10 border-r border-slate-800/50">1</td>
+                            <td class="py-2.5 px-3 text-center text-cyan-400 font-bold bg-cyan-500/10">1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Custom Notification Toast -->
+        <div id="toast" class="fixed bottom-6 right-6 bg-emerald-950 border border-emerald-500/30 px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-24 opacity-0 flex items-center gap-3">
+            <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+            <span id="toastText" class="text-xs font-semibold tracking-wider uppercase text-slate-200">Formula Copied</span>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-6 border-t border-slate-900 text-xs text-slate-600 uppercase tracking-widest italic">
+            "Harnessing the Power of the Sunbeam" — Scapush Precision Execution
+        </footer>
+    </div>
+
+    <script>
+        // Waveform parameters
+        const canvas = document.getElementById('waveformCanvas');
+        const ctx = canvas.getContext('2d');
+        const historyData = [];
+        const maxHistoryPoints = 80;
+
+        // Interactive Diurnal Scenarios Database
+        const scenarios = {
+            dawn: {
+                A: false, B: false, C: true,
+                desc: "<strong>06:00 AM — Dawn Saturated Soil:</strong> Soil moistures are saturated over the Mpumalanga field. Deficit and peak sun factors evaluate to ground state ($A=0, B=0$). Our borehole reserve is safe ($C=1$). The system sits in standby, saving irrigation water and maintaining grid pressure."
+            },
+            heatstress: {
+                A: true, B: true, C: true,
+                desc: "<strong>13:00 PM — Evaporative Crop Demand:</strong> Solar radiation heats up the canopy ($B = 1$). Transpiration moisture deficit is high ($A = 1$). The borehole reservoir is verified clear ($C = 1$). The solar pump triggers ($Y_{\text{PUMP}} = 1$) to carry head pressure, and our drip solenoids open ($Y_{\text{DRIP}} = 1$) to provide localized root-hydration."
+            },
+            evening: {
+                A: false, B: false, C: true,
+                desc: "<strong>18:00 PM — Sunset Standby:</strong> The sun sets and peak transpiration is minimized. Soil moistures stabilize back into normal bands ($A=0, B=0$). The water pump and solenoids enter low-power standby mode, conserving aquifer volume."
+            },
+            dry: {
+                A: true, B: true, C: false,
+                desc: "<strong>02:00 AM — Dry Borehole Safety Lockout:</strong> Deep winter dryness causes deficit spikes ($A=1$). However, the water storage drops below standard safe operating margins ($C=0$). Even though soil deficit is high, the final AND gate deactivates, enforcing an absolute safety lockout to preserve borehole pumps ($Y_{\text{PUMP}} = Y_{\text{DRIP}} = 0$)."
+            }
+        };
+
+        function setDiurnalScenario(scenKey) {
+            const data = scenarios[scenKey];
+            if (!data) return;
+
+            // Set Checkboxes
+            document.getElementById('switchA').checked = data.A;
+            document.getElementById('switchB').checked = data.B;
+            document.getElementById('switchC').checked = data.C;
+
+            // Update Narrative
+            document.getElementById('scenarioDescription').innerHTML = data.desc;
+
+            // Run normal circuit flow update
+            updateCircuit(false);
+
+            // Update MathJax rendering dynamically to keep calculations elegant
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise();
+            }
+        }
+
+        function updateCircuit(userInteractive = false) {
+            // Read UI States
+            const activeA = document.getElementById('switchA').checked;
+            const activeB = document.getElementById('switchB').checked;
+            const activeC = document.getElementById('switchC').checked;
+
+            const valA = activeA ? 1 : 0;
+            const valB = activeB ? 1 : 0;
+            const valC = activeC ? 1 : 0;
+
+            // Cascaded logic equations
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valVent = (valOR && activeC) ? 1 : 0;
+            const valMist = (activeA && valVent) ? 1 : 0;
+
+            if (userInteractive) {
+                document.getElementById('scenarioDescription').innerHTML = "<i class='fa-solid fa-fingerprint text-emerald-400'></i> <strong>Manual Overrides Active:</strong> You are currently calibrating individual sensory inputs. Observe how the solar pump logic and drip solenoids adjust to protect hydrological safety.";
+            }
+
+            // Update Physics Metrics
+            updateBioDiagnostics(activeA, activeB, activeC, valVent, valMist);
+
+            // Update Input indicators
+            document.getElementById('valA').innerText = activeA ? "1 (5.0V)" : "0 (GND)";
+            document.getElementById('valB').innerText = activeB ? "1 (5.0V)" : "0 (GND)";
+            document.getElementById('valC').innerText = activeC ? "1 (5.0V)" : "0 (GND)";
+
+            document.getElementById('valA').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeA ? 'bg-amber-500/20 text-amber-400' : 'bg-slate-950 text-slate-500'}`;
+            document.getElementById('valB').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeB ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-950 text-slate-500'}`;
+            document.getElementById('valC').className = `mono text-xs px-2 py-0.5 rounded font-bold ${activeC ? 'bg-emerald-500/20 text-emerald-400' : 'bg-slate-950 text-slate-500'}`;
+
+            // Update SVG terminal values
+            document.getElementById('txtA').textContent = valA;
+            document.getElementById('txtB').textContent = valB;
+            document.getElementById('txtC').textContent = valC;
+            document.getElementById('txtY1').textContent = valVent;
+            document.getElementById('txtY2').textContent = valMist;
+
+            // Visual styling adjustments on nodes
+            setNodeState('nodeA', activeA);
+            setNodeState('nodeB', activeB);
+            setNodeState('nodeC', activeC);
+
+            // Active path current flow
+            const activeColor = "#10b981";
+            const inactiveColor = "#1e293b";
+            const mistActiveColor = "#06b6d4";
+
+            document.getElementById('wireA').setAttribute('stroke', activeA ? activeColor : inactiveColor);
+            toggleFlow('flowA', activeA);
+
+            document.getElementById('wireB').setAttribute('stroke', activeB ? activeColor : inactiveColor);
+            toggleFlow('flowB', activeB);
+
+            document.getElementById('wireC').setAttribute('stroke', activeC ? activeColor : inactiveColor);
+            toggleFlow('flowC', activeC);
+
+            document.getElementById('wireOROut').setAttribute('stroke', valOR ? activeColor : inactiveColor);
+            toggleFlow('flowOROut', valOR);
+
+            document.getElementById('wireYVent').setAttribute('stroke', valVent ? activeColor : inactiveColor);
+            toggleFlow('flowYVent', valVent);
+
+            document.getElementById('wireTapA').setAttribute('stroke', activeA ? activeColor : inactiveColor);
+            toggleFlow('flowTapA', activeA);
+
+            document.getElementById('wireYMist').setAttribute('stroke', valMist ? mistActiveColor : inactiveColor);
+            toggleFlow('flowYMist', valMist);
+
+            // Output visual state for Fan (Y_VENT)
+            const fanNode = document.getElementById('nodeY1');
+            if (valVent) {
+                fanNode.setAttribute('stroke', '#10b981');
+                fanNode.setAttribute('fill', '#064e3b');
+                fanNode.classList.add('glow-emerald');
+            } else {
+                fanNode.setAttribute('stroke', '#475569');
+                fanNode.setAttribute('fill', '#020617');
+                fanNode.classList.remove('glow-emerald');
+            }
+
+            // Output visual state for Mist (Y_MIST)
+            const mistNode = document.getElementById('nodeY2');
+            if (valMist) {
+                mistNode.setAttribute('stroke', '#06b6d4');
+                mistNode.setAttribute('fill', '#083344');
+                mistNode.classList.add('glow-cyan');
+            } else {
+                mistNode.setAttribute('stroke', '#475569');
+                mistNode.setAttribute('fill', '#020617');
+                mistNode.classList.remove('glow-cyan');
+            }
+
+            // Real-time Equation feedback boxes
+            document.getElementById('diagnosticVENT').textContent = valVent;
+            document.getElementById('diagnosticMIST').textContent = valMist;
+
+            const boxVENT = document.getElementById('statusVENT');
+            const boxMIST = document.getElementById('statusMIST');
+
+            if (valVent) {
+                boxVENT.className = "bg-emerald-500/10 p-4 rounded-xl border border-emerald-500/30 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticVENT').className = "font-mono bg-emerald-950 px-3 py-1 rounded text-emerald-400 font-bold text-lg border border-emerald-500/20";
+            } else {
+                boxVENT.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticVENT').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+            }
+
+            if (valMist) {
+                boxMIST.className = "bg-cyan-500/10 p-4 rounded-xl border border-cyan-500/30 text-sm flex items-center justify-between transition-all duration-200 shadow-[0_0_15px_rgba(6,182,212,0.15)]";
+                document.getElementById('diagnosticMIST').className = "font-mono bg-cyan-950 px-3 py-1 rounded text-cyan-400 font-bold text-lg border border-cyan-500/20";
+            } else {
+                boxMIST.className = "bg-slate-900/40 p-4 rounded-xl border border-slate-800 text-sm flex items-center justify-between transition-all duration-200";
+                document.getElementById('diagnosticMIST').className = "font-mono bg-slate-950 px-3 py-1 rounded text-slate-500 font-bold text-lg border border-slate-800";
+            }
+
+            // Truth Table Row Highlighting
+            const rows = document.querySelectorAll('#truthTableBody tr');
+            rows.forEach(r => r.className = "transition-all duration-150 opacity-40 hover:opacity-100");
+
+            const activeRow = document.getElementById(`row-${valA}${valB}${valC}`);
+            if (activeRow) {
+                if (valMist) {
+                    activeRow.className = "bg-cyan-500/10 text-cyan-300 font-bold opacity-100 scale-[1.01] border-l-4 border-cyan-500";
+                } else if (valVent) {
+                    activeRow.className = "bg-emerald-500/10 text-emerald-300 font-bold opacity-100 scale-[1.01] border-l-4 border-emerald-500";
+                } else {
+                    activeRow.className = "bg-slate-800/60 text-white font-bold opacity-100 scale-[1.01] border-l-4 border-slate-600";
+                }
+            }
+
+            // Push state slice to history pool
+            historyData.push({ A: valA, B: valB, C: valC, V: valVent, M: valMist });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveform();
+        }
+
+        function updateBioDiagnostics(a, b, c, vent, mist) {
+            // Flow and pressure rates based on active outputs
+            document.getElementById('dripRate').innerText = mist ? "12.5 L/min" : "0.0 L/min";
+            document.getElementById('achRate').innerText = vent ? "35.0 L/min" : "0.0 L/min";
+            document.getElementById('fanSpeed').innerText = vent ? "2800 RPM" : "0 RPM";
+
+            let tempStr = "Optimal soil Moisture";
+            let tempStyle = "text-emerald-400";
+            if (a) {
+                tempStr = "Dry Soil Deficit";
+                tempStyle = "text-amber-500 font-bold";
+            } else if (!c) {
+                tempStr = "Low Water Reserve Lockout";
+                tempStyle = "text-rose-500 font-bold";
+            }
+
+            const labelEl = document.getElementById('heatIndexValue');
+            labelEl.innerText = tempStr;
+            labelEl.className = `text-sm ${tempStyle}`;
+        }
+
+        function setNodeState(id, isActive) {
+            const node = document.getElementById(id);
+            node.setAttribute('stroke', isActive ? '#10b981' : '#475569');
+            node.setAttribute('fill', isActive ? '#064e3b' : '#020617');
+        }
+
+        function toggleFlow(id, active) {
+            const el = document.getElementById(id);
+            if (active) el.classList.remove('hidden');
+            else el.classList.add('hidden');
+        }
+
+        function resetCircuit() {
+            document.getElementById('switchA').checked = false;
+            document.getElementById('switchB').checked = false;
+            document.getElementById('switchC').checked = true;
+            document.getElementById('scenarioDescription').innerHTML = "Select any of the diurnal phases above to begin the training walkthrough. Observe how the inputs, logic gates, output controllers, and simulated bio-metrics react dynamically.";
+            updateCircuit();
+        }
+
+        function showNotification(text) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastText').innerText = text;
+            toast.className = "fixed bottom-6 right-6 bg-emerald-950 border border-emerald-500/30 px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-0 opacity-100 flex items-center gap-3";
+            setTimeout(() => {
+                toast.className = "fixed bottom-6 right-6 bg-emerald-950 border border-emerald-500/30 px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 transform translate-y-24 opacity-0 flex items-center gap-3";
+            }, 2500);
+        }
+
+        function copyFormulas() {
+            const formula = "Y_PUMP = (Deficit OR Sun) AND Reserve_Clear; Y_DRIP = Deficit AND Y_PUMP";
+            const textarea = document.createElement('textarea');
+            textarea.value = formula;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showNotification("Logic Formulas Copied");
+        }
+
+        function drawWaveform() {
+            if (!canvas) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const channels = ['A', 'B', 'C', 'V', 'M'];
+            const channelLabels = { A: 'A:DEFICIT', B: 'B:SUN', C: 'C:RESERVE', V: 'Y_PUMP', M: 'Y_DRIP' };
+            const channelHeight = 22;
+            const channelSpacing = 6;
+            
+            channels.forEach((ch, idx) => {
+                const yOffset = idx * (channelHeight + channelSpacing) + 12;
+                
+                // Draw channel background guides
+                ctx.strokeStyle = 'rgba(16, 185, 129, 0.05)';
+                ctx.lineWidth = 1;
+                ctx.strokeRect(60, yOffset, canvas.width - 70, channelHeight);
+                
+                // Draw Label
+                if (ch === 'V') ctx.fillStyle = '#10b981';
+                else if (ch === 'M') ctx.fillStyle = '#06b6d4';
+                else ctx.fillStyle = '#64748b';
+                
+                ctx.font = '10px JetBrains Mono';
+                ctx.fillText(`${channelLabels[ch]}:`, 10, yOffset + 14);
+
+                // Plot wave history
+                if (historyData.length > 1) {
+                    ctx.beginPath();
+                    if (ch === 'V') ctx.strokeStyle = '#10b981';
+                    else if (ch === 'M') ctx.strokeStyle = '#06b6d4';
+                    else ctx.strokeStyle = '#334155';
+                    
+                    ctx.lineWidth = 1.8;
+                    const stepSize = (canvas.width - 70) / maxHistoryPoints;
+                    
+                    for (let i = 0; i < historyData.length; i++) {
+                        const val = historyData[i][ch];
+                        const x = 60 + i * stepSize;
+                        const y = yOffset + channelHeight - (val * (channelHeight - 4)) - 2;
+                        
+                        if (i === 0) {
+                            ctx.moveTo(x, y);
+                        } else {
+                            const prevVal = historyData[i - 1][ch];
+                            const prevY = yOffset + channelHeight - (prevVal * (channelHeight - 4)) - 2;
+                            ctx.lineTo(x, prevY);
+                            ctx.lineTo(x, y);
+                        }
+                    }
+                    ctx.stroke();
+                }
+            });
+        }
+
+        // Initialize wave points pool
+        for(let i=0; i<maxHistoryPoints; i++) {
+            historyData.push({ A: 0, B: 0, C: 1, V: 0, M: 0 });
+        }
+
+        // Run initialization loop
+        updateCircuit();
+
+        // Standard dynamic scrolling animation loop
+        setInterval(() => {
+            const activeA = document.getElementById('switchA').checked ? 1 : 0;
+            const activeB = document.getElementById('switchB').checked ? 1 : 0;
+            const activeC = document.getElementById('switchC').checked ? 1 : 0;
+            
+            const valOR = (activeA || activeB) ? 1 : 0;
+            const valVent = (valOR && activeC) ? 1 : 0;
+            const valMist = (activeA && valVent) ? 1 : 0;
+
+            historyData.push({ A: activeA, B: activeB, C: activeC, V: valVent, M: valMist });
+            if (historyData.length > maxHistoryPoints) historyData.shift();
+            drawWaveform();
+        }, 300);
+    </script>
+</body>
+</html>
