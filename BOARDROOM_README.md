@@ -10,7 +10,8 @@ Click below to enter the live room or scan the QR code to join immediately from 
 
 <div align="center">
   <br>
-  <img src="./qr-code.png" alt="Lwandile Engineering Command Center QR Code" width="280" style="border: 2px solid #FFD700; border-radius: 12px; padding: 10px; background: #12151E;">
+<img width="301" height="392" alt="mirotalk_qr_code" src="https://github.com/user-attachments/assets/904f3dc5-3602-4ccb-92be-383c99c43acd" />
+
   <p><em>Scan with your mobile device to join the Command Center instantly.</em></p>
 </div>
 
