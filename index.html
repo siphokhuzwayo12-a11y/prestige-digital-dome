@@ -92,7 +92,7 @@
                         <p class="text-xs text-slate-400 mt-3 mono-font">Scan with mobile device to join instantly.</p>
                     </div>
 
-                    <!-- AUDIO & VISUAL CONTROL MODULE -->
+                    <!-- AUDIO, VISUAL & HARMONIC MELODY CONTROL MODULE -->
                     <div class="w-full text-left bg-slate-900/80 p-3 rounded-lg border border-slate-800 space-y-3 mono-font text-[11px]">
                         <div>
                             <label class="text-slate-400 block mb-1">DSP Audio Gain Boost:</label>
@@ -106,6 +106,20 @@
                                 <option value="obsidian">Obsidian Dark Room</option>
                                 <option value="none">Raw Output</option>
                             </select>
+                        </div>
+                        
+                        <!-- WELCOMING HARMONIC MELODY GENERATOR -->
+                        <div class="border-t border-slate-800 pt-2">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="text-amber-400 font-bold flex items-center gap-1">
+                                    <i class="fa-solid fa-music"></i> Welcome Melody
+                                </span>
+                                <button id="melodyBtn" onclick="toggleMelody()" class="bg-amber-500/20 hover:bg-amber-500/40 text-amber-300 px-2 py-0.5 rounded border border-amber-500/40 transition">
+                                    Play
+                                </button>
+                            </div>
+                            <label class="text-slate-500 block mb-1">Melody Volume:</label>
+                            <input type="range" id="melodyVolume" min="0" max="0.3" step="0.01" value="0.08" class="w-full accent-amber-400 cursor-pointer" oninput="setMelodyVolume(this.value)">
                         </div>
                     </div>
                 </div>
@@ -203,17 +217,20 @@
 
     </div>
 
-    <!-- SOVEREIGN ENHANCED AUDIO & DISPLAY ENGINE LOGIC -->
+    <!-- SOVEREIGN ENHANCED AUDIO, DISPLAY & HARMONIC MELODY ENGINE -->
     <script>
         let audioContext;
         let gainNode;
+        
+        // Welcoming Melody Synth Engine Variables
+        let synthCtx;
+        let masterMelodyGain;
+        let isMelodyPlaying = false;
+        let melodyInterval;
 
         function adjustGain(level) {
             if (gainNode && audioContext) {
                 gainNode.gain.setValueAtTime(level, audioContext.currentTime);
-                console.log(`[Audio DSP] Gain level boosted to: ${level}`);
-            } else {
-                console.log(`[Audio DSP] Preference set to: ${level}`);
             }
         }
 
@@ -228,7 +245,88 @@
             } else {
                 frame.style.filter = 'none';
             }
-            console.log(`[Visual Engine] Filter set to: ${mode}`);
+        }
+
+        // Web Audio Synthesizer for Ambient Welcoming Melody
+        function initSynth() {
+            if (!synthCtx) {
+                synthCtx = new (window.AudioContext || window.webkitAudioContext)();
+                masterMelodyGain = synthCtx.createGain();
+                masterMelodyGain.gain.value = 0.08;
+                masterMelodyGain.connect(synthCtx.destination);
+            }
+        }
+
+        function playHarmonicTone(freq, duration = 2.5) {
+            if (!synthCtx) return;
+            
+            const osc = synthCtx.createOscillator();
+            const noteGain = synthCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, synthCtx.currentTime);
+
+            // Envelope: soft attack, smooth sustain, graceful decay
+            noteGain.gain.setValueAtTime(0.001, synthCtx.currentTime);
+            noteGain.gain.exponentialRampToValueAtTime(0.15, synthCtx.currentTime + 0.6);
+            noteGain.gain.exponentialRampToValueAtTime(0.0001, synthCtx.currentTime + duration);
+
+            osc.connect(noteGain);
+            noteGain.connect(masterMelodyGain);
+
+            osc.start();
+            osc.stop(synthCtx.currentTime + duration);
+        }
+
+        function playChordSequence() {
+            // Warm Major 7th Warm Harmonized Frequencies (Hz)
+            const chords = [
+                [261.63, 329.63, 392.00, 493.88], // Cmaj7
+                [220.00, 261.63, 329.63, 392.00], // Am7
+                [174.61, 220.00, 261.63, 329.63], // Fmaj7
+                [196.00, 246.94, 293.66, 392.00]  // G6
+            ];
+            
+            let step = 0;
+            const playStep = () => {
+                const chord = chords[step % chords.length];
+                chord.forEach((freq, idx) => {
+                    setTimeout(() => playHarmonicTone(freq, 3.2), idx * 180);
+                });
+                step++;
+            };
+
+            playStep();
+            melodyInterval = setInterval(playStep, 3500);
+        }
+
+        function toggleMelody() {
+            initSynth();
+            const btn = document.getElementById('melodyBtn');
+            
+            if (synthCtx.state === 'suspended') {
+                synthCtx.resume();
+            }
+
+            if (!isMelodyPlaying) {
+                isMelodyPlaying = true;
+                btn.innerText = 'Pause';
+                btn.classList.replace('bg-amber-500/20', 'bg-emerald-500/20');
+                btn.classList.replace('text-amber-300', 'text-emerald-300');
+                playChordSequence();
+            } else {
+                isMelodyPlaying = false;
+                btn.innerText = 'Play';
+                btn.classList.replace('bg-emerald-500/20', 'bg-amber-500/20');
+                btn.classList.replace('text-emerald-300', 'text-amber-300');
+                clearInterval(melodyInterval);
+            }
+        }
+
+        function setMelodyVolume(val) {
+            if (masterMelodyGain && synthCtx) {
+                masterMelodyGain.gain.setValueAtTime(parseFloat(val), synthCtx.currentTime);
+            }
         }
     </script>
 
