@@ -30,7 +30,6 @@
             border-color: rgba(255, 215, 0, 0.4);
             box-shadow: 0 0 15px rgba(255, 215, 0, 0.15);
         }
-        /* Hardware-accelerated image & stream enhancement */
         .crystal-clear-stream {
             filter: contrast(1.12) brightness(1.05) saturate(1.15);
             image-rendering: -webkit-optimize-contrast;
@@ -74,7 +73,7 @@
 
             <!-- EMBEDDED DOME & MOBILE QR SIDE-BY-SIDE -->
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                <!-- MiroTalk WebRTC Video Frame with Crystal Clear Visual Engine -->
+                <!-- MiroTalk WebRTC Video Frame -->
                 <div class="lg:col-span-3 rounded-xl overflow-hidden border border-slate-800 bg-slate-950 min-h-[450px] relative">
                     <iframe 
                         id="mirotalk-frame"
@@ -217,12 +216,11 @@
 
     </div>
 
-    <!-- SOVEREIGN ENHANCED AUDIO, DISPLAY & HARMONIC MELODY ENGINE -->
+    <!-- AUDIO, DISPLAY & HARMONIC MELODY ENGINE -->
     <script>
         let audioContext;
         let gainNode;
         
-        // Welcoming Melody Synth Engine Variables
         let synthCtx;
         let masterMelodyGain;
         let isMelodyPlaying = false;
@@ -247,7 +245,6 @@
             }
         }
 
-        // Web Audio Synthesizer for Ambient Welcoming Melody
         function initSynth() {
             if (!synthCtx) {
                 synthCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -266,7 +263,6 @@
             osc.type = 'sine';
             osc.frequency.setValueAtTime(freq, synthCtx.currentTime);
 
-            // Envelope: soft attack, smooth sustain, graceful decay
             noteGain.gain.setValueAtTime(0.001, synthCtx.currentTime);
             noteGain.gain.exponentialRampToValueAtTime(0.15, synthCtx.currentTime + 0.6);
             noteGain.gain.exponentialRampToValueAtTime(0.0001, synthCtx.currentTime + duration);
@@ -279,12 +275,11 @@
         }
 
         function playChordSequence() {
-            // Warm Major 7th Warm Harmonized Frequencies (Hz)
             const chords = [
-                [261.63, 329.63, 392.00, 493.88], // Cmaj7
-                [220.00, 261.63, 329.63, 392.00], // Am7
-                [174.61, 220.00, 261.63, 329.63], // Fmaj7
-                [196.00, 246.94, 293.66, 392.00]  // G6
+                [261.63, 329.63, 392.00, 493.88],
+                [220.00, 261.63, 329.63, 392.00],
+                [174.61, 220.00, 261.63, 329.63],
+                [196.00, 246.94, 293.66, 392.00]
             ];
             
             let step = 0;
