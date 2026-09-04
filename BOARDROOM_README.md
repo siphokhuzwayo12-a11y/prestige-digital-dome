@@ -15,10 +15,11 @@ Click below to step directly into the high-definition, zero-friction Digital Dom
 No software installations, plugin downloads, or corporate registrations are required. 
 
 1. **Access:** Click the **Direct Access Link** above.
-2. **Identity:** Enter your official Name and Institutional Title when prompted.
-3. **Connect:** Click **Join Meeting**.
-4. **Bypass Prompt:** If a pop-up appears displaying secondary share options (*Scan QR*, *Send Email*, *Send URL*), select **Close**.
-5. **Node Synchronization:** Your session will immediately initialize with direct peer-to-peer crystal video and studio audio feed.
+2. **Identity:** Enter your official email and/or Institutional website when prompted.
+3. 
+4. **Connect:** Click **Join Meeting**. Allow mic & cam on prompt.
+5. **Bypass Prompt:** If a pop-up appears displaying secondary share options (*Scan QR*, *Send Email*, *Send URL*), select **Close**.
+6. **Node Synchronization:** Your session will immediately initialize with direct peer-to-peer crystal video and studio audio feed.
 
 > ℹ️ **Standby Protocol:** If you arrive ahead of the scheduled assembly, maintain your browser window open. Peer nodes and Alliance partners will automatically synchronize upon entry.
 
